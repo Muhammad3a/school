@@ -2,29 +2,30 @@
 
 namespace App\Filament\Resources;
 
-use Illuminate\Support\Str;
 use Filament\Forms;
 use Filament\Tables;
-use Filament\Forms\Set;
+use App\Models\Teacher;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
-use App\Models\CategoryNilai;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\TeacherResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\CategoryNilaiResource\Pages;
-use App\Filament\Resources\CategoryNilaiResource\RelationManagers;
+use App\Filament\Resources\TeacherResource\RelationManagers;
 
-class CategoryNilaiResource extends Resource
+class TeacherResource extends Resource
 {
-    protected static ?string $model = CategoryNilai::class;
+    protected static ?string $model = Teacher::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Kategori Nilai';
+    protected static ?string $navigationLabel = "Guru";
 
     public static function form(Form $form): Form
     {
@@ -32,11 +33,14 @@ class CategoryNilaiResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
+                        TextInput::make('nip'),
                         TextInput::make('name')
-                            ->live()
-                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
-                        TextInput::make('slug')
-                    ])
+                            ->required(),
+                        Textarea::make('address'),
+                        FileUpload::make('profile')
+                            ->directory('teacher'),
+                    ])->columns(2),
+
             ]);
     }
 
@@ -44,15 +48,16 @@ class CategoryNilaiResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('nip'),
                 TextColumn::make('name'),
-                TextColumn::make('slug')
+                TextColumn::make('address'),
+                ImageColumn::make('profile')
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -61,10 +66,19 @@ class CategoryNilaiResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageCategoryNilais::route('/'),
+            'index' => Pages\ListTeachers::route('/'),
+            'create' => Pages\CreateTeacher::route('/create'),
+            'edit' => Pages\EditTeacher::route('/{record}/edit'),
         ];
     }
 }

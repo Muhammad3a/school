@@ -11,11 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('priodes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-            $table->timestamps();
-        });
+        Schema::table('students', function (Blueprint $table) {});
     }
 
     /**
@@ -23,6 +19,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('priodes');
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropColumn('kode');
+            $table->dropColumn('slug');
+        });
     }
 };

@@ -19,6 +19,6 @@ class ManageCategoryNilais extends ManageRecords
 
     public function getTitle(): string
     {
-        return ('Category Nilai');
+        return ('Kategori Nilai');
     }
 }

@@ -2,41 +2,32 @@
 
 namespace App\Filament\Resources;
 
-use Illuminate\Support\Str;
 use Filament\Forms;
 use Filament\Tables;
-use Filament\Forms\Set;
+use App\Models\Priode;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
-use App\Models\CategoryNilai;
 use Filament\Resources\Resource;
-use Filament\Forms\Components\Card;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\PriodeResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\CategoryNilaiResource\Pages;
-use App\Filament\Resources\CategoryNilaiResource\RelationManagers;
+use App\Filament\Resources\PriodeResource\RelationManagers;
 
-class CategoryNilaiResource extends Resource
+class PriodeResource extends Resource
 {
-    protected static ?string $model = CategoryNilai::class;
+    protected static ?string $model = Priode::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Kategori Nilai';
+    protected static ?string $navigationLabel = "Periode";
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Card::make()
-                    ->schema([
-                        TextInput::make('name')
-                            ->live()
-                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
-                        TextInput::make('slug')
-                    ])
+                TextInput::make('name')->required(),
             ]);
     }
 
@@ -44,8 +35,8 @@ class CategoryNilaiResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
-                TextColumn::make('slug')
+                TextColumn::make('name')
+                    ->label('Nama Periode'),
             ])
             ->filters([
                 //
@@ -64,7 +55,7 @@ class CategoryNilaiResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageCategoryNilais::route('/'),
+            'index' => Pages\ManagePriodes::route('/'),
         ];
     }
 }
