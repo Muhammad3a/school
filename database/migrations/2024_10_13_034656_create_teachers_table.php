@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('nip')->nullable();
+            $table->string('nis')->nullable();
             $table->string('name');
-            $table->string('address')->nullable();
-            $table->string('profile')->default('default_profile_value')->change();
-            $table->timestamps();
+            $table->enum('gender', ['Male', 'Female'])->default('Male');
+            $table->date('birthday')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('profile')->nullable();
         });
     }
 
