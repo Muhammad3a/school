@@ -24,6 +24,8 @@ use App\Filament\Resources\StudentResource\RelationManagers;
 use App\Filament\Resources\StudentResource\Pages\EditStudent;
 use App\Filament\Resources\StudentResource\Pages\ListStudents;
 use App\Filament\Resources\StudentResource\Pages\CreateStudent;
+use Filament\Tables\Contracts\HasTable;
+use stdClass;
 
 class StudentResource extends Resource
 {
@@ -31,7 +33,7 @@ class StudentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = "Siswa & Siswi";
+    // protected static ?string $navigationLabel = "Siswa & Siswi";
 
     public static function form(Form $form): Form
     {
@@ -43,8 +45,8 @@ class StudentResource extends Resource
                     ->label('Nama Siswa'),
                 Select::make('gender')
                     ->options([
-                        "Laki - Laki",
-                        "Perempuan"
+                        "Male" => "Pria",
+                        "Female" => "Wanita"
                     ]),
                 DatePicker::make('birthday')
                     ->label('Tanggal Lahir'),
@@ -60,6 +62,16 @@ class StudentResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('no')->state(
+                    static function (HasTable $livewire, stdClass $rowLoop): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->getTableRecordsPerPage() * (
+                                $livewire->getTablePage() - 1
+                            ))
+                        );
+                    }
+                ),
                 TextColumn::make('nis')
                     ->label('NIS'),
                 TextColumn::make('name')
@@ -100,5 +112,15 @@ class StudentResource extends Resource
             'create' => Pages\CreateStudent::route('/create'),
             'edit' => Pages\EditStudent::route('/{record}/edit'),
         ];
+    }
+
+    public  static function getLabel(): ?string
+    {
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Murid";
+        } else
+            return "Student";
     }
 }

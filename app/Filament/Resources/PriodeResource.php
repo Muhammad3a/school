@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PriodeResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PriodeResource\RelationManagers;
+use Filament\Tables\Contracts\HasTable;
+use stdClass;
 
 class PriodeResource extends Resource
 {
@@ -35,6 +37,16 @@ class PriodeResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('no')->state(
+                    static function (HasTable $livewire, stdClass $rowLoop): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->getTableRecordsPerPage() * (
+                                $livewire->getTablePage() - 1
+                            ))
+                        );
+                    }
+                ),
                 TextColumn::make('name')
                     ->label('Nama Periode'),
             ])

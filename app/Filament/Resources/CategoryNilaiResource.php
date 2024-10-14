@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CategoryNilaiResource\Pages;
 use App\Filament\Resources\CategoryNilaiResource\RelationManagers;
+use Filament\Tables\Contracts\HasTable;
+use stdClass;
 
 class CategoryNilaiResource extends Resource
 {
@@ -44,6 +46,16 @@ class CategoryNilaiResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('no')->state(
+                    static function (HasTable $livewire, stdClass $rowLoop): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->getTableRecordsPerPage() * (
+                                $livewire->getTablePage() - 1
+                            ))
+                        );
+                    }
+                ),
                 TextColumn::make('name'),
                 TextColumn::make('slug')
             ])

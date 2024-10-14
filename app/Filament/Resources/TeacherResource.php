@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\TeacherResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\TeacherResource\RelationManagers;
+use Filament\Tables\Contracts\HasTable;
+use stdClass;
 
 class TeacherResource extends Resource
 {
@@ -25,7 +27,7 @@ class TeacherResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = "Guru";
+    // protected static ?string $navigationLabel = "Guru";
 
     public static function form(Form $form): Form
     {
@@ -48,6 +50,16 @@ class TeacherResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('no')->state(
+                    static function (HasTable $livewire, stdClass $rowLoop): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->getTableRecordsPerPage() * (
+                                $livewire->getTablePage() - 1
+                            ))
+                        );
+                    }
+                ),
                 TextColumn::make('nip'),
                 TextColumn::make('name'),
                 TextColumn::make('address'),
