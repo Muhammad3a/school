@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use stdClass;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Student;
@@ -9,8 +10,10 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Resources\Resource;
+use Filament\Actions\CreateAction;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\DatePicker;
@@ -24,8 +27,6 @@ use App\Filament\Resources\StudentResource\RelationManagers;
 use App\Filament\Resources\StudentResource\Pages\EditStudent;
 use App\Filament\Resources\StudentResource\Pages\ListStudents;
 use App\Filament\Resources\StudentResource\Pages\CreateStudent;
-use Filament\Tables\Contracts\HasTable;
-use stdClass;
 
 class StudentResource extends Resource
 {
@@ -94,8 +95,12 @@ class StudentResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                ])
             ]);
+        // ->headerActions([
+        //     Tables\Actions\CreateAction::make(),
+
+        // ]);
     }
 
     public static function getRelations(): array
