@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'nip',
-        'name',
-        'address',
-        'profile',
-        'teacher'
-    ];
+    protected $guarded = [];
+
+    function classroom()
+    {
+        return $this->hasMany(HomeRoom::class, 'teachers_id', 'id');
+    }
 }

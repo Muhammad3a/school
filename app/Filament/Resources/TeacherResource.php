@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\TeacherResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\TeacherResource\RelationManagers;
+use App\Filament\Resources\TeacherResource\RelationManagers\ClassroomRelationManager;
 use Filament\Tables\Contracts\HasTable;
 use stdClass;
 
@@ -81,7 +82,7 @@ class TeacherResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ClassroomRelationManager::class,
         ];
     }
 
