@@ -89,4 +89,13 @@ class DepartementResource extends Resource
             'edit' => Pages\EditDepartement::route('/{record}/edit'),
         ];
     }
+    public  static function getLabel(): ?string
+    {
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Jurusan";
+        } else
+            return "Departement";
+    }
 }
