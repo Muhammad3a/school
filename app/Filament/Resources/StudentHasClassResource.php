@@ -31,7 +31,7 @@ class StudentHasClassResource extends Resource
 
     // protected static bool $shouldRegisterNavigation = false;
 
-    protected static ?int $navigationSort = 21;
+    protected static ?int $navigationSort = 23;
 
 
     public static function form(Form $form): Form
