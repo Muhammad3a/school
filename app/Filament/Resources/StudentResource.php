@@ -39,7 +39,14 @@ class StudentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    // protected static ?string $navigationLabel = "Siswa & Siswi";
+    protected static ?string $navigationLabel = 'Student';
+
+    protected static ?string $navigationGroup = 'Akademik';
+
+    // protected static bool $shouldRegisterNavigation = false;
+
+    protected static ?int $navigationSort = 22;
+
 
     public static function form(Form $form): Form
     {

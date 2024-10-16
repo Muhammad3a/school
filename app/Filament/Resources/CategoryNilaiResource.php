@@ -28,6 +28,10 @@ class CategoryNilaiResource extends Resource
 
     protected static ?string $navigationLabel = 'Kategori Nilai';
 
+    protected static ?string $navigationGroup = 'Source';
+
+    protected static ?int $navigationSort = 31;
+
     public static function form(Form $form): Form
     {
         return $form

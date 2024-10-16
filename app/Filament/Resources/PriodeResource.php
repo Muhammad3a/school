@@ -23,7 +23,14 @@ class PriodeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = "Periode";
+    protected static ?string $navigationLabel = 'Periode';
+
+    protected static ?string $navigationGroup = 'Setting';
+
+    // protected static bool $shouldRegisterNavigation = false;
+
+    protected static ?int $navigationSort = 41;
+
 
     public static function form(Form $form): Form
     {

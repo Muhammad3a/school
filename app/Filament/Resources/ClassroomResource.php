@@ -31,6 +31,14 @@ class ClassroomResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Class Room';
+
+    protected static ?string $navigationGroup = 'Source';
+
+    // protected static bool $shouldRegisterNavigation = false;
+
+    protected static ?int $navigationSort = 32;
+
     public static function form(Form $form): Form
     {
         return $form
