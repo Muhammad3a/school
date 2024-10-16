@@ -15,7 +15,7 @@ class HomeRoom extends Model
     {
         return $this->belongsTo(Teacher::class, 'teachers_id', 'id');
     }
-    function classroom()
+    public function classroom()
     {
         return $this->belongsTo(Classroom::class, 'classrooms_id', 'id');
     }

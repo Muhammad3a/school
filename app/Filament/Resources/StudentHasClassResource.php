@@ -8,7 +8,6 @@ use App\Models\Priode;
 use App\Models\Student;
 use App\Models\HomeRoom;
 use Filament\Forms\Form;
-use App\Models\Classroom;
 use Filament\Tables\Table;
 use App\Models\StudentHasClass;
 use Filament\Resources\Resource;
@@ -33,7 +32,6 @@ class StudentHasClassResource extends Resource
                 Card::make()
                     ->schema([
                         Select::make('students_id')
-                            ->multiple()
                             ->searchable()
                             ->options(Student::all()->pluck('name', 'id'))
                             ->label('Student'),
@@ -42,13 +40,12 @@ class StudentHasClassResource extends Resource
                             ->options(HomeRoom::all()->pluck('classroom.name', 'id'))
                             ->label('Class'),
                         Select::make('priode_id')
+                            ->label('Periode')
                             ->searchable()
                             ->options(Priode::all()->pluck('name', 'id'))
-
                     ])->columns(3)
             ]);
     }
-
 
     public static function table(Table $table): Table
     {
