@@ -8,30 +8,35 @@ use Filament\Tables;
 use App\Models\Student;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Filament\Actions\EditAction;
+use App\Models\StudentHasClass;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Actions\CreateAction;
-use Illuminate\Support\Collection;
+use Filament\Infolists\Components;
+use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Actions;
+use Filament\Infolists\Components\Grid;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
+use Filament\Infolists\Components\Split;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
-use Filament\Infolists\Components\TextEntry;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteBulkAction;
-use App\Filament\Resources\StudentResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\StudentResource\RelationManagers;
-use App\Filament\Resources\StudentResource\Pages\EditStudent;
-use App\Filament\Resources\StudentResource\Pages\ListStudents;
-use App\Filament\Resources\StudentResource\Pages\CreateStudent;
 use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\Fieldset;
+use Filament\Infolists\Components\TextEntry;
+use Illuminate\Database\Eloquent\Collection;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Resources\Pages\ListRecords\Tab;
+use App\Filament\Resources\StudentResource\Pages;
+use App\Filament\Resources\StudentResource\RelationManagers;
+use App\Filament\Resources\StudentResource\Widgets\StatsOverview;
+
 
 class StudentResource extends Resource
 {
@@ -172,10 +177,62 @@ class StudentResource extends Resource
     public static function infolist(Infolist $infolist): Infolist
     {
 
+        // return $infolist
+        //     ->schema([
+        //         TextEntry::make('nis'),
+        //         TextEntry::make('name')
+        //     ]);
+
         return $infolist
             ->schema([
-                TextEntry::make('nis'),
-                TextEntry::make('name')
+                Section::make()
+                    ->schema([
+                        Fieldset::make('Biodata')
+                            ->schema([
+                                Split::make([
+                                    ImageEntry::make('profile')
+                                        ->hiddenLabel()
+                                        ->grow(false),
+                                    Grid::make(2)
+                                        ->schema([
+                                            Components\Group::make([
+                                                Components\TextEntry::make('nis'),
+                                                Components\TextEntry::make('name'),
+                                                Components\TextEntry::make('gender'),
+                                                Components\TextEntry::make('birthday'),
+
+                                            ])
+                                                ->inlineLabel()
+                                                ->columns(1),
+
+                                            Components\Group::make([
+                                                Components\TextEntry::make('contact'),
+                                                Components\TextEntry::make('status')
+                                                    ->badge()
+                                                    ->color(fn(string $state): string => match ($state) {
+                                                        'accept' => 'success',
+                                                        'off' => 'danger',
+                                                        'grade' => 'success',
+                                                        'move' => 'warning',
+                                                        'wait' => 'gray'
+                                                    }),
+                                                Components\ViewEntry::make('QRCode')
+                                                    ->view('filament.resources.students.qrcode'),
+                                            ])
+                                                ->inlineLabel()
+                                                ->columns(1),
+                                        ])
+
+                                ])->from('lg')
+                            ])->columns(1)
+                    ])->columns(2)
             ]);
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            StatsOverview::class
+        ];
     }
 }

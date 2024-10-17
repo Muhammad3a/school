@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\View;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Resources\Pages\ListRecords\Tab;
 use App\Filament\Resources\StudentResource;
+use App\Filament\Resources\StudentResource\Widgets\StatsOverview;
 use App\Imports\ImportStudents;
 use App\Models\Student;
 use Filament\Forms\Components\Builder;
@@ -52,16 +53,16 @@ class ListStudents extends ListRecords
     //             ->modifyQueryUsing(fn(Builder $query) => $query->where('status', 'off'))
     //     ];
     // }
-    function getTabs(): array
-    {
-        return [
-            'all' => Tab::make(),
-            'accept' => Tab::make()
-                // Ubah `Filament\Forms\Components\Builder` menjadi `Illuminate\Database\Eloquent\Builder`
-                ->modifyQueryUsing(fn(\Illuminate\Database\Eloquent\Builder $query) => $query->where('status', 'accept')),
-            'off' => Tab::make()
-                // Ubah `Filament\Forms\Components\Builder` menjadi `Illuminate\Database\Eloquent\Builder`
-                ->modifyQueryUsing(fn(\Illuminate\Database\Eloquent\Builder $query) => $query->where('status', 'off'))
-        ];
-    }
+    // function getTabs(): array
+    // {
+    //     return [
+    //         'all' => Tab::make(),
+    //         'accept' => Tab::make()
+    //             // Ubah `Filament\Forms\Components\Builder` menjadi `Illuminate\Database\Eloquent\Builder`
+    //             ->modifyQueryUsing(fn(\Illuminate\Database\Eloquent\Builder $query) => $query->where('status', 'accept')),
+    //         'off' => Tab::make()
+    //             // Ubah `Filament\Forms\Components\Builder` menjadi `Illuminate\Database\Eloquent\Builder`
+    //             ->modifyQueryUsing(fn(\Illuminate\Database\Eloquent\Builder $query) => $query->where('status', 'off'))
+    //     ];
+    // }
 }
