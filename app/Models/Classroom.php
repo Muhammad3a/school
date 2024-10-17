@@ -9,4 +9,9 @@ class Classroom extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class)->withPivot('description');
+    }
 }

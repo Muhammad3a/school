@@ -83,10 +83,8 @@ class StudentResource extends Resource
                 TextColumn::make('no')->state(
                     static function (HasTable $livewire, stdClass $rowLoop): string {
                         return (string) (
-                            $rowLoop->iteration +
-                            ($livewire->getTableRecordsPerPage() * (
-                                $livewire->getTablePage() - 1
-                            ))
+                            intval($rowLoop->iteration) +
+                            (intval($livewire->getTableRecordsPerPage()) * (intval($livewire->getTablePage()) - 1))
                         );
                     }
                 ),

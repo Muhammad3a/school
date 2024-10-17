@@ -27,7 +27,7 @@ class SubjectResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = "Subject";
+    protected static ?string $navigationLabel = "Pelajaran";
 
     protected static ?string $navigationGroup = 'Akademik';
 
@@ -93,5 +93,14 @@ class SubjectResource extends Resource
             'create' => Pages\CreateSubject::route('/create'),
             'edit' => Pages\EditSubject::route('/{record}/edit'),
         ];
+    }
+    public  static function getLabel(): ?string
+    {
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Pelajaran";
+        } else
+            return "Study";
     }
 }

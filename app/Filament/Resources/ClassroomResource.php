@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use stdClass;
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Subject;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use App\Models\Classroom;
@@ -12,6 +14,7 @@ use Illuminate\Support\Str;
 use Filament\Actions\EditAction;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Actions\BulkActionGroup;
@@ -22,8 +25,7 @@ use App\Filament\Resources\ClassroomResource\RelationManagers;
 use App\Filament\Resources\ClassroomResource\Pages\EditClassroom;
 use App\Filament\Resources\ClassroomResource\Pages\ListClassrooms;
 use App\Filament\Resources\ClassroomResource\Pages\CreateClassroom;
-use Filament\Tables\Contracts\HasTable;
-use stdClass;
+use App\Filament\Resources\ClassroomResource\RelationManagers\SubjectsRelationManager;
 
 class ClassroomResource extends Resource
 {
@@ -83,7 +85,7 @@ class ClassroomResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            SubjectsRelationManager::class
         ];
     }
 

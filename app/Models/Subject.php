@@ -1,5 +1,7 @@
 <?php
 
+// untuk mata pelajaran
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,6 +15,6 @@ class Subject extends Model
 
     public function classrooms()
     {
-        return $this->belongsToMany(Classroom::class);
+        return $this->belongsToMany(Classroom::class)->withPivot('description');
     }
 }
