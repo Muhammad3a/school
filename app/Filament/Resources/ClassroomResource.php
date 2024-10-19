@@ -41,6 +41,12 @@ class ClassroomResource extends Resource
 
     protected static ?int $navigationSort = 32;
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->can('classroom');
+    }
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -49,6 +55,8 @@ class ClassroomResource extends Resource
                     ->live()
                     ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
                 TextInput::make('slug')
+                    ->unique(Classroom::class, 'slug', ignoreRecord: true)
+
             ]);
     }
 
