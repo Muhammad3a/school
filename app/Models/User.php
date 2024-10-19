@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles; // Tambahkan HasRoles trait
+    use HasFactory, Notifiable, HasRoles;
+
+
 
     protected $fillable = [
         'name',

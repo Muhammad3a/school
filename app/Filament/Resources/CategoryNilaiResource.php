@@ -20,6 +20,7 @@ use App\Filament\Resources\CategoryNilaiResource\RelationManagers;
 use Filament\Tables\Contracts\HasTable;
 use stdClass;
 
+
 class CategoryNilaiResource extends Resource
 {
     protected static ?string $model = CategoryNilai::class;
@@ -31,6 +32,11 @@ class CategoryNilaiResource extends Resource
     protected static ?string $navigationGroup = 'Source';
 
     protected static ?int $navigationSort = 31;
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('admin');
+    }
 
     public static function form(Form $form): Form
     {

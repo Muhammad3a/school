@@ -30,6 +30,7 @@ use App\Filament\Resources\DepartementResource;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use App\Filament\Resources\CategoryNilaiResource;
+use App\Filament\Resources\StudentHasClassResource;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -98,6 +99,7 @@ class AdminPanelProvider extends PanelProvider
                         ->items([
                             ...TeacherResource::getNavigationItems(),
                             ...StudentResource::getNavigationItems(),
+                            ...StudentHasClassResource::getNavigationItems(),
                             ...SubjectResource::getNavigationItems(),
 
                         ]),

@@ -37,6 +37,11 @@ class TeacherResource extends Resource
 
     protected static ?int $navigationSort = 21;
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('admin');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

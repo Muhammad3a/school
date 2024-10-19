@@ -43,8 +43,10 @@ class ClassroomResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->can('classroom');
+        return auth()->user()->hasRole('admin');
     }
+
+
 
 
     public static function form(Form $form): Form

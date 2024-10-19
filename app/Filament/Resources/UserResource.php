@@ -45,7 +45,6 @@ class UserResource extends Resource
                         ->password()
                         ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
                         ->minLength(8)
-                        ->same('passwordComfirmation')
                         ->dehydrated(fn($state) => filled($state))
                         ->dehydrateStateUsing(fn($state) => Hash::make($state)),
 
