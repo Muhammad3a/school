@@ -16,8 +16,12 @@ class StudentHasClass extends Model
         return $this->belongsTo(Student::class);
     }
 
-    function homeroom()
+    function classrooms()
     {
-        return $this->belongsTo(HomeRoom::class, 'homerooms_id', 'id');
+        return $this->belongsTo(ClassRoom::class, 'classrooms_id', 'id');
+    }
+    function Priode()
+    {
+        return $this->belongsTo((Priode::class));
     }
 }

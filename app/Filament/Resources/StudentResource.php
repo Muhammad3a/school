@@ -54,7 +54,7 @@ class StudentResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole('admin');
+        return auth()->user()->hasRole(['admin', 'guru']);
     }
 
 
@@ -104,13 +104,14 @@ class StudentResource extends Resource
                 TextColumn::make('birthday')
                     ->label('Tanggal Lahir')
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('status')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->formatStateUsing(fn(string $state): string => ucwords("{$state}")),
                 TextColumn::make('contact')
                     ->label('Nomor HP'),
                 ImageColumn::make('profile')
                     ->label('Profile'),
-                TextColumn::make('status')
-                    ->toggleable(isToggledHiddenByDefault: true)
-                    ->formatStateUsing(fn(string $state): string => ucwords("{$state}"))
+
             ])
             ->filters([
                 SelectFilter::make('status')

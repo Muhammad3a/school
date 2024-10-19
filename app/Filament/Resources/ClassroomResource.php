@@ -43,10 +43,8 @@ class ClassroomResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole('admin');
+        return auth()->check() && auth()->user()->hasAnyRole(['admin', 'guru']);
     }
-
-
 
 
     public static function form(Form $form): Form

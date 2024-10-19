@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources\StudentHasClassResource\Pages;
 
-use App\Filament\Resources\StudentHasClassResource;
-use App\Models\HomeRoom;
 use App\Models\Priode;
 use App\Models\Student;
+use App\Models\HomeRoom;
+use App\Models\Classroom;
 use App\Models\StudentHasClass;
+use Filament\Resources\Pages\Page;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Resources\Pages\Page;
+use Filament\Forms\Concerns\InteractsWithForms;
+use App\Filament\Resources\StudentHasClassResource;
 
 class FormStudentClass extends Page implements HasForms
 {
@@ -22,7 +23,7 @@ class FormStudentClass extends Page implements HasForms
     protected static string $view = 'filament.resources.student-has-class-resource.pages.form-student-class';
 
     public $students = [];
-    public $homerooms = '';
+    public $classrooms = '';
     public $priode = '';
 
     function mount(): void
@@ -41,8 +42,8 @@ class FormStudentClass extends Page implements HasForms
                         ->options(Student::all()->pluck('name', 'id'))
                         ->columnSpan(3),
 
-                    Select::make('homerooms')
-                        ->options(HomeRoom::all()->pluck('classroom.name', 'id'))
+                    Select::make('classrooms')
+                        ->options(Classroom::all()->pluck('name', 'id'))
                         ->label('Class'),
                     Select::make('priode')
                         ->label('Periode')
@@ -59,7 +60,7 @@ class FormStudentClass extends Page implements HasForms
         foreach ($students as $row) {
             array_push($insert, [
                 'students_id' => $row,
-                'homerooms_id' => $this->homerooms,
+                'classrooms_id' => $this->classrooms,
                 'priode_id' => $this->priode,
                 'is_open' => 1
             ]);

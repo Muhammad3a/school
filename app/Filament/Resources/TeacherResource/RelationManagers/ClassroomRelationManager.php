@@ -28,7 +28,9 @@ class ClassroomRelationManager extends RelationManager
             ->schema([
                 Select::make('classrooms_id')
                     ->label('Select Class')
-                    ->options(Classroom::all()->pluck('name', 'id'))
+                    ->options(function () {
+                        return Classroom::all()->pluck('name', 'id');
+                    })
                     ->searchable()
                     ->relationship(name: 'classroom', titleAttribute: 'name')
                     ->createOptionForm([

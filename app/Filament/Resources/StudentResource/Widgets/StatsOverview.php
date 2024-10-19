@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\StudentResource\Widgets;
 
+use App\Models\Classroom;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Teacher;
@@ -18,7 +19,7 @@ class StatsOverview extends BaseWidget
             // Stat::make('Average time on page', '3:12'),
             Stat::make('Students', Student::count())->url('coba', true),
             Stat::make('Teachers', Teacher::count()),
-            Stat::make('Subjects', Subject::count()),
+            Stat::make('Class Room', Classroom::count()),
         ];
     }
 }

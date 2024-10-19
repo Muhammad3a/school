@@ -8,7 +8,9 @@ use App\Models\Priode;
 use App\Models\Student;
 use App\Models\HomeRoom;
 use Filament\Forms\Form;
+use App\Models\Classroom;
 use Filament\Tables\Table;
+use PhpParser\Builder\Class_;
 use App\Models\StudentHasClass;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
@@ -18,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\StudentHasClassResource\Pages;
 use App\Filament\Resources\StudentHasClassResource\RelationManagers;
+use Filament\Tables\Filters\SelectFilter;
 
 class StudentHasClassResource extends Resource
 {
@@ -49,9 +52,9 @@ class StudentHasClassResource extends Resource
                             ->searchable()
                             ->options(Student::all()->pluck('name', 'id'))
                             ->label('Student'),
-                        Select::make('homerooms_id')
+                        Select::make('Classrooms_id')
                             ->searchable()
-                            ->options(HomeRoom::all()->pluck('classroom.name', 'id'))
+                            ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Class'),
                         Select::make('priode_id')
                             ->label('Periode')
@@ -66,10 +69,14 @@ class StudentHasClassResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('students.name'),
-                TextColumn::make('homeroom.classroom.name'),
+                TextColumn::make('classrooms.name'),
+                TextColumn::make('priode.name'),
             ])
             ->filters([
-                //
+                SelectFilter::make('classrooms_id')
+                    ->options(Classroom::all()->pluck('name', 'id')),
+                SelectFilter::make('priode_id')
+                    ->options(Priode::all()->pluck('name', 'id'))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

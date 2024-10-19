@@ -35,7 +35,7 @@ class CategoryNilaiResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole('admin');
+        return auth()->check() && auth()->user()->hasAnyRole(['admin', 'guru']);
     }
 
     public static function form(Form $form): Form
@@ -61,8 +61,9 @@ class CategoryNilaiResource extends Resource
                         return (string) (
                             $rowLoop->iteration +
                             ($livewire->getTableRecordsPerPage() * (
-                                $livewire->getTablePage() - 1
+                                $livewire->getTablePage() - 1 
                             ))
+                            
                         );
                     }
                 ),

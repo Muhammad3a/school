@@ -40,6 +40,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use App\Filament\Resources\StudentResource\Widgets\StatsOverview;
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
+use App\Filament\Resources\NilaiResource;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -94,6 +95,7 @@ class AdminPanelProvider extends PanelProvider
                                 ->icon('heroicon-o-home')
                                 ->isActiveWhen(fn(): bool => request()->routeIs('filament.admin.pages.dashboard'))
                                 ->url(fn(): string => Dashboard::getUrl()),
+
                         ]),
                     NavigationGroup::make('Akademik')
                         ->items([
@@ -101,6 +103,7 @@ class AdminPanelProvider extends PanelProvider
                             ...StudentResource::getNavigationItems(),
                             ...StudentHasClassResource::getNavigationItems(),
                             ...SubjectResource::getNavigationItems(),
+                            ...NilaiResource::getNavigationItems(),
 
                         ]),
                     NavigationGroup::make('Source')

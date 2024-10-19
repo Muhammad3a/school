@@ -31,4 +31,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    function canAccessFilamnet(): bool
+    {
+        return $this->hasRole(['admin', 'guru', 'walikelas', 'user']);
+    }
 }
