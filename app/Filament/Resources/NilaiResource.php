@@ -2,12 +2,14 @@
 
 namespace App\Filament\Resources;
 
+use Closure;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Nilai;
 use App\Models\Priode;
 use App\Models\Student;
 use App\Models\Subject;
+use Filament\Forms\Get;
 use Filament\Forms\Form;
 use App\Models\Classroom;
 use Filament\Tables\Table;
@@ -17,9 +19,9 @@ use function Pest\Laravel\options;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
+
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-
 use App\Filament\Resources\NilaiResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\NilaiResource\RelationManagers;
@@ -29,6 +31,8 @@ class NilaiResource extends Resource
     protected static ?string $model = Nilai::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $navigationLabel = 'Nilai';
 
     // public static function shouldRegisterNavigation(): bool
     // {
@@ -57,9 +61,19 @@ class NilaiResource extends Resource
                             ->searchable()
                             ->options(CategoryNilai::all()->pluck('name', 'id')),
                         Select::make('student')
-                            ->options(Student::all()->pluck('name', 'id'))
-                            ->label('Murid'),
-                        TextInput::make('nilai'),
+                            ->label('Murid')
+                            ->searchable()
+                            ->options(Student::all()->pluck('name', 'id')),
+                        TextInput::make('nilai')
+                            ->type('number')
+                            ->live()
+                            ->rules([
+                                fn(Get $get): Closure => function (String $attribute, $value, Closure $fail) use ($get) {
+                                    if ($get('nilai') > 100) {
+                                        $fail('Nilai terlalu besar');
+                                    }
+                                },
+                            ])
 
                     ])
                     ->columns(3),
@@ -70,9 +84,12 @@ class NilaiResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('student.name'),
-                TextColumn::make('subject.name'),
-                TextColumn::make('category_nilai.name'),
+                TextColumn::make('student.name')
+                    ->label('Murid'),
+                TextColumn::make('subject.name')
+                    ->label('Pelajaran'),
+                TextColumn::make('category_nilai.name')
+                    ->label("Kategori Nilai"),
                 TextColumn::make('nilai'),
                 TextColumn::make('priode.name'),
 

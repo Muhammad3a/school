@@ -2,11 +2,13 @@
 
 namespace App\Filament\Resources\NilaiResource\Pages;
 
+use Closure;
 use App\Models\Nilai;
 use Filament\Actions;
 use App\Models\Priode;
 use App\Models\Student;
 use App\Models\Subject;
+use Filament\Forms\Get;
 use Filament\Forms\Form;
 use App\Models\Classroom;
 use App\Models\CategoryNilai;
@@ -52,10 +54,18 @@ class CreateNilai extends CreateRecord
                         ->label('Grade')
                         ->schema([
                             Select::make('student')
+                                ->searchable()
                                 ->options(Student::all()->pluck('name', 'id')->toArray())
                                 ->label('Student'),
 
                             TextInput::make('nilai')
+                                ->rules([
+                                    fn(Get $get): Closure => function (String $attribute, $value, Closure $fail) use ($get) {
+                                        if ($get('nilai') > 100) {
+                                            $fail('Nilai terlalu besar');
+                                        }
+                                    }
+                                ])->validationAttribute('nilai')
                         ])->columns(2)
                 ])
         ]);
