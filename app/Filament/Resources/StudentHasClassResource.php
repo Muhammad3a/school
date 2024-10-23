@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\StudentHasClassResource\Pages;
 use App\Filament\Resources\StudentHasClassResource\RelationManagers;
+use App\Models\Departement;
 use Filament\Tables\Filters\SelectFilter;
 
 class StudentHasClassResource extends Resource
@@ -28,7 +29,7 @@ class StudentHasClassResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Student Has Class';
+    protected static ?string $navigationLabel = 'Murid Dengan Kelas';
 
     protected static ?string $navigationGroup = 'Akademik';
 
@@ -55,7 +56,11 @@ class StudentHasClassResource extends Resource
                         Select::make('Classrooms_id')
                             ->searchable()
                             ->options(Classroom::all()->pluck('name', 'id'))
-                            ->label('Class'),
+                            ->label('Kelas'),
+                        Select::make('departements_id')
+                            ->searchable()
+                            ->options(Departement::all()->pluck('name_department', 'id'))
+                            ->label('Jurusan'),
                         Select::make('priode_id')
                             ->label('Periode')
                             ->searchable()
@@ -68,8 +73,12 @@ class StudentHasClassResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('students.name'),
-                TextColumn::make('classrooms.name'),
+                TextColumn::make('students.name')
+                    ->label('Murid'),
+                TextColumn::make('classrooms.name')
+                    ->label('Kelas'),
+                TextColumn::make('departements.name_department')
+                    ->label('Jurusan'),
                 TextColumn::make('priode.name'),
             ])
             ->filters([

@@ -20,7 +20,7 @@ class EditNilai extends EditRecord
 
     protected function getSaveFormAction(): Action
     {
-        return Action::make('create')
+        return Action::make('save')
             ->disabled(function (): bool {
                 return $this->data['nilai'] > 100 ? true : false;
             });

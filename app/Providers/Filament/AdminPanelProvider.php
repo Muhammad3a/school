@@ -8,29 +8,38 @@ use Filament\Widgets;
 use App\Models\Priode;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\Semester;
 use App\Models\Classroom;
+use App\Models\CpSemester;
 use App\Models\Departement;
 use Filament\PanelProvider;
 use Filament\Pages\Dashboard;
 use Filament\Facades\Filament;
+use App\Models\CatatanAkademik;
+use App\Models\PelajaranKejuruan;
 use Filament\Support\Colors\Color;
 use Filament\Navigation\UserMenuItem;
 use Filament\Navigation\NavigationItem;
 use App\Filament\Resources\UserResource;
 use Filament\Navigation\NavigationGroup;
+use App\Filament\Resources\NilaiResource;
 use App\Filament\Resources\PriodeResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Navigation\NavigationBuilder;
 use App\Filament\Resources\StudentResource;
 use App\Filament\Resources\SubjectResource;
 use App\Filament\Resources\TeacherResource;
+use App\Filament\Resources\SemesterResource;
 use App\Filament\Resources\ClassroomResource;
+use App\Filament\Resources\CpSemesterResource;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Filament\Resources\DepartementResource;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use App\Filament\Resources\CategoryNilaiResource;
+use App\Filament\Resources\CatatanAkademikResource;
 use App\Filament\Resources\StudentHasClassResource;
+use App\Filament\Resources\PelajaranKejuruanResource;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -40,7 +49,6 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use App\Filament\Resources\StudentResource\Widgets\StatsOverview;
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
-use App\Filament\Resources\NilaiResource;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -97,25 +105,43 @@ class AdminPanelProvider extends PanelProvider
                                 ->url(fn(): string => Dashboard::getUrl()),
 
                         ]),
-                    NavigationGroup::make('Akademik')
+                    NavigationGroup::make('Data Guru')
                         ->items([
                             ...TeacherResource::getNavigationItems(),
-                            ...StudentResource::getNavigationItems(),
-                            ...StudentHasClassResource::getNavigationItems(),
-                            ...SubjectResource::getNavigationItems(),
-                            ...NilaiResource::getNavigationItems(),
 
                         ]),
-                    NavigationGroup::make('Source')
+                    NavigationGroup::make('Data Umum')
+                        ->items([
+                            // ...StudentResource::getNavigationItems(),
+                            ...ClassroomResource::getNavigationItems(),
+                            ...StudentHasClassResource::getNavigationItems(),
+                            // ...SubjectResource::getNavigationItems(),
+                            ...PriodeResource::getNavigationItems(),
+                            ...SemesterResource::getNavigationItems(),
+
+                        ]),
+                    NavigationGroup::make('Data Pelajaran')
+                        ->items([
+                            // ...StudentResource::getNavigationItems(),
+                            // ...ClassroomResource::getNavigationItems(),
+                            // ...StudentHasClassResource::getNavigationItems(),
+                            ...SubjectResource::getNavigationItems(),
+                            ...PelajaranKejuruanResource::getNavigationItems(),
+                            ...CpSemesterResource::getNavigationItems(),
+                            ...CatatanAkademikResource::getNavigationItems(),
+                            // ...PriodeResource::getNavigationItems(),
+                            // ...SemesterResource::getNavigationItems(),
+
+                        ]),
+                    NavigationGroup::make('Data Nilai Pelajaran')
                         ->items([
                             ...CategoryNilaiResource::getNavigationItems(),
-                            ...ClassroomResource::getNavigationItems(),
                             ...DepartementResource::getNavigationItems(),
+                            ...NilaiResource::getNavigationItems(),
 
                         ]),
                     NavigationGroup::make('Setting')
                         ->items([
-                            ...PriodeResource::getNavigationItems(),
                             NavigationItem::make('Role')
                                 ->icon('heroicon-o-adjustments-horizontal')
                                 ->isActiveWhen(fn(): bool => request()->routeIs([

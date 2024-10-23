@@ -13,6 +13,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use App\Filament\Resources\StudentHasClassResource;
+use App\Models\Departement;
 
 class FormStudentClass extends Page implements HasForms
 {
@@ -25,6 +26,7 @@ class FormStudentClass extends Page implements HasForms
     public $students = [];
     public $classrooms = '';
     public $priode = '';
+    public $departements = '';
 
     function mount(): void
     {
@@ -41,10 +43,12 @@ class FormStudentClass extends Page implements HasForms
                         ->label('Name Student')
                         ->options(Student::all()->pluck('name', 'id'))
                         ->columnSpan(3),
-
                     Select::make('classrooms')
                         ->options(Classroom::all()->pluck('name', 'id'))
                         ->label('Class'),
+                    Select::make('departements')
+                        ->options(Departement::all()->pluck('name_department', 'id'))
+                        ->label('Jurusan'),
                     Select::make('priode')
                         ->label('Periode')
                         ->searchable()
@@ -61,6 +65,7 @@ class FormStudentClass extends Page implements HasForms
             array_push($insert, [
                 'students_id' => $row,
                 'classrooms_id' => $this->classrooms,
+                'departements_id' => $this->departements,
                 'priode_id' => $this->priode,
                 'is_open' => 1
             ]);

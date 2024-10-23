@@ -33,7 +33,7 @@ class ClassroomResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Class Room';
+    protected static ?string $navigationLabel = 'Kelas';
 
     protected static ?string $navigationGroup = 'Source';
 
@@ -53,9 +53,9 @@ class ClassroomResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->live()
-                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
-                TextInput::make('slug')
-                    ->unique(Classroom::class, 'slug', ignoreRecord: true)
+                //     ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                // TextInput::make('slug')
+                //     ->unique(Classroom::class, 'slug', ignoreRecord: true)
 
             ]);
     }
@@ -75,7 +75,7 @@ class ClassroomResource extends Resource
                     }
                 ),
                 TextColumn::make('name'),
-                TextColumn::make('slug')
+                // TextColumn::make('slug')
             ])
             ->filters([
                 //

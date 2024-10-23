@@ -21,6 +21,7 @@ use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\NilaiResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -57,7 +58,7 @@ class NilaiResource extends Resource
                             ->searchable()
                             ->options(Subject::all()->pluck('name', 'id')),
                         Select::make('category_nilai')
-                            ->label('Kategori Nilai')
+                            ->label('Predikat')
                             ->searchable()
                             ->options(CategoryNilai::all()->pluck('name', 'id')),
                         Select::make('student')
@@ -88,14 +89,16 @@ class NilaiResource extends Resource
                     ->label('Murid'),
                 TextColumn::make('subject.name')
                     ->label('Pelajaran'),
-                TextColumn::make('category_nilai.name')
-                    ->label("Kategori Nilai"),
                 TextColumn::make('nilai'),
+                TextColumn::make('category_nilai.name')
+                    ->label("Predikat"),
                 TextColumn::make('priode.name'),
 
             ])
             ->filters([
-                //
+                SelectFilter::make('subject_id')
+                    ->searchable()
+                    ->options(Subject::all()->pluck('name', 'id')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

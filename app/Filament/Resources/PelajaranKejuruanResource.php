@@ -4,44 +4,36 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Priode;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use App\Models\PelajaranKejuruan;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\PriodeResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\PriodeResource\RelationManagers;
-use Filament\Tables\Contracts\HasTable;
-use stdClass;
+use App\Filament\Resources\PelajaranKejuruanResource\Pages;
+use App\Filament\Resources\PelajaranKejuruanResource\RelationManagers;
 
-class PriodeResource extends Resource
+class PelajaranKejuruanResource extends Resource
 {
-    protected static ?string $model = Priode::class;
+    protected static ?string $model = PelajaranKejuruan::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = 'Periode';
-
-    // protected static ?string $navigationGroup = 'Setting';
-
-    // protected static bool $shouldRegisterNavigation = false;
-
-    // protected static ?int $navigationSort = 41;
 
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->hasRole('admin');
     }
 
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')->required(),
+                TextInput::make('kode'),
+                TextInput::make('name')
+                    ->label('Pelajaran'),
+                TextInput::make('bidang'),
             ]);
     }
 
@@ -49,25 +41,16 @@ class PriodeResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('no')->state(
-                    static function (HasTable $livewire, stdClass $rowLoop): string {
-                        return (string) (
-                            $rowLoop->iteration +
-                            ($livewire->getTableRecordsPerPage() * (
-                                $livewire->getTablePage() - 1
-                            ))
-                        );
-                    }
-                ),
+                TextColumn::make('kode'),
                 TextColumn::make('name')
-                    ->label('Nama Periode'),
+                    ->label('Nama Pelajaran'),
+                TextColumn::make('bidang'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -76,10 +59,19 @@ class PriodeResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManagePriodes::route('/'),
+            'index' => Pages\ListPelajaranKejuruans::route('/'),
+            'create' => Pages\CreatePelajaranKejuruan::route('/create'),
+            'edit' => Pages\EditPelajaranKejuruan::route('/{record}/edit'),
         ];
     }
 }

@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
@@ -29,9 +30,9 @@ class TeacherResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Teacher';
+    protected static ?string $navigationLabel = 'Guru';
 
-    protected static ?string $navigationGroup = 'Akademik';
+    // protected static ?string $navigationGroup = 'Akademik';
 
     // protected static bool $shouldRegisterNavigation = false;
 
@@ -48,12 +49,19 @@ class TeacherResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('nip'),
+                        TextInput::make('nip')
+                            ->label('NIP'),
                         TextInput::make('name')
                             ->required(),
-                        Textarea::make('address'),
+                        Select::make('status')
+                            ->label('Wali Kelas')
+                            ->options([
+                                "Ya" => "Ya",
+                                "Tidak" => "Tidak"
+                            ]),
                         FileUpload::make('profile')
                             ->directory('teacher'),
+                        // Textarea::make('address'),
                     ])->columns(2),
 
             ]);
@@ -73,10 +81,14 @@ class TeacherResource extends Resource
                         );
                     }
                 ),
-                TextColumn::make('nip'),
+                TextColumn::make('nip')
+                    ->label('NIP'),
                 TextColumn::make('name'),
-                TextColumn::make('address'),
+                TextColumn::make('status')
+                    ->label('Wali Kelas'),
                 ImageColumn::make('profile')
+                    ->label('Foto')
+                // TextColumn::make('address'),
             ])
             ->filters([
                 //
@@ -113,7 +125,7 @@ class TeacherResource extends Resource
         if ($locale == 'id') {
             return "Guru";
         } else
-            return "Student";
+            return "Teacher";
     }
     protected function getHeaderWidgets(): array
     {

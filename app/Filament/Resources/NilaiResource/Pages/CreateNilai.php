@@ -43,11 +43,6 @@ class CreateNilai extends CreateRecord
                                 ->label('Pelajaran')
                                 ->searchable()
                                 ->options(Subject::all()->pluck('name', 'id')->toArray()),
-                            Select::make('category_nilai')
-                                ->label('Kategori Nilai')
-                                ->searchable()
-                                ->options(CategoryNilai::all()->pluck('name', 'id')->toArray())
-                                ->columns(3),
                         ])->columns(3),
 
                     Repeater::make('nilaistudents')
@@ -58,15 +53,29 @@ class CreateNilai extends CreateRecord
                                 ->options(Student::all()->pluck('name', 'id')->toArray())
                                 ->label('Student'),
 
+                            // TextInput::make('nilai')
+                            //     ->rules([
+                            //         fn(Get $get): Closure => function (String $attribute, $value, Closure $fail) use ($get) {
+                            //             if ($get('nilai') > 100) {
+                            //                 $fail('Nilai terlalu besar');
+                            //             }
+                            //         }
+                            //     ])->validationAttribute('nilai'),
+
                             TextInput::make('nilai')
-                                ->rules([
-                                    fn(Get $get): Closure => function (String $attribute, $value, Closure $fail) use ($get) {
-                                        if ($get('nilai') > 100) {
-                                            $fail('Nilai terlalu besar');
-                                        }
-                                    }
-                                ])->validationAttribute('nilai')
-                        ])->columns(2)
+                                ->numeric()
+                                ->rules(['min:0', 'max:100'])
+                                ->label('Nilai')
+                                ->required(),
+
+
+
+                            Select::make('category_nilai')
+                                ->label('Kategori Nilai')
+                                ->searchable()
+                                ->options(CategoryNilai::all()->pluck('name', 'id')->toArray())
+                                ->columns(3),
+                        ])->columns(3)
                 ])
         ]);
     }
@@ -83,8 +92,9 @@ class CreateNilai extends CreateRecord
                 'priode_id' => $get['priode'],
                 'teacher_id' => auth()->user()->id,
                 'subject_id' => $get['subject_id'],
-                'category_nilai_id' => $get['category_nilai'],
-                'nilai' => $row['nilai']
+                // 'category_nilai_id' => $get['category_nilai'],
+                'nilai' => $row['nilai'],
+                'category_nilai_id' => $row['category_nilai'],
             ]);
         }
 

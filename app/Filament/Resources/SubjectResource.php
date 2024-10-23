@@ -2,24 +2,26 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SubjectResource\Pages;
-use App\Filament\Resources\SubjectResource\RelationManagers;
-use App\Models\Subject;
+use Closure;
 use Filament\Forms;
+use Filament\Tables;
+use App\Models\Subject;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Illuminate\Support\Str;
+use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Hidden;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Forms\Set;
-use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\SubjectResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Closure;
-use Filament\Forms\Get;
-use Illuminate\Support\Str;
+use App\Filament\Resources\SubjectResource\RelationManagers;
+use App\Models\Teacher;
 
 class SubjectResource extends Resource
 {
@@ -27,11 +29,11 @@ class SubjectResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = "Pelajaran";
+    protected static ?string $navigationLabel = "Pelajaran Umum";
 
-    protected static ?string $navigationGroup = 'Akademik';
+    // protected static ?string $navigationGroup = 'Akademik';
 
-    protected static ?int $navigationSort = 24;
+    // protected static ?int $navigationSort = 24;
 
     public static function shouldRegisterNavigation(): bool
     {
@@ -46,16 +48,12 @@ class SubjectResource extends Resource
                     ->schema([
                         TextInput::make('kode'),
                         TextInput::make('name')
-                            ->label('Subject')
-                            ->live()
-                            ->afterStateUpdated(function (Get $get, Set $set, ?string $old, ?string $state) {
-                                if (($get('slug') ?? '') !== Str::slug($old)) {
-                                    return;
-                                }
+                            ->label('Pelajaran'),
 
-                                $set('slug', Str::slug($state));
-                            }),
-                        Hidden::make('slug')
+                        // Select::make('teacher')
+                        //     ->label('Guru')
+                        //     ->searchable()
+                        //     ->options(Teacher::all()->pluck('name', 'id')),
                     ])->columns(2)
             ]);
     }
@@ -65,8 +63,10 @@ class SubjectResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('kode'),
-                TextColumn::make('name'),
-                TextColumn::make('slug')
+                TextColumn::make('name')
+                    ->label('Nama Pelajaran'),
+                // TextColumn::make('teachers.name')
+                //     ->label('Guru')
             ])
             ->filters([
                 //

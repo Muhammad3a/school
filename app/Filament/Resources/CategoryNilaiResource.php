@@ -27,9 +27,9 @@ class CategoryNilaiResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Kategori Nilai';
+    protected static ?string $navigationLabel = 'Predikat';
 
-    protected static ?string $navigationGroup = 'Source';
+    // protected static ?string $navigationGroup = 'Source';
 
     protected static ?int $navigationSort = 31;
 
@@ -45,9 +45,7 @@ class CategoryNilaiResource extends Resource
                 Card::make()
                     ->schema([
                         TextInput::make('name')
-                            ->live()
-                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
-                        TextInput::make('slug')
+
                     ])
             ]);
     }
@@ -61,14 +59,13 @@ class CategoryNilaiResource extends Resource
                         return (string) (
                             $rowLoop->iteration +
                             ($livewire->getTableRecordsPerPage() * (
-                                $livewire->getTablePage() - 1 
+                                $livewire->getTablePage() - 1
                             ))
-                            
+
                         );
                     }
                 ),
                 TextColumn::make('name'),
-                TextColumn::make('slug')
             ])
             ->filters([
                 //
@@ -89,5 +86,15 @@ class CategoryNilaiResource extends Resource
         return [
             'index' => Pages\ManageCategoryNilais::route('/'),
         ];
+    }
+
+    public  static function getLabel(): ?string
+    {
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Predikat";
+        } else
+            return "Predikat";
     }
 }

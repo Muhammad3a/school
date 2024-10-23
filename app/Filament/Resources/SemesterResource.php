@@ -4,44 +4,39 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Priode;
+use App\Models\Semester;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\PriodeResource\Pages;
+use App\Filament\Resources\SemesterResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\PriodeResource\RelationManagers;
-use Filament\Tables\Contracts\HasTable;
-use stdClass;
+use App\Filament\Resources\SemesterResource\RelationManagers;
 
-class PriodeResource extends Resource
+class SemesterResource extends Resource
 {
-    protected static ?string $model = Priode::class;
+    protected static ?string $model = Semester::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Periode';
-
-    // protected static ?string $navigationGroup = 'Setting';
-
-    // protected static bool $shouldRegisterNavigation = false;
-
-    // protected static ?int $navigationSort = 41;
-
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole('admin');
+        return true;
     }
-
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('name')->required(),
+                Select::make('status')
+                    ->options([
+                        "Aktif" => "Aktif",
+                        "Tidak Aktif" => "Tidak Aktif"
+                    ]),
             ]);
     }
 
@@ -49,25 +44,15 @@ class PriodeResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('no')->state(
-                    static function (HasTable $livewire, stdClass $rowLoop): string {
-                        return (string) (
-                            $rowLoop->iteration +
-                            ($livewire->getTableRecordsPerPage() * (
-                                $livewire->getTablePage() - 1
-                            ))
-                        );
-                    }
-                ),
                 TextColumn::make('name')
-                    ->label('Nama Periode'),
+                    ->label('Semester'),
+                TextColumn::make('status')
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -76,10 +61,19 @@ class PriodeResource extends Resource
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManagePriodes::route('/'),
+            'index' => Pages\ListSemesters::route('/'),
+            'create' => Pages\CreateSemester::route('/create'),
+            'edit' => Pages\EditSemester::route('/{record}/edit'),
         ];
     }
 }

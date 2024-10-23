@@ -20,6 +20,10 @@ class StudentHasClass extends Model
     {
         return $this->belongsTo(ClassRoom::class, 'classrooms_id', 'id');
     }
+    function Departements()
+    {
+        return $this->belongsTo((Departement::class));
+    }
     function Priode()
     {
         return $this->belongsTo((Priode::class));
