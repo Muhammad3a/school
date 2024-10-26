@@ -53,15 +53,6 @@ class CreateNilai extends CreateRecord
                                 ->options(Student::all()->pluck('name', 'id')->toArray())
                                 ->label('Student'),
 
-                            // TextInput::make('nilai')
-                            //     ->rules([
-                            //         fn(Get $get): Closure => function (String $attribute, $value, Closure $fail) use ($get) {
-                            //             if ($get('nilai') > 100) {
-                            //                 $fail('Nilai terlalu besar');
-                            //             }
-                            //         }
-                            //     ])->validationAttribute('nilai'),
-
                             TextInput::make('nilai')
                                 ->numeric()
                                 ->rules(['min:0', 'max:100'])

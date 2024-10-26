@@ -90,7 +90,8 @@ class CpSemesterResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultPaginationPageOption(10);
     }
 
     public static function getRelations(): array

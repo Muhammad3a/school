@@ -13,19 +13,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cp_semesters', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(Subject::class, 'subject_id');
-            $table->foreignIdFor(PelajaranKejuruan::class, 'pelajarankejuruan_id');
-            $table->text('sm1')->nullable();
-            $table->text('sm2')->nullable();
-            $table->text('sm3')->nullable();
-            $table->text('sm4')->nullable();
-            $table->text('sm5')->nullable();
-            $table->text('sm6')->nullable();
+        // Schema::create('cp_semesters', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignIdFor(Subject::class, 'subject_id');
+        //     $table->foreignIdFor(PelajaranKejuruan::class, 'pelajarankejuruan_id');
+        //     $table->text('sm1')->nullable();
+        //     $table->text('sm2')->nullable();
+        //     $table->text('sm3')->nullable();
+        //     $table->text('sm4')->nullable();
+        //     $table->text('sm5')->nullable();
+        //     $table->text('sm6')->nullable();
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
     }
 
     /**

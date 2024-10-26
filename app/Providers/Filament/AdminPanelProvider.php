@@ -2,10 +2,12 @@
 
 namespace App\Providers\Filament;
 
+use App\Models\pai;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
 use App\Models\Priode;
+use App\Models\Sejarah;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Semester;
@@ -19,13 +21,30 @@ use App\Models\CatatanAkademik;
 use App\Models\PelajaranKejuruan;
 use Filament\Support\Colors\Color;
 use Filament\Navigation\UserMenuItem;
+use App\Filament\Resources\PpResource;
+use App\Filament\Resources\SbResource;
+use App\Filament\Resources\MtkResource;
+use App\Filament\Resources\PaiResource;
+use App\Filament\Resources\PboResource;
+use App\Filament\Resources\PplResource;
 use Filament\Navigation\NavigationItem;
+use App\Filament\Resources\BingResource;
+use App\Filament\Resources\PjokResource;
 use App\Filament\Resources\UserResource;
 use Filament\Navigation\NavigationGroup;
+use App\Filament\Resources\BandkResource;
+use App\Filament\Resources\BarabResource;
+use App\Filament\Resources\BindoResource;
+use App\Filament\Resources\FandkResource;
+use App\Filament\Resources\KimiaResource;
 use App\Filament\Resources\NilaiResource;
+use App\Filament\Resources\BsundaResource;
+use App\Filament\Resources\FisikaResource;
+use App\Filament\Resources\PemturResource;
 use App\Filament\Resources\PriodeResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Navigation\NavigationBuilder;
+use App\Filament\Resources\SejarahResource;
 use App\Filament\Resources\StudentResource;
 use App\Filament\Resources\SubjectResource;
 use App\Filament\Resources\TeacherResource;
@@ -34,6 +53,7 @@ use App\Filament\Resources\ClassroomResource;
 use App\Filament\Resources\CpSemesterResource;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Filament\Resources\DepartementResource;
+use App\Filament\Resources\InformatikaResource;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use App\Filament\Resources\CategoryNilaiResource;
@@ -60,14 +80,14 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->colors([
-                'danger' => Color::Rose,
-                'gray' => Color::Gray,
-                'info' => Color::Blue,
-                'primary' => Color::Indigo,
-                'success' => Color::Emerald,
-                'warning' => Color::Orange,
-            ])
+            // ->colors([
+            //     'danger' => Color::Rose,
+            //     'gray' => Color::Gray,
+            //     'info' => Color::Blue,
+            //     'primary' => Color::Indigo,
+            //     'success' => Color::Emerald,
+            //     'warning' => Color::Orange,
+            // ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -92,7 +112,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->viteTheme('resources/css/filament/admin/theme.css')
+            // ->viteTheme('resources/css/filament/admin/theme.css')
             ->plugin(FilamentSpatieRolesPermissionsPlugin::make())
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->groups([
@@ -105,14 +125,14 @@ class AdminPanelProvider extends PanelProvider
                                 ->url(fn(): string => Dashboard::getUrl()),
 
                         ]),
-                    NavigationGroup::make('Data Guru')
+                    NavigationGroup::make('Data Umum')
                         ->items([
                             ...TeacherResource::getNavigationItems(),
+                            ...StudentResource::getNavigationItems(),
 
                         ]),
                     NavigationGroup::make('Data Umum')
                         ->items([
-                            // ...StudentResource::getNavigationItems(),
                             ...ClassroomResource::getNavigationItems(),
                             ...StudentHasClassResource::getNavigationItems(),
                             // ...SubjectResource::getNavigationItems(),
@@ -122,17 +142,38 @@ class AdminPanelProvider extends PanelProvider
                         ]),
                     NavigationGroup::make('Data Pelajaran')
                         ->items([
-                            // ...StudentResource::getNavigationItems(),
-                            // ...ClassroomResource::getNavigationItems(),
-                            // ...StudentHasClassResource::getNavigationItems(),
                             ...SubjectResource::getNavigationItems(),
                             ...PelajaranKejuruanResource::getNavigationItems(),
                             ...CpSemesterResource::getNavigationItems(),
                             ...CatatanAkademikResource::getNavigationItems(),
-                            // ...PriodeResource::getNavigationItems(),
-                            // ...SemesterResource::getNavigationItems(),
 
                         ]),
+
+                    NavigationGroup::make('Ledger Mapel Umum & Mulok')
+                        ->items([
+                            ...PaiResource::getNavigationItems(),
+                            ...PpResource::getNavigationItems(),
+                            ...BindoResource::getNavigationItems(),
+                            ...PjokResource::getNavigationItems(),
+                            ...SejarahResource::getNavigationItems(),
+                            ...SbResource::getNavigationItems(),
+                            ...BsundaResource::getNavigationItems(),
+                            ...BarabResource::getNavigationItems(),
+                        ]),
+                    NavigationGroup::make('Ledger B Kejuruan Umum & DK')
+                        ->items([
+                            ...MtkResource::getNavigationItems(),
+                            ...BingResource::getNavigationItems(),
+                            ...InformatikaResource::getNavigationItems(),
+                            ...FisikaResource::getNavigationItems(),
+                            ...KimiaResource::getNavigationItems(),
+                            ...BandkResource::getNavigationItems(),
+                            ...FandkResource::getNavigationItems(),
+                            ...PemturResource::getNavigationItems(),
+                            ...PboResource::getNavigationItems(),
+                            ...PplResource::getNavigationItems(),
+                        ]),
+
                     NavigationGroup::make('Data Nilai Pelajaran')
                         ->items([
                             ...CategoryNilaiResource::getNavigationItems(),
