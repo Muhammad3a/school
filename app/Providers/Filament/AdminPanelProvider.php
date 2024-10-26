@@ -40,6 +40,7 @@ use App\Filament\Resources\KimiaResource;
 use App\Filament\Resources\NilaiResource;
 use App\Filament\Resources\BsundaResource;
 use App\Filament\Resources\FisikaResource;
+use App\Filament\Resources\JengkeResource;
 use App\Filament\Resources\PemturResource;
 use App\Filament\Resources\PriodeResource;
 use Filament\Http\Middleware\Authenticate;
@@ -80,14 +81,14 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            // ->colors([
-            //     'danger' => Color::Rose,
-            //     'gray' => Color::Gray,
-            //     'info' => Color::Blue,
-            //     'primary' => Color::Indigo,
-            //     'success' => Color::Emerald,
-            //     'warning' => Color::Orange,
-            // ])
+            ->colors([
+                'danger' => Color::Rose,
+                'gray' => Color::Gray,
+                'info' => Color::Blue,
+                'primary' => Color::Indigo,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
+            ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -112,7 +113,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            // ->viteTheme('resources/css/filament/admin/theme.css')
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->plugin(FilamentSpatieRolesPermissionsPlugin::make())
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->groups([
@@ -125,7 +126,7 @@ class AdminPanelProvider extends PanelProvider
                                 ->url(fn(): string => Dashboard::getUrl()),
 
                         ]),
-                    NavigationGroup::make('Data Umum')
+                    NavigationGroup::make('Data User')
                         ->items([
                             ...TeacherResource::getNavigationItems(),
                             ...StudentResource::getNavigationItems(),
@@ -135,9 +136,9 @@ class AdminPanelProvider extends PanelProvider
                         ->items([
                             ...ClassroomResource::getNavigationItems(),
                             ...StudentHasClassResource::getNavigationItems(),
-                            // ...SubjectResource::getNavigationItems(),
                             ...PriodeResource::getNavigationItems(),
                             ...SemesterResource::getNavigationItems(),
+                            ...JengkeResource::getNavigationItems(),
 
                         ]),
                     NavigationGroup::make('Data Pelajaran')
