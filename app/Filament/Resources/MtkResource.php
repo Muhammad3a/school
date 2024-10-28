@@ -24,6 +24,9 @@ class MtkResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Matematika';
+
+
     public static function form(Form $form): Form
     {
         return $form

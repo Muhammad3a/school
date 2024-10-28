@@ -24,6 +24,9 @@ class BarabResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Bahasa Arab';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -33,12 +36,18 @@ class BarabResource extends Resource
                         Select::make('student_id')
                             ->options(Student::all()->pluck('name', 'id'))
                             ->label('Murid'),
-                        TextInput::make('1'),
-                        TextInput::make('2'),
-                        TextInput::make('3'),
-                        TextInput::make('4'),
-                        TextInput::make('5'),
-                        TextInput::make('6'),
+                        TextInput::make('1')
+                        ->label('Semseter 1'),
+                        TextInput::make('2')
+                        ->label('Semseter 2'),
+                        TextInput::make('3')
+                        ->label('Semseter 3'),
+                        TextInput::make('4')
+                        ->label('Semseter 4'),
+                        TextInput::make('5')
+                        ->label('Semseter 5'),
+                        TextInput::make('6')
+                        ->label('Semseter 6'),
                     ])->columns(7)
             ]);
     }
@@ -89,5 +98,14 @@ class BarabResource extends Resource
             'create' => Pages\CreateBarab::route('/create'),
             'edit' => Pages\EditBarab::route('/{record}/edit'),
         ];
+    }
+    public  static function getLabel(): ?string
+    {
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai Bahasa Sunda";
+        } else
+            return "Teacher";
     }
 }

@@ -24,6 +24,9 @@ class BingResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Bahasa Inggris';
+
+
     public static function form(Form $form): Form
     {
         return $form
