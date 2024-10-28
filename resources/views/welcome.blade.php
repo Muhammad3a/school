@@ -31,7 +31,7 @@
     <!-- Hero Section -->
     <section class="text-center py-16">
         <h2 class="text-3xl font-semibold mb-8">Selamat datang di Sistem Akademik SMK Azzainiyyah</h2>
-        <p>jkana</p>
+        <p>albar</p>
         <p>fhg</p>
         
         <h2>hello word</h2>
