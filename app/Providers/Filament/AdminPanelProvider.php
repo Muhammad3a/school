@@ -21,15 +21,20 @@ use App\Models\CatatanAkademik;
 use App\Models\PelajaranKejuruan;
 use Filament\Support\Colors\Color;
 use Filament\Navigation\UserMenuItem;
+use App\Filament\Resources\BdResource;
+use App\Filament\Resources\KbResource;
 use App\Filament\Resources\PpResource;
 use App\Filament\Resources\SbResource;
 use App\Filament\Resources\MtkResource;
 use App\Filament\Resources\PaiResource;
 use App\Filament\Resources\PboResource;
+use App\Filament\Resources\PkkResource;
+use App\Filament\Resources\PpbResource;
 use App\Filament\Resources\PplResource;
 use Filament\Navigation\NavigationItem;
 use App\Filament\Resources\BingResource;
 use App\Filament\Resources\PjokResource;
+use App\Filament\Resources\PwebResource;
 use App\Filament\Resources\UserResource;
 use Filament\Navigation\NavigationGroup;
 use App\Filament\Resources\BandkResource;
@@ -38,6 +43,7 @@ use App\Filament\Resources\BindoResource;
 use App\Filament\Resources\FandkResource;
 use App\Filament\Resources\KimiaResource;
 use App\Filament\Resources\NilaiResource;
+use App\Filament\Resources\PbtgmResource;
 use App\Filament\Resources\BsundaResource;
 use App\Filament\Resources\FisikaResource;
 use App\Filament\Resources\JengkeResource;
@@ -173,6 +179,17 @@ class AdminPanelProvider extends PanelProvider
                             ...PemturResource::getNavigationItems(),
                             ...PboResource::getNavigationItems(),
                             ...PplResource::getNavigationItems(),
+                        ]),
+
+                    NavigationGroup::make('Ledger B Kejuruan KK & Pilih')
+                        ->items([
+                            ...BdResource::getNavigationItems(),
+                            ...PbtgmResource::getNavigationItems(),
+                            ...PwebResource::getNavigationItems(),
+                            ...PpbResource::getNavigationItems(),
+                            ...PkkResource::getNavigationItems(),
+                            ...KbResource::getNavigationItems(),
+
                         ]),
 
                     NavigationGroup::make('Data Nilai Pelajaran')
