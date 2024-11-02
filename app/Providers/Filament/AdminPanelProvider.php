@@ -3,18 +3,27 @@
 namespace App\Providers\Filament;
 
 use App\Models\pai;
+use App\Models\Pkl;
 use Filament\Pages;
 use Filament\Panel;
+use App\Models\Alfa;
+use App\Models\Izin;
+use App\Models\Sakit;
 use Filament\Widgets;
 use App\Models\Priode;
+use App\Models\KAmulia;
 use App\Models\Sejarah;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Semester;
 use App\Models\Classroom;
+use App\Models\Kindustri;
+use App\Models\Berekayasa;
 use App\Models\CpSemester;
 use App\Models\Departement;
+use App\Models\Kewirausaha;
 use Filament\PanelProvider;
+use App\Models\Keberkerjaan;
 use Filament\Pages\Dashboard;
 use Filament\Facades\Filament;
 use App\Models\CatatanAkademik;
@@ -29,10 +38,13 @@ use App\Filament\Resources\MtkResource;
 use App\Filament\Resources\PaiResource;
 use App\Filament\Resources\PboResource;
 use App\Filament\Resources\PkkResource;
+use App\Filament\Resources\PklResource;
 use App\Filament\Resources\PpbResource;
 use App\Filament\Resources\PplResource;
 use Filament\Navigation\NavigationItem;
+use App\Filament\Resources\AlfaResource;
 use App\Filament\Resources\BingResource;
+use App\Filament\Resources\IzinResource;
 use App\Filament\Resources\PjokResource;
 use App\Filament\Resources\PwebResource;
 use App\Filament\Resources\UserResource;
@@ -44,24 +56,36 @@ use App\Filament\Resources\FandkResource;
 use App\Filament\Resources\KimiaResource;
 use App\Filament\Resources\NilaiResource;
 use App\Filament\Resources\PbtgmResource;
+use App\Filament\Resources\SakitResource;
+use App\Filament\Resources\BkerjaResource;
 use App\Filament\Resources\BsundaResource;
 use App\Filament\Resources\FisikaResource;
 use App\Filament\Resources\JengkeResource;
 use App\Filament\Resources\PemturResource;
 use App\Filament\Resources\PriodeResource;
+use App\Filament\Resources\UjiKomResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Navigation\NavigationBuilder;
+use App\Filament\Resources\KAmuliaResource;
+use App\Filament\Resources\PramukaResource;
 use App\Filament\Resources\SejarahResource;
 use App\Filament\Resources\StudentResource;
 use App\Filament\Resources\SubjectResource;
 use App\Filament\Resources\TeacherResource;
+use App\Filament\Resources\KesenianResource;
 use App\Filament\Resources\SemesterResource;
 use App\Filament\Resources\ClassroomResource;
+use App\Filament\Resources\KindustriResource;
+use App\Filament\Resources\PramadhanResource;
+use App\Filament\Resources\BerekayasaResource;
 use App\Filament\Resources\CpSemesterResource;
+use App\Filament\Resources\OkesehatanResource;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Filament\Resources\DepartementResource;
 use App\Filament\Resources\InformatikaResource;
+use App\Filament\Resources\KewirausahaResource;
 use Illuminate\Session\Middleware\StartSession;
+use App\Filament\Resources\KeberkerjaanResource;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use App\Filament\Resources\CategoryNilaiResource;
 use App\Filament\Resources\CatatanAkademikResource;
@@ -94,6 +118,7 @@ class AdminPanelProvider extends PanelProvider
                 // 'primary' => Color::Indigo,
                 // 'success' => Color::Emerald,
                 // 'warning' => Color::Orange,
+                'primary' => Color::Amber,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -189,6 +214,33 @@ class AdminPanelProvider extends PanelProvider
                             ...PpbResource::getNavigationItems(),
                             ...PkkResource::getNavigationItems(),
                             ...KbResource::getNavigationItems(),
+
+                        ]),
+
+                    NavigationGroup::make('Ledger DUDIKA')
+                        ->items([
+
+                            ...KindustriResource::getNavigationItems(),
+                            ...PklResource::getNavigationItems(),
+                            ...UjiKomResource::getNavigationItems(),
+
+                        ]),
+
+                    NavigationGroup::make('Ledger Ekskul, P5K, Presensi')
+                        ->items([
+
+                            ...PramukaResource::getNavigationItems(),
+                            ...KesenianResource::getNavigationItems(),
+                            ...PramadhanResource::getNavigationItems(),
+                            ...OkesehatanResource::getNavigationItems(),
+                            ...KAmuliaResource::getNavigationItems(),
+                            ...BkerjaResource::getNavigationItems(),
+                            ...KewirausahaResource::getNavigationItems(),
+                            ...BerekayasaResource::getNavigationItems(),
+                            ...KeberkerjaanResource::getNavigationItems(),
+                            ...SakitResource::getNavigationItems(),
+                            ...IzinResource::getNavigationItems(),
+                            ...AlfaResource::getNavigationItems(),
 
                         ]),
 
