@@ -24,7 +24,7 @@
         <nav class="space-x-8 text-lg">
             <a href="#" class="hover:text-blue-500">Beranda</a>
             <a href="#" class="hover:text-blue-500">Profile</a>
-            <a href="/admin" class="hover:text-blue-500">Siakad</a>
+            <a href="/admin" class="hover:text-blue-500">Login</a>
             <a href="#" class="hover:text-blue-500">Contact</a>
         </nav>
     </header>
@@ -41,7 +41,7 @@
                     <img src="/images/Screenshot 2024-10-28 220809.png" alt="Hero Image 1" class="w-full h-64 object-cover rounded-lg">
                 </div>
                 <div class="swiper-slide">
-                    <img src="/images/hero2.jpg" alt="Hero Image 2" class="w-full h-64 object-cover rounded-lg">
+                    <img src="/images/ziarah.jpg" alt="Hero Image 2" class="w-full h-64 object-cover rounded-lg">
                 </div>
                 <div class="swiper-slide">
                     <img src="/images/hero3.jpg" alt="Hero Image 3" class="w-full h-64 object-cover rounded-lg">
@@ -58,7 +58,7 @@
         <div class="grid grid-cols-2 gap-2">
             <div class="swiper-container kegiatan-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="/images/kegiatan1.jpg" alt="Kegiatan 1" class="w-full h-24 object-cover rounded-lg"></div>
+                    <div class="swiper-slide"><img src="/images/ziarah.jpg" alt="" class="w-full h-24 object-cover rounded-lg"></div>
                     <div class="swiper-slide"><img src="/images/kegiatan2.jpg" alt="Kegiatan 2" class="w-full h-24 object-cover rounded-lg"></div>
                 </div>
             </div>

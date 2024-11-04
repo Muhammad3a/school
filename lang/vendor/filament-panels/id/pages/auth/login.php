@@ -6,6 +6,8 @@ return [
 
     'heading' => 'Masuk ke akun Anda',
 
+    'logo' => 'images/logo.png', // Path untuk logo
+
     'actions' => [
 
         'register' => [
