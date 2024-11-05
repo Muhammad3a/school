@@ -81,17 +81,17 @@ use App\Filament\Resources\TeacherResource;
 
 use App\Filament\Resources\DbelajarResource;
 use App\Filament\Resources\DbergaulResource;
-use App\Filament\Resources\SemesterResource;
-use App\Filament\Resources\ClassroomResource;
+// use App\Filament\Resources\SemesterResource;
+// use App\Filament\Resources\ClassroomResource;
 use App\Filament\Resources\DkeamananResource;
 use App\Filament\Resources\PberbaktiResource;
-use App\Filament\Resources\CpSemesterResource;
+// use App\Filament\Resources\CpSemesterResource;
 use App\Filament\Resources\DberbahasaResource;
 use App\Filament\Resources\DberbusanaResource;
 use App\Filament\Resources\DbertindakResource;
-use Filament\Widgets\StatsOverviewWidget\Stat;
-use App\Filament\Resources\DepartementResource;
-use App\Filament\Resources\InformatikaResource;
+// use Filament\Widgets\StatsOverviewWidget\Stat;
+// use App\Filament\Resources\DepartementResource;
+// use App\Filament\Resources\InformatikaResource;
 use App\Filament\Resources\PmemeliharaResource;
 
 use App\Filament\Resources\KesenianResource;
@@ -250,7 +250,7 @@ class AdminPanelProvider extends PanelProvider
 
                         ]),
 
-                        NavigationGroup::make('Ledger DUDIKA')
+                    NavigationGroup::make('Ledger DUDIKA')
                         ->items([
 
                             ...KindustriResource::getNavigationItems(),
@@ -275,6 +275,8 @@ class AdminPanelProvider extends PanelProvider
                             ...IzinResource::getNavigationItems(),
                             ...AlfaResource::getNavigationItems(),
 
+                        ]),
+
 
                     NavigationGroup::make('10 Disiplin')
                         ->items([
@@ -291,8 +293,8 @@ class AdminPanelProvider extends PanelProvider
 
 
                         ]),
-                        
-                        NavigationGroup::make('10 Pembiasaan')
+
+                    NavigationGroup::make('10 Pembiasaan')
                         ->items([
 
                             ...PberbaktiResource::getNavigationItems(),
@@ -325,7 +327,9 @@ class AdminPanelProvider extends PanelProvider
                                     'filament.admin.resources.roles.view',
                                     'filament.admin.resources.roles.edit',
                                 ]))
+
                                 ->url(fn(): string => '/admin/roles'),
+
                             NavigationItem::make('Permissions')
                                 ->icon('heroicon-o-lock-closed')
                                 ->isActiveWhen(fn(): bool => request()->routeIs([
@@ -339,7 +343,7 @@ class AdminPanelProvider extends PanelProvider
                             ...UserResource::getNavigationItems()
                         ])
 
-                                ]);
+                ]);
             });
     }
 
