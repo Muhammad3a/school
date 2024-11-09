@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         .custom-bg {
-            background-color: #1A007E; 
+            background-color: #1A007E; /* Warna header */
         }
     </style>
     <!-- Swiper CSS -->
@@ -15,36 +15,50 @@
 </head>
 <body class="bg-gray-100">
 
-    <!-- Header -->
-    <header class="flex justify-between items-center p-4 bg-white shadow-md">
+    <!-- Header dengan warna kustom -->
+    <header class="flex justify-between items-center p-4 custom-bg text-white shadow-md">
         <div class="flex items-center space-x-4">
             <img src="/images/Logo_Azzainiyyah.png" alt="Logo" class="h-12">
-            <h1 class="text-xl font-bold">SMK Azzainiyyah</h1>
+            <h1 class="text-xl font-bold">SMK AZZAINIYAH</h1>
         </div>
-        <nav class="space-x-8 text-lg">
-            <a href="#" class="hover:text-blue-500">Beranda</a>
-            <a href="#" class="hover:text-blue-500">Profile</a>
-            <a href="/admin" class="hover:text-blue-500">Login</a>
-            <a href="#" class="hover:text-blue-500">Contact</a>
+        <nav class="space-x-8 text-lg flex items-center">
+            <a href="#" class="hover:text-blue-300">Beranda</a>
+            <a href="#" class="hover:text-blue-300">Galeri</a>
+
+            <!-- Dropdown Menu untuk Siakad -->
+            <div class="relative">
+                <button onclick="toggleDropdown()" class="hover:text-blue-300 focus:outline-none">Siakad</button>
+                <div id="dropdown-menu" class="absolute hidden bg-white text-black mt-2 rounded shadow-lg py-2">
+                    <a href="/admin" class="block px-4 py-2 hover:bg-gray-200">Guru</a>
+                    <a href="/student" class="block px-4 py-2 hover:bg-gray-200">Murid</a>
+                </div>
+            </div>
+
+            <a href="#" class="hover:text-blue-300">Contact</a>
         </nav>
     </header>
 
     <!-- Hero Section dengan Slideshow -->
     <section class="text-center py-16">
         <h2 class="text-3xl font-semibold mb-8">Selamat datang di Sistem Akademik SMK Azzainiyyah</h2>
-        
+
         <!-- Swiper Container untuk Hero Section -->
-        <div class="swiper-container" style="max-width: 600px; margin: auto;">
+        <div class="swiper-container" style="max-width: 750px; margin: auto;">
             <div class="swiper-wrapper">
-                <!-- Gambar-gambar di dalam elemen .swiper-slide -->
                 <div class="swiper-slide">
-                    <img src="/images/Screenshot 2024-10-28 220809.png" alt="Hero Image 1" class="w-full h-64 object-cover rounded-lg">
+                    <img src="/images/mata pelajaran.jpg" alt="Hero Image 1" class="w-full h-64 object-cover rounded-lg">
                 </div>
                 <div class="swiper-slide">
-                    <img src="/images/ziarah.jpg" alt="Hero Image 2" class="w-full h-64 object-cover rounded-lg">
+                    <img src="/images/guru laki laki .jpg" alt="Hero Image 2" class="w-full h-64 object-cover rounded-lg">
                 </div>
                 <div class="swiper-slide">
-                    <img src="/images/hero3.jpg" alt="Hero Image 3" class="w-full h-64 object-cover rounded-lg">
+                    <img src="/images/guru wanita.jpg" alt="Hero Image 3" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/tsm.jpg" alt="Hero Image 4" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/rpl.jpg" alt="Hero Image 5" class="w-full h-64 object-cover rounded-lg">
                 </div>
             </div>
             <div class="swiper-button-next"></div>
@@ -90,6 +104,7 @@
             autoplay: {
                 delay: 3000,
             },
+            spaceBetween: 10, // Jarak antar slide dalam Hero Section
         });
 
         // Inisialisasi Swiper untuk Kegiatan Tahunan Section
@@ -100,7 +115,24 @@
                 autoplay: {
                     delay: 3000,
                 },
+                spaceBetween: 10, // Jarak antar slide dalam Kegiatan Tahunan Section
             });
+        });
+
+        // JavaScript untuk Toggle Dropdown
+        function toggleDropdown() {
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            dropdownMenu.classList.toggle('hidden');
+        }
+
+        // Menutup dropdown jika klik di luar menu
+        document.addEventListener('click', function(event) {
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const siakadButton = document.querySelector('[onclick="toggleDropdown()"]');
+
+            if (!siakadButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
         });
     </script>
 </body>
