@@ -21,7 +21,7 @@
             <img src="/images/Logo_Azzainiyyah.png" alt="Logo" class="h-12">
             <h1 class="text-xl font-bold">SMK AZZAINIYAH</h1>
         </div>
-<<<<<<< Updated upstream
+
         <nav class="space-x-8 text-lg flex items-center">
             <a href="#" class="hover:text-blue-300">Beranda</a>
             <a href="#" class="hover:text-blue-300">Galeri</a>
@@ -34,16 +34,7 @@
                     <a href="/student" class="block px-4 py-2 hover:bg-gray-200">Murid</a>
                 </div>
             </div>
-
             <a href="#" class="hover:text-blue-300">Contact</a>
-=======
-        <nav class="space-x-8 text-lg">
-            <a href="#" class="hover:text-blue-500">Beranda</a>
-            <a href="#" class="hover:text-blue-500">Profile</a>
-            <a href="/admin" class="hover:text-blue-500">Siakad</a>
-            <a href="#" class="hover:text-blue-500">Contact</a>
->>>>>>> Stashed changes
-        </nav>
     </header>
 
     <!-- Hero Section dengan Slideshow -->
