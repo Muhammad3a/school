@@ -16,6 +16,7 @@ use Filament\Infolists\Components;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Actions;
+use Filament\Forms\Components\Textarea;
 use Filament\Infolists\Components\Grid;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\TextColumn;
@@ -36,7 +37,8 @@ use Filament\Resources\Pages\ListRecords\Tab;
 use App\Filament\Resources\StudentResource\Pages;
 use App\Filament\Resources\StudentResource\RelationManagers;
 use App\Filament\Resources\StudentResource\Widgets\StatsOverview;
-
+use App\Models\Classroom;
+use App\Models\Departement;
 
 class StudentResource extends Resource
 {
@@ -46,15 +48,11 @@ class StudentResource extends Resource
 
     protected static ?string $navigationLabel = 'Student';
 
-    protected static ?string $navigationGroup = 'Akademik';
-
-    // protected static bool $shouldRegisterNavigation = false;
-
     protected static ?int $navigationSort = 22;
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole(['admin', 'guru']);
+        return auth()->user()->hasRole('admin');
     }
 
 
@@ -64,20 +62,110 @@ class StudentResource extends Resource
             ->schema([
                 TextInput::make('nis')
                     ->label('NIS'),
+
+                TextInput::make('nisn')
+                    ->label('NISN'),
+
                 TextInput::make('name')
                     ->label('Nama Siswa'),
+
                 Select::make('gender')
                     ->options([
-                        "Male" => "Pria",
-                        "Female" => "Wanita"
+                        "Laki - Laki" => "Laki - Laki",
+                        "Perempuan" => "Perempuan"
                     ]),
+
+                TextInput::make('tempatl')
+                    ->label('Tempat lahir'),
+
                 DatePicker::make('birthday')
                     ->label('Tanggal Lahir'),
+
+                Select::make('agama')
+                    ->options([
+                        'Islam' => "Islam",
+                        'Katolik' => "Katolik",
+                        'Protestan' => "Protestan",
+                        'Hindu' => 'Hindu',
+                        'Buddha' => "Buddha",
+                        'Khonghucu' => "Khonghucu"
+                    ]),
+
+                Select::make('kwnegara')
+                    ->label('Kewarganegaraan')
+                    ->options([
+                        'Warga Negara Indonesia' => "Warga Negara Indonesia",
+                        'Kewarganegaraan Asing' => "Kewarganegaraan Asing"
+                    ]),
+
+                TextInput::make('statusdk')
+                    ->label('Status Dalam Keluarga'),
+
+                Select::make('anakke')
+                    ->options([
+                        '1' => "1",
+                        '2' => "2",
+                        '3' => "3",
+                        '4' => "4",
+                        '5' => "5",
+                        '6' => "6",
+                        '7' => "7",
+                        '8' => "8",
+                        '9' => "9",
+                        '10' => "10"
+                    ])
+                    ->label('Anak Ke-'),
+
+                Textarea::make('alamat'),
+
                 TextInput::make('contact')
-                    ->label('Nomor HP'),
+                    ->label('No. Tlp/HP'),
+
+                TextInput::make('asekolah')
+                    ->label('Asal Sekolah'),
+
+                Select::make('classroom_id')
+                    ->options(Classroom::all()->pluck('name', 'id')->filter())
+                    ->label('Kelas'),
+
+                Select::make('departement_id')
+                    ->options(Departement::all()->pluck('name_department', 'id')->filter())
+                    ->label('Jurusan'),
+
+                TextInput::make('nayah')
+                    ->label('Nama Ayah'),
+
+                TextInput::make('nibu')
+                    ->label('Nama Ibu'),
+
+                TextInput::make('pkrjnayah')
+                    ->label('Pekerjaan Ayah'),
+
+                TextInput::make('pkrjnibu')
+                    ->label('Pekerjaan Ibu'),
+
+                Textarea::make('alamatot')
+                    ->label('Alamat Orang Tua'),
+
+                TextInput::make('contactot')
+                    ->label('No. Tlp/Hp Orang Tua'),
+
+                TextInput::make('nwali')
+                    ->label('Nama Wali'),
+
+                TextInput::make('pkrjnwali')
+                    ->label('Pekerjaan Wali'),
+
+                Textarea::make('alamatwali')
+                    ->label('Alamat Wali'),
+
+                TextInput::make('contactw')
+                    ->label('No. Tlp/HP Wali'),
+
                 FileUpload::make('profile')
                     ->image()
-                    ->directory('profile'),
+                    ->directory('profile')
+                    ->label('Foto Murid'),
             ]);
     }
 
@@ -95,22 +183,111 @@ class StudentResource extends Resource
                 ),
                 TextColumn::make('nis')
                     ->label('NIS'),
+
+                TextColumn::make('nisn')
+                    ->label('NISN'),
+
                 TextColumn::make('name')
-                    ->label('Nama Siswa')
+                    ->label('Nama Lengkap')
                     ->searchable(),
+
                 TextColumn::make('gender')
-                    ->label('Jenis Kelamin')
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Jenis Kelamin'),
+                // ->toggleable(isToggledHiddenByDefault: true)
+
+                TextColumn::make('tempatl')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Tempat Lahir'),
+
                 TextColumn::make('birthday')
-                    ->label('Tanggal Lahir')
+                    ->label('Tanggal Lahir'),
+                // ->toggleable(isToggledHiddenByDefault: true)
+
+                TextColumn::make('agama')
                     ->toggleable(isToggledHiddenByDefault: true),
+
+                TextColumn::make('kwnegara')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Kewarganegaraan')
+                    ->wrap(),
+
+                TextColumn::make('statusdk')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Status Dalam Keluarga')
+                    ->wrap(),
+
+                TextColumn::make('anakke')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Anak Ke'),
+
+                TextColumn::make('alamat')
+                    ->wrap(),
+
+                TextColumn::make('contact')
+                    ->label('No. Tlp/HP'),
+
+                TextColumn::make('asekolah')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Asal Sekolah'),
+
+                TextColumn::make('classroom_id.name')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Kelas'),
+
+                TextColumn::make('departement_id.name_department')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Jurusan'),
+
+                TextColumn::make('nayah')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Nama Ayah'),
+
+                TextColumn::make('nibu')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Nama Ibu'),
+
+                TextColumn::make('pkrjnayah')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Pekerjaan Ayah'),
+
+                TextColumn::make('pkrjnibu')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Pekerjaan Ibu'),
+
+                TextColumn::make('alamatot')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Alamat Orang Tua')
+                    ->wrap(),
+
+                TextColumn::make('contactot')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('No. Tlp/Hp'),
+
+                TextColumn::make('nwali')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Nama Wali'),
+
+                TextColumn::make('pkrjnwali')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Pekerjaan Wali'),
+
+                TextColumn::make('alamatwali')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Alamat Wali')
+                    ->wrap(),
+
+                TextColumn::make('contactw')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('No. Tlp/Hp Wali'),
+
                 TextColumn::make('status')
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->formatStateUsing(fn(string $state): string => ucwords("{$state}")),
-                TextColumn::make('contact')
-                    ->label('Nomor HP'),
+
                 ImageColumn::make('profile')
-                    ->label('Profile'),
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->label('Foto'),
 
             ])
             ->filters([

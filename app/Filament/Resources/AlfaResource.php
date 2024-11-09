@@ -24,6 +24,11 @@ class AlfaResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('wali kelas');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

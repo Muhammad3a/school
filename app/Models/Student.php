@@ -16,4 +16,12 @@ class Student extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    function classrooms(): BelongsTo
+    {
+        return $this->belongsTo(ClassRoom::class, 'classrooms_id', 'id');
+    }
+    function Departements(): BelongsTo
+    {
+        return $this->belongsTo((Departement::class));
+    }
 }

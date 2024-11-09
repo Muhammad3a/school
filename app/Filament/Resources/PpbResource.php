@@ -26,6 +26,11 @@ class PpbResource extends Resource
 
     protected static ?string $navigationLabel = 'Pemrograman Perangkat Bergerak';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('wali kelas');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

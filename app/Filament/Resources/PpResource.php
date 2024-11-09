@@ -26,6 +26,10 @@ class PpResource extends Resource
 
     protected static ?string $navigationLabel = 'Pendidikan Pancasila';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('wali kelas');
+    }
 
     public static function form(Form $form): Form
     {
@@ -37,17 +41,17 @@ class PpResource extends Resource
                             ->options(Student::all()->pluck('name', 'id'))
                             ->label('Murid'),
                         TextInput::make('1')
-                        ->label("Semester 1"),
+                            ->label("Semester 1"),
                         TextInput::make('2')
-                        ->label("Semester 2"),
+                            ->label("Semester 2"),
                         TextInput::make('3')
-                        ->label("Semester 3"),
+                            ->label("Semester 3"),
                         TextInput::make('4')
-                        ->label("Semester 4"),
+                            ->label("Semester 4"),
                         TextInput::make('5')
-                        ->label("Semester 5"),
+                            ->label("Semester 5"),
                         TextInput::make('6')
-                        ->label("Semester 6"),
+                            ->label("Semester 6"),
                     ])->columns(7)
             ]);
     }

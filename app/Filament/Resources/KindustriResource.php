@@ -30,6 +30,11 @@ class KindustriResource extends Resource
 
     protected static ?string $navigationLabel = 'Kunjungan Indrustri';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('wali kelas');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

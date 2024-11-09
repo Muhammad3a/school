@@ -23,7 +23,13 @@ class PboResource extends Resource
     protected static ?string $model = Pbo::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     protected static ?string $navigationLabel = 'Pemrograman Berbasis Objek';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('wali kelas');
+    }
 
     public static function form(Form $form): Form
     {
@@ -35,17 +41,17 @@ class PboResource extends Resource
                             ->options(Student::all()->pluck('name', 'id'))
                             ->label('Murid'),
                         TextInput::make('1')
-                        ->label('Semseter 1'),
+                            ->label('Semseter 1'),
                         TextInput::make('2')
-                        ->label('Semseter 2'),
+                            ->label('Semseter 2'),
                         TextInput::make('3')
-                        ->label('Semseter 3'),
+                            ->label('Semseter 3'),
                         TextInput::make('4')
-                        ->label('Semseter 4'),
+                            ->label('Semseter 4'),
                         TextInput::make('5')
-                        ->label('Semseter 5'),
+                            ->label('Semseter 5'),
                         TextInput::make('6')
-                        ->label('Semseter 6'),
+                            ->label('Semseter 6'),
                     ])->columns(7)
             ]);
     }
