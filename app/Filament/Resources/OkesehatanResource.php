@@ -24,6 +24,8 @@ class OkesehatanResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Olahraga & Kesehatan';
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->hasRole('wali kelas');

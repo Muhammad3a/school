@@ -37,7 +37,7 @@ class NilaiResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('subject.name'),
+                TextColumn::make('alfa.1'),
                 TextColumn::make('nilai'),
             ])
             ->filters([

@@ -24,6 +24,8 @@ class BkerjaResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Budaya Kerja';
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->hasRole('wali kelas');

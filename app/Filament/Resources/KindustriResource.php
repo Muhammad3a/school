@@ -28,7 +28,7 @@ class KindustriResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Kunjungan Indrustri';
+    protected static ?string $navigationLabel = 'Kunjungan Industri';
 
     public static function shouldRegisterNavigation(): bool
     {

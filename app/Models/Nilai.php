@@ -30,4 +30,8 @@ class Nilai extends Model
     {
         return $this->belongsTo(CategoryNilai::class, 'category_nilai_id', 'id');
     }
+    public function alfa(): BelongsTo
+    {
+        return $this->belongsTo(Alfa::class, 'alfa_id', 'student_id');
+    }
 }
