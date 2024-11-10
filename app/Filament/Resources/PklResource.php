@@ -25,6 +25,8 @@ class PklResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Praktik Kerja Lapangan';
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->hasRole('wali kelas');

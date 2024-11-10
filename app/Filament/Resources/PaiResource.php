@@ -31,7 +31,6 @@ class PaiResource extends Resource
         return auth()->user()->hasRole('wali kelas');
     }
 
-
     public static function form(Form $form): Form
     {
         return $form

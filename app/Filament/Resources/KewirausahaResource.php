@@ -24,6 +24,8 @@ class KewirausahaResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Kewirausahaan';
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->hasRole('wali kelas');

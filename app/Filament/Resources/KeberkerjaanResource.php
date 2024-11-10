@@ -24,6 +24,8 @@ class KeberkerjaanResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'keberkerjaan';
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->hasRole('wali kelas');
