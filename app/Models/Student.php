@@ -24,4 +24,9 @@ class Student extends Model
     {
         return $this->belongsTo((Departement::class));
     }
+
+    public function pais()
+    {
+        return $this->hasMany(Pai::class);
+    }
 }

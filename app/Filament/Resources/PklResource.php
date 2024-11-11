@@ -36,7 +36,7 @@ class PklResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('student')
+                Select::make('student_id')
                     ->label('murid')
                     ->options(Student::all()->pluck('name', 'id')),
                 TextInput::make('mitra')

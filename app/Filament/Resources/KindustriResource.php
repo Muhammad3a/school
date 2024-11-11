@@ -39,7 +39,7 @@ class KindustriResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('student')
+                Select::make('student_id')
                     ->label('murid')
                     ->options(Student::all()->pluck('name', 'id')),
                 TextInput::make('mitra')
@@ -67,6 +67,7 @@ class KindustriResource extends Resource
                 TextColumn::make('lokasi')
                     ->wrap(),
                 TextColumn::make('jengke.name')
+                    ->label('Jenis Kegiatan')
                     ->wrap(),
                 TextColumn::make('lama'),
                 TextColumn::make('waktu'),

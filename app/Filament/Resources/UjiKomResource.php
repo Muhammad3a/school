@@ -36,18 +36,14 @@ class UjiKomResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('student')
+                Select::make('student_id')
                     ->label('murid')
                     ->options(Student::all()->pluck('name', 'id')),
-                TextInput::make('mitra')
-                    ->label('Mitra Dudika'),
                 TextInput::make('nilai')
                     ->label('Nilai'),
-                Textarea::make('lokasi'),
                 Select::make('jengke_id')
                     ->options(jengke::all()->pluck('name', 'id'))
                     ->label('Jenis Kegiatan'),
-                TextInput::make('lama'),
                 TextInput::make('waktu'),
             ]);
     }
@@ -58,14 +54,13 @@ class UjiKomResource extends Resource
             ->columns([
                 TextColumn::make('student.name')
                     ->label('Murid'),
-                TextColumn::make('mitra')
-                    ->label('Mitra DUDIKA'),
+
                 TextColumn::make('nilai'),
-                TextColumn::make('lokasi')
-                    ->wrap(),
+
                 TextColumn::make('jengke.name')
+                    ->label('Jenis Kegiatan')
                     ->wrap(),
-                TextColumn::make('lama'),
+
                 TextColumn::make('waktu'),
             ])
             ->filters([

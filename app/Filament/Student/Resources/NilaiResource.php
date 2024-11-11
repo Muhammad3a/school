@@ -37,7 +37,9 @@ class NilaiResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('alfa.1'),
+                TextColumn::make('subject.name'),
+                // TextColumn::make('pai.1')
+                //     ->label('Nilai PAI Semester 1'),
                 TextColumn::make('nilai'),
             ])
             ->filters([
@@ -49,7 +51,7 @@ class NilaiResource extends Resource
                     )
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -78,6 +80,7 @@ class NilaiResource extends Resource
     {
         return parent::getEloquentQuery()->whereHas('student.user', function ($query) {
             $query->where('id', Auth::user()->id);
-        });
+        })
+            ->with(['alfa']);
     }
 }
