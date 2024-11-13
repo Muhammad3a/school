@@ -47,7 +47,6 @@ class AlfaResource extends Resource
                             ->label('Semester 1')
                             ->type('number')
                             ->default(fn(Get $get) => $get('1')),
-
                         TextInput::make('2')
                             ->label('Semester 2')
                             ->type('number')
@@ -70,6 +69,7 @@ class AlfaResource extends Resource
                             ->default(fn(Get $get) => $get('6')),
                     ])->columns(7)
             ]);
+        return redirect()->to('admin/alfas');
     }
 
     public static function table(Table $table): Table

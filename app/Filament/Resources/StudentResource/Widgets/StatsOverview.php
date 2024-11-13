@@ -23,6 +23,5 @@ class StatsOverview extends BaseWidget
     //     ];
     // }
 
-
-
+    // protected static string $view = 'filament.resources.students.view';
 }
