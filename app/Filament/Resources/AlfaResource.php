@@ -44,7 +44,7 @@ class AlfaResource extends Resource
                             ->options(Student::all()->pluck('name', 'id'))
                             ->label('Murid'),
                         TextInput::make('1')
-                            ->label('Semester 1')
+                            ->label('Presensi Semester 1')
                             ->type('number')
                             ->default(fn(Get $get) => $get('1')),
                         TextInput::make('2')

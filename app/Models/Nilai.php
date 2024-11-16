@@ -32,7 +32,7 @@ class Nilai extends Model
     }
     public function alfa(): BelongsTo
     {
-        return $this->belongsTo(Alfa::class, 'alfa_id', 'student_id');
+        return $this->belongsTo(Alfa::class, 'alfa_id', '1');
     }
     public function pai(): BelongsTo
     {
