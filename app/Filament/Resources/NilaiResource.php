@@ -35,10 +35,10 @@ class NilaiResource extends Resource
 
     protected static ?string $navigationLabel = 'Nilai';
 
-    // public static function shouldRegisterNavigation(): bool
-    // {
-    //     return auth()->user()->hasRole(['admin', 'guru']);
-    // }
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('admin');
+    }
 
     public static function form(Form $form): Form
     {

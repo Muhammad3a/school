@@ -28,13 +28,18 @@ class KindustriResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Kunjungan Indrustri';
+    protected static ?string $navigationLabel = 'Kunjungan Industri';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('wali kelas');
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Select::make('student')
+                Select::make('student_id')
                     ->label('murid')
                     ->options(Student::all()->pluck('name', 'id')),
                 TextInput::make('mitra')
@@ -62,6 +67,7 @@ class KindustriResource extends Resource
                 TextColumn::make('lokasi')
                     ->wrap(),
                 TextColumn::make('jengke.name')
+                    ->label('Jenis Kegiatan')
                     ->wrap(),
                 TextColumn::make('lama'),
                 TextColumn::make('waktu'),

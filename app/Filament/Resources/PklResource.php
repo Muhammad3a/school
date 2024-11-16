@@ -25,11 +25,18 @@ class PklResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Praktik Kerja Lapangan';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('wali kelas');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Select::make('student')
+                Select::make('student_id')
                     ->label('murid')
                     ->options(Student::all()->pluck('name', 'id')),
                 TextInput::make('mitra')

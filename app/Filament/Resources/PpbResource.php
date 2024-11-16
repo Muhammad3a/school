@@ -24,6 +24,13 @@ class PpbResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Pemrograman Perangkat Bergerak';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('wali kelas');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -89,5 +96,14 @@ class PpbResource extends Resource
             'create' => Pages\CreatePpb::route('/create'),
             'edit' => Pages\EditPpb::route('/{record}/edit'),
         ];
+    }
+    public  static function getLabel(): ?string
+    {
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai Pemrograman Perangkat Bergerak";
+        } else
+            return "Teacher";
     }
 }

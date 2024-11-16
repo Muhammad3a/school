@@ -34,6 +34,7 @@ use App\Filament\Resources\BdResource;
 use App\Filament\Resources\KbResource;
 use App\Filament\Resources\PpResource;
 use App\Filament\Resources\SbResource;
+use App\Filament\Resources\Dk3Resource;
 use App\Filament\Resources\MtkResource;
 use App\Filament\Resources\PaiResource;
 use App\Filament\Resources\PboResource;
@@ -59,6 +60,7 @@ use App\Filament\Resources\PbtgmResource;
 use App\Filament\Resources\SakitResource;
 use App\Filament\Resources\BkerjaResource;
 use App\Filament\Resources\BsundaResource;
+use App\Filament\Resources\DwaktuResource;
 use App\Filament\Resources\FisikaResource;
 use App\Filament\Resources\JengkeResource;
 use App\Filament\Resources\PemturResource;
@@ -66,12 +68,32 @@ use App\Filament\Resources\PriodeResource;
 use App\Filament\Resources\UjiKomResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Navigation\NavigationBuilder;
+
+use App\Filament\Resources\DibadahResource;
+
 use App\Filament\Resources\KAmuliaResource;
 use App\Filament\Resources\PramukaResource;
+
 use App\Filament\Resources\SejarahResource;
 use App\Filament\Resources\StudentResource;
 use App\Filament\Resources\SubjectResource;
 use App\Filament\Resources\TeacherResource;
+
+use App\Filament\Resources\DbelajarResource;
+use App\Filament\Resources\DbergaulResource;
+// use App\Filament\Resources\SemesterResource;
+// use App\Filament\Resources\ClassroomResource;
+use App\Filament\Resources\DkeamananResource;
+use App\Filament\Resources\PberbaktiResource;
+// use App\Filament\Resources\CpSemesterResource;
+use App\Filament\Resources\DberbahasaResource;
+use App\Filament\Resources\DberbusanaResource;
+use App\Filament\Resources\DbertindakResource;
+// use Filament\Widgets\StatsOverviewWidget\Stat;
+// use App\Filament\Resources\DepartementResource;
+// use App\Filament\Resources\InformatikaResource;
+use App\Filament\Resources\PmemeliharaResource;
+
 use App\Filament\Resources\KesenianResource;
 use App\Filament\Resources\SemesterResource;
 use App\Filament\Resources\ClassroomResource;
@@ -84,17 +106,27 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Filament\Resources\DepartementResource;
 use App\Filament\Resources\InformatikaResource;
 use App\Filament\Resources\KewirausahaResource;
+
 use Illuminate\Session\Middleware\StartSession;
 use App\Filament\Resources\KeberkerjaanResource;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use App\Filament\Resources\CategoryNilaiResource;
+use App\Filament\Resources\PbusanamuslimResource;
 use App\Filament\Resources\CatatanAkademikResource;
+use App\Filament\Resources\PinfaqsejakdiniResource;
+use App\Filament\Resources\PmembacaalquranResource;
+use App\Filament\Resources\PmemeliharaadabResource;
 use App\Filament\Resources\StudentHasClassResource;
+use App\Filament\Resources\PtalimdanceramahResource;
 use App\Filament\Resources\PelajaranKejuruanResource;
+use App\Filament\Resources\PmelaksanakansaumResource;
+use App\Filament\Resources\PmendirikansholatResource;
 use Illuminate\Routing\Middleware\SubstituteBindings;
+use App\Filament\Resources\PmencintaitanahairResource;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
+use App\Filament\Resources\DmenggunakanfasilitasResource;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -112,13 +144,13 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                // 'danger' => Color::Rose,
-                // 'gray' => Color::Gray,
-                // 'info' => Color::Blue,
-                // 'primary' => Color::Indigo,
-                // 'success' => Color::Emerald,
-                // 'warning' => Color::Orange,
-                'primary' => Color::Amber,
+                'danger' => Color::Rose,
+                'gray' => Color::Gray,
+                'info' => Color::Blue,
+                'primary' => Color::Indigo,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
+                // 'primary' => Color::Amber,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -144,7 +176,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            // ->viteTheme('resources/css/filament/admin/theme.css')
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->plugin(FilamentSpatieRolesPermissionsPlugin::make())
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 return $builder->groups([
@@ -192,6 +224,7 @@ class AdminPanelProvider extends PanelProvider
                             ...BsundaResource::getNavigationItems(),
                             ...BarabResource::getNavigationItems(),
                         ]),
+
                     NavigationGroup::make('Ledger B Kejuruan Umum & DK')
                         ->items([
                             ...MtkResource::getNavigationItems(),
@@ -244,6 +277,39 @@ class AdminPanelProvider extends PanelProvider
 
                         ]),
 
+
+                    NavigationGroup::make('10 Disiplin')
+                        ->items([
+                            ...DwaktuResource::getNavigationItems(),
+                            ...DibadahResource::getNavigationItems(),
+                            ...DbelajarResource::getNavigationItems(),
+                            ...DbergaulResource::getNavigationItems(),
+                            ...DberbusanaResource::getNavigationItems(),
+                            ...DmenggunakanfasilitasResource::getNavigationItems(),
+                            ...Dk3Resource::getNavigationItems(),
+                            ...DberbahasaResource::getNavigationItems(),
+                            ...DbertindakResource::getNavigationItems(),
+                            ...DkeamananResource::getNavigationItems(),
+
+
+                        ]),
+
+                    NavigationGroup::make('10 Pembiasaan')
+                        ->items([
+
+                            ...PberbaktiResource::getNavigationItems(),
+                            ...PbusanamuslimResource::getNavigationItems(),
+                            ...PmemeliharaadabResource::getNavigationItems(),
+                            ...PmembacaalquranResource::getNavigationItems(),
+                            ...PmemeliharaResource::getNavigationItems(),
+                            ...PmendirikansholatResource::getNavigationItems(),
+                            ...PtalimdanceramahResource::getNavigationItems(),
+                            ...PinfaqsejakdiniResource::getNavigationItems(),
+                            ...PmelaksanakansaumResource::getNavigationItems(),
+                            ...PmencintaitanahairResource::getNavigationItems(),
+
+                        ]),
+
                     NavigationGroup::make('Data Nilai Pelajaran')
                         ->items([
                             ...CategoryNilaiResource::getNavigationItems(),
@@ -261,7 +327,9 @@ class AdminPanelProvider extends PanelProvider
                                     'filament.admin.resources.roles.view',
                                     'filament.admin.resources.roles.edit',
                                 ]))
+
                                 ->url(fn(): string => '/admin/roles'),
+
                             NavigationItem::make('Permissions')
                                 ->icon('heroicon-o-lock-closed')
                                 ->isActiveWhen(fn(): bool => request()->routeIs([

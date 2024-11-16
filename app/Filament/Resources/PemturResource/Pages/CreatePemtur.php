@@ -9,4 +9,10 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePemtur extends CreateRecord
 {
     protected static string $resource = PemturResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        // Mengarahkan ke halaman daftar setelah berhasil membuat data
+        return $this->getResource()::getUrl('index');
+    }
 }

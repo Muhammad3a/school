@@ -9,4 +9,10 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateKewirausaha extends CreateRecord
 {
     protected static string $resource = KewirausahaResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        // Mengarahkan ke halaman daftar setelah berhasil membuat data
+        return $this->getResource()::getUrl('index');
+    }
 }

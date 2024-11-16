@@ -1,61 +1,39 @@
-<?php
-
-return [
-
-    'title' => 'Login',
-
-    'heading' => 'Sign in',
-
+'auth' => [
+    'title' => 'Masuk',
+    'heading' => 'Masuk ke akun Anda',
+    'logo' => 'images/Logo_Azzainiyyah.png', // Path untuk logo
     'actions' => [
-
         'register' => [
-            'before' => 'or',
-            'label' => 'sign up for an account',
+            'before' => 'atau',
+            'label' => 'buat akun baru',
         ],
-
         'request_password_reset' => [
-            'label' => 'Forgot password?',
+            'label' => 'Lupa kata sandi?',
         ],
-
     ],
-
     'form' => [
-
         'email' => [
-            'label' => 'Email address',
+            'label' => 'Alamat email',
         ],
-
         'password' => [
-            'label' => 'Password',
+            'label' => 'Kata sandi',
         ],
-
         'remember' => [
-            'label' => 'Remember me',
+            'label' => 'Ingat saya',
         ],
-
         'actions' => [
-
             'authenticate' => [
-                'label' => 'Sign in',
+                'label' => 'Masuk',
             ],
-
         ],
-
     ],
-
     'messages' => [
-
-        'failed' => 'These credentials do not match our records.',
-
+        'failed' => 'Kredensial yang diberikan tidak dapat ditemukan.',
     ],
-
     'notifications' => [
-
         'throttled' => [
-            'title' => 'Too many login attempts',
-            'body' => 'Please try again in :seconds seconds.',
+            'title' => 'Terlalu banyak permintaan',
+            'body' => 'Silakan coba lagi dalam :seconds detik.',
         ],
-
     ],
-
-];
+],

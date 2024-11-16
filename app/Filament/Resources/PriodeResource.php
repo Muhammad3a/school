@@ -25,12 +25,6 @@ class PriodeResource extends Resource
 
     protected static ?string $navigationLabel = 'Periode';
 
-    // protected static ?string $navigationGroup = 'Setting';
-
-    // protected static bool $shouldRegisterNavigation = false;
-
-    // protected static ?int $navigationSort = 41;
-
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->hasRole('admin');

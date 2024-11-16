@@ -24,7 +24,7 @@ class SemesterResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return true;
+        return auth()->user()->hasRole('admin');
     }
 
     public static function form(Form $form): Form
