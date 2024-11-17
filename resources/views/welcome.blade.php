@@ -75,12 +75,12 @@
                     <div class="swiper-slide"><img src="/images/kegiatan2.jpg" alt="Kegiatan 2" class="w-full h-24 object-cover rounded-lg"></div>
                 </div>
             </div>
-            <div class="swiper-container kegiatan-swiper">
+            {{-- <div class="swiper-container kegiatan-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="/images/kegiatan3.jpg" alt="Kegiatan 3" class="w-full h-24 object-cover rounded-lg"></div>
                     <div class="swiper-slide"><img src="/images/kegiatan4.jpg" alt="Kegiatan 4" class="w-full h-24 object-cover rounded-lg"></div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
 

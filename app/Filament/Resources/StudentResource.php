@@ -341,7 +341,10 @@ class StudentResource extends Resource
             'index' => Pages\ListStudents::route('/'),
             'create' => Pages\CreateStudent::route('/create'),
             'edit' => Pages\EditStudent::route('/{record}/edit'),
-            'view' => Pages\ViewStudent::route('/{record}')
+            'view' => Pages\ViewStudent::route('/{record}'),
+            'raport' => Pages\RaportPage::route('/{record}/raport'),
+
+
         ];
     }
 

@@ -24,7 +24,7 @@ class PaiResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Pendidikan Agama Islam';
+    protected static ?string $navigationLabel = 'Semester 1';
 
     public static function shouldRegisterNavigation(): bool
     {
@@ -41,17 +41,17 @@ class PaiResource extends Resource
                             ->options(Student::all()->pluck('name', 'id'))
                             ->label('Murid'),
                         TextInput::make('1')
-                            ->label("Semester 1"),
+                            ->label("PAI"),
                         TextInput::make('2')
-                            ->label("Semester 2"),
+                            ->label("PP"),
                         TextInput::make('3')
-                            ->label("Semester 3"),
+                            ->label("B Indo"),
                         TextInput::make('4')
-                            ->label("Semester 4"),
+                            ->label("PJOK"),
                         TextInput::make('5')
-                            ->label("Semester 5"),
+                            ->label("Sejarah"),
                         TextInput::make('6')
-                            ->label("Semester 6"),
+                            ->label("Seni Budaya"),
                     ])->columns(7)
             ]);
     }
@@ -63,17 +63,17 @@ class PaiResource extends Resource
                 TextColumn::make('student.name')
                     ->label('Murid'),
                 TextColumn::make('1')
-                    ->label('Semseter 1'),
+                    ->label('PAI'),
                 TextColumn::make('2')
-                    ->label('Semester 2'),
+                    ->label("PP"),
                 TextColumn::make('3')
-                    ->label('Semester 3'),
+                    ->label("B Indo"),
                 TextColumn::make('4')
-                    ->label('Semester 4'),
+                    ->label("PJOK"),
                 TextColumn::make('5')
-                    ->label('Semester 5'),
+                    ->label("Sejarah"),
                 TextColumn::make('6')
-                    ->label('Semester 6'),
+                    ->label("Seni Budaya"),
             ])
             ->filters([
                 //
@@ -108,7 +108,7 @@ class PaiResource extends Resource
         $locale = app()->getLocale();
 
         if ($locale == 'id') {
-            return " Nilai Pendidikan Agama Islam";
+            return " Semester 1";
         } else
             return "Teacher";
     }

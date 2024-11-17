@@ -48,6 +48,7 @@ use App\Filament\Resources\BingResource;
 use App\Filament\Resources\IzinResource;
 use App\Filament\Resources\PjokResource;
 use App\Filament\Resources\PwebResource;
+use App\Filament\Resources\Smt1Resource;
 use App\Filament\Resources\UserResource;
 use Filament\Navigation\NavigationGroup;
 use App\Filament\Resources\BandkResource;
@@ -67,46 +68,46 @@ use App\Filament\Resources\PemturResource;
 use App\Filament\Resources\PriodeResource;
 use App\Filament\Resources\UjiKomResource;
 use Filament\Http\Middleware\Authenticate;
+
 use Filament\Navigation\NavigationBuilder;
 
 use App\Filament\Resources\DibadahResource;
-
 use App\Filament\Resources\KAmuliaResource;
-use App\Filament\Resources\PramukaResource;
 
+use App\Filament\Resources\PramukaResource;
 use App\Filament\Resources\SejarahResource;
 use App\Filament\Resources\StudentResource;
 use App\Filament\Resources\SubjectResource;
-use App\Filament\Resources\TeacherResource;
 
+use App\Filament\Resources\TeacherResource;
 use App\Filament\Resources\DbelajarResource;
-use App\Filament\Resources\DbergaulResource;
 // use App\Filament\Resources\SemesterResource;
 // use App\Filament\Resources\ClassroomResource;
-use App\Filament\Resources\DkeamananResource;
-use App\Filament\Resources\PberbaktiResource;
+use App\Filament\Resources\DbergaulResource;
+use App\Filament\Resources\KesenianResource;
 // use App\Filament\Resources\CpSemesterResource;
-use App\Filament\Resources\DberbahasaResource;
-use App\Filament\Resources\DberbusanaResource;
-use App\Filament\Resources\DbertindakResource;
+use App\Filament\Resources\SemesterResource;
+use App\Filament\Resources\ClassroomResource;
+use App\Filament\Resources\DkeamananResource;
 // use Filament\Widgets\StatsOverviewWidget\Stat;
 // use App\Filament\Resources\DepartementResource;
 // use App\Filament\Resources\InformatikaResource;
-use App\Filament\Resources\PmemeliharaResource;
-
-use App\Filament\Resources\KesenianResource;
-use App\Filament\Resources\SemesterResource;
-use App\Filament\Resources\ClassroomResource;
 use App\Filament\Resources\KindustriResource;
+
+use App\Filament\Resources\PberbaktiResource;
 use App\Filament\Resources\PramadhanResource;
 use App\Filament\Resources\BerekayasaResource;
 use App\Filament\Resources\CpSemesterResource;
+use App\Filament\Resources\DberbahasaResource;
+use App\Filament\Resources\DberbusanaResource;
+use App\Filament\Resources\DbertindakResource;
 use App\Filament\Resources\OkesehatanResource;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Filament\Resources\DepartementResource;
 use App\Filament\Resources\InformatikaResource;
 use App\Filament\Resources\KewirausahaResource;
 
+use App\Filament\Resources\PmemeliharaResource;
 use Illuminate\Session\Middleware\StartSession;
 use App\Filament\Resources\KeberkerjaanResource;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -215,6 +216,7 @@ class AdminPanelProvider extends PanelProvider
 
                     NavigationGroup::make('Ledger Mapel Umum & Mulok')
                         ->items([
+                            ...Smt1Resource::getNavigationItems(),
                             ...PaiResource::getNavigationItems(),
                             ...PpResource::getNavigationItems(),
                             ...BindoResource::getNavigationItems(),
