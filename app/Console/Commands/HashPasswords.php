@@ -24,6 +24,7 @@ class HashPasswords extends Command
             }
 
             // Hash ulang password
+            // php artisan hash:passwords
             $user->password = Hash::make($user->password);
             $user->save();
 
