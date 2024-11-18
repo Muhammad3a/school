@@ -201,6 +201,8 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use App\Filament\Resources\StudentResource\Widgets\StatsOverview;
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
+use App\Filament\Resources\Cps1Resource;
+use App\Models\Cps1;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -277,8 +279,9 @@ class AdminPanelProvider extends PanelProvider
                         ->items([
                             ...SubjectResource::getNavigationItems(),
                             ...PelajaranKejuruanResource::getNavigationItems(),
-                            ...CpSemesterResource::getNavigationItems(),
+                            // ...CpSemesterResource::getNavigationItems(),
                             ...CatatanAkademikResource::getNavigationItems(),
+                            ...DepartementResource::getNavigationItems(),
 
                         ]),
 
@@ -416,42 +419,19 @@ class AdminPanelProvider extends PanelProvider
 
                     NavigationGroup::make('10 Disiplin')
                         ->items([
-                            ...DwaktuResource::getNavigationItems(),
-                            ...DibadahResource::getNavigationItems(),
-                            ...DbelajarResource::getNavigationItems(),
-                            ...DbergaulResource::getNavigationItems(),
-                            ...DberbusanaResource::getNavigationItems(),
-                            ...DmenggunakanfasilitasResource::getNavigationItems(),
-                            ...Dk3Resource::getNavigationItems(),
-                            ...DberbahasaResource::getNavigationItems(),
-                            ...DbertindakResource::getNavigationItems(),
-                            ...DkeamananResource::getNavigationItems(),
+                            ...Dsmt1Resource::getNavigationItems(),
+                            ...Dsmt2Resource::getNavigationItems(),
+                            ...Dsmt3Resource::getNavigationItems(),
+                            ...Dsmt4Resource::getNavigationItems(),
+                            ...Dsmt5Resource::getNavigationItems(),
+                            ...Dsmt6Resource::getNavigationItems(),
 
 
                         ]),
 
-                    NavigationGroup::make('10 Pembiasaan')
+                    NavigationGroup::make('Capaian Semester')
                         ->items([
-
-                            ...PberbaktiResource::getNavigationItems(),
-                            ...PbusanamuslimResource::getNavigationItems(),
-                            ...PmemeliharaadabResource::getNavigationItems(),
-                            ...PmembacaalquranResource::getNavigationItems(),
-                            ...PmemeliharaResource::getNavigationItems(),
-                            ...PmendirikansholatResource::getNavigationItems(),
-                            ...PtalimdanceramahResource::getNavigationItems(),
-                            ...PinfaqsejakdiniResource::getNavigationItems(),
-                            ...PmelaksanakansaumResource::getNavigationItems(),
-                            ...PmencintaitanahairResource::getNavigationItems(),
-
-                        ]),
-
-                    NavigationGroup::make('Data Nilai Pelajaran')
-                        ->items([
-                            ...CategoryNilaiResource::getNavigationItems(),
-                            ...DepartementResource::getNavigationItems(),
-                            ...NilaiResource::getNavigationItems(),
-
+                            ...Cps1Resource::getNavigationItems(),
 
                         ]),
 
