@@ -64,6 +64,7 @@ class PklResource extends Resource
                 TextColumn::make('lokasi')
                     ->wrap(),
                 TextColumn::make('jengke.name')
+                    ->label('Jenis Kegiatan')
                     ->wrap(),
                 TextColumn::make('lama'),
                 TextColumn::make('waktu'),

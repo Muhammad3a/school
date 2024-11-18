@@ -29,4 +29,8 @@ class Student extends Model
     {
         return $this->hasOne(Smt1::class, 'student_id');
     }
+    public function usmt1()
+    {
+        return $this->hasOne(usmt1::class, 'student_id');
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Student\Pages;
 
+use App\Models\Cps1;
 use App\Models\Student;
 use Filament\Pages\Page;
 use App\Models\CpSemester;
@@ -22,7 +23,11 @@ class RaportPage extends Page
             ->with(['smt1']) // Muat data smt1
             ->first();
 
-        $this->cpSemesters = CpSemester::all();
+        $this->student = Student::where('user_id', auth()->id())
+            ->with(['usmt1']) // Muat data smt1
+            ->first();
+
+        $this->cpSemesters = Cps1::all();
 
         if (!$this->student) {
             abort(404, 'Data student tidak ditemukan untuk user yang sedang login.');

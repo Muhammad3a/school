@@ -57,7 +57,7 @@ class Ksmt1Resource extends Resource
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
                 TextColumn::make('bd'),
-                TextColumn::make('pbt'),
+                TextColumn::make('persisda'),
                 TextColumn::make('pw'),
                 TextColumn::make('ppb'),
                 TextColumn::make('pkk'),
