@@ -24,7 +24,11 @@ class Dk3Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+<<<<<<<< HEAD:app/Filament/Resources/Dk3Resource.php
     protected static ?string $navigationLabel = 'Disiplin K3';
+========
+    protected static ?string $navigationLabel = 'Pendidikan Agama Islam';
+>>>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32:app/Filament/Resources/PaiResource.php
 
     public static function shouldRegisterNavigation(): bool
     {
@@ -41,6 +45,7 @@ class Dk3Resource extends Resource
                             ->options(Student::all()->pluck('name', 'id'))
                             ->label('Murid'),
                         TextInput::make('1')
+<<<<<<<< HEAD:app/Filament/Resources/Dk3Resource.php
                             ->label('Semseter 1'),
                         TextInput::make('2')
                             ->label('Semseter 2'),
@@ -52,6 +57,19 @@ class Dk3Resource extends Resource
                             ->label('Semseter 5'),
                         TextInput::make('6')
                             ->label('Semseter 6'),
+========
+                            ->label("Semester 1"),
+                        TextInput::make('2')
+                            ->label("Semester 2"),
+                        TextInput::make('3')
+                            ->label("Semester 3"),
+                        TextInput::make('4')
+                            ->label("Semester 4"),
+                        TextInput::make('5')
+                            ->label("Semester 5"),
+                        TextInput::make('6')
+                            ->label("Semester 6"),
+>>>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32:app/Filament/Resources/PaiResource.php
                     ])->columns(7)
             ]);
     }
@@ -108,7 +126,11 @@ class Dk3Resource extends Resource
         $locale = app()->getLocale();
 
         if ($locale == 'id') {
+<<<<<<<< HEAD:app/Filament/Resources/Dk3Resource.php
             return "Nilai Disiplin K3";
+========
+            return " Nilai Pendidikan Agama Islam";
+>>>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32:app/Filament/Resources/PaiResource.php
         } else
             return "Teacher";
     }

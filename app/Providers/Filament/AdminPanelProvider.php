@@ -119,15 +119,41 @@ use App\Filament\Resources\PriodeResource;
 use App\Filament\Resources\UjiKomResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Navigation\NavigationBuilder;
+<<<<<<< HEAD
 use App\Filament\Resources\DibadahResource;
+=======
+
+use App\Filament\Resources\DibadahResource;
+
+>>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
 use App\Filament\Resources\KAmuliaResource;
 use App\Filament\Resources\PramukaResource;
+
 use App\Filament\Resources\SejarahResource;
 use App\Filament\Resources\StudentResource;
 use App\Filament\Resources\SubjectResource;
 use App\Filament\Resources\TeacherResource;
+<<<<<<< HEAD
 use App\Filament\Resources\DbelajarResource;
 use App\Filament\Resources\DbergaulResource;
+=======
+
+use App\Filament\Resources\DbelajarResource;
+use App\Filament\Resources\DbergaulResource;
+// use App\Filament\Resources\SemesterResource;
+// use App\Filament\Resources\ClassroomResource;
+use App\Filament\Resources\DkeamananResource;
+use App\Filament\Resources\PberbaktiResource;
+// use App\Filament\Resources\CpSemesterResource;
+use App\Filament\Resources\DberbahasaResource;
+use App\Filament\Resources\DberbusanaResource;
+use App\Filament\Resources\DbertindakResource;
+// use Filament\Widgets\StatsOverviewWidget\Stat;
+// use App\Filament\Resources\DepartementResource;
+// use App\Filament\Resources\InformatikaResource;
+use App\Filament\Resources\PmemeliharaResource;
+
+>>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
 use App\Filament\Resources\KesenianResource;
 use App\Filament\Resources\SemesterResource;
 use App\Filament\Resources\ClassroomResource;
@@ -145,7 +171,11 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Filament\Resources\DepartementResource;
 use App\Filament\Resources\InformatikaResource;
 use App\Filament\Resources\KewirausahaResource;
+<<<<<<< HEAD
 use App\Filament\Resources\PmemeliharaResource;
+=======
+
+>>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
 use Illuminate\Session\Middleware\StartSession;
 use App\Filament\Resources\KeberkerjaanResource;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -380,6 +410,39 @@ class AdminPanelProvider extends PanelProvider
                             // ...PinfaqsejakdiniResource::getNavigationItems(),
                             // ...PmelaksanakansaumResource::getNavigationItems(),
                             // ...PmencintaitanahairResource::getNavigationItems(),
+
+                        ]),
+
+
+                    NavigationGroup::make('10 Disiplin')
+                        ->items([
+                            ...DwaktuResource::getNavigationItems(),
+                            ...DibadahResource::getNavigationItems(),
+                            ...DbelajarResource::getNavigationItems(),
+                            ...DbergaulResource::getNavigationItems(),
+                            ...DberbusanaResource::getNavigationItems(),
+                            ...DmenggunakanfasilitasResource::getNavigationItems(),
+                            ...Dk3Resource::getNavigationItems(),
+                            ...DberbahasaResource::getNavigationItems(),
+                            ...DbertindakResource::getNavigationItems(),
+                            ...DkeamananResource::getNavigationItems(),
+
+
+                        ]),
+
+                    NavigationGroup::make('10 Pembiasaan')
+                        ->items([
+
+                            ...PberbaktiResource::getNavigationItems(),
+                            ...PbusanamuslimResource::getNavigationItems(),
+                            ...PmemeliharaadabResource::getNavigationItems(),
+                            ...PmembacaalquranResource::getNavigationItems(),
+                            ...PmemeliharaResource::getNavigationItems(),
+                            ...PmendirikansholatResource::getNavigationItems(),
+                            ...PtalimdanceramahResource::getNavigationItems(),
+                            ...PinfaqsejakdiniResource::getNavigationItems(),
+                            ...PmelaksanakansaumResource::getNavigationItems(),
+                            ...PmencintaitanahairResource::getNavigationItems(),
 
                         ]),
 

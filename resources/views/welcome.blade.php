@@ -74,6 +74,15 @@
                     <div class="swiper-slide"><img src="/images/ziarah.jpg" alt="" class="w-full h-24 object-cover rounded-lg"></div>
                     <div class="swiper-slide"><img src="/images/kegiatan2.jpg" alt="Kegiatan 2" class="w-full h-24 object-cover rounded-lg"></div>
                 </div>
+<<<<<<< HEAD
+=======
+            </div>
+            <div class="swiper-container kegiatan-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="/images/kegiatan3.jpg" alt="Kegiatan 3" class="w-full h-24 object-cover rounded-lg"></div>
+                    <div class="swiper-slide"><img src="/images/kegiatan4.jpg" alt="Kegiatan 4" class="w-full h-24 object-cover rounded-lg"></div>
+                </div>
+>>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
             </div>
             {{-- <div class="swiper-container kegiatan-swiper">
                 <div class="swiper-wrapper">
