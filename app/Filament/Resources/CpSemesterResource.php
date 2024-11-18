@@ -45,9 +45,6 @@ class CpSemesterResource extends Resource
                     ->label('Pelajaran Kejuruan')
                     ->searchable()
                     ->options(\App\Models\PelajaranKejuruan::whereNotNull('bidang')->pluck('bidang', 'id')),
-
-
-
                 Textarea::make('sm1'),
                 Textarea::make('sm2'),
                 Textarea::make('sm3'),

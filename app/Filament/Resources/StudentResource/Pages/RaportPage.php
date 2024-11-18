@@ -12,15 +12,14 @@ class RaportPage extends Page
 
     protected static string $view = 'filament.resources.student-resource.pages.raport-page';
 
-    public function mount($record)
+    public function mount()
     {
-        // Ambil data siswa berdasarkan ID (record)
-        $this->student = Student::with([
+        // Ambil data student berdasarkan user yang login
+        $this->student = Student::where('user_id', auth()->id())->with([
             'pais',
-            // 'pancasilaScores',
-            // 'bahasaIndonesiaScores',
-            // 'bahasaInggrisScores',
-            // Tambahkan relasi lainnya di sini
-        ])->findOrFail($record);
+            'pancasilaScores',
+            'bahasaIndonesiaScores',
+            'bahasaInggrisScores'
+        ])->firstOrFail();
     }
 }

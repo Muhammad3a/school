@@ -119,13 +119,13 @@ use App\Filament\Resources\PriodeResource;
 use App\Filament\Resources\UjiKomResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Navigation\NavigationBuilder;
-<<<<<<< HEAD
-use App\Filament\Resources\DibadahResource;
-=======
+// <<<<<<< HEAD
+// use App\Filament\Resources\DibadahResource;
+// =======
 
 use App\Filament\Resources\DibadahResource;
 
->>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
+// >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
 use App\Filament\Resources\KAmuliaResource;
 use App\Filament\Resources\PramukaResource;
 
@@ -133,27 +133,27 @@ use App\Filament\Resources\SejarahResource;
 use App\Filament\Resources\StudentResource;
 use App\Filament\Resources\SubjectResource;
 use App\Filament\Resources\TeacherResource;
-<<<<<<< HEAD
-use App\Filament\Resources\DbelajarResource;
-use App\Filament\Resources\DbergaulResource;
-=======
+// <<<<<<< HEAD
+// use App\Filament\Resources\DbelajarResource;
+// use App\Filament\Resources\DbergaulResource;
+// =======
 
 use App\Filament\Resources\DbelajarResource;
 use App\Filament\Resources\DbergaulResource;
 // use App\Filament\Resources\SemesterResource;
 // use App\Filament\Resources\ClassroomResource;
-use App\Filament\Resources\DkeamananResource;
-use App\Filament\Resources\PberbaktiResource;
+// use App\Filament\Resources\DkeamananResource;
+// use App\Filament\Resources\PberbaktiResource;
 // use App\Filament\Resources\CpSemesterResource;
-use App\Filament\Resources\DberbahasaResource;
-use App\Filament\Resources\DberbusanaResource;
-use App\Filament\Resources\DbertindakResource;
+// use App\Filament\Resources\DberbahasaResource;
+// use App\Filament\Resources\DberbusanaResource;
+// use App\Filament\Resources\DbertindakResource;
 // use Filament\Widgets\StatsOverviewWidget\Stat;
 // use App\Filament\Resources\DepartementResource;
 // use App\Filament\Resources\InformatikaResource;
-use App\Filament\Resources\PmemeliharaResource;
+// use App\Filament\Resources\PmemeliharaResource;
 
->>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
+// >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
 use App\Filament\Resources\KesenianResource;
 use App\Filament\Resources\SemesterResource;
 use App\Filament\Resources\ClassroomResource;
@@ -171,11 +171,11 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Filament\Resources\DepartementResource;
 use App\Filament\Resources\InformatikaResource;
 use App\Filament\Resources\KewirausahaResource;
-<<<<<<< HEAD
+// <<<<<<< HEAD
 use App\Filament\Resources\PmemeliharaResource;
-=======
+// =======
 
->>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
+// >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
 use Illuminate\Session\Middleware\StartSession;
 use App\Filament\Resources\KeberkerjaanResource;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -353,19 +353,19 @@ class AdminPanelProvider extends PanelProvider
                             ...Esmt4Resource::getNavigationItems(),
                             ...Esmt5Resource::getNavigationItems(),
                             ...Esmt6Resource::getNavigationItems(),
-                           
-                           // ...PramukaResource::getNavigationItems(),
-                           // ...KesenianResource::getNavigationItems(),
-                           // ...PramadhanResource::getNavigationItems(),
-                           // ...OkesehatanResource::getNavigationItems(),
-                           // ...KAmuliaResource::getNavigationItems(),
-                           // ...BkerjaResource::getNavigationItems(),
-                           // ...KewirausahaResource::getNavigationItems(),
-                           // ...BerekayasaResource::getNavigationItems(),
-                           // ...KeberkerjaanResource::getNavigationItems(),
-                           // ...SakitResource::getNavigationItems(),
-                           // ...IzinResource::getNavigationItems(),
-                           // ...AlfaResource::getNavigationItems(),
+
+                            // ...PramukaResource::getNavigationItems(),
+                            // ...KesenianResource::getNavigationItems(),
+                            // ...PramadhanResource::getNavigationItems(),
+                            // ...OkesehatanResource::getNavigationItems(),
+                            // ...KAmuliaResource::getNavigationItems(),
+                            // ...BkerjaResource::getNavigationItems(),
+                            // ...KewirausahaResource::getNavigationItems(),
+                            // ...BerekayasaResource::getNavigationItems(),
+                            // ...KeberkerjaanResource::getNavigationItems(),
+                            // ...SakitResource::getNavigationItems(),
+                            // ...IzinResource::getNavigationItems(),
+                            // ...AlfaResource::getNavigationItems(),
 
                         ]),
 
@@ -451,32 +451,39 @@ class AdminPanelProvider extends PanelProvider
                             ...CategoryNilaiResource::getNavigationItems(),
                             ...DepartementResource::getNavigationItems(),
                             ...NilaiResource::getNavigationItems(),
+                            NavigationGroup::make('Capaian Semester')
+                                ->items([
+                                    // ...CategoryNilaiResource::getNavigationItems(),
+                                    // ...DepartementResource::getNavigationItems(),
+                                    // ...NilaiResource::getNavigationItems(),
 
-                        ]),
-                    NavigationGroup::make('Setting')
-                        ->items([
-                            NavigationItem::make('Role')
-                                ->icon('heroicon-o-adjustments-horizontal')
-                                ->isActiveWhen(fn(): bool => request()->routeIs([
-                                    'filament.admin.resources.roles.index',
-                                    'filament.admin.resources.roles.create',
-                                    'filament.admin.resources.roles.view',
-                                    'filament.admin.resources.roles.edit',
-                                ]))
+                                ]),
 
-                                ->url(fn(): string => '/admin/roles'),
+                            NavigationGroup::make('Setting')
+                                ->items([
+                                    NavigationItem::make('Role')
+                                        ->icon('heroicon-o-adjustments-horizontal')
+                                        ->isActiveWhen(fn(): bool => request()->routeIs([
+                                            'filament.admin.resources.roles.index',
+                                            'filament.admin.resources.roles.create',
+                                            'filament.admin.resources.roles.view',
+                                            'filament.admin.resources.roles.edit',
+                                        ]))
 
-                            NavigationItem::make('Permissions')
-                                ->icon('heroicon-o-lock-closed')
-                                ->isActiveWhen(fn(): bool => request()->routeIs([
-                                    'filament.admin.resources.permissions.index',
-                                    'filament.admin.resources.permissions.crate',
-                                    'filament.admin.resources.permissions.view',
-                                    'filament.admin.resources.permissions.edit',
-                                ]))
-                                ->url(fn(): string => '/admin/permissions'),
+                                        ->url(fn(): string => '/admin/roles'),
 
-                            ...UserResource::getNavigationItems()
+                                    NavigationItem::make('Permissions')
+                                        ->icon('heroicon-o-lock-closed')
+                                        ->isActiveWhen(fn(): bool => request()->routeIs([
+                                            'filament.admin.resources.permissions.index',
+                                            'filament.admin.resources.permissions.crate',
+                                            'filament.admin.resources.permissions.view',
+                                            'filament.admin.resources.permissions.edit',
+                                        ]))
+                                        ->url(fn(): string => '/admin/permissions'),
+
+                                    ...UserResource::getNavigationItems()
+                                ])
                         ])
 
                 ]);

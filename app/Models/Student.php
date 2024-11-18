@@ -25,8 +25,8 @@ class Student extends Model
         return $this->belongsTo((Departement::class));
     }
 
-    public function pais()
+    public function smt1()
     {
-        return $this->hasMany(Pai::class);
+        return $this->hasOne(Smt1::class, 'student_id');
     }
 }

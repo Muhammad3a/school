@@ -31,24 +31,20 @@ class Ksmt1Resource extends Resource
         return $form
             ->schema([
                 Card::make()
-                ->schema([
-                    Select::make('student_id')
-                        ->options(Student::all()->pluck('name', 'id'))
-                        ->label('Murid'),
-                    Select::make('classroom_id')
-                        ->options(Classroom::all()->pluck('name', 'id'))
-                        ->label('Kelas'),
+                    ->schema([
+                        Select::make('student_id')
+                            ->options(Student::all()->pluck('name', 'id'))
+                            ->label('Murid'),
+                        Select::make('classroom_id')
+                            ->options(Classroom::all()->pluck('name', 'id'))
+                            ->label('Kelas'),
                         TextInput::make('bd'),
-                        TextInput::make('pbt'),
+                        TextInput::make('persisda'),
                         TextInput::make('pw'),
                         TextInput::make('ppb'),
                         TextInput::make('pkk'),
                         TextInput::make('kb'),
-                        //TextInput::make('profesi'),
-                        //TextInput::make('pemtur'),
-                       // TextInput::make('pbo'),
-                        //TextInput::make('gim'),
-                        ])->columns(2)
+                    ])->columns(2)
             ]);
     }
 
@@ -57,24 +53,24 @@ class Ksmt1Resource extends Resource
         return $table
             ->columns([
                 TextColumn::make('student.name')
-                ->label('Murid'),
-            TextColumn::make('classroom.name')
-                ->label('Kelas'),
-            TextColumn::make('bd'),
-            TextColumn::make('pbt'),
-            TextColumn::make('pw'),
-            TextColumn::make('ppb'),
-            TextColumn::make('pkk'),
-            TextColumn::make('kb'),
-            //TextColumn::make('profesi'),
-            //TextColumn::make('pemtur'),
-           // TextColumn::make('pbo'),
-            //TextColumn::make('gim'),
+                    ->label('Murid'),
+                TextColumn::make('classroom.name')
+                    ->label('Kelas'),
+                TextColumn::make('bd'),
+                TextColumn::make('pbt'),
+                TextColumn::make('pw'),
+                TextColumn::make('ppb'),
+                TextColumn::make('pkk'),
+                TextColumn::make('kb'),
+                //TextColumn::make('profesi'),
+                //TextColumn::make('pemtur'),
+                // TextColumn::make('pbo'),
+                //TextColumn::make('gim'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
-                ->options(Classroom::all()->pluck('name', 'id'))
-                ->label('Filter Kelas'),
+                    ->options(Classroom::all()->pluck('name', 'id'))
+                    ->label('Filter Kelas'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
