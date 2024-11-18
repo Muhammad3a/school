@@ -451,40 +451,36 @@ class AdminPanelProvider extends PanelProvider
                             ...CategoryNilaiResource::getNavigationItems(),
                             ...DepartementResource::getNavigationItems(),
                             ...NilaiResource::getNavigationItems(),
-                            NavigationGroup::make('Capaian Semester')
-                                ->items([
-                                    // ...CategoryNilaiResource::getNavigationItems(),
-                                    // ...DepartementResource::getNavigationItems(),
-                                    // ...NilaiResource::getNavigationItems(),
 
-                                ]),
 
-                            NavigationGroup::make('Setting')
-                                ->items([
-                                    NavigationItem::make('Role')
-                                        ->icon('heroicon-o-adjustments-horizontal')
-                                        ->isActiveWhen(fn(): bool => request()->routeIs([
-                                            'filament.admin.resources.roles.index',
-                                            'filament.admin.resources.roles.create',
-                                            'filament.admin.resources.roles.view',
-                                            'filament.admin.resources.roles.edit',
-                                        ]))
+                        ]),
 
-                                        ->url(fn(): string => '/admin/roles'),
+                    NavigationGroup::make('Setting')
+                        ->items([
+                            NavigationItem::make('Role')
+                                ->icon('heroicon-o-adjustments-horizontal')
+                                ->isActiveWhen(fn(): bool => request()->routeIs([
+                                    'filament.admin.resources.roles.index',
+                                    'filament.admin.resources.roles.create',
+                                    'filament.admin.resources.roles.view',
+                                    'filament.admin.resources.roles.edit',
+                                ]))
 
-                                    NavigationItem::make('Permissions')
-                                        ->icon('heroicon-o-lock-closed')
-                                        ->isActiveWhen(fn(): bool => request()->routeIs([
-                                            'filament.admin.resources.permissions.index',
-                                            'filament.admin.resources.permissions.crate',
-                                            'filament.admin.resources.permissions.view',
-                                            'filament.admin.resources.permissions.edit',
-                                        ]))
-                                        ->url(fn(): string => '/admin/permissions'),
+                                ->url(fn(): string => '/admin/roles'),
 
-                                    ...UserResource::getNavigationItems()
-                                ])
+                            NavigationItem::make('Permissions')
+                                ->icon('heroicon-o-lock-closed')
+                                ->isActiveWhen(fn(): bool => request()->routeIs([
+                                    'filament.admin.resources.permissions.index',
+                                    'filament.admin.resources.permissions.crate',
+                                    'filament.admin.resources.permissions.view',
+                                    'filament.admin.resources.permissions.edit',
+                                ]))
+                                ->url(fn(): string => '/admin/permissions'),
+
+                            ...UserResource::getNavigationItems()
                         ])
+
 
                 ]);
             });
