@@ -72,7 +72,8 @@ class Smt1Resource extends Resource
                     ->label('Murid'),
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
-                TextColumn::make('pai'),
+                TextColumn::make('pai')
+                ->label('Pendidikan Agama Islam'),
                 TextColumn::make('pp'),
                 TextColumn::make('indo'),
                 TextColumn::make('pjok'),

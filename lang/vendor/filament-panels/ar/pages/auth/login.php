@@ -2,19 +2,19 @@
 
 return [
 
-    'title' => 'تسجيل الدخول',
+    'title' => 'Masuk',
 
-    'heading' => 'الدخول إلى حسابك',
+    'heading' => 'Masuk ke Akun Anda',
 
     'actions' => [
 
         'register' => [
-            'before' => 'أو',
-            'label' => 'إنشاء حساب',
+            'before' => 'atau',
+            'label' => 'Buat Akun',
         ],
 
         'request_password_reset' => [
-            'label' => 'نسيت كلمة المرور؟',
+            'label' => 'Lupa kata sandi?',
         ],
 
     ],
@@ -22,21 +22,21 @@ return [
     'form' => [
 
         'email' => [
-            'label' => 'البريد الإلكتروني',
+            'label' => 'Email',
         ],
 
         'password' => [
-            'label' => 'كلمة المرور',
+            'label' => 'Kata Sandi',
         ],
 
         'remember' => [
-            'label' => 'تذكرني',
+            'label' => 'Ingat Saya',
         ],
 
         'actions' => [
 
             'authenticate' => [
-                'label' => 'تسجيل الدخول',
+                'label' => 'Masuk',
             ],
 
         ],
@@ -45,15 +45,15 @@ return [
 
     'messages' => [
 
-        'failed' => 'بيانات الاعتماد هذه غير متطابقة مع البيانات المسجلة لدينا.',
+        'failed' => 'Kredensial ini tidak cocok dengan data kami.',
 
     ],
 
     'notifications' => [
 
         'throttled' => [
-            'title' => 'لقد قمت بمحاولات تسجيل دخول كثيرة جدًا',
-            'body' => 'يرجى المحاولة مرة أخرى بعد :seconds ثواني.',
+            'title' => 'Terlalu banyak percobaan masuk',
+            'body' => 'Silakan coba lagi dalam :seconds detik.',
         ],
 
     ],
