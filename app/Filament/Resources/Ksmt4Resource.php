@@ -26,7 +26,7 @@ class Ksmt4Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Nilai Umum Semester 4';
+    protected static ?string $navigationLabel = 'Nilai Kejuruan Semester 4';
 
 
     public static function form(Form $form): Form
