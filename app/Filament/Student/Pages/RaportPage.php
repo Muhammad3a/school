@@ -11,7 +11,7 @@ class RaportPage extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static string $view = 'filament.student.pages.raport-page';
-    protected static ?string $navigationLabel = 'Raport Semseter 1';
+    protected static ?string $navigationLabel = 'Raport Semester 1';
 
     public $student; // Properti student didefinisikan
     public $cpSemesters; // Properti student didefinisikan
@@ -25,6 +25,26 @@ class RaportPage extends Page
 
         $this->student = Student::where('user_id', auth()->id())
             ->with(['usmt1']) // Muat data smt1
+            ->first();
+
+        $this->student = Student::where('user_id', auth()->id())
+            ->with(['esmt1']) // Muat data smt1
+            ->first();
+
+        $this->student = Student::where('user_id', auth()->id())
+            ->with(['Kindustri.jengke']) // Muat data smt1
+            ->first();
+
+        $this->student = Student::where('user_id', auth()->id())
+            ->with(['Pkl.jengke']) // Muat data smt1
+            ->first();
+
+        $this->student = Student::where('user_id', auth()->id())
+            ->with(['UjiKom.jengke']) // Muat data smt1
+            ->first();
+
+        $this->student = Student::where('user_id', auth()->id())
+            ->with(['dsmt1']) // Muat data smt1
             ->first();
 
         $this->cpSemesters = Cps1::all();
