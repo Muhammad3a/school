@@ -38,16 +38,30 @@ class Esmt1Resource extends Resource
                     Select::make('classroom_id')
                         ->options(Classroom::all()->pluck('name', 'id'))
                         ->label('Kelas'),
-                        TextInput::make('pramuka'),
-                        TextInput::make('kesenian'),
-                        TextInput::make('pramadan'),
-                        TextInput::make('okesehatan'),
-                        TextInput::make('kmulia'),
-                        TextInput::make('bkerja'),
-                        TextInput::make('kewirausahaan'),
-                        TextInput::make('berekayasa'),
-                       TextInput::make('kebekerjaan'),
-                        //TextInput::make('gim'),
+                        TextInput::make('pramuka')
+                        ->label('Pramuka'),
+                        TextInput::make('kesenian')
+                        ->label('Kesenian'),
+                        TextInput::make('pramadan')
+                        ->label('Pesantren Ramadhan'),
+                        TextInput::make('okesehatan')
+                        ->label('Olahraga & Kesehatan'),
+                        TextInput::make('kmulia')
+                        ->label('Keagamaan & Akhlak Mulia'),
+                        TextInput::make('bkerja')
+                        ->label('Budaya Kerja'),
+                        TextInput::make('kewirausahaan')
+                        ->label('Kewirausaan'),
+                        TextInput::make('berekayasa')
+                        ->label('Berekayasa & Berteknologi'),
+                       TextInput::make('kebekerjaan')
+                       ->label('Keberkerjaan'),
+                       TextInput::make('sakit')
+                       ->label('Sakit'),
+                       TextInput::make('izin')
+                       ->label('Izin'),
+                       TextInput::make('Alfa')
+                       ->label('Alfa'),
                         ])->columns(2)
             ]);
     }
@@ -60,16 +74,32 @@ class Esmt1Resource extends Resource
                 ->label('Murid'),
             TextColumn::make('classroom.name')
                 ->label('Kelas'),
-            TextColumn::make('pramuka'),
-            TextColumn::make('kesenian'),
-            TextColumn::make('pramadan'),
-            TextColumn::make('okesehatan'),
-            TextColumn::make('kmulia'),
-            TextColumn::make('bkerja'),
-            TextColumn::make('kewirausahaan'),
-            TextColumn::make('berekayasa'),
-            TextColumn::make('kebekerjaan'),
-            //TextColumn::make('gim'),
+            TextColumn::make('pramuka')
+            ->label('Pramuka'),
+            TextColumn::make('kesenian')
+            ->label('Kesenian'),
+            TextColumn::make('pramadan')
+            ->label('Pesantren Ramadhan'),
+            TextColumn::make('okesehatan')
+            ->label('Olahraga & Kesehatan'),
+            TextColumn::make('kmulia')
+            ->label('Keagamaan & Akhlak Mulia'),
+            TextColumn::make('bkerja')
+            ->label('Budaya Kerja'),
+            TextColumn::make('kewirausahaan')
+            ->label('Kewirausaan'),
+          TextColumn::make('berekayasa')
+            ->label('Berekayasa & Berteknologi'),
+            TextColumn::make('kebekerjaan')
+            ->label('Keberkerjaan'),
+            TextColumn::make('sakit')
+            ->label('Sakit'),
+            TextColumn::make('izin')
+            ->label('Izin'),
+            TextColumn::make('alfa')
+            ->label('Alfa'),
+
+          
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')

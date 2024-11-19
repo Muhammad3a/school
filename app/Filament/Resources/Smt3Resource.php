@@ -67,14 +67,22 @@ class Smt3Resource extends Resource
                     ->label('Murid'),
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
-                TextColumn::make('pai'),
-                TextColumn::make('pp'),
-                TextColumn::make('indo'),
-                TextColumn::make('pjok'),
-                TextColumn::make('sejarah'),
-                TextColumn::make('sb'),
-                TextColumn::make('sunda'),
-                TextColumn::make('arab'),
+                TextColumn::make('pai')
+                ->label('Pendidikan Agama Islam'),
+                TextColumn::make('pp')
+                ->label('Pendidikan Pancasila'),
+                TextColumn::make('indo')
+                ->label('Bahasa Indonesia '),
+                TextColumn::make('pjok')
+                ->label('Pendidikan Jasmani OLahraga & Kesehatan'),
+                TextColumn::make('sejarah')
+                ->label('Sejarah'),
+                TextColumn::make('sb')
+                ->label('Seni Budaya'),
+                TextColumn::make('sunda')
+                ->label('Bahasa Sunda'),
+                TextColumn::make('arab')
+                ->label('Bahasa Arab'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')

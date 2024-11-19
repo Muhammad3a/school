@@ -37,17 +37,19 @@ class Ksmt6Resource extends Resource
                     Select::make('classroom_id')
                         ->options(Classroom::all()->pluck('name', 'id'))
                         ->label('Kelas'),
-                        TextInput::make('bd'),
-                        TextInput::make('pbt'),
-                        TextInput::make('pw'),
-                        TextInput::make('ppb'),
-                        TextInput::make('pkk'),
-                        TextInput::make('kb'),
-                        //TextInput::make('profesi'),
-                        //TextInput::make('pemtur'),
-                       // TextInput::make('pbo'),
-                        //TextInput::make('gim'),
-                        ])->columns(2)
+                    TextInput::make('bd')
+                    ->label('Basis Data'),
+                    TextInput::make('persisda')
+                    ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
+                    TextInput::make('pw')
+                    ->label('Pemrograman Web'),
+                    TextInput::make('ppb')
+                    ->label('Pemrograman Perangkat Bergerak'),
+                    TextInput::make('pkk')
+                    ->label('Produk Kreatif & Kewirausahaan'),
+                    TextInput::make('kb')
+                    ->label('Kecerdasaan Buatan'),
+                ])->columns(2)
             ]);
     }
 
@@ -55,20 +57,22 @@ class Ksmt6Resource extends Resource
     {
         return $table
             ->columns([
-                    TextColumn::make('student.name')
-                    ->label('Murid'),
-                TextColumn::make('classroom.name')
-                    ->label('Kelas'),
-                TextColumn::make('bd'),
-                TextColumn::make('pbt'),
-                TextColumn::make('pw'),
-                TextColumn::make('ppb'),
-                TextColumn::make('pkk'),
-                TextColumn::make('kb'),
-                //TextColumn::make('profesi'),
-                //TextColumn::make('pemtur'),
-               // TextColumn::make('pbo'),
-                //TextColumn::make('gim'),
+                TextColumn::make('student.name')
+                ->label('Murid'),
+            TextColumn::make('classroom.name')
+                ->label('Kelas'),
+            TextColumn::make('bd')
+            ->label('Basis Data'),
+            TextColumn::make('persisda')
+            ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
+            TextColumn::make('pw')
+            ->label('Pemrograman Web'),
+            TextColumn::make('ppb')
+            ->label('Pemrograman Perangkat Bergerak'),
+            TextColumn::make('pkk')
+            ->label('Produk Kreatif & Kewirausahaan'),
+            TextColumn::make('kb')
+            ->label('Kecerdasaan Buatan'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')

@@ -38,16 +38,26 @@ class Dsmt2Resource extends Resource
                     Select::make('classroom_id')
                         ->options(Classroom::all()->pluck('name', 'id'))
                         ->label('Kelas'),
-                        TextInput::make('dwaktu'),
-                        TextInput::make('dibadah'),
-                        TextInput::make('dbelajar'),
-                        TextInput::make('dbergaul'),
-                        TextInput::make('dberbusana'),
-                        TextInput::make('dmenggunakanfasilitas'),
-                        TextInput::make('dk3'),
-                        TextInput::make('dberbahasa'),
-                         TextInput::make('dbertindak'),
-                        TextInput::make('dkeamanan'),
+                        TextInput::make('dwaktu')
+                        ->label('Disiplin Waktu'),
+                        TextInput::make('dibadah')
+                        ->label('Disiplin Ibadah'),
+                        TextInput::make('dbelajar')
+                        ->label('Disiplin Belajar'),
+                        TextInput::make('dbergaul')
+                        ->label('Disiplin Bergaul'),
+                        TextInput::make('dberbusana')
+                        ->label('Disiplin Berbusana'),
+                        TextInput::make('dmenggunakanfasilitas')
+                        ->label('Disiplin Menggunakan Fasilitas'),
+                        TextInput::make('dk3')
+                        ->label('dk3'),
+                        TextInput::make('dberbahasa')
+                        ->label('Disiplin Berbahasa'),
+                         TextInput::make('dbertindak')
+                         ->label('Bertindak & Menindak'),
+                        TextInput::make('dkeamanan')
+                        ->label('Disiplin Keamanan'),
                         ])->columns(2)
             ]);
     }
@@ -60,16 +70,26 @@ class Dsmt2Resource extends Resource
                 ->label('Murid'),
             TextColumn::make('classroom.name')
                 ->label('Kelas'),
-            TextColumn::make('dwaktu'),
-            TextColumn::make('dibadah'),
-            TextColumn::make('dbelajar'),
-            TextColumn::make('dbergaul'),
-            TextColumn::make('dberbusana'),
-            TextColumn::make('dmenggunakanfasilitas'),
-            TextColumn::make('dk3'),
-            TextColumn::make('dberbahasa'),
-            TextColumn::make('dbertindak'),
-            TextColumn::make('dkeamanan'),
+            TextColumn::make('dwaktu')
+            ->label('Disiplin Waktu'),
+            TextColumn::make('dibadah')
+            ->label('Disiplin Ibadah'),
+            TextColumn::make('dbelajar')
+            ->label('Disiplin Belajar'),
+            TextColumn::make('dbergaul')
+            ->label('Disiplin Bergaul'),
+            TextColumn::make('dberbusana')
+            ->label('Disiplin Berbusana'),
+            TextColumn::make('dmenggunakanfasilitas')
+            ->label('Disiplin Menggunakan Fasilitas'),
+            TextColumn::make('dk3')
+            ->label('dk3'),
+            TextColumn::make('dberbahasa')
+            ->label('Disiplin Berbahasa'),
+            TextColumn::make('dbertindak')
+            ->label('Bertindak & Menindak'),
+            TextColumn::make('dkeamanan')
+            ->label('Disiplin Keamanan'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')

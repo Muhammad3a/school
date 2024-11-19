@@ -7,6 +7,7 @@ use App\Models\Pkl;
 use Filament\Pages;
 use Filament\Panel;
 use App\Models\Alfa;
+use App\Models\Cps1;
 use App\Models\Izin;
 use App\Models\dsmt1;
 use App\Models\Sakit;
@@ -48,6 +49,12 @@ use App\Filament\Resources\PplResource;
 use Filament\Navigation\NavigationItem;
 use App\Filament\Resources\AlfaResource;
 use App\Filament\Resources\BingResource;
+use App\Filament\Resources\Cps1Resource;
+use App\Filament\Resources\Cps2Resource;
+use App\Filament\Resources\Cps3Resource;
+use App\Filament\Resources\Cps4Resource;
+use App\Filament\Resources\Cps5Resource;
+use App\Filament\Resources\Cps6Resource;
 use App\Filament\Resources\IzinResource;
 use App\Filament\Resources\PjokResource;
 use App\Filament\Resources\PwebResource;
@@ -61,44 +68,45 @@ use App\Filament\Resources\UserResource;
 use Filament\Navigation\NavigationGroup;
 use App\Filament\Resources\BandkResource;
 use App\Filament\Resources\BarabResource;
+
 use App\Filament\Resources\BindoResource;
+
 use App\Filament\Resources\Dsmt1Resource;
 use App\Filament\Resources\Dsmt2Resource;
+
 use App\Filament\Resources\Dsmt3Resource;
 use App\Filament\Resources\Dsmt4Resource;
 use App\Filament\Resources\Dsmt5Resource;
 use App\Filament\Resources\Dsmt6Resource;
 
 use App\Filament\Resources\Esmt1Resource;
-
 use App\Filament\Resources\Esmt2Resource;
+// use App\Filament\Resources\SemesterResource;
+// use App\Filament\Resources\ClassroomResource;
 use App\Filament\Resources\Esmt3Resource;
-
 use App\Filament\Resources\Esmt4Resource;
+// use App\Filament\Resources\CpSemesterResource;
 use App\Filament\Resources\Esmt5Resource;
 use App\Filament\Resources\Esmt6Resource;
 use App\Filament\Resources\FandkResource;
-
-use App\Filament\Resources\KimiaResource;
-use App\Filament\Resources\Ksmt1Resource;
-// use App\Filament\Resources\SemesterResource;
-// use App\Filament\Resources\ClassroomResource;
-use App\Filament\Resources\Ksmt2Resource;
-use App\Filament\Resources\Ksmt3Resource;
-// use App\Filament\Resources\CpSemesterResource;
-use App\Filament\Resources\Ksmt4Resource;
-use App\Filament\Resources\Ksmt5Resource;
-use App\Filament\Resources\Ksmt6Resource;
 // use Filament\Widgets\StatsOverviewWidget\Stat;
 // use App\Filament\Resources\DepartementResource;
 // use App\Filament\Resources\InformatikaResource;
-use App\Filament\Resources\NilaiResource;
+use App\Filament\Resources\KimiaResource;
 
+use App\Filament\Resources\Ksmt1Resource;
+use App\Filament\Resources\Ksmt2Resource;
+use App\Filament\Resources\Ksmt3Resource;
+use App\Filament\Resources\Ksmt4Resource;
+use App\Filament\Resources\Ksmt5Resource;
+use App\Filament\Resources\Ksmt6Resource;
+use App\Filament\Resources\NilaiResource;
 use App\Filament\Resources\PbtgmResource;
 use App\Filament\Resources\Psmt1Resource;
 use App\Filament\Resources\Psmt2Resource;
 use App\Filament\Resources\Psmt3Resource;
 use App\Filament\Resources\Psmt4Resource;
+
 use App\Filament\Resources\Psmt5Resource;
 use App\Filament\Resources\Psmt6Resource;
 use App\Filament\Resources\SakitResource;
@@ -106,40 +114,32 @@ use App\Filament\Resources\Usmt1Resource;
 use App\Filament\Resources\Usmt2Resource;
 use App\Filament\Resources\Usmt3Resource;
 use App\Filament\Resources\Usmt4Resource;
-
 use App\Filament\Resources\Usmt5Resource;
 use App\Filament\Resources\Usmt6Resource;
 use App\Filament\Resources\BkerjaResource;
 use App\Filament\Resources\BsundaResource;
 use App\Filament\Resources\DwaktuResource;
+// <<<<<<< HEAD
+// use App\Filament\Resources\DibadahResource;
+// =======
+
 use App\Filament\Resources\FisikaResource;
+
+// >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
 use App\Filament\Resources\JengkeResource;
 use App\Filament\Resources\PemturResource;
+
 use App\Filament\Resources\PriodeResource;
 use App\Filament\Resources\UjiKomResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Navigation\NavigationBuilder;
 // <<<<<<< HEAD
-// use App\Filament\Resources\DibadahResource;
-// =======
-
-use App\Filament\Resources\DibadahResource;
-
-// >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
-use App\Filament\Resources\KAmuliaResource;
-use App\Filament\Resources\PramukaResource;
-
-use App\Filament\Resources\SejarahResource;
-use App\Filament\Resources\StudentResource;
-use App\Filament\Resources\SubjectResource;
-use App\Filament\Resources\TeacherResource;
-// <<<<<<< HEAD
 // use App\Filament\Resources\DbelajarResource;
 // use App\Filament\Resources\DbergaulResource;
 // =======
 
-use App\Filament\Resources\DbelajarResource;
-use App\Filament\Resources\DbergaulResource;
+use App\Filament\Resources\DibadahResource;
+use App\Filament\Resources\KAmuliaResource;
 // use App\Filament\Resources\SemesterResource;
 // use App\Filament\Resources\ClassroomResource;
 // use App\Filament\Resources\DkeamananResource;
@@ -154,6 +154,13 @@ use App\Filament\Resources\DbergaulResource;
 // use App\Filament\Resources\PmemeliharaResource;
 
 // >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
+use App\Filament\Resources\PramukaResource;
+use App\Filament\Resources\SejarahResource;
+use App\Filament\Resources\StudentResource;
+use App\Filament\Resources\SubjectResource;
+use App\Filament\Resources\TeacherResource;
+use App\Filament\Resources\DbelajarResource;
+use App\Filament\Resources\DbergaulResource;
 use App\Filament\Resources\KesenianResource;
 use App\Filament\Resources\SemesterResource;
 use App\Filament\Resources\ClassroomResource;
@@ -164,18 +171,18 @@ use App\Filament\Resources\PramadhanResource;
 use App\Filament\Resources\BerekayasaResource;
 use App\Filament\Resources\CpSemesterResource;
 use App\Filament\Resources\DberbahasaResource;
+// <<<<<<< HEAD
 use App\Filament\Resources\DberbusanaResource;
+// =======
+
+// >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
 use App\Filament\Resources\DbertindakResource;
 use App\Filament\Resources\OkesehatanResource;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Filament\Resources\DepartementResource;
 use App\Filament\Resources\InformatikaResource;
 use App\Filament\Resources\KewirausahaResource;
-// <<<<<<< HEAD
 use App\Filament\Resources\PmemeliharaResource;
-// =======
-
-// >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
 use Illuminate\Session\Middleware\StartSession;
 use App\Filament\Resources\KeberkerjaanResource;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -201,8 +208,6 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use App\Filament\Resources\StudentResource\Widgets\StatsOverview;
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
-use App\Filament\Resources\Cps1Resource;
-use App\Models\Cps1;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -381,15 +386,7 @@ class AdminPanelProvider extends PanelProvider
                             ...Dsmt4Resource::getNavigationItems(),
                             ...Dsmt5Resource::getNavigationItems(),
                             ...Dsmt6Resource::getNavigationItems(),
-                            // ...DibadahResource::getNavigationItems(),
-                            // ...DbelajarResource::getNavigationItems(),
-                            // ...DbergaulResource::getNavigationItems(),
-                            // ...DberbusanaResource::getNavigationItems(),
-                            // ...DmenggunakanfasilitasResource::getNavigationItems(),
-                            // ...Dk3Resource::getNavigationItems(),
-                            // ...DberbahasaResource::getNavigationItems(),
-                            // ...DbertindakResource::getNavigationItems(),
-                            // ...DkeamananResource::getNavigationItems(),
+                           
 
 
                         ]),
@@ -417,21 +414,15 @@ class AdminPanelProvider extends PanelProvider
                         ]),
 
 
-                    NavigationGroup::make('10 Disiplin')
-                        ->items([
-                            ...Dsmt1Resource::getNavigationItems(),
-                            ...Dsmt2Resource::getNavigationItems(),
-                            ...Dsmt3Resource::getNavigationItems(),
-                            ...Dsmt4Resource::getNavigationItems(),
-                            ...Dsmt5Resource::getNavigationItems(),
-                            ...Dsmt6Resource::getNavigationItems(),
-
-
-                        ]),
 
                     NavigationGroup::make('Capaian Semester')
                         ->items([
                             ...Cps1Resource::getNavigationItems(),
+                            ...Cps2Resource::getNavigationItems(),
+                            ...Cps3Resource::getNavigationItems(),
+                            ...Cps4Resource::getNavigationItems(),
+                            ...Cps5Resource::getNavigationItems(),
+                            ...Cps6Resource::getNavigationItems(),
 
                         ]),
 
