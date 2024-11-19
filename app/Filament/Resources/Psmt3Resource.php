@@ -26,6 +26,9 @@ class Psmt3Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Nilai Pembiasaan Semester 3';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -109,12 +112,13 @@ class Psmt3Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListPsmt3s::route('/'),
-            'create' => Pages\CreatePsmt3::route('/create'),
-            'edit' => Pages\EditPsmt3::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai 10 Pembiasaan Semester 3";
+        } else
+            return "Teacher";
     }
 }

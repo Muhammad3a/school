@@ -26,6 +26,9 @@ class Ksmt4Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Nilai Umum Semester 4';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -97,12 +100,13 @@ class Ksmt4Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListKsmt4s::route('/'),
-            'create' => Pages\CreateKsmt4::route('/create'),
-            'edit' => Pages\EditKsmt4::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai Ledger B Kejuruan & KK Semester 4";
+        } else
+            return "Teacher";
     }
 }

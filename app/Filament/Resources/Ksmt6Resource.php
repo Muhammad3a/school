@@ -25,6 +25,9 @@ class Ksmt6Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Nilai Umum Semester 6';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -95,12 +98,13 @@ class Ksmt6Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListKsmt6s::route('/'),
-            'create' => Pages\CreateKsmt6::route('/create'),
-            'edit' => Pages\EditKsmt6::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai Ledger B Kejuruan & KK Semester 6";
+        } else
+            return "Teacher";
     }
 }

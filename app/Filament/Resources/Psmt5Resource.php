@@ -26,6 +26,9 @@ class Psmt5Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Nilai Pembiasaan Semester 5';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -108,12 +111,14 @@ class Psmt5Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListPsmt5s::route('/'),
-            'create' => Pages\CreatePsmt5::route('/create'),
-            'edit' => Pages\EditPsmt5::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai 10 Pembiasaan Semester 5";
+        } else
+            return "Teacher";
     }
 }
+
