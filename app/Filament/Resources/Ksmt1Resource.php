@@ -38,12 +38,18 @@ class Ksmt1Resource extends Resource
                         Select::make('classroom_id')
                             ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Kelas'),
-                        TextInput::make('bd'),
-                        TextInput::make('persisda'),
-                        TextInput::make('pw'),
-                        TextInput::make('ppb'),
-                        TextInput::make('pkk'),
-                        TextInput::make('kb'),
+                        TextInput::make('bd')
+                        ->label('Basis Data'),
+                        TextInput::make('persisda')
+                        ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
+                        TextInput::make('pw')
+                        ->label('Pemrograman Web'),
+                        TextInput::make('ppb')
+                        ->label('Pemrograman Perangkat Bergerak'),
+                        TextInput::make('pkk')
+                        ->label('Produk Kreatif & Kewirausahaan'),
+                        TextInput::make('kb')
+                        ->label('Kecerdasaan Buatan'),
                     ])->columns(2)
             ]);
     }
@@ -56,16 +62,20 @@ class Ksmt1Resource extends Resource
                     ->label('Murid'),
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
-                TextColumn::make('bd'),
-                TextColumn::make('persisda'),
-                TextColumn::make('pw'),
-                TextColumn::make('ppb'),
-                TextColumn::make('pkk'),
-                TextColumn::make('kb'),
-                //TextColumn::make('profesi'),
-                //TextColumn::make('pemtur'),
-                // TextColumn::make('pbo'),
-                //TextColumn::make('gim'),
+                TextColumn::make('bd')
+                ->label('Basis Data'),
+                TextColumn::make('persisda')
+                ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
+                TextColumn::make('pw')
+                ->label('Pemrograman Web'),
+                TextColumn::make('ppb')
+                ->label('Pemrograman Perangkat Bergerak'),
+                TextColumn::make('pkk')
+                ->label('Produk Kreatif & Kewirausahaan'),
+                TextColumn::make('kb')
+                ->label('Kecerdasaan Buatan'),
+
+               
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')

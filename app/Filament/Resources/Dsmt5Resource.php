@@ -30,25 +30,30 @@ class Dsmt5Resource extends Resource
     {
         return $form
             ->schema([
-                Card::make()
-                ->schema([
-                    Select::make('student_id')
-                        ->options(Student::all()->pluck('name', 'id'))
-                        ->label('Murid'),
-                    Select::make('classroom_id')
-                        ->options(Classroom::all()->pluck('name', 'id'))
-                        ->label('Kelas'),
-                        TextInput::make('dwaktu'),
-                        TextInput::make('dibadah'),
-                        TextInput::make('dbelajar'),
-                        TextInput::make('dbergaul'),
-                        TextInput::make('dberbusana'),
-                        TextInput::make('dmenggunakanfasilitas'),
-                        TextInput::make('dk3'),
-                        TextInput::make('dberbahasa'),
-                         TextInput::make('dbertindak'),
-                        TextInput::make('dkeamanan'),
-                        ])->columns(2)
+                TextColumn::make('student.name')
+                ->label('Murid'),
+            TextColumn::make('classroom.name')
+                ->label('Kelas'),
+            TextColumn::make('dwaktu')
+            ->label('Disiplin Waktu'),
+            TextColumn::make('dibadah')
+            ->label('Disiplin Ibadah'),
+            TextColumn::make('dbelajar')
+            ->label('Disiplin Belajar'),
+            TextColumn::make('dbergaul')
+            ->label('Disiplin Bergaul'),
+            TextColumn::make('dberbusana')
+            ->label('Disiplin Berbusana'),
+            TextColumn::make('dmenggunakanfasilitas')
+            ->label('Disiplin Menggunakan Fasilitas'),
+            TextColumn::make('dk3')
+            ->label('dk3'),
+            TextColumn::make('dberbahasa')
+            ->label('Disiplin Berbahasa'),
+            TextColumn::make('dbertindak')
+            ->label('Bertindak & Menindak'),
+            TextColumn::make('dkeamanan')
+            ->label('Disiplin Keamanan'),
             ]);
     }
 
@@ -60,16 +65,26 @@ class Dsmt5Resource extends Resource
                 ->label('Murid'),
             TextColumn::make('classroom.name')
                 ->label('Kelas'),
-            TextColumn::make('dwaktu'),
-            TextColumn::make('dibadah'),
-            TextColumn::make('dbelajar'),
-            TextColumn::make('dbergaul'),
-            TextColumn::make('dberbusana'),
-            TextColumn::make('dmenggunakanfasilitas'),
-            TextColumn::make('dk3'),
-            TextColumn::make('dberbahasa'),
-            TextColumn::make('dbertindak'),
-            TextColumn::make('dkeamanan'),
+            TextColumn::make('dwaktu')
+            ->label('Disiplin Waktu'),
+            TextColumn::make('dibadah')
+            ->label('Disiplin Ibadah'),
+            TextColumn::make('dbelajar')
+            ->label('Disiplin Belajar'),
+            TextColumn::make('dbergaul')
+            ->label('Disiplin Bergaul'),
+            TextColumn::make('dberbusana')
+            ->label('Disiplin Berbusana'),
+            TextColumn::make('dmenggunakanfasilitas')
+            ->label('Disiplin Menggunakan Fasilitas'),
+            TextColumn::make('dk3')
+            ->label('dk3'),
+            TextColumn::make('dberbahasa')
+            ->label('Disiplin Berbahasa'),
+            TextColumn::make('dbertindak')
+            ->label('Bertindak & Menindak'),
+            TextColumn::make('dkeamanan')
+            ->label('Disiplin Keamanan'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')

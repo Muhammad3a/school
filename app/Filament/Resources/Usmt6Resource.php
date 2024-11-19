@@ -38,16 +38,26 @@ class Usmt6Resource extends Resource
                     Select::make('classroom_id')
                         ->options(Classroom::all()->pluck('name', 'id'))
                         ->label('Kelas'),
-                        TextInput::make('mtk'),
-                        TextInput::make('inggris'),
-                        TextInput::make('informatika'),
-                        TextInput::make('fisika'),
-                        TextInput::make('kimia'),
-                        TextInput::make('bisnis'),
-                        TextInput::make('profesi'),
-                        TextInput::make('pemtur'),
-                        TextInput::make('pbo'),
-                        TextInput::make('gim'),
+                        TextInput::make('mtk')
+                        ->label('Matematika'),
+                        TextInput::make('inggris')
+                        ->label('Bahasa Inggris'),
+                        TextInput::make('informatika')
+                        ->label('Informatika'),
+                        TextInput::make('fisika')
+                        ->label('Fisika'),
+                        TextInput::make('kimia')
+                        ->label('Kimia'),
+                        TextInput::make('bisnis')
+                        ->label('Proses Bisnis & K3LH'),
+                        TextInput::make('profesi')
+                        ->label('Profesi Dan Kewirausahaan'),
+                        TextInput::make('pemtur')
+                        ->label('Pemrograman Terstruktur'),
+                        TextInput::make('pbo')
+                        ->label('Pemrograman Berorientasi Objek'),
+                        TextInput::make('gim')
+                        ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM'),
                         ])->columns(2)
             ]);
     }
@@ -60,16 +70,26 @@ class Usmt6Resource extends Resource
                 ->label('Murid'),
             TextColumn::make('classroom.name')
                 ->label('Kelas'),
-            TextColumn::make('mtk'),
-            TextColumn::make('inggris'),
-            TextColumn::make('informatika'),
-            TextColumn::make('fisika'),
-            TextColumn::make('kimia'),
-            TextColumn::make('bisnis'),
-            TextColumn::make('profesi'),
-            TextColumn::make('pemtur'),
-            TextColumn::make('pbo'),
-            TextColumn::make('gim'),
+            TextColumn::make('mtk')
+            ->label('Matematika'),
+            TextColumn::make('inggris')
+            ->label('Bahasa Inggris'),
+            TextColumn::make('informatika')
+            ->label('Informatika'),
+            TextColumn::make('fisika')
+            ->label('Fisika'),
+            TextColumn::make('kimia')
+            ->label('Kimia'),
+            TextColumn::make('bisnis')
+            ->label('Proses Bisnis & K3LH'),
+            TextColumn::make('profesi')
+            ->label('Profesi Dan Kewirausahaan'),
+            TextColumn::make('pemtur')
+            ->label('Pemrograman Terstruktur'),
+            TextColumn::make('pbo')
+            ->label('Pemrograman Berorientasi Objek'),
+            TextColumn::make('gim')
+            ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')

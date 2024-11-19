@@ -38,16 +38,26 @@ class Psmt2Resource extends Resource
                     Select::make('classroom_id')
                         ->options(Classroom::all()->pluck('name', 'id'))
                         ->label('Kelas'),
-                        TextInput::make('bpot'),
-                        TextInput::make('bmuslim'),
-                        TextInput::make('mabsaai'),
-                        TextInput::make('mma'),
-                        TextInput::make('mkdl'),
-                        TextInput::make('msfss'),
-                        TextInput::make('mtck'),
-                        TextInput::make('tmisd'),
-                        TextInput::make('mswss'),
-                        TextInput::make('cta'),
+                        TextInput::make('bpot')
+                        ->label('Berbakti pada Orang Tua'),
+                        TextInput::make('bmuslim')
+                        ->label('Berbusana Muslim'),
+                        TextInput::make('mabsaai')
+                        ->label('Memelihara Adab Belajar sesuai Ajaran Agama Islam'),
+                        TextInput::make(name: 'mma')
+                        ->label('Membaca dan Menghafal Al-Quran'),
+                        TextInput::make('mkdl')
+                        ->label('Memelihara Kebersihan Diri dan Lingkungan'),
+                        TextInput::make('msfss')
+                        ->label('Mendirikan Sholat Fardhu dan Sholat Sunat'),
+                        TextInput::make('mtck')
+                        ->label('Melaksanakan Talim dan Ceramah Keagamaan'),
+                        TextInput::make('tmisd')
+                        ->label('Terbiasa Melaksanakan Infaq Sejak Dini'),
+                        TextInput::make('mswss')
+                        ->label('Melaksanakan Saum Wajib dan Saum Sunah'),
+                        TextInput::make('cta')
+                        ->label('Cinta Tanah Air'),
                         ])->columns(2)
             ]);
     }
@@ -60,18 +70,26 @@ class Psmt2Resource extends Resource
                 ->label('Murid'),
             TextColumn::make('classroom.name')
                 ->label('Kelas'),
-            TextColumn::make('pai')
-            ->label('Pendidikan Agama Islam'),
-            TextColumn::make('bpot'),
-            TextColumn::make('bmuslim'),
-            TextColumn::make('mabsaai'),
-            TextColumn::make('mma'),
-            TextColumn::make('mkdl'),
-            TextColumn::make('msfss'),
-            TextColumn::make('mtck'),
-            TextColumn::make('tmisd'),
-            TextColumn::make('mswss'),
-            TextColumn::make('cta'),
+            TextColumn::make('bpot')
+            ->label('Berbakti pada Orang Tua'),
+            TextColumn::make('bmuslim')
+            ->label('Berbusana Muslim'),
+            TextColumn::make('mabsaai')
+            ->label('Memelihara Adab Belajar sesuai Ajaran Agama Islam'),
+            TextColumn::make('mma')
+            ->label('Membaca dan Menghafal Al-Quran'),
+            TextColumn::make('mkdl')
+            ->label('Memelihara Kebersihan Diri dan Lingkungan'),
+            TextColumn::make('msfss')
+            ->label('Mendirikan Sholat Fardhu dan Sholat Sunat'),
+            TextColumn::make('mtck')
+            ->label('Melaksanakan Talim dan Ceramah Keagamaan'),
+            TextColumn::make('tmisd')
+            ->label('Terbiasa Melaksanakan Infaq Sejak Dini'),
+            TextColumn::make('mswss')
+            ->label('Melaksanakan Saum Wajib dan Saum Sunah'),
+            TextColumn::make('cta')
+            ->label('Cinta Tanah Air'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
