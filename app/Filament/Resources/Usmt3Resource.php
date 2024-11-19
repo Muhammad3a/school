@@ -26,6 +26,9 @@ class Usmt3Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Nilai Umum Semester 3';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -113,12 +116,14 @@ class Usmt3Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListUsmt3s::route('/'),
-            'create' => Pages\CreateUsmt3::route('/create'),
-            'edit' => Pages\EditUsmt3::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai Ledger B Kejuruan Umum & DK Semester 3";
+        } else
+            return "Teacher";
     }
 }
+

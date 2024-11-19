@@ -26,6 +26,9 @@ class Esmt1Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Nilai Eskul Semester 1';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -123,12 +126,13 @@ class Esmt1Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListEsmt1s::route('/'),
-            'create' => Pages\CreateEsmt1::route('/create'),
-            'edit' => Pages\EditEsmt1::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai Ledger D Eskul,p5k,Presensi Semester 1";
+        } else
+            return "Teacher";
     }
 }

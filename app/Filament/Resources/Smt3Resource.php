@@ -25,7 +25,7 @@ class Smt3Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Semester 3';
+    protected static ?string $navigationLabel = 'Nilai Mulok Semester 3';
 
     public static function form(Form $form): Form
     {
@@ -106,12 +106,13 @@ class Smt3Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListSmt3s::route('/'),
-            'create' => Pages\CreateSmt3::route('/create'),
-            'edit' => Pages\EditSmt3::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai Ledger Mapel Umum & Mulok Semester 3";
+        } else
+            return "Teacher";
     }
 }

@@ -26,6 +26,9 @@ class Usmt5Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Nilai Umum Semester 5';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -113,12 +116,13 @@ class Usmt5Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListUsmt5s::route('/'),
-            'create' => Pages\CreateUsmt5::route('/create'),
-            'edit' => Pages\EditUsmt5::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai Ledger B Kejuruan Umum & DK Semester 5";
+        } else
+            return "Teacher";
     }
 }

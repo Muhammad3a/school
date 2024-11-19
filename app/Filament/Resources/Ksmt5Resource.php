@@ -26,6 +26,9 @@ class Ksmt5Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Nilai Kejuruan Semester 5';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -97,12 +100,13 @@ class Ksmt5Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListKsmt5s::route('/'),
-            'create' => Pages\CreateKsmt5::route('/create'),
-            'edit' => Pages\EditKsmt5::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai Ledger B Kejuruan & KK Semester 5";
+        } else
+            return "Teacher";
     }
 }

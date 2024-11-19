@@ -25,7 +25,7 @@ class Smt2Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Semester 2';
+    protected static ?string $navigationLabel = 'Nilai Mulok Semester 2';
 
     public static function form(Form $form): Form
     {
@@ -106,12 +106,14 @@ class Smt2Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListSmt2s::route('/'),
-            'create' => Pages\CreateSmt2::route('/create'),
-            'edit' => Pages\EditSmt2::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai Ledger Mapel Umum & Mulok Semester 2";
+        } else
+            return "Teacher";
     }
 }
+

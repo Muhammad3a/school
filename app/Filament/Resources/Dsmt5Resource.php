@@ -26,6 +26,9 @@ class Dsmt5Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Nilai Disiplin Semester 5';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -108,12 +111,13 @@ class Dsmt5Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListDsmt5s::route('/'),
-            'create' => Pages\CreateDsmt5::route('/create'),
-            'edit' => Pages\EditDsmt5::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai 10 Disiplin Semester 5";
+        } else
+            return "Teacher";
     }
 }

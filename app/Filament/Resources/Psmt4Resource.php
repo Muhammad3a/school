@@ -26,6 +26,9 @@ class Psmt4Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationLabel = 'Nilai Pembiasaan Semester 4';
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -108,12 +111,13 @@ class Psmt4Resource extends Resource
         ];
     }
 
-    public static function getPages(): array
+    public  static function getLabel(): ?string
     {
-        return [
-            'index' => Pages\ListPsmt4s::route('/'),
-            'create' => Pages\CreatePsmt4::route('/create'),
-            'edit' => Pages\EditPsmt4::route('/{record}/edit'),
-        ];
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return "Nilai 10 Pembiasaan Semester 4";
+        } else
+            return "Teacher";
     }
 }
