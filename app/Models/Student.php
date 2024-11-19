@@ -33,4 +33,24 @@ class Student extends Model
     {
         return $this->hasOne(usmt1::class, 'student_id');
     }
+    public function esmt1()
+    {
+        return $this->hasOne(esmt1::class, 'student_id');
+    }
+    public function kindustri()
+    {
+        return $this->hasOne(Kindustri::class, 'student_id', 'id');
+    }
+    public function pkl()
+    {
+        return $this->hasOne(Pkl::class, 'student_id', 'id');
+    }
+    public function ujikom()
+    {
+        return $this->hasOne(UjiKom::class, 'student_id', 'id');
+    }
+    public function dsmt1()
+    {
+        return $this->hasOne(dsmt1::class, 'student_id', 'id');
+    }
 }
