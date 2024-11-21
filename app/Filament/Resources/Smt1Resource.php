@@ -39,12 +39,12 @@ class Smt1Resource extends Resource
                 ->schema([
                     Select::make('student_id')
                         ->label('Murid')
-                        ->options(fn () => Student::pluck('name', 'id'))
+                        ->options(fn() => Student::pluck('name', 'id'))
                         ->required()
                         ->searchable(),
                     Select::make('classroom_id')
                         ->label('Kelas')
-                        ->options(fn () => Classroom::pluck('name', 'id'))
+                        ->options(fn() => Classroom::pluck('name', 'id'))
                         ->required()
                         ->searchable(),
                     TextInput::make('pai')
@@ -100,7 +100,7 @@ class Smt1Resource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
                     ->label('Filter Kelas')
-                    ->options(fn () => Classroom::pluck('name', 'id')),
+                    ->options(fn() => Classroom::pluck('name', 'id')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -115,6 +115,15 @@ class Smt1Resource extends Resource
     public static function getRelations(): array
     {
         return [];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListSmt1s::route('/'),
+            'create' => Pages\CreateSmt1::route('/create'),
+            'edit' => Pages\EditSmt1::route('/{record}/edit'),
+        ];
     }
 
     public  static function getLabel(): ?string

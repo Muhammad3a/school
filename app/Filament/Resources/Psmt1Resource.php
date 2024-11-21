@@ -33,34 +33,34 @@ class Psmt1Resource extends Resource
         return $form
             ->schema([
                 Card::make()
-                ->schema([
-                    Select::make('student_id')
-                        ->options(Student::all()->pluck('name', 'id'))
-                        ->label('Murid'),
-                    Select::make('classroom_id')
-                        ->options(Classroom::all()->pluck('name', 'id'))
-                        ->label('Kelas'),
+                    ->schema([
+                        Select::make('student_id')
+                            ->options(Student::all()->pluck('name', 'id'))
+                            ->label('Murid'),
+                        Select::make('classroom_id')
+                            ->options(Classroom::all()->pluck('name', 'id'))
+                            ->label('Kelas'),
                         TextInput::make('bpot')
-                        ->label('Berbakti pada Orang Tua'),
+                            ->label('Berbakti pada Orang Tua'),
                         TextInput::make('bmuslim')
-                        ->label('Berbusana Muslim'),
+                            ->label('Berbusana Muslim'),
                         TextInput::make('mabsaai')
-                        ->label('Memelihara Adab Belajar sesuai Ajaran Agama Islam'),
-                        TextInput::make(name: 'mma')
-                        ->label('Membaca dan Menghafal Al-Quran'),
+                            ->label('Memelihara Adab Belajar sesuai Ajaran Agama Islam'),
+                        TextInput::make('mma')
+                            ->label('Membaca dan Menghafal Al-Quran'),
                         TextInput::make('mkdl')
-                        ->label('Memelihara Kebersihan Diri dan Lingkungan'),
+                            ->label('Memelihara Kebersihan Diri dan Lingkungan'),
                         TextInput::make('msfss')
-                        ->label('Mendirikan Sholat Fardhu dan Sholat Sunat'),
+                            ->label('Mendirikan Sholat Fardhu dan Sholat Sunat'),
                         TextInput::make('mtck')
-                        ->label('Melaksanakan Talim dan Ceramah Keagamaan'),
+                            ->label('Melaksanakan Talim dan Ceramah Keagamaan'),
                         TextInput::make('tmisd')
-                        ->label('Terbiasa Melaksanakan Infaq Sejak Dini'),
+                            ->label('Terbiasa Melaksanakan Infaq Sejak Dini'),
                         TextInput::make('mswss')
-                        ->label('Melaksanakan Saum Wajib dan Saum Sunah'),
+                            ->label('Melaksanakan Saum Wajib dan Saum Sunah'),
                         TextInput::make('cta')
-                        ->label('Cinta Tanah Air'),
-                        ])->columns(2)
+                            ->label('Cinta Tanah Air'),
+                    ])->columns(2)
             ]);
     }
 
@@ -69,34 +69,34 @@ class Psmt1Resource extends Resource
         return $table
             ->columns([
                 TextColumn::make('student.name')
-                ->label('Murid'),
-            TextColumn::make('classroom.name')
-                ->label('Kelas'),
-            TextColumn::make('bpot')
-            ->label('Berbakti pada Orang Tua'),
-            TextColumn::make('bmuslim')
-            ->label('Berbusana Muslim'),
-            TextColumn::make('mabsaai')
-            ->label('Memelihara Adab Belajar sesuai Ajaran Agama Islam'),
-            TextColumn::make('mma')
-            ->label('Membaca dan Menghafal Al-Quran'),
-            TextColumn::make('mkdl')
-            ->label('Memelihara Kebersihan Diri dan Lingkungan'),
-            TextColumn::make('msfss')
-            ->label('Mendirikan Sholat Fardhu dan Sholat Sunat'),
-            TextColumn::make('mtck')
-            ->label('Melaksanakan Talim dan Ceramah Keagamaan'),
-            TextColumn::make('tmisd')
-            ->label('Terbiasa Melaksanakan Infaq Sejak Dini'),
-            TextColumn::make('mswss')
-            ->label('Melaksanakan Saum Wajib dan Saum Sunah'),
-            TextColumn::make('cta')
-            ->label('Cinta Tanah Air'),
+                    ->label('Murid'),
+                TextColumn::make('classroom.name')
+                    ->label('Kelas'),
+                TextColumn::make('bpot')
+                    ->label('Berbakti pada Orang Tua'),
+                TextColumn::make('bmuslim')
+                    ->label('Berbusana Muslim'),
+                TextColumn::make('mabsaai')
+                    ->label('Memelihara Adab Belajar sesuai Ajaran Agama Islam'),
+                TextColumn::make('mma')
+                    ->label('Membaca dan Menghafal Al-Quran'),
+                TextColumn::make('mkdl')
+                    ->label('Memelihara Kebersihan Diri dan Lingkungan'),
+                TextColumn::make('msfss')
+                    ->label('Mendirikan Sholat Fardhu dan Sholat Sunat'),
+                TextColumn::make('mtck')
+                    ->label('Melaksanakan Talim dan Ceramah Keagamaan'),
+                TextColumn::make('tmisd')
+                    ->label('Terbiasa Melaksanakan Infaq Sejak Dini'),
+                TextColumn::make('mswss')
+                    ->label('Melaksanakan Saum Wajib dan Saum Sunah'),
+                TextColumn::make('cta')
+                    ->label('Cinta Tanah Air'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
-                ->options(Classroom::all()->pluck('name', 'id'))
-                ->label('Filter Kelas'),
+                    ->options(Classroom::all()->pluck('name', 'id'))
+                    ->label('Filter Kelas'),
 
             ])
             ->actions([
@@ -113,6 +113,15 @@ class Psmt1Resource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListPsmt1s::route('/'),
+            'create' => Pages\CreatePsmt1::route('/create'),
+            'edit' => Pages\EditPsmt1::route('/{record}/edit'),
         ];
     }
 

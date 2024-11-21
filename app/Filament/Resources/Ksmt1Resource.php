@@ -42,17 +42,17 @@ class Ksmt1Resource extends Resource
                             ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Kelas'),
                         TextInput::make('bd')
-                        ->label('Basis Data'),
+                            ->label('Basis Data'),
                         TextInput::make('persisda')
-                        ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
+                            ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
                         TextInput::make('pw')
-                        ->label('Pemrograman Web'),
+                            ->label('Pemrograman Web'),
                         TextInput::make('ppb')
-                        ->label('Pemrograman Perangkat Bergerak'),
+                            ->label('Pemrograman Perangkat Bergerak'),
                         TextInput::make('pkk')
-                        ->label('Produk Kreatif & Kewirausahaan'),
+                            ->label('Produk Kreatif & Kewirausahaan'),
                         TextInput::make('kb')
-                        ->label('Kecerdasaan Buatan'),
+                            ->label('Kecerdasaan Buatan'),
                     ])->columns(2)
             ]);
     }
@@ -66,19 +66,19 @@ class Ksmt1Resource extends Resource
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
                 TextColumn::make('bd')
-                ->label('Basis Data'),
+                    ->label('Basis Data'),
                 TextColumn::make('persisda')
-                ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
+                    ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
                 TextColumn::make('pw')
-                ->label('Pemrograman Web'),
+                    ->label('Pemrograman Web'),
                 TextColumn::make('ppb')
-                ->label('Pemrograman Perangkat Bergerak'),
+                    ->label('Pemrograman Perangkat Bergerak'),
                 TextColumn::make('pkk')
-                ->label('Produk Kreatif & Kewirausahaan'),
+                    ->label('Produk Kreatif & Kewirausahaan'),
                 TextColumn::make('kb')
-                ->label('Kecerdasaan Buatan'),
+                    ->label('Kecerdasaan Buatan'),
 
-               
+
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
@@ -99,6 +99,15 @@ class Ksmt1Resource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListKsmt1s::route('/'),
+            'create' => Pages\CreateKsmt1::route('/create'),
+            'edit' => Pages\EditKsmt1::route('/{record}/edit'),
         ];
     }
 

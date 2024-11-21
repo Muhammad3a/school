@@ -32,30 +32,30 @@ class Smt2Resource extends Resource
         return $form
             ->schema([
                 Card::make()
-                ->schema([
-                    Select::make('student_id')
-                        ->options(Student::all()->pluck('name', 'id'))
-                        ->label('Murid'),
-                    Select::make('classroom_id')
-                        ->options(Classroom::all()->pluck('name', 'id'))
-                        ->label('Kelas'),
-                    TextInput::make('pai')
-                        ->label('Pendidikan Agama Islam'),
-                    TextInput::make('pp')
-                        ->label('Pendidikan Pancasila'),
-                    TextInput::make('indo')
-                        ->label('Bahasa Indonesia'),
-                    TextInput::make('pjok')
-                        ->label('Pendidikan Jasmani Olahraga dan Kesehatan'),
-                    TextInput::make('sejarah')
-                        ->label('Sejarah'),
-                    TextInput::make('sb')
-                        ->label('Seni Budaya'),
-                    TextInput::make('sunda')
-                        ->label('Bahasa Sunda'),
-                    TextInput::make('arab')
-                        ->label('Bahasa Arab'),
-                ])->columns(2)
+                    ->schema([
+                        Select::make('student_id')
+                            ->options(Student::all()->pluck('name', 'id'))
+                            ->label('Murid'),
+                        Select::make('classroom_id')
+                            ->options(Classroom::all()->pluck('name', 'id'))
+                            ->label('Kelas'),
+                        TextInput::make('pai')
+                            ->label('Pendidikan Agama Islam'),
+                        TextInput::make('pp')
+                            ->label('Pendidikan Pancasila'),
+                        TextInput::make('indo')
+                            ->label('Bahasa Indonesia'),
+                        TextInput::make('pjok')
+                            ->label('Pendidikan Jasmani Olahraga dan Kesehatan'),
+                        TextInput::make('sejarah')
+                            ->label('Sejarah'),
+                        TextInput::make('sb')
+                            ->label('Seni Budaya'),
+                        TextInput::make('sunda')
+                            ->label('Bahasa Sunda'),
+                        TextInput::make('arab')
+                            ->label('Bahasa Arab'),
+                    ])->columns(2)
             ]);
     }
 
@@ -64,25 +64,25 @@ class Smt2Resource extends Resource
         return $table
             ->columns([
                 TextColumn::make('student.name')
-                ->label('Murid'),
-            TextColumn::make('classroom.name')
-                ->label('Kelas'),
-            TextColumn::make('pai')
-            ->label('Pendidikan Agama Islam'),
-            TextColumn::make('pp')
-            ->label('Pendidikan Pancasila'),
-            TextColumn::make('indo')
-            ->label('Bahasa Indonesia '),
-            TextColumn::make('pjok')
-            ->label('Pendidikan Jasmani OLahraga & Kesehatan'),
-            TextColumn::make('sejarah')
-            ->label('Sejarah'),
-            TextColumn::make('sb')
-            ->label('Seni Budaya'),
-            TextColumn::make('sunda')
-            ->label('Bahasa Sunda'),
-            TextColumn::make('arab')
-            ->label('Bahasa Arab'),
+                    ->label('Murid'),
+                TextColumn::make('classroom.name')
+                    ->label('Kelas'),
+                TextColumn::make('pai')
+                    ->label('Pendidikan Agama Islam'),
+                TextColumn::make('pp')
+                    ->label('Pendidikan Pancasila'),
+                TextColumn::make('indo')
+                    ->label('Bahasa Indonesia '),
+                TextColumn::make('pjok')
+                    ->label('Pendidikan Jasmani OLahraga & Kesehatan'),
+                TextColumn::make('sejarah')
+                    ->label('Sejarah'),
+                TextColumn::make('sb')
+                    ->label('Seni Budaya'),
+                TextColumn::make('sunda')
+                    ->label('Bahasa Sunda'),
+                TextColumn::make('arab')
+                    ->label('Bahasa Arab'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
@@ -106,6 +106,15 @@ class Smt2Resource extends Resource
         ];
     }
 
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListSmt2s::route('/'),
+            'create' => Pages\CreateSmt2::route('/create'),
+            'edit' => Pages\EditSmt2::route('/{record}/edit'),
+        ];
+    }
+
     public  static function getLabel(): ?string
     {
         $locale = app()->getLocale();
@@ -116,4 +125,3 @@ class Smt2Resource extends Resource
             return "Teacher";
     }
 }
-

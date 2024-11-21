@@ -34,38 +34,38 @@ class Esmt5Resource extends Resource
         return $form
             ->schema([
                 Card::make()
-                ->schema([
-                    Select::make('student_id')
-                        ->options(Student::all()->pluck('name', 'id'))
-                        ->label('Murid'),
-                    Select::make('classroom_id')
-                        ->options(Classroom::all()->pluck('name', 'id'))
-                        ->label('Kelas'),
+                    ->schema([
+                        Select::make('student_id')
+                            ->options(Student::all()->pluck('name', 'id'))
+                            ->label('Murid'),
+                        Select::make('classroom_id')
+                            ->options(Classroom::all()->pluck('name', 'id'))
+                            ->label('Kelas'),
                         TextInput::make('pramuka')
-                        ->label('Pramuka'),
+                            ->label('Pramuka'),
                         TextInput::make('kesenian')
-                        ->label('Kesenian'),
+                            ->label('Kesenian'),
                         TextInput::make('pramadan')
-                        ->label('Pesantren Ramadhan'),
+                            ->label('Pesantren Ramadhan'),
                         TextInput::make('okesehatan')
-                        ->label('Olahraga & Kesehatan'),
+                            ->label('Olahraga & Kesehatan'),
                         TextInput::make('kmulia')
-                        ->label('Keagamaan & Akhlak Mulia'),
+                            ->label('Keagamaan & Akhlak Mulia'),
                         TextInput::make('bkerja')
-                        ->label('Budaya Kerja'),
+                            ->label('Budaya Kerja'),
                         TextInput::make('kewirausahaan')
-                        ->label('Kewirausaan'),
+                            ->label('Kewirausaan'),
                         TextInput::make('berekayasa')
-                        ->label('Berekayasa & Berteknologi'),
-                       TextInput::make('kebekerjaan')
-                       ->label('Keberkerjaan'),
-                       TextInput::make('sakit')
-                       ->label('Sakit'),
-                       TextInput::make('izin')
-                       ->label('Izin'),
-                       TextInput::make('Alfa')
-                       ->label('Alfa'),
-                        ])->columns(2)
+                            ->label('Berekayasa & Berteknologi'),
+                        TextInput::make('kebekerjaan')
+                            ->label('Keberkerjaan'),
+                        TextInput::make('sakit')
+                            ->label('Sakit'),
+                        TextInput::make('izin')
+                            ->label('Izin'),
+                        TextInput::make('Alfa')
+                            ->label('Alfa'),
+                    ])->columns(2)
             ]);
     }
 
@@ -74,38 +74,38 @@ class Esmt5Resource extends Resource
         return $table
             ->columns([
                 TextColumn::make('student.name')
-                ->label('Murid'),
-            TextColumn::make('classroom.name')
-                ->label('Kelas'),
-            TextColumn::make('pramuka')
-            ->label('Pramuka'),
-            TextColumn::make('kesenian')
-            ->label('Kesenian'),
-            TextColumn::make('pramadan')
-            ->label('Pesantren Ramadhan'),
-            TextColumn::make('okesehatan')
-            ->label('Olahraga & Kesehatan'),
-            TextColumn::make('kmulia')
-            ->label('Keagamaan & Akhlak Mulia'),
-            TextColumn::make('bkerja')
-            ->label('Budaya Kerja'),
-            TextColumn::make('kewirausahaan')
-            ->label('Kewirausaan'),
-          TextColumn::make('berekayasa')
-            ->label('Berekayasa & Berteknologi'),
-            TextColumn::make('kebekerjaan')
-            ->label('Keberkerjaan'),
-            TextColumn::make('sakit')
-            ->label('Sakit'),
-            TextColumn::make('izin')
-            ->label('Izin'),
-            TextColumn::make('alfa')
-            ->label('Alfa'),
+                    ->label('Murid'),
+                TextColumn::make('classroom.name')
+                    ->label('Kelas'),
+                TextColumn::make('pramuka')
+                    ->label('Pramuka'),
+                TextColumn::make('kesenian')
+                    ->label('Kesenian'),
+                TextColumn::make('pramadan')
+                    ->label('Pesantren Ramadhan'),
+                TextColumn::make('okesehatan')
+                    ->label('Olahraga & Kesehatan'),
+                TextColumn::make('kmulia')
+                    ->label('Keagamaan & Akhlak Mulia'),
+                TextColumn::make('bkerja')
+                    ->label('Budaya Kerja'),
+                TextColumn::make('kewirausahaan')
+                    ->label('Kewirausaan'),
+                TextColumn::make('berekayasa')
+                    ->label('Berekayasa & Berteknologi'),
+                TextColumn::make('kebekerjaan')
+                    ->label('Keberkerjaan'),
+                TextColumn::make('sakit')
+                    ->label('Sakit'),
+                TextColumn::make('izin')
+                    ->label('Izin'),
+                TextColumn::make('alfa')
+                    ->label('Alfa'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
-                ->options(Classroom::all()->pluck('name', 'id'))
-                ->label('Filter Kelas'),
+                    ->options(Classroom::all()->pluck('name', 'id'))
+                    ->label('Filter Kelas'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -121,6 +121,15 @@ class Esmt5Resource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListEsmt5s::route('/'),
+            'create' => Pages\CreateEsmt5::route('/create'),
+            'edit' => Pages\EditEsmt5::route('/{record}/edit'),
         ];
     }
 

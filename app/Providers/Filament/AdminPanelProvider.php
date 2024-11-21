@@ -177,6 +177,7 @@ use App\Filament\Resources\DberbusanaResource;
 
 // >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
 use App\Filament\Resources\DbertindakResource;
+use App\Filament\Resources\Karakters1Resource;
 use App\Filament\Resources\OkesehatanResource;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Filament\Resources\DepartementResource;
@@ -386,7 +387,7 @@ class AdminPanelProvider extends PanelProvider
                             ...Dsmt4Resource::getNavigationItems(),
                             ...Dsmt5Resource::getNavigationItems(),
                             ...Dsmt6Resource::getNavigationItems(),
-                           
+
 
 
                         ]),
@@ -400,16 +401,12 @@ class AdminPanelProvider extends PanelProvider
                             ...Psmt5Resource::getNavigationItems(),
                             ...Psmt6Resource::getNavigationItems(),
 
-                            // ...PberbaktiResource::getNavigationItems(),
-                            // ...PbusanamuslimResource::getNavigationItems(),
-                            // ...PmemeliharaadabResource::getNavigationItems(),
-                            // ...PmembacaalquranResource::getNavigationItems(),
-                            // ...PmemeliharaResource::getNavigationItems(),
-                            // ...PmendirikansholatResource::getNavigationItems(),
-                            // ...PtalimdanceramahResource::getNavigationItems(),
-                            // ...PinfaqsejakdiniResource::getNavigationItems(),
-                            // ...PmelaksanakansaumResource::getNavigationItems(),
-                            // ...PmencintaitanahairResource::getNavigationItems(),
+                        ]),
+
+                    NavigationGroup::make('Penguatan Profil Pelajar Pancasila')
+                        ->items([
+                            ...Karakters1Resource::getNavigationItems(),
+
 
                         ]),
 

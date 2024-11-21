@@ -32,30 +32,30 @@ class Smt3Resource extends Resource
         return $form
             ->schema([
                 Card::make()
-                ->schema([
-                    Select::make('student_id')
-                        ->options(Student::all()->pluck('name', 'id'))
-                        ->label('Murid'),
-                    Select::make('classroom_id')
-                        ->options(Classroom::all()->pluck('name', 'id'))
-                        ->label('Kelas'),
-                    TextInput::make('pai')
-                        ->label('Pendidikan Agama Islam'),
-                    TextInput::make('pp')
-                        ->label('Pendidikan Pancasila'),
-                    TextInput::make('indo')
-                        ->label('Bahasa Indonesia'),
-                    TextInput::make('pjok')
-                        ->label('Pendidikan Jasmani Olahraga dan Kesehatan'),
-                    TextInput::make('sejarah')
-                        ->label('Sejarah'),
-                    TextInput::make('sb')
-                        ->label('Seni Budaya'),
-                    TextInput::make('sunda')
-                        ->label('Bahasa Sunda'),
-                    TextInput::make('arab')
-                        ->label('Bahasa Arab'),
-                ])->columns(2)
+                    ->schema([
+                        Select::make('student_id')
+                            ->options(Student::all()->pluck('name', 'id'))
+                            ->label('Murid'),
+                        Select::make('classroom_id')
+                            ->options(Classroom::all()->pluck('name', 'id'))
+                            ->label('Kelas'),
+                        TextInput::make('pai')
+                            ->label('Pendidikan Agama Islam'),
+                        TextInput::make('pp')
+                            ->label('Pendidikan Pancasila'),
+                        TextInput::make('indo')
+                            ->label('Bahasa Indonesia'),
+                        TextInput::make('pjok')
+                            ->label('Pendidikan Jasmani Olahraga dan Kesehatan'),
+                        TextInput::make('sejarah')
+                            ->label('Sejarah'),
+                        TextInput::make('sb')
+                            ->label('Seni Budaya'),
+                        TextInput::make('sunda')
+                            ->label('Bahasa Sunda'),
+                        TextInput::make('arab')
+                            ->label('Bahasa Arab'),
+                    ])->columns(2)
             ]);
     }
 
@@ -68,21 +68,21 @@ class Smt3Resource extends Resource
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
                 TextColumn::make('pai')
-                ->label('Pendidikan Agama Islam'),
+                    ->label('Pendidikan Agama Islam'),
                 TextColumn::make('pp')
-                ->label('Pendidikan Pancasila'),
+                    ->label('Pendidikan Pancasila'),
                 TextColumn::make('indo')
-                ->label('Bahasa Indonesia '),
+                    ->label('Bahasa Indonesia '),
                 TextColumn::make('pjok')
-                ->label('Pendidikan Jasmani OLahraga & Kesehatan'),
+                    ->label('Pendidikan Jasmani OLahraga & Kesehatan'),
                 TextColumn::make('sejarah')
-                ->label('Sejarah'),
+                    ->label('Sejarah'),
                 TextColumn::make('sb')
-                ->label('Seni Budaya'),
+                    ->label('Seni Budaya'),
                 TextColumn::make('sunda')
-                ->label('Bahasa Sunda'),
+                    ->label('Bahasa Sunda'),
                 TextColumn::make('arab')
-                ->label('Bahasa Arab'),
+                    ->label('Bahasa Arab'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
@@ -103,6 +103,15 @@ class Smt3Resource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListSmt3s::route('/'),
+            'create' => Pages\CreateSmt3::route('/create'),
+            'edit' => Pages\EditSmt3::route('/{record}/edit'),
         ];
     }
 

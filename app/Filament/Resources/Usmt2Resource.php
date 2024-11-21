@@ -40,34 +40,34 @@ class Usmt2Resource extends Resource
         return $form
             ->schema([
                 Card::make()
-                ->schema([
-                    Select::make('student_id')
-                        ->options(Student::all()->pluck('name', 'id'))
-                        ->label('Murid'),
-                    Select::make('classroom_id')
-                        ->options(Classroom::all()->pluck('name', 'id'))
-                        ->label('Kelas'),
+                    ->schema([
+                        Select::make('student_id')
+                            ->options(Student::all()->pluck('name', 'id'))
+                            ->label('Murid'),
+                        Select::make('classroom_id')
+                            ->options(Classroom::all()->pluck('name', 'id'))
+                            ->label('Kelas'),
                         TextInput::make('mtk')
-                        ->label('Matematika'),
+                            ->label('Matematika'),
                         TextInput::make('inggris')
-                        ->label('Bahasa Inggris'),
+                            ->label('Bahasa Inggris'),
                         TextInput::make('informatika')
-                        ->label('Informatika'),
+                            ->label('Informatika'),
                         TextInput::make('fisika')
-                        ->label('Fisika'),
+                            ->label('Fisika'),
                         TextInput::make('kimia')
-                        ->label('Kimia'),
+                            ->label('Kimia'),
                         TextInput::make('bisnis')
-                        ->label('Proses Bisnis & K3LH'),
+                            ->label('Proses Bisnis & K3LH'),
                         TextInput::make('profesi')
-                        ->label('Profesi Dan Kewirausahaan'),
+                            ->label('Profesi Dan Kewirausahaan'),
                         TextInput::make('pemtur')
-                        ->label('Pemrograman Terstruktur'),
+                            ->label('Pemrograman Terstruktur'),
                         TextInput::make('pbo')
-                        ->label('Pemrograman Berorientasi Objek'),
+                            ->label('Pemrograman Berorientasi Objek'),
                         TextInput::make('gim')
-                        ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM'),
-                        ])->columns(2)
+                            ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM'),
+                    ])->columns(2)
             ]);
     }
 
@@ -76,37 +76,37 @@ class Usmt2Resource extends Resource
         return $table
             ->columns([
                 TextColumn::make('student.name')
-                ->label('Murid'),
-            TextColumn::make('classroom.name')
-                ->label('Kelas'),
-            TextColumn::make('mtk')
-            ->label('Matematika'),
-            TextColumn::make('inggris')
-            ->label('Bahasa Inggris'),
-            TextColumn::make('informatika')
-            ->label('Informatika'),
-            TextColumn::make('fisika')
-            ->label('Fisika'),
-            TextColumn::make('kimia')
-            ->label('Kimia'),
-            TextColumn::make('bisnis')
-            ->label('Proses Bisnis & K3LH'),
-            TextColumn::make('profesi')
-            ->label('Profesi Dan Kewirausahaan'),
-            TextColumn::make('pemtur')
-            ->label('Pemrograman Terstruktur'),
-            TextColumn::make('pbo')
-            ->label('Pemrograman Berorientasi Objek'),
-            TextColumn::make('gim')
-            ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM'),
+                    ->label('Murid'),
+                TextColumn::make('classroom.name')
+                    ->label('Kelas'),
+                TextColumn::make('mtk')
+                    ->label('Matematika'),
+                TextColumn::make('inggris')
+                    ->label('Bahasa Inggris'),
+                TextColumn::make('informatika')
+                    ->label('Informatika'),
+                TextColumn::make('fisika')
+                    ->label('Fisika'),
+                TextColumn::make('kimia')
+                    ->label('Kimia'),
+                TextColumn::make('bisnis')
+                    ->label('Proses Bisnis & K3LH'),
+                TextColumn::make('profesi')
+                    ->label('Profesi Dan Kewirausahaan'),
+                TextColumn::make('pemtur')
+                    ->label('Pemrograman Terstruktur'),
+                TextColumn::make('pbo')
+                    ->label('Pemrograman Berorientasi Objek'),
+                TextColumn::make('gim')
+                    ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM'),
 
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
-                ->options(Classroom::all()->pluck('name', 'id'))
-                ->label('Filter Kelas'),
-        ])
-            
+                    ->options(Classroom::all()->pluck('name', 'id'))
+                    ->label('Filter Kelas'),
+            ])
+
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
@@ -124,6 +124,15 @@ class Usmt2Resource extends Resource
         ];
     }
 
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListUsmt2s::route('/'),
+            'create' => Pages\CreateUsmt2::route('/create'),
+            'edit' => Pages\EditUsmt2::route('/{record}/edit'),
+        ];
+    }
+
     public  static function getLabel(): ?string
     {
         $locale = app()->getLocale();
@@ -134,4 +143,3 @@ class Usmt2Resource extends Resource
             return "Teacher";
     }
 }
-

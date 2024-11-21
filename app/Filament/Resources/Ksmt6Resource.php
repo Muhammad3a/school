@@ -33,26 +33,26 @@ class Ksmt6Resource extends Resource
         return $form
             ->schema([
                 Card::make()
-                ->schema([
-                    Select::make('student_id')
-                        ->options(Student::all()->pluck('name', 'id'))
-                        ->label('Murid'),
-                    Select::make('classroom_id')
-                        ->options(Classroom::all()->pluck('name', 'id'))
-                        ->label('Kelas'),
-                    TextInput::make('bd')
-                    ->label('Basis Data'),
-                    TextInput::make('persisda')
-                    ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
-                    TextInput::make('pw')
-                    ->label('Pemrograman Web'),
-                    TextInput::make('ppb')
-                    ->label('Pemrograman Perangkat Bergerak'),
-                    TextInput::make('pkk')
-                    ->label('Produk Kreatif & Kewirausahaan'),
-                    TextInput::make('kb')
-                    ->label('Kecerdasaan Buatan'),
-                ])->columns(2)
+                    ->schema([
+                        Select::make('student_id')
+                            ->options(Student::all()->pluck('name', 'id'))
+                            ->label('Murid'),
+                        Select::make('classroom_id')
+                            ->options(Classroom::all()->pluck('name', 'id'))
+                            ->label('Kelas'),
+                        TextInput::make('bd')
+                            ->label('Basis Data'),
+                        TextInput::make('persisda')
+                            ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
+                        TextInput::make('pw')
+                            ->label('Pemrograman Web'),
+                        TextInput::make('ppb')
+                            ->label('Pemrograman Perangkat Bergerak'),
+                        TextInput::make('pkk')
+                            ->label('Produk Kreatif & Kewirausahaan'),
+                        TextInput::make('kb')
+                            ->label('Kecerdasaan Buatan'),
+                    ])->columns(2)
             ]);
     }
 
@@ -61,26 +61,27 @@ class Ksmt6Resource extends Resource
         return $table
             ->columns([
                 TextColumn::make('student.name')
-                ->label('Murid'),
-            TextColumn::make('classroom.name')
-                ->label('Kelas'),
-            TextColumn::make('bd')
-            ->label('Basis Data'),
-            TextColumn::make('persisda')
-            ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
-            TextColumn::make('pw')
-            ->label('Pemrograman Web'),
-            TextColumn::make('ppb')
-            ->label('Pemrograman Perangkat Bergerak'),
-            TextColumn::make('pkk')
-            ->label('Produk Kreatif & Kewirausahaan'),
-            TextColumn::make('kb')
-            ->label('Kecerdasaan Buatan'),
+                    ->label('Murid'),
+                TextColumn::make('classroom.name')
+                    ->label('Kelas'),
+                TextColumn::make('bd')
+                    ->label('Basis Data'),
+                TextColumn::make('persisda')
+                    ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
+                TextColumn::make('pw')
+                    ->label('Pemrograman Web'),
+                TextColumn::make('ppb')
+                    ->label('Pemrograman Perangkat Bergerak'),
+                TextColumn::make('pkk')
+                    ->label('Produk Kreatif & Kewirausahaan'),
+                TextColumn::make('kb')
+                    ->label('Kecerdasaan Buatan'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
-                ->options(Classroom::all()->pluck('name', 'id'))
-                ->label('Filter Kelas'),            ])
+                    ->options(Classroom::all()->pluck('name', 'id'))
+                    ->label('Filter Kelas'),
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
@@ -95,6 +96,15 @@ class Ksmt6Resource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListKsmt6s::route('/'),
+            'create' => Pages\CreateKsmt6::route('/create'),
+            'edit' => Pages\EditKsmt6::route('/{record}/edit'),
         ];
     }
 

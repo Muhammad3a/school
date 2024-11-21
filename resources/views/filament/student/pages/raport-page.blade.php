@@ -263,9 +263,9 @@
     {{-- Catatan Akademik --}}
 
     <h6 class="font-bold">B. Catatan Akademik</h6>
-<tr>
-    <td class="border border-gray-300 px-4 py-2 text-center">Tingkatan prestasi, kedisiplinan, dan ketekunan dalam belajar. Semester depan harus lebih baik dari semester sekarang</td>
-</tr>
+        <tr>
+            <td class="border border-gray-300 px-4 py-2 text-center">Tingkatan prestasi, kedisiplinan, dan ketekunan dalam belajar. Semester depan harus lebih baik dari semester sekarang</td>
+        </tr>
 
 {{-- C. Kegiatan Belajar di Dunia Usaha/ Dunia Industri/ Dunia Kerja (DUDIKA) --}}
 <h6 class="font-bold">C. Kegiatan Belajar di Dunia Usaha/ Dunia Industri/ Dunia Kerja (DUDIKA)</h6>
@@ -333,7 +333,7 @@
             <table class="table-auto w-full border-collapse border border-gray-300 mt-4">
                 <thead>
                     <tr>
-                        <th class="font-bold px-4 py-2">Komponen</th>
+                        <th colspan="2" class="font-bold px-4 py-2">Komponen</th>
                         <th colspan="2" class="border font-bold px-4 py-2">Predikat</th>
                         <th class="border font-bold px-4 py-2">Deskripsi Capaian Kompetensi</th>
                     </tr>
@@ -406,6 +406,32 @@
                         <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->esmt1->kebekerjaan ?? '-' }}</td>
                         <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->esmt1->kebekerjaan) ? getPredikatP($this->student->esmt1->kebekerjaan) : '-' }}</td>
                     </tr>
+
+                  {{-- Data Presensi   --}}
+                  <tr>
+                    <td rowspan="3" class="border border-gray-300 px-4 py-2 text-center">Presensi</td>
+                    <td class="border border-gray-300 px-4 py-2 ">Sakit</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->esmt1->sakit ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">hari</td>
+                    <td rowspan="3" class="border border-gray-300 px-4 py-2">
+                        {{-- Ananda menunjukkan {{ getPredikatP($this->student->esmt1->kmulia ?? 0) }} sesuai harapan pada kegiatan Proyek P5K. --}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 ">Izin</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->esmt1->izin ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">hari</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 ">Tanpa Keterangan</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->esmt1->alfa ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">hari</td>
+                </tr>
+
+
+
                 </tbody>
             </table>
         @else
@@ -447,8 +473,71 @@
                     <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->dsmt1->dwaktu ?? '-' }}</td>
                     <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->dsmt1->dwaktu) ? getPredikatD($this->student->dsmt1->dwaktu) : '-' }}</td>
                     <td rowspan="10" class="border border-gray-300 px-4 py-2">
-                        Ananda menunjukkan {{ getPredikatD($this->student->dsmt1->dwaktu ?? 0) }} sesuai harapan pada prilaku 10 disiplin Azzainiyyah.
+                        Ananda menunjukkan {{ getPredikatD($this->student->dsmt1->dwaktu ?? 0) }} pada prilaku 10 disiplin Azzainiyyah.
                     </td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">2</td>
+                    <td class="border border-gray-300 px-4 py-2">Disiplin Ibadah</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->dsmt1->dibadah ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->dsmt1->dibadah) ? getPredikatD($this->student->dsmt1->dibadah) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">3</td>
+                    <td class="border border-gray-300 px-4 py-2">Disiplin Belajar</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->dsmt1->dbelajar ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->dsmt1->dbelajar) ? getPredikatD($this->student->dsmt1->dbelajar) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">4</td>
+                    <td class="border border-gray-300 px-4 py-2">Disiplin Bergaul</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->dsmt1->dbergaul ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->dsmt1->dbergaul) ? getPredikatD($this->student->dsmt1->dbergaul) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">5</td>
+                    <td class="border border-gray-300 px-4 py-2">Disiplin Berbusana</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->dsmt1->dberbusana ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->dsmt1->dberbusana) ? getPredikatD($this->student->dsmt1->dberbusana) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">6</td>
+                    <td class="border border-gray-300 px-4 py-2">Disiplin Menggunakan Fasilitas</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->dsmt1->dmenggunakanfasilitas ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->dsmt1->dmenggunakanfasilitas) ? getPredikatD($this->student->dsmt1->dmenggunakanfasilitas) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">7</td>
+                    <td class="border border-gray-300 px-4 py-2">Disiplin K3</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->dsmt1->dk3 ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->dsmt1->dk3) ? getPredikatD($this->student->dsmt1->dk3) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">8</td>
+                    <td class="border border-gray-300 px-4 py-2">Disiplin Berbahasa</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->dsmt1->dberbahasa ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->dsmt1->dberbahasa) ? getPredikatD($this->student->dsmt1->dberbahasa) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">9</td>
+                    <td class="border border-gray-300 px-4 py-2">Disiplin Bertindak & Menindak</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->dsmt1->dbertindak ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->dsmt1->dbertindak) ? getPredikatD($this->student->dsmt1->dbertindak) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">10</td>
+                    <td class="border border-gray-300 px-4 py-2">Disiplin Keamanan</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->dsmt1->dkeamanan ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->dsmt1->dkeamanan) ? getPredikatD($this->student->dsmt1->dkeamanan) : '-' }}</td>
                 </tr>
             </table>
         @else
@@ -457,5 +546,247 @@
         @else
         <p class="text-red-500">Data raport tidak tersedia untuk siswa ini.</p>
     @endif
+
+    <h6 class="font-bold">F. Penilaian Proyek Keagamaan dan Akhlak Mulia (10 Pembiasaan Akhlak Mulia)</h6>
+
+    @if ($this->student)
+        @if ($this->student->psmt1)
+            <table class="table-auto w-full border-collapse border border-gray-300 mt-4">
+                <thead>
+                    <tr>
+                        <th class="border font-bold px-4 py-2">No</th>
+                        <th class="border font-bold px-4 py-2">10 Pembiasaan Akhlak Mulia</th>
+                        <th class="border font-bold px-4 py-2">Nilai</th>
+                        <th class="border font-bold px-4 py-2">Predikat</th>
+                        <th class="border font-bold px-4 py-2">Deskripsi Capaian Kompetensi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @php
+                    // Fungsi untuk mendapatkan predikat
+                    // function getPredikatD($nilai) {
+                    //     $nilai = (int)$nilai; // Konversi eksplisit ke integer
+                    //     if ($nilai >= 85) return 'Sangat Baik';
+                    //     if ($nilai >= 70) return 'Berkembang Sesuai Harapan';
+                    //     if ($nilai >= 60) return 'Mulai Berkembang';
+                    //     return 'Belum Berkembang';
+                    // }
+                    @endphp
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">1</td>
+                    <td class="border border-gray-300 px-4 py-2">Berbakti pada Orang Tua</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->bpot ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->psmt1->bpot) ? getPredikatD($this->student->psmt1->bpot) : '-' }}</td>
+                    <td rowspan="10" class="border border-gray-300 px-4 py-2">
+                        Ananda menunjukkan {{ getPredikatD($this->student->dsmt1->dwaktu ?? 0) }} pada perilaku 10 Pembiasaan Akhlak Mulia di sekolah
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">2</td>
+                    <td class="border border-gray-300 px-4 py-2">Berbusana Muslim</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->bmuslim ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->psmt1->bmuslim) ? getPredikatD($this->student->psmt1->bmuslim) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">3</td>
+                    <td class="border border-gray-300 px-4 py-2">Memelihara Adab Belajar sesuai Ajaran Agama Islam</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->mabsaai ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->psmt1->mabsaai) ? getPredikatD($this->student->psmt1->mabsaai) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">4</td>
+                    <td class="border border-gray-300 px-4 py-2">Membaca dan Menghafal Al-Quran</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->mma ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->psmt1->mma) ? getPredikatD($this->student->psmt1->mma) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">5</td>
+                    <td class="border border-gray-300 px-4 py-2">Memelihara Kebersihan Diri dan Lingkungan</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->mkdl ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->psmt1->mkdl) ? getPredikatD($this->student->psmt1->mkdl) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">6</td>
+                    <td class="border border-gray-300 px-4 py-2">Mendirikan Sholat Fardhu dan Sholat Sunat</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->msfss ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->psmt1->msfss) ? getPredikatD($this->student->psmt1->msfss) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">7</td>
+                    <td class="border border-gray-300 px-4 py-2">Melaksanakan Talim dan Ceramah Keagamaan</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->mtck ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->psmt1->mtck) ? getPredikatD($this->student->psmt1->mtck) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">8</td>
+                    <td class="border border-gray-300 px-4 py-2">Terbiasa Melaksanakan Infaq Sejak Dini</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->tmisd ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->psmt1->tmisd) ? getPredikatD($this->student->psmt1->tmisd) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">9</td>
+                    <td class="border border-gray-300 px-4 py-2">Melaksanakan Saum Wajib dan Saum Sunah</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->mswss ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->psmt1->mswss) ? getPredikatD($this->student->psmt1->mswss) : '-' }}</td>
+                </tr>
+
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2 text-center">10</td>
+                    <td class="border border-gray-300 px-4 py-2">Cinta Tanah Air</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->cta ?? '-' }}</td>
+                    <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($this->student->psmt1->cta) ? getPredikatD($this->student->psmt1->cta) : '-' }}</td>
+                </tr>
+
+            </table>
+        @else
+            <p class="text-red-500">Data semester 1 tidak tersedia untuk siswa ini.</p>
+        @endif
+        @else
+        <p class="text-red-500">Data raport tidak tersedia untuk siswa ini.</p>
+    @endif
+
+    <h6 class="font-bold">G. Penilaian Karakter Proyek Penguatan Profil Pelajar Pancasila dan Ketenagakerjaan</h6>
+    
+    @if ($this->student)
+        @if ($this->student->psmt1)
+            <table class="table-auto w-full border-collapse border border-gray-300 mt-4">
+                <thead>
+                    <tr>
+                        <th class="border font-bold px-4 py-2">Karakter</th>                        
+                        <th class="border font-bold px-4 py-2">Nilai</th>
+                        <th class="border font-bold px-4 py-2">Predikat</th>
+                        <th class="border font-bold px-4 py-2">Deskripsi Capaian Kompetensi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @php
+                            // Ambil nilai variabel dari object student
+                            $bpot = $this->student->psmt1->bpot ?? 0;
+                            $bmuslim = $this->student->psmt1->bmuslim ?? 0;
+                            $mabsaai = $this->student->psmt1->mabsaai ?? 0;
+                            $mma = $this->student->psmt1->mma ?? 0;
+                            $mkdl = $this->student->psmt1->mkdl ?? 0;
+                            $msfss = $this->student->psmt1->msfss ?? 0;
+                            $mtck = $this->student->psmt1->mtck ?? 0;
+                            $tmisd = $this->student->psmt1->tmisd ?? 0;
+                            $mswss = $this->student->psmt1->mswss ?? 0;
+                            $cta = $this->student->psmt1->cta ?? 0;
+                    
+                            // Hitung total dan rata-rata
+                            $total = $bpot + $mabsaai + $mma + $mkdl + $msfss + $mtck + $tmisd + $mswss + $cta;
+                            $average = $total / 9;
+
+                            $dwaktu = $this->student->dsmt1->dwaktu ?? 0;
+                            $dibadah = $this->student->dsmt1->dwaktu ?? 0;
+                            $dbelajar = $this->student->dsmt1->dwaktu ?? 0;
+                            $dbergaul = $this->student->dsmt1->dwaktu ?? 0;
+                            $dberbusana = $this->student->dsmt1->dwaktu ?? 0;
+                            $dmenggunakanfasilitas = $this->student->dsmt1->dwaktu ?? 0;
+                            $dk3 = $this->student->dsmt1->dwaktu ?? 0;
+                            $dberbahasa = $this->student->dsmt1->dwaktu ?? 0;
+                            $dbertindak = $this->student->dsmt1->dwaktu ?? 0;
+                            $dkeamanan = $this->student->dsmt1->dwaktu ?? 0;
+
+                            // Mandiri
+                            $totald = $dwaktu+$dibadah+$dbelajar+$dbergaul+$dberbusana+$dmenggunakanfasilitas+$dk3+$dberbahasa+$dbertindak+$dkeamanan;
+                            $averaged = $totald / 10;
+
+                            // Bernalar keritis 
+                            $bernalarkeritis = $averaged+$bpot+$mabsaai+$mkdl+$msfss+$cta;
+                            $averagebernalakeritis = $bernalarkeritis / 6;
+
+                            //kreatif
+                            $kreatif = $bpot+$bmuslim+$mabsaai+$mma+$msfss+$mtck+$tmisd+$mswss;
+                            $averagekreatif = $kreatif / 8;
+                    
+                            // Fungsi predikat
+                            function getPredikatA($nilai) {
+                                if ($nilai >= 85) return 'Sangat Baik';
+                                if ($nilai >= 70) return 'Berkembang Sesuai Harapan';
+                                if ($nilai >= 60) return 'Mulai Berkembang';
+                                return 'Belum Berkembang';
+                            }
+                    
+                            // Hitung predikat berdasarkan rata-rata
+                            $predikat = getPredikatA($average);
+                        @endphp
+
+                        <td class="border border-gray-300 px-4 py-2">Beriman, Bertakwa Kepada Tuhan Yang Maha Esa, dan Berakhlak Mulia</td>
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ intval($average) }}</td> <!-- Tampilkan rata-rata dengan 2 desimal -->
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ $predikat }}</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            Ananda menunjukkan {{ $predikat }} pada perilaku 10 Disiplin Azzainiyyah
+                        </td>
+                    </tr> 
+                    
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Berkebhinekaan Global</td>
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->cta ?? '-' }}</td> <!-- Tampilkan rata-rata dengan 2 desimal -->
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ $predikat }}</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            Ananda menunjukkan {{ $predikat }} pada perilaku patriotisme, menjaga kebersihan lingkungan, memelihara nilai-nilai luhur Pancasila, melestarikan budaya, dan menjunjung cita-cita bangsa			
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Gotong-royong</td>
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ $this->student->psmt1->mkdl ?? '-' }}</td> <!-- Tampilkan rata-rata dengan 2 desimal -->
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ $predikat }}</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            Ananda menunjukkan {{ $predikat }} pada perilaku bekerjasama dan tolong-menolong antara sesama dalam kebaikan			
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Mandiri</td>
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ intval($averaged) ?? '-' }}</td> <!-- Tampilkan rata-rata dengan 2 desimal -->
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ $predikat }}</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            Ananda menunjukkan {{ $predikat }} pada perilaku disiplin, kreatif, inisiatif, dan mampu bekerja sendiri pada bimbingan yang diperolehnya
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Bernalar Keritis</td>
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ intval($averagebernalakeritis) ?? '-' }}</td> <!-- Tampilkan rata-rata dengan 2 desimal -->
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ $predikat }}</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            Ananda menunjukkan {{ $predikat }} dalam memproses informasi dan gagasan, menganalisis dan mengevaluasi penalaran, merefleksi pemikiran, dan mengambil keputusan
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="border border-gray-300 px-4 py-2">Kreatif</td>
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ intval($averagekreatif) ?? '-' }}</td> <!-- Tampilkan rata-rata dengan 2 desimal -->
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ $predikat }}</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            Ananda menunjukkan {{ $predikat }} pada gagasan yang orisinil, menghasilkan karya dan tindakan yang orisinil
+                        </td>
+                    </tr>
+
+            </table>
+        @else
+            <p class="text-red-500">Data semester 1 tidak tersedia untuk siswa ini.</p>
+        @endif
+        @else
+        <p class="text-red-500">Data raport tidak tersedia untuk siswa ini.</p>
+    @endif
+
+    <h6 class="font-bold">H. Catatan Perkembangan Karakter</h6>
+
+    <tr>
+        <td class="border border-gray-300 px-4 py-2 text-center">Ananda menunjukkan perkembangan karakter yang baik pada pembelajaran semester ini. Selain itu, ananda menunjukkan prestasi yang menonjol pada karakter religius dan kedisiplinan.</td>
+    </tr>
+
     
 </x-filament::page>

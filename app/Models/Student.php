@@ -53,4 +53,12 @@ class Student extends Model
     {
         return $this->hasOne(dsmt1::class, 'student_id', 'id');
     }
+    public function psmt1()
+    {
+        return $this->hasOne(psmt1::class, 'student_id', 'id');
+    }
+    public function karakters1()
+    {
+        return $this->hasOne(karakters1::class, 'student_id', 'id');
+    }
 }
