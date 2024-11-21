@@ -51,10 +51,6 @@ class RaportPage extends Page
             ->with(['psmt1']) // Muat data smt1
             ->first();
 
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['karakters1']) // Muat data smt1
-            ->first();
-
         $this->cpSemesters = Cps1::all();
 
         if (!$this->student) {
