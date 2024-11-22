@@ -684,16 +684,16 @@
                             $total = $bpot + $mabsaai + $mma + $mkdl + $msfss + $mtck + $tmisd + $mswss + $cta;
                             $average = $total / 92 ;
 
-                            $dwaktu = $this->student->dsmt1->dwaktu ?? 0;
-                            $dibadah = $this->student->dsmt1->dibadah ?? 0;
-                            $dbelajar = $this->student->dsmt1->dbelajar ?? 0;
-                            $dbergaul = $this->student->dsmt1->dbergaul ?? 0;
-                            $dberbusana = $this->student->dsmt1->dberbusana ?? 0;
-                            $dmenggunakanfasilitas = $this->student->dsmt1->dmenggunakanfasilitas ?? 0;
-                            $dk3 = $this->student->dsmt1->dk3 ?? 0;
-                            $dberbahasa = $this->student->dsmt1->dberbahasa ?? 0;
-                            $dbertindak = $this->student->dsmt1->dbertindak ?? 0;
-                            $dkeamanan = $this->student->dsmt1->dkeamanan ?? 0;
+                            $dwaktu = $this->student->dsmt2->dwaktu ?? 0;
+                            $dibadah = $this->student->dsmt2->dibadah ?? 0;
+                            $dbelajar = $this->student->dsmt2->dbelajar ?? 0;
+                            $dbergaul = $this->student->dsmt2->dbergaul ?? 0;
+                            $dberbusana = $this->student->dsmt2->dberbusana ?? 0;
+                            $dmenggunakanfasilitas = $this->student->dsmt2->dmenggunakanfasilitas ?? 0;
+                            $dk3 = $this->student->dsmt2->dk3 ?? 0;
+                            $dberbahasa = $this->student->dsmt2->dberbahasa ?? 0;
+                            $dbertindak = $this->student->dsmt2->dbertindak ?? 0;
+                            $dkeamanan = $this->student->dsmt2->dkeamanan ?? 0;
 
                             // Mandiri
                             $totald = $dwaktu+$dibadah+$dbelajar+$dbergaul+$dberbusana+$dmenggunakanfasilitas+$dk3+$dberbahasa+$dbertindak+$dkeamanan;
