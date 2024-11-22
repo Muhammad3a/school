@@ -687,15 +687,15 @@
                             $average = $total / 9;
 
                             $dwaktu = $this->student->dsmt1->dwaktu ?? 0;
-                            $dibadah = $this->student->dsmt1->dwaktu ?? 0;
-                            $dbelajar = $this->student->dsmt1->dwaktu ?? 0;
-                            $dbergaul = $this->student->dsmt1->dwaktu ?? 0;
-                            $dberbusana = $this->student->dsmt1->dwaktu ?? 0;
-                            $dmenggunakanfasilitas = $this->student->dsmt1->dwaktu ?? 0;
-                            $dk3 = $this->student->dsmt1->dwaktu ?? 0;
-                            $dberbahasa = $this->student->dsmt1->dwaktu ?? 0;
-                            $dbertindak = $this->student->dsmt1->dwaktu ?? 0;
-                            $dkeamanan = $this->student->dsmt1->dwaktu ?? 0;
+                            $dibadah = $this->student->dsmt1->dibadah ?? 0;
+                            $dbelajar = $this->student->dsmt1->dbelajar ?? 0;
+                            $dbergaul = $this->student->dsmt1->dbergaul ?? 0;
+                            $dberbusana = $this->student->dsmt1->dberbusana ?? 0;
+                            $dmenggunakanfasilitas = $this->student->dsmt1->dmenggunakanfasilitas ?? 0;
+                            $dk3 = $this->student->dsmt1->dk3 ?? 0;
+                            $dberbahasa = $this->student->dsmt1->dberbahasa ?? 0;
+                            $dbertindak = $this->student->dsmt1->dbertindak ?? 0;
+                            $dkeamanan = $this->student->dsmt1->dkeamanan ?? 0;
 
                             // Mandiri
                             $totald = $dwaktu+$dibadah+$dbelajar+$dbergaul+$dberbusana+$dmenggunakanfasilitas+$dk3+$dberbahasa+$dbertindak+$dkeamanan;
