@@ -4,10 +4,13 @@ namespace App\Filament\Resources;
 
 use stdClass;
 use Filament\Forms;
+use App\Models\User;
 use Filament\Tables;
 use App\Models\Student;
-use Filament\Forms\Form;
+// use Filament\Forms\Form;
+use App\Models\Classroom;
 use Filament\Tables\Table;
+use App\Models\Departement;
 use App\Models\StudentHasClass;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
@@ -37,8 +40,6 @@ use Filament\Resources\Pages\ListRecords\Tab;
 use App\Filament\Resources\StudentResource\Pages;
 use App\Filament\Resources\StudentResource\RelationManagers;
 use App\Filament\Resources\StudentResource\Widgets\StatsOverview;
-use App\Models\Classroom;
-use App\Models\Departement;
 
 class StudentResource extends Resource
 {
@@ -56,12 +57,22 @@ class StudentResource extends Resource
     }
 
 
-    public static function form(Form $form): Form
+    public static function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema([
                 TextInput::make('nis')
                     ->label('NIS'),
+
+                TextInput::make('email')
+                    ->label('Email')
+                    // ->fillUsing(fn($record) => $record->user?->email)
+                    ->afterStateHydrated(function (TextInput $component, $state, $record) {
+                        if ($record && $record->user_id) {
+                            $user = User::find($record->user_id);
+                            $component->state($user?->email);
+                        }
+                    }),
 
                 TextInput::make('nisn')
                     ->label('NISN'),
@@ -167,6 +178,25 @@ class StudentResource extends Resource
                     ->directory('profile')
                     ->label('Foto Murid'),
             ]);
+        // ->afterCreate(function ($record) {
+        //     // Membuat user secara otomatis setelah student dibuat
+        //     $email = strtolower($record->nis . '@gmail.com'); // Email berdasarkan NIS
+        //     $password = bcrypt('password123'); // Password default
+
+        //     // Membuat User baru
+        //     $user = User::create([
+        //         'name' => $record->name,
+        //         'email' => $email,
+        //         'password' => $password,
+        //     ]);
+
+        //     // Menyimpan ID User ke student
+        //     $record->user_id = $user->id;
+        //     $record->save();
+
+        //     // Menambahkan role default "student"
+        //     $user->assignRole('student');
+        // });
     }
 
     public static function table(Table $table): Table

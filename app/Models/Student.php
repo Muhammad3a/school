@@ -77,4 +77,29 @@ class Student extends Model
     {
         return $this->hasOne(psmt2::class, 'student_id', 'id');
     }
+    // Dalam model Student.php
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($record) {
+            // Membuat user secara otomatis setelah student dibuat
+            $email = strtolower($record->nis . '@gmail.com'); // Email berdasarkan NIS
+            $password = bcrypt('password123'); // Password default
+
+            // Membuat User baru
+            $user = User::create([
+                'name' => $record->name,
+                'email' => $email,
+                'password' => $password,
+            ]);
+
+            // Menyimpan ID User ke student
+            $record->user_id = $user->id;
+            $record->save();
+
+            // Menambahkan role default "student"
+            $user->assignRole('student');
+        });
+    }
 }
