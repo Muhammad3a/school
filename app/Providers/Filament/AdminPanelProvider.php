@@ -403,15 +403,6 @@ class AdminPanelProvider extends PanelProvider
 
                         ]),
 
-                    NavigationGroup::make('Penguatan Profil Pelajar Pancasila')
-                        ->items([
-                            ...Karakters1Resource::getNavigationItems(),
-
-
-                        ]),
-
-
-
                     NavigationGroup::make('Capaian Semester')
                         ->items([
                             ...Cps1Resource::getNavigationItems(),
