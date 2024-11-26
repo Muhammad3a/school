@@ -2,17 +2,17 @@
 
 namespace App\Filament\Student\Pages;
 
-use App\Models\cps3;
+use App\Models\cps4;
 use App\Models\Student;
 use Filament\Pages\Page;
 
-class RaportPage3 extends Page
+class raportpage4 extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string $view = 'filament.student.pages.raport-page3';
-
-    protected static ?string $navigationLabel = 'Raport Semester 3';
+    protected static string $view = 'filament.student.pages.raportpage4';
+    
+    protected static ?string $navigationLabel = 'Raport Semester 4';
 
     public $student; // Properti student didefinisikan
     public $cpSemesters;
@@ -21,15 +21,15 @@ class RaportPage3 extends Page
     {
         // Ambil data student berdasarkan user yang login
         $this->student = Student::where('user_id', auth()->id())
-            ->with(['smt3']) // Muat data smt1
+            ->with(['smt4']) // Muat data smt1
             ->first();
 
         $this->student = Student::where('user_id', auth()->id())
-            ->with(['usmt3']) // Muat data smt1
+            ->with(['usmt4']) // Muat data smt1
             ->first();
 
         $this->student = Student::where('user_id', auth()->id())
-            ->with(['esmt3']) // Muat data smt1
+            ->with(['esmt4']) // Muat data smt1
             ->first();
 
         $this->student = Student::where('user_id', auth()->id())
@@ -45,19 +45,20 @@ class RaportPage3 extends Page
             ->first();
 
         $this->student = Student::where('user_id', auth()->id())
-            ->with(['dsmt3']) // Muat data smt1
+            ->with(['dsmt4']) // Muat data smt1
             ->first();
 
         $this->student = Student::where('user_id', auth()->id())
-            ->with(['psmt3']) // Muat data smt1
+            ->with(['psmt4']) // Muat data smt1
             ->first();
 
-        $this->cpSemesters = cps3::all();
+        $this->cpSemesters = cps4::all();
 
         if (!$this->student) {
             abort(404, 'Data student tidak ditemukan untuk user yang sedang login.');
         }
     }
 }
+
 
 

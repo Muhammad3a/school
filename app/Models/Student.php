@@ -77,6 +77,86 @@ class Student extends Model
     {
         return $this->hasOne(psmt2::class, 'student_id', 'id');
     }
+    public function smt3()
+    {
+        return $this->hasOne(smt3::class, 'student_id', 'id');
+    }
+    public function usmt3()
+    {
+        return $this->hasOne(usmt3::class, 'student_id', 'id');
+    }
+    public function esmt3()
+    {
+        return $this->hasOne(esmt3::class, 'student_id', 'id');
+    }
+    public function dsmt3()
+    {
+        return $this->hasOne(dsmt3::class, 'student_id', 'id');
+    }
+    public function psmt3()
+    {
+        return $this->hasOne(psmt3::class, 'student_id', 'id');
+    }
+    public function smt4()
+    {
+        return $this->hasOne(smt4::class, 'student_id', 'id');
+    }
+    public function usmt4()
+    {
+        return $this->hasOne(usmt4::class, 'student_id', 'id');
+    }
+    public function esmt4()
+    {
+        return $this->hasOne(esmt4::class, 'student_id', 'id');
+    }
+    public function dsmt4()
+    {
+        return $this->hasOne(dsmt4::class, 'student_id', 'id');
+    }
+    public function psmt4()
+    {
+        return $this->hasOne(psmt4::class, 'student_id', 'id');
+    }
+    public function smt5()
+    {
+        return $this->hasOne(smt5::class, 'student_id', 'id');
+    }
+    public function usmt5()
+    {
+        return $this->hasOne(usmt5::class, 'student_id', 'id');
+    }
+    public function esmt5()
+    {
+        return $this->hasOne(esmt5::class, 'student_id', 'id');
+    }
+    public function dsmt5()
+    {
+        return $this->hasOne(dsmt5::class, 'student_id', 'id');
+    }
+    public function psmt5()
+    {
+        return $this->hasOne(psmt5::class, 'student_id', 'id');
+    }
+    public function smt6()
+    {
+        return $this->hasOne(smt6::class, 'student_id', 'id');
+    }
+    public function usmt6()
+    {
+        return $this->hasOne(usmt6::class, 'student_id', 'id');
+    }
+    public function esmt6()
+    {
+        return $this->hasOne(esmt6::class, 'student_id', 'id');
+    }
+    public function dsmt6()
+    {
+        return $this->hasOne(dsmt6::class, 'student_id', 'id');
+    }
+    public function psmt6()
+    {
+        return $this->hasOne(psmt6::class, 'student_id', 'id');
+    }
     // Dalam model Student.php
     protected static function boot()
     {
