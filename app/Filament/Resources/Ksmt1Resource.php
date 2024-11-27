@@ -42,17 +42,29 @@ class Ksmt1Resource extends Resource
                             ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Kelas'),
                         TextInput::make('bd')
-                            ->label('Basis Data'),
+                            ->label('Basis Data')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('persisda')
-                            ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
+                            ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('pw')
-                            ->label('Pemrograman Web'),
+                            ->label('Pemrograman Web')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('ppb')
-                            ->label('Pemrograman Perangkat Bergerak'),
+                            ->label('Pemrograman Perangkat Bergerak')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('pkk')
-                            ->label('Produk Kreatif & Kewirausahaan'),
+                            ->label('Produk Kreatif & Kewirausahaan')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('kb')
-                            ->label('Kecerdasaan Buatan'),
+                            ->label('Kecerdasaan Buatan')
+                            ->numeric()
+                            ->rules('max:100'),
                     ])->columns(2)
             ]);
     }

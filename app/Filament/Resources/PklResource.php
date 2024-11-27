@@ -42,7 +42,9 @@ class PklResource extends Resource
                 TextInput::make('mitra')
                     ->label('Mitra Dudika'),
                 TextInput::make('nilai')
-                    ->label('Nilai'),
+                    ->label('Nilai')
+                    ->numeric()
+                    ->rules('max:100'),
                 Textarea::make('lokasi'),
                 Select::make('jengke_id')
                     ->options(jengke::all()->pluck('name', 'id'))

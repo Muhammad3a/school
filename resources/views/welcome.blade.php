@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
         </div>
 
         <nav class="space-x-8 text-lg flex items-center">
-            <a href="#" class="hover:text-blue-300">Beranda</a>
+            <a href="/" class="hover:text-blue-300">Beranda</a>
             <a href="#" class="hover:text-blue-300">Galeri</a>
 
             <!-- Dropdown Menu untuk Siakad -->

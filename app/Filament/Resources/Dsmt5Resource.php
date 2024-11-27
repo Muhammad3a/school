@@ -38,25 +38,45 @@ class Dsmt5Resource extends Resource
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
                 TextColumn::make('dwaktu')
-                    ->label('Disiplin Waktu'),
+                    ->label('Disiplin Waktu')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('dibadah')
-                    ->label('Disiplin Ibadah'),
+                    ->label('Disiplin Ibadah')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('dbelajar')
-                    ->label('Disiplin Belajar'),
+                    ->label('Disiplin Belajar')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('dbergaul')
-                    ->label('Disiplin Bergaul'),
+                    ->label('Disiplin Bergaul')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('dberbusana')
-                    ->label('Disiplin Berbusana'),
+                    ->label('Disiplin Berbusana')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('dmenggunakanfasilitas')
-                    ->label('Disiplin Menggunakan Fasilitas'),
+                    ->label('Disiplin Menggunakan Fasilitas')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('dk3')
-                    ->label('dk3'),
+                    ->label('dk3')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('dberbahasa')
-                    ->label('Disiplin Berbahasa'),
+                    ->label('Disiplin Berbahasa')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('dbertindak')
-                    ->label('Bertindak & Menindak'),
+                    ->label('Bertindak & Menindak')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('dkeamanan')
-                    ->label('Disiplin Keamanan'),
+                    ->label('Disiplin Keamanan')
+                    ->numeric()
+                    ->rules('max:100'),
             ]);
     }
 
