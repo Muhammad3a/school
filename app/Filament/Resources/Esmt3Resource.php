@@ -41,29 +41,53 @@ class Esmt3Resource extends Resource
                             ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Kelas'),
                         TextInput::make('pramuka')
-                            ->label('Pramuka'),
+                            ->label('Pramuka')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('kesenian')
-                            ->label('Kesenian'),
+                            ->label('Kesenian')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('pramadan')
-                            ->label('Pesantren Ramadhan'),
+                            ->label('Pesantren Ramadhan')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('okesehatan')
-                            ->label('Olahraga & Kesehatan'),
+                            ->label('Olahraga & Kesehatan')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('kmulia')
-                            ->label('Keagamaan & Akhlak Mulia'),
+                            ->label('Keagamaan & Akhlak Mulia')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('bkerja')
-                            ->label('Budaya Kerja'),
+                            ->label('Budaya Kerja')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('kewirausahaan')
-                            ->label('Kewirausaan'),
+                            ->label('Kewirausaan')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('berekayasa')
-                            ->label('Berekayasa & Berteknologi'),
+                            ->label('Berekayasa & Berteknologi')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('kebekerjaan')
-                            ->label('Keberkerjaan'),
+                            ->label('Keberkerjaan')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('sakit')
-                            ->label('Sakit'),
+                            ->label('Sakit')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('izin')
-                            ->label('Izin'),
+                            ->label('Izin')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('Alfa')
-                            ->label('Alfa'),
+                            ->label('Alfa')
+                            ->numeric()
+                            ->rules('max:100'),
                     ])->columns(2)
             ]);
     }

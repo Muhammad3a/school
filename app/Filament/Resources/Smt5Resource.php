@@ -40,21 +40,37 @@ class Smt5Resource extends Resource
                             ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Kelas'),
                         TextInput::make('pai')
-                            ->label('Pendidikan Agama Islam'),
+                            ->label('Pendidikan Agama Islam')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('pp')
-                            ->label('Pendidikan Pancasila'),
+                            ->label('Pendidikan Pancasila')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('indo')
-                            ->label('Bahasa Indonesia'),
+                            ->label('Bahasa Indonesia')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('pjok')
-                            ->label('Pendidikan Jasmani Olahraga dan Kesehatan'),
+                            ->label('Pendidikan Jasmani Olahraga dan Kesehatan')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('sejarah')
-                            ->label('Sejarah'),
+                            ->label('Sejarah')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('sb')
-                            ->label('Seni Budaya'),
+                            ->label('Seni Budaya')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('sunda')
-                            ->label('Bahasa Sunda'),
+                            ->label('Bahasa Sunda')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('arab')
-                            ->label('Bahasa Arab'),
+                            ->label('Bahasa Arab')
+                            ->numeric()
+                            ->rules('max:100'),
                     ])->columns(2)
             ]);
     }

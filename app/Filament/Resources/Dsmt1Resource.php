@@ -42,25 +42,45 @@ class Dsmt1Resource extends Resource
                             ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Kelas'),
                         TextInput::make('dwaktu')
-                            ->label('Disiplin Waktu'),
+                            ->label('Disiplin Waktu')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('dibadah')
-                            ->label('Disiplin Ibadah'),
+                            ->label('Disiplin Ibadah')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('dbelajar')
-                            ->label('Disiplin Belajar'),
+                            ->label('Disiplin Belajar')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('dbergaul')
-                            ->label('Disiplin Bergaul'),
+                            ->label('Disiplin Bergaul')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('dberbusana')
-                            ->label('Disiplin Berbusana'),
+                            ->label('Disiplin Berbusana')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('dmenggunakanfasilitas')
-                            ->label('Disiplin Menggunakan Fasilitas'),
+                            ->label('Disiplin Menggunakan Fasilitas')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('dk3')
-                            ->label('Disiplin k3'),
+                            ->label('Disiplin k3')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('dberbahasa')
-                            ->label('Disiplin Berbahasa'),
+                            ->label('Disiplin Berbahasa')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('dbertindak')
-                            ->label('Bertindak & Menindak'),
+                            ->label('Bertindak & Menindak')
+                            ->numeric()
+                            ->rules('max:100'),
                         TextInput::make('dkeamanan')
-                            ->label('Disiplin Keamanan'),
+                            ->label('Disiplin Keamanan')
+                            ->numeric()
+                            ->rules('max:100'),
                     ])->columns(2)
             ]);
     }

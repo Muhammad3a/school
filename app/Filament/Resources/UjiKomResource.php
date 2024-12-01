@@ -40,7 +40,9 @@ class UjiKomResource extends Resource
                     ->label('murid')
                     ->options(Student::all()->pluck('name', 'id')),
                 TextInput::make('nilai')
-                    ->label('Nilai'),
+                    ->label('Nilai')
+                    ->numeric()
+                    ->rules('max:100'),
                 Select::make('jengke_id')
                     ->options(jengke::all()->pluck('name', 'id'))
                     ->label('Jenis Kegiatan'),

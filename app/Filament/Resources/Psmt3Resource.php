@@ -38,25 +38,45 @@ class Psmt3Resource extends Resource
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
                 TextColumn::make('bpot')
-                    ->label('Berbakti pada Orang Tua'),
+                    ->label('Berbakti pada Orang Tua')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('bmuslim')
-                    ->label('Berbusana Muslim'),
+                    ->label('Berbusana Muslim')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('mabsaai')
-                    ->label('Memelihara Adab Belajar sesuai Ajaran Agama Islam'),
+                    ->label('Memelihara Adab Belajar sesuai Ajaran Agama Islam')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('mma')
-                    ->label('Membaca dan Menghafal Al-Quran'),
+                    ->label('Membaca dan Menghafal Al-Quran')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('mkdl')
-                    ->label('Memelihara Kebersihan Diri dan Lingkungan'),
+                    ->label('Memelihara Kebersihan Diri dan Lingkungan')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('msfss')
-                    ->label('Mendirikan Sholat Fardhu dan Sholat Sunat'),
+                    ->label('Mendirikan Sholat Fardhu dan Sholat Sunat')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('mtck')
-                    ->label('Melaksanakan Talim dan Ceramah Keagamaan'),
+                    ->label('Melaksanakan Talim dan Ceramah Keagamaan')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('tmisd')
-                    ->label('Terbiasa Melaksanakan Infaq Sejak Dini'),
+                    ->label('Terbiasa Melaksanakan Infaq Sejak Dini')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('mswss')
-                    ->label('Melaksanakan Saum Wajib dan Saum Sunah'),
+                    ->label('Melaksanakan Saum Wajib dan Saum Sunah')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('cta')
-                    ->label('Cinta Tanah Air'),
+                    ->label('Cinta Tanah Air')
+                    ->numeric()
+                    ->rules('max:100'),
             ]);
     }
 

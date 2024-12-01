@@ -16,4 +16,10 @@ class EditDsmt2 extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function getRedirectUrl(): string
+    {
+        // Mengarahkan ke halaman daftar setelah berhasil membuat data
+        return $this->getResource()::getUrl('index');
+    }
 }

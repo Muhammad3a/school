@@ -9,4 +9,10 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSmt3 extends CreateRecord
 {
     protected static string $resource = Smt3Resource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        // Mengarahkan ke halaman daftar setelah berhasil membuat data
+        return $this->getResource()::getUrl('index');
+    }
 }

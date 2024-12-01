@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Filament\Panel;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Container\Attributes\Auth;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -25,13 +24,10 @@ class User extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
 
     public function canAccessFilament(): bool
     {
@@ -40,15 +36,12 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        $user = auth()->user();  // Menggunakan helper auth()
-        $roles = $user->getRoleNames();
+        $roles = $this->getRoleNames();
 
-        if ($panel->getId() === 'admin' && $roles->intersect(['admin', 'wali kelas', 'guru'])->isNotEmpty()) {
-            return true;
-        } else if ($panel->getId() === 'student' && $roles->contains('student')) {
-            return true;
-        } else {
-            return false;
-        }
+        return match ($panel->getId()) {
+            'admin' => $roles->intersect(['admin', 'wali kelas', 'guru'])->isNotEmpty(),
+            'student' => $roles->contains('student'),
+            default => false,
+        };
     }
 }

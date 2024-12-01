@@ -74,25 +74,45 @@ class Usmt6Resource extends Resource
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
                 TextColumn::make('mtk')
-                    ->label('Matematika'),
+                    ->label('Matematika')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('inggris')
-                    ->label('Bahasa Inggris'),
+                    ->label('Bahasa Inggris')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('informatika')
-                    ->label('Informatika'),
+                    ->label('Informatika')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('fisika')
-                    ->label('Fisika'),
+                    ->label('Fisika')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('kimia')
-                    ->label('Kimia'),
+                    ->label('Kimia')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('bisnis')
-                    ->label('Proses Bisnis & K3LH'),
+                    ->label('Proses Bisnis & K3LH')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('profesi')
-                    ->label('Profesi Dan Kewirausahaan'),
+                    ->label('Profesi Dan Kewirausahaan')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('pemtur')
-                    ->label('Pemrograman Terstruktur'),
+                    ->label('Pemrograman Terstruktur')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('pbo')
-                    ->label('Pemrograman Berorientasi Objek'),
+                    ->label('Pemrograman Berorientasi Objek')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('gim')
-                    ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM'),
+                    ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM')
+                    ->numeric()
+                    ->rules('max:100'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')

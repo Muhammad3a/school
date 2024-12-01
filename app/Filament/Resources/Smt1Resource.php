@@ -12,10 +12,8 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
 use App\Filament\Resources\Smt1Resource\Pages;
 
 class Smt1Resource extends Resource
@@ -28,7 +26,6 @@ class Smt1Resource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        // Navigasi hanya untuk pengguna dengan peran wali kelas
         return auth()->check() && auth()->user()->hasRole('wali kelas');
     }
 
@@ -49,28 +46,23 @@ class Smt1Resource extends Resource
                         ->searchable(),
                     TextInput::make('pai')
                         ->label('Pendidikan Agama Islam')
-                        ->required(),
-                    TextInput::make('pp')
-                        ->label('Pendidikan Pancasila')
-                        ->required(),
-                    TextInput::make('indo')
-                        ->label('Bahasa Indonesia')
-                        ->required(),
-                    TextInput::make('pjok')
-                        ->label('Pendidikan Jasmani Olahraga dan Kesehatan')
-                        ->required(),
-                    TextInput::make('sejarah')
-                        ->label('Sejarah')
-                        ->required(),
-                    TextInput::make('sb')
-                        ->label('Seni Budaya')
-                        ->required(),
-                    TextInput::make('sunda')
-                        ->label('Bahasa Sunda')
-                        ->required(),
-                    TextInput::make('arab')
-                        ->label('Bahasa Arab')
-                        ->required(),
+                        ->required()
+                        ->numeric()
+                        ->rules('max:100'),
+                    TextInput::make('pp')->label('Pendidikan Pancasila')->required()->numeric()
+                        ->rules('max:100'),
+                    TextInput::make('indo')->label('Bahasa Indonesia')->required()->numeric()
+                        ->rules('max:100'),
+                    TextInput::make('pjok')->label('Pendidikan Jasmani Olahraga & Kesehatan')->required()->numeric()
+                        ->rules('max:100'),
+                    TextInput::make('sejarah')->label('Sejarah')->required()->numeric()
+                        ->rules('max:100'),
+                    TextInput::make('sb')->label('Seni Budaya')->required()->numeric()
+                        ->rules('max:100'),
+                    TextInput::make('sunda')->label('Bahasa Sunda')->required()->numeric()
+                        ->rules('max:100'),
+                    TextInput::make('arab')->label('Bahasa Arab')->required()->numeric()
+                        ->rules('max:100'),
                 ])
                 ->columns(2),
         ]);
@@ -80,14 +72,8 @@ class Smt1Resource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('student.name')
-                    ->label('Murid')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('classroom.name')
-                    ->label('Kelas')
-                    ->sortable()
-                    ->searchable(),
+                TextColumn::make('student.name')->label('Murid')->sortable()->searchable(),
+                TextColumn::make('classroom.name')->label('Kelas')->sortable()->searchable(),
                 TextColumn::make('pai')->label('Pendidikan Agama Islam'),
                 TextColumn::make('pp')->label('Pendidikan Pancasila'),
                 TextColumn::make('indo')->label('Bahasa Indonesia'),
@@ -100,16 +86,11 @@ class Smt1Resource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
                     ->label('Filter Kelas')
-                    ->options(fn() => Classroom::pluck('name', 'id')),
+                    ->options(fn() => Classroom::pluck('name', 'id')->toArray())
+                    ->placeholder('Semua Kelas'),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->actions([Tables\Actions\EditAction::make()])
+            ->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
     }
 
     public static function getRelations(): array
@@ -126,13 +107,8 @@ class Smt1Resource extends Resource
         ];
     }
 
-    public  static function getLabel(): ?string
+    public static function getLabel(): ?string
     {
-        $locale = app()->getLocale();
-
-        if ($locale == 'id') {
-            return "Nilai Ledger Mapel Umum & Mulok Semester 1";
-        } else
-            return "Teacher";
+        return __("Nilai Ledger Mapel Umum & Mulok Semester 1");
     }
 }

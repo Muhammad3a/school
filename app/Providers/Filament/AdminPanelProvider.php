@@ -275,7 +275,7 @@ class AdminPanelProvider extends PanelProvider
                     NavigationGroup::make('Data Umum')
                         ->items([
                             ...ClassroomResource::getNavigationItems(),
-                            ...StudentHasClassResource::getNavigationItems(),
+                            // ...StudentHasClassResource::getNavigationItems(),
                             ...PriodeResource::getNavigationItems(),
                             ...SemesterResource::getNavigationItems(),
                             ...JengkeResource::getNavigationItems(),
@@ -284,9 +284,6 @@ class AdminPanelProvider extends PanelProvider
                     NavigationGroup::make('Data Pelajaran')
                         ->items([
                             ...SubjectResource::getNavigationItems(),
-                            ...PelajaranKejuruanResource::getNavigationItems(),
-                            // ...CpSemesterResource::getNavigationItems(),
-                            ...CatatanAkademikResource::getNavigationItems(),
                             ...DepartementResource::getNavigationItems(),
 
                         ]),

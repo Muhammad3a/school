@@ -66,17 +66,29 @@ class Ksmt5Resource extends Resource
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
                 TextColumn::make('bd')
-                    ->label('Basis Data'),
+                    ->label('Basis Data')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('persisda')
-                    ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia'),
+                    ->label('Pemrograman Berbasis Teks, Grafis Dan Multimedia')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('pw')
-                    ->label('Pemrograman Web'),
+                    ->label('Pemrograman Web')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('ppb')
-                    ->label('Pemrograman Perangkat Bergerak'),
+                    ->label('Pemrograman Perangkat Bergerak')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('pkk')
-                    ->label('Produk Kreatif & Kewirausahaan'),
+                    ->label('Produk Kreatif & Kewirausahaan')
+                    ->numeric()
+                    ->rules('max:100'),
                 TextColumn::make('kb')
-                    ->label('Kecerdasaan Buatan'),
+                    ->label('Kecerdasaan Buatan')
+                    ->numeric()
+                    ->rules('max:100'),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('classroom_id')
