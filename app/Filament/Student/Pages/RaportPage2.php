@@ -21,35 +21,16 @@ class RaportPage2 extends Page
     {
         // Ambil data student berdasarkan user yang login
         $this->student = Student::where('user_id', auth()->id())
-            ->with(['smt2']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['usmt2']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['esmt2']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['Kindustri.jengke']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['Pkl.jengke']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['UjiKom.jengke']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['dsmt2']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['psmt2']) // Muat data smt1
+            ->with([
+                'smt2',
+                'usmt2',
+                'esmt2',
+                'Kindustri.jengke',
+                'Pkl.jengke',
+                'UjiKom.jengke',
+                'dsmt2',
+                'psmt2',
+            ]) // Muat data smt1
             ->first();
 
         $this->cpSemesters = cps2::all();
