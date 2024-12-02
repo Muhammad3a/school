@@ -270,12 +270,12 @@ class AdminPanelProvider extends PanelProvider
                         ->items([
                             ...TeacherResource::getNavigationItems(),
                             ...StudentResource::getNavigationItems(),
+                            ...UserResource::getNavigationItems()
 
                         ]),
                     NavigationGroup::make('Data Umum')
                         ->items([
                             ...ClassroomResource::getNavigationItems(),
-                            // ...StudentHasClassResource::getNavigationItems(),
                             ...PriodeResource::getNavigationItems(),
                             ...SemesterResource::getNavigationItems(),
                             ...JengkeResource::getNavigationItems(),
@@ -296,14 +296,6 @@ class AdminPanelProvider extends PanelProvider
                             ...Smt4Resource::getNavigationItems(),
                             ...Smt5Resource::getNavigationItems(),
                             ...Smt6Resource::getNavigationItems(),
-                            // ...PaiResource::getNavigationItems(),
-                            // ...PpResource::getNavigationItems(),
-                            // ...BindoResource::getNavigationItems(),
-                            // ...PjokResource::getNavigationItems(),
-                            // ...SejarahResource::getNavigationItems(),
-                            // ...SbResource::getNavigationItems(),
-                            // ...BsundaResource::getNavigationItems(),
-                            // ...BarabResource::getNavigationItems(),
                         ]),
 
                     NavigationGroup::make('Ledger B Kejuruan Umum & DK')
@@ -314,15 +306,6 @@ class AdminPanelProvider extends PanelProvider
                             ...Usmt4Resource::getNavigationItems(),
                             ...Usmt5Resource::getNavigationItems(),
                             ...Usmt6Resource::getNavigationItems(),
-                            // ...BingResource::getNavigationItems(),
-                            // ...InformatikaResource::getNavigationItems(),
-                            // ...FisikaResource::getNavigationItems(),
-                            // ...KimiaResource::getNavigationItems(),
-                            // ...BandkResource::getNavigationItems(),
-                            // ...FandkResource::getNavigationItems(),
-                            // ...PemturResource::getNavigationItems(),
-                            // ...PboResource::getNavigationItems(),
-                            // ...PplResource::getNavigationItems(),
                         ]),
 
                     NavigationGroup::make('Ledger B Kejuruan KK & Pilih')
@@ -333,12 +316,6 @@ class AdminPanelProvider extends PanelProvider
                             ...Ksmt4Resource::getNavigationItems(),
                             ...Ksmt5Resource::getNavigationItems(),
                             ...Ksmt6Resource::getNavigationItems(),
-                            //...BdResource::getNavigationItems(),
-                            //...PbtgmResource::getNavigationItems(),
-                            //...PwebResource::getNavigationItems(),
-                            //...PpbResource::getNavigationItems(),
-                            //...PkkResource::getNavigationItems(),
-                            //...KbResource::getNavigationItems(),
 
                         ]),
 
@@ -359,19 +336,6 @@ class AdminPanelProvider extends PanelProvider
                             ...Esmt4Resource::getNavigationItems(),
                             ...Esmt5Resource::getNavigationItems(),
                             ...Esmt6Resource::getNavigationItems(),
-
-                            // ...PramukaResource::getNavigationItems(),
-                            // ...KesenianResource::getNavigationItems(),
-                            // ...PramadhanResource::getNavigationItems(),
-                            // ...OkesehatanResource::getNavigationItems(),
-                            // ...KAmuliaResource::getNavigationItems(),
-                            // ...BkerjaResource::getNavigationItems(),
-                            // ...KewirausahaResource::getNavigationItems(),
-                            // ...BerekayasaResource::getNavigationItems(),
-                            // ...KeberkerjaanResource::getNavigationItems(),
-                            // ...SakitResource::getNavigationItems(),
-                            // ...IzinResource::getNavigationItems(),
-                            // ...AlfaResource::getNavigationItems(),
 
                         ]),
 
@@ -433,8 +397,6 @@ class AdminPanelProvider extends PanelProvider
                                     'filament.admin.resources.permissions.edit',
                                 ]))
                                 ->url(fn(): string => '/admin/permissions'),
-
-                            ...UserResource::getNavigationItems()
                         ])
 
 
