@@ -5,7 +5,7 @@ namespace App\Filament\Student\Pages;
 use App\Models\Cps1;
 use App\Models\Student;
 use Filament\Pages\Page;
-use App\Models\CpSemester;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RaportPage extends Page
 {
@@ -13,42 +13,22 @@ class RaportPage extends Page
     protected static string $view = 'filament.student.pages.raport-page';
     protected static ?string $navigationLabel = 'Raport Semester 1';
 
-    public $student; // Properti student didefinisikan
-    public $cpSemesters; // Properti student didefinisikan
+    public $student;
+    public $cpSemesters;
 
     public function mount()
     {
-        // Ambil data student berdasarkan user yang login
         $this->student = Student::where('user_id', auth()->id())
-            ->with(['smt1']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['usmt1']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['esmt1']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['Kindustri.jengke']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['Pkl.jengke']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['UjiKom.jengke']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['dsmt1']) // Muat data smt1
-            ->first();
-
-        $this->student = Student::where('user_id', auth()->id())
-            ->with(['psmt1']) // Muat data smt1
+            ->with([
+                'smt1',
+                'usmt1',
+                'esmt1',
+                'Kindustri.jengke',
+                'Pkl.jengke',
+                'UjiKom.jengke',
+                'dsmt1',
+                'psmt1',
+            ])
             ->first();
 
         $this->cpSemesters = Cps1::all();
@@ -56,5 +36,23 @@ class RaportPage extends Page
         if (!$this->student) {
             abort(404, 'Data student tidak ditemukan untuk user yang sedang login.');
         }
+    }
+
+    public function cetakPDF()
+    {
+        // Data untuk PDF
+        $data = [
+            'student' => $this->student,
+            'cpSemesters' => $this->cpSemesters,
+        ];
+
+        // Render PDF
+        $pdf = Pdf::loadView('filament.student.pages.raport-pdf', $data);
+
+        // Unduh file
+        return response()->streamDownload(
+            fn() => print($pdf->output()),
+            'Raport-Semester-1.pdf'
+        );
     }
 }

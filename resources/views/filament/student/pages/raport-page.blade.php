@@ -1,4 +1,7 @@
 <x-filament::page>
+
+<x-filament::button wire:click="cetakPDF">Cetak PDF</x-filament::button>
+
     @if ($this->student)
         <h1 class="text-xl font-bold mb-2">Raport Siswa</h1>
         <table class="mb-4">
