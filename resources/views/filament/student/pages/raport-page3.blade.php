@@ -253,7 +253,7 @@
                 </tbody>
             </table>
         @else
-            <p class="text-red-500">Data semester 2 tidak tersedia untuk siswa ini.</p>
+            <p class="text-red-500">Data semester 3 tidak tersedia untuk siswa ini.</p>
         @endif
     @else
         <p class="text-red-500">Data raport tidak tersedia untuk siswa ini.</p>
@@ -318,7 +318,7 @@
                 </tbody>
             </table>
         @else
-            <p class="text-red-500">Data semester 2 tidak tersedia untuk siswa ini.</p>
+            <p class="text-red-500">Data semester 3 tidak tersedia untuk siswa ini.</p>
         @endif
         @else
         <p class="text-red-500">Data raport tidak tersedia untuk siswa ini.</p>
@@ -433,7 +433,7 @@
                 </tbody>
             </table>
         @else
-            <p class="text-red-500">Data semester 2 tidak tersedia untuk siswa ini.</p>
+            <p class="text-red-500">Data semester 3 tidak tersedia untuk siswa ini.</p>
         @endif
         @else
         <p class="text-red-500">Data raport tidak tersedia untuk siswa ini.</p>
@@ -539,7 +539,7 @@
                 </tr>
             </table>
         @else
-            <p class="text-red-500">Data semester 2 tidak tersedia untuk siswa ini.</p>
+            <p class="text-red-500">Data semester 3 tidak tersedia untuk siswa ini.</p>
         @endif
         @else
         <p class="text-red-500">Data raport tidak tersedia untuk siswa ini.</p>
@@ -646,7 +646,7 @@
 
             </table>
         @else
-            <p class="text-red-500">Data semester 2 tidak tersedia untuk siswa ini.</p>
+            <p class="text-red-500">Data semester 3 tidak tersedia untuk siswa ini.</p>
         @endif
         @else
         <p class="text-red-500">Data raport tidak tersedia untuk siswa ini.</p>
@@ -774,7 +774,7 @@
 
             </table>
         @else
-            <p class="text-red-500">Data semester 2 tidak tersedia untuk siswa ini.</p>
+            <p class="text-red-500">Data semester 3 tidak tersedia untuk siswa ini.</p>
         @endif
         @else
         <p class="text-red-500">Data raport tidak tersedia untuk siswa ini.</p>
