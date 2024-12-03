@@ -78,6 +78,26 @@ class Student extends Model
     {
         return $this->hasOne(psmt2::class, 'student_id', 'id');
     }
+    public function smt3()
+    {
+        return $this->hasOne(smt3::class, 'student_id', 'id');
+    }
+    public function usmt3()
+    {
+        return $this->hasOne(usmt3::class, 'student_id', 'id');
+    }
+    public function esmt3()
+    {
+        return $this->hasOne(esmt3::class, 'student_id', 'id');
+    }
+    public function dsmt3()
+    {
+        return $this->hasOne(dsmt3::class, 'student_id', 'id');
+    }
+    public function psmt3()
+    {
+        return $this->hasOne(psmt3::class, 'student_id', 'id');
+    }
     public function smt4()
     {
         return $this->hasOne(smt4::class, 'student_id', 'id');

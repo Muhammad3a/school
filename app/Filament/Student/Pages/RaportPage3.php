@@ -5,6 +5,7 @@ namespace App\Filament\Student\Pages;
 use App\Models\cps3;
 use App\Models\Student;
 use Filament\Pages\Page;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RaportPage3 extends Page
 {
@@ -38,5 +39,23 @@ class RaportPage3 extends Page
         if (!$this->student) {
             abort(404, 'Data student tidak ditemukan untuk user yang sedang login.');
         }
+    }
+
+    public function cetakPDF()
+    {
+        // Data untuk PDF
+        $data = [
+            'student' => $this->student,
+            'cpSemesters' => $this->cpSemesters,
+        ];
+
+        // Render PDF
+        $pdf = Pdf::loadView('filament.student.pages.raport-pdf3', $data);
+
+        // Unduh file
+        return response()->streamDownload(
+            fn() => print($pdf->output()),
+            'Raport Semester 3.pdf'
+        );
     }
 }

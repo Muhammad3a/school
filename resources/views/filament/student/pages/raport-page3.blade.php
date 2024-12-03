@@ -20,12 +20,12 @@
             </tr>
             <tr>
                 <td>Semester</td>
-                <td>: Genap / 2</td>
+                <td>: Ganjil / 3</td>
             </tr>
-            <tr>
+            {{-- <tr>
                 <td>Tahun Pelajaran</td>
                 <td>: 2022 / 2023</td>
-            </tr>
+            </tr> --}}
         </table>
 
 
@@ -786,6 +786,7 @@
         <td class="border border-gray-300 px-4 py-2 text-center">Ananda menunjukkan perkembangan karakter yang baik pada pembelajaran semester ini. Selain itu, ananda menunjukkan prestasi yang menonjol pada karakter religius dan kedisiplinan.</td>
     </tr>
 
+    <x-filament::button wire:click="cetakPDF">Cetak PDF</x-filament::button>
     
 </x-filament::page>
 

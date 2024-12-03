@@ -52,7 +52,7 @@ class RaportPage extends Page
         // Unduh file
         return response()->streamDownload(
             fn() => print($pdf->output()),
-            'Raport-Semester-1.pdf'
+            'Raport Semester 1.pdf'
         );
     }
 }
