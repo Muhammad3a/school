@@ -19,4 +19,8 @@ class Ksmt6 extends Model
     {
         return $this->belongsTo(Classroom::class);
     }
+    public function priode(): BelongsTo
+    {
+        return $this->belongsTo(Priode::class, 'priode_id', 'id');
+    }
 }

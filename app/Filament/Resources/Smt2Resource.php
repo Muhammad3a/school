@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use App\Models\Smt2;
 use Filament\Tables;
+use App\Models\Priode;
 use App\Models\Student;
 use Filament\Forms\Form;
 use App\Models\Classroom;
@@ -39,6 +40,10 @@ class Smt2Resource extends Resource
                         Select::make('classroom_id')
                             ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Kelas'),
+                        Select::make('priode_id')
+                            ->label('Periode')
+                            ->searchable()
+                            ->options(Priode::all()->pluck('name', 'id')),
                         TextInput::make('pai')
                             ->label('Pendidikan Agama Islam')
                             ->numeric()
@@ -83,6 +88,8 @@ class Smt2Resource extends Resource
                     ->label('Murid'),
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
+                TextColumn::make('priode.name')
+                    ->label('Periode'),
                 TextColumn::make('pai')
                     ->label('Pendidikan Agama Islam'),
                 TextColumn::make('pp')
@@ -101,9 +108,17 @@ class Smt2Resource extends Resource
                     ->label('Bahasa Arab'),
             ])
             ->filters([
+                // Filter Kelas
                 Tables\Filters\SelectFilter::make('classroom_id')
-                    ->options(Classroom::all()->pluck('name', 'id'))
-                    ->label('Filter Kelas'),
+                    ->label('Filter Kelas')
+                    ->options(fn() => Classroom::pluck('name', 'id')->toArray())
+                    ->placeholder('Semua Kelas'),
+
+                // Filter Periode
+                Tables\Filters\SelectFilter::make('priode_id')
+                    ->label('Filter Periode')
+                    ->options(fn() => Priode::pluck('name', 'id')->toArray())
+                    ->placeholder('Semua Periode'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
