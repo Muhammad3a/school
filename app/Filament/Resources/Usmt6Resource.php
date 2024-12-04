@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Usmt6;
+use App\Models\Priode;
 use App\Models\Student;
 use Filament\Forms\Form;
 use App\Models\Classroom;
@@ -41,26 +42,41 @@ class Usmt6Resource extends Resource
                         Select::make('classroom_id')
                             ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Kelas'),
+                        Select::make('priode_id')
+                            ->label('Periode')
+                            ->searchable()
+                            ->options(Priode::all()->pluck('name', 'id')),
+
                         TextInput::make('mtk')
-                            ->label('Matematika'),
+                            ->label('Matematika')
+                            ->rules('max:100'),
                         TextInput::make('inggris')
-                            ->label('Bahasa Inggris'),
+                            ->label('Bahasa Inggris')
+                            ->rules('max:100'),
                         TextInput::make('informatika')
-                            ->label('Informatika'),
+                            ->label('Informatika')
+                            ->rules('max:100'),
                         TextInput::make('fisika')
-                            ->label('Fisika'),
+                            ->label('Fisika')
+                            ->rules('max:100'),
                         TextInput::make('kimia')
-                            ->label('Kimia'),
+                            ->label('Kimia')
+                            ->rules('max:100'),
                         TextInput::make('bisnis')
-                            ->label('Proses Bisnis & K3LH'),
+                            ->label('Proses Bisnis & K3LH')
+                            ->rules('max:100'),
                         TextInput::make('profesi')
-                            ->label('Profesi Dan Kewirausahaan'),
+                            ->label('Profesi Dan Kewirausahaan')
+                            ->rules('max:100'),
                         TextInput::make('pemtur')
-                            ->label('Pemrograman Terstruktur'),
+                            ->label('Pemrograman Terstruktur')
+                            ->rules('max:100'),
                         TextInput::make('pbo')
-                            ->label('Pemrograman Berorientasi Objek'),
+                            ->label('Pemrograman Berorientasi Objek')
+                            ->rules('max:100'),
                         TextInput::make('gim')
-                            ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM'),
+                            ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM')
+                            ->rules('max:100'),
                     ])->columns(2)
             ]);
     }
@@ -73,51 +89,50 @@ class Usmt6Resource extends Resource
                     ->label('Murid'),
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
+                TextColumn::make('priode.name')->label('Periode'),
                 TextColumn::make('mtk')
                     ->label('Matematika')
-                    ->numeric()
-                    ->rules('max:100'),
+                    ->numeric(),
                 TextColumn::make('inggris')
                     ->label('Bahasa Inggris')
-                    ->numeric()
-                    ->rules('max:100'),
+                    ->numeric(),
                 TextColumn::make('informatika')
                     ->label('Informatika')
-                    ->numeric()
-                    ->rules('max:100'),
+                    ->numeric(),
                 TextColumn::make('fisika')
                     ->label('Fisika')
-                    ->numeric()
-                    ->rules('max:100'),
+                    ->numeric(),
                 TextColumn::make('kimia')
                     ->label('Kimia')
-                    ->numeric()
-                    ->rules('max:100'),
+                    ->numeric(),
                 TextColumn::make('bisnis')
                     ->label('Proses Bisnis & K3LH')
-                    ->numeric()
-                    ->rules('max:100'),
+                    ->numeric(),
                 TextColumn::make('profesi')
                     ->label('Profesi Dan Kewirausahaan')
-                    ->numeric()
-                    ->rules('max:100'),
+                    ->numeric(),
                 TextColumn::make('pemtur')
                     ->label('Pemrograman Terstruktur')
-                    ->numeric()
-                    ->rules('max:100'),
+                    ->numeric(),
                 TextColumn::make('pbo')
                     ->label('Pemrograman Berorientasi Objek')
-                    ->numeric()
-                    ->rules('max:100'),
+                    ->numeric(),
                 TextColumn::make('gim')
                     ->label('Orientasi Dasar Pengembangan Perangkat Lunak Dan GIM')
-                    ->numeric()
-                    ->rules('max:100'),
+                    ->numeric(),
             ])
             ->filters([
+                // Filter Kelas
                 Tables\Filters\SelectFilter::make('classroom_id')
-                    ->options(Classroom::all()->pluck('name', 'id'))
-                    ->label('Filter Kelas'),
+                    ->label('Filter Kelas')
+                    ->options(fn() => Classroom::pluck('name', 'id')->toArray())
+                    ->placeholder('Semua Kelas'),
+
+                // Filter Periode
+                Tables\Filters\SelectFilter::make('priode_id')
+                    ->label('Filter Periode')
+                    ->options(fn() => Priode::pluck('name', 'id')->toArray())
+                    ->placeholder('Semua Periode'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

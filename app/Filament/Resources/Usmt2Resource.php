@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Usmt2;
+use App\Models\Priode;
 use App\Models\Student;
 use Filament\Forms\Form;
 use App\Models\Classroom;
@@ -21,10 +22,10 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\Usmt2Resource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\Usmt2Resource\Pages\EditUsmt2;
 use App\Filament\Resources\Usmt2Resource\Pages\ListUsmt2s;
 use App\Filament\Resources\Usmt2Resource\RelationManagers;
 use App\Filament\Resources\Usmt2Resource\Pages\CreateUsmt2;
-use App\Filament\Resources\Usmt2Resource\Pages\EditUsmt2;
 
 class Usmt2Resource extends Resource
 {
@@ -47,6 +48,11 @@ class Usmt2Resource extends Resource
                         Select::make('classroom_id')
                             ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Kelas'),
+                        Select::make('priode_id')
+                            ->label('Periode')
+                            ->searchable()
+                            ->options(Priode::all()->pluck('name', 'id')),
+
                         TextInput::make('mtk')
                             ->label('Matematika')
                             ->numeric()
@@ -99,6 +105,7 @@ class Usmt2Resource extends Resource
                     ->label('Murid'),
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
+                TextColumn::make('priode.name')->label('Periode'),
                 TextColumn::make('mtk')
                     ->label('Matematika'),
                 TextColumn::make('inggris')
@@ -122,9 +129,17 @@ class Usmt2Resource extends Resource
 
             ])
             ->filters([
+                // Filter Kelas
                 Tables\Filters\SelectFilter::make('classroom_id')
-                    ->options(Classroom::all()->pluck('name', 'id'))
-                    ->label('Filter Kelas'),
+                    ->label('Filter Kelas')
+                    ->options(fn() => Classroom::pluck('name', 'id')->toArray())
+                    ->placeholder('Semua Kelas'),
+
+                // Filter Periode
+                Tables\Filters\SelectFilter::make('priode_id')
+                    ->label('Filter Periode')
+                    ->options(fn() => Priode::pluck('name', 'id')->toArray())
+                    ->placeholder('Semua Periode'),
             ])
 
             ->actions([

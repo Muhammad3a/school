@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Ksmt6;
+use App\Models\Priode;
 use App\Models\Student;
 use Filament\Forms\Form;
 use App\Models\Classroom;
@@ -40,6 +41,10 @@ class Ksmt6Resource extends Resource
                         Select::make('classroom_id')
                             ->options(Classroom::all()->pluck('name', 'id'))
                             ->label('Kelas'),
+                        Select::make('priode_id')
+                            ->label('Periode')
+                            ->searchable()
+                            ->options(Priode::all()->pluck('name', 'id')),
                         TextInput::make('bd')
                             ->label('Basis Data')
                             ->numeric()
@@ -76,6 +81,7 @@ class Ksmt6Resource extends Resource
                     ->label('Murid'),
                 TextColumn::make('classroom.name')
                     ->label('Kelas'),
+                TextColumn::make('priode.name')->label('Periode'),
                 TextColumn::make('bd')
                     ->label('Basis Data'),
                 TextColumn::make('persisda')
@@ -90,9 +96,17 @@ class Ksmt6Resource extends Resource
                     ->label('Kecerdasaan Buatan'),
             ])
             ->filters([
+                // Filter Kelas
                 Tables\Filters\SelectFilter::make('classroom_id')
-                    ->options(Classroom::all()->pluck('name', 'id'))
-                    ->label('Filter Kelas'),
+                    ->label('Filter Kelas')
+                    ->options(fn() => Classroom::pluck('name', 'id')->toArray())
+                    ->placeholder('Semua Kelas'),
+
+                // Filter Periode
+                Tables\Filters\SelectFilter::make('priode_id')
+                    ->label('Filter Periode')
+                    ->options(fn() => Priode::pluck('name', 'id')->toArray())
+                    ->placeholder('Semua Periode'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
