@@ -160,8 +160,6 @@ class Student extends Model
     }
 
 
-
-
     // Dalam model Student.php
     protected static function boot()
     {

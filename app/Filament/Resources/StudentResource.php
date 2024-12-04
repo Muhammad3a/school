@@ -202,6 +202,8 @@ class StudentResource extends Resource
                     ->label('Nama Lengkap')
                     ->searchable(),
 
+                TextColumn::make('email'),
+
                 TextColumn::make('gender')
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->label('Jenis Kelamin'),
@@ -371,13 +373,6 @@ class StudentResource extends Resource
 
     public static function infolist(Infolist $infolist): Infolist
     {
-
-        // return $infolist
-        //     ->schema([
-        //         TextEntry::make('nis'),
-        //         TextEntry::make('name')
-        //     ]);
-
         return $infolist
             ->schema([
                 Section::make()

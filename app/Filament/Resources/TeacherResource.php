@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Models\User;
 use stdClass;
 use Filament\Forms;
 use Filament\Tables;
@@ -58,6 +59,17 @@ class TeacherResource extends Resource
                             ->label('NIP'),
                         TextInput::make('name')
                             ->required(),
+
+                        TextInput::make('email')
+                            ->label('Email')
+                            // ->fillUsing(fn($record) => $record->user?->email)
+                            ->afterStateHydrated(function (TextInput $component, $state, $record) {
+                                if ($record && $record->user_id) {
+                                    $user = User::find($record->user_id);
+                                    $component->state($user?->email);
+                                }
+                            }),
+
                         Select::make('status')
                             ->label('Wali Kelas')
                             ->options([
@@ -89,6 +101,7 @@ class TeacherResource extends Resource
                 TextColumn::make('nip')
                     ->label('NIP'),
                 TextColumn::make('name'),
+                TextColumn::make('email'),
                 TextColumn::make('status')
                     ->label('Wali Kelas'),
                 ImageColumn::make('profile')
