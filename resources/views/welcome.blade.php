@@ -35,6 +35,7 @@
                 </div>
             </div>
             <a href="#" class="hover:text-blue-300">Contact</a>
+        </nav>
     </header>
 
     <!-- Hero Section dengan Slideshow -->
@@ -66,24 +67,38 @@
     </section>
 
     <!-- Kegiatan Tahunan Section dengan Slideshow -->
-    <section class="px-8 py-30">
+    <section class="px-8 py-10">
         <h3 class="text-xl font-bold mb-4">Kegiatan Tahunan</h3>
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-2 gap-4">
+            <!-- Swiper 1 -->
             <div class="swiper-container kegiatan-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="/images/ziarah.jpg" alt="" class="w-full h-24 object-cover rounded-lg"></div>
-                    <div class="swiper-slide"><img src="/images/kegiatan2.jpg" alt="Kegiatan 2" class="w-full h-24 object-cover rounded-lg"></div>
-                </div>
-
-<div class="swiper-slide"><img src="/images/kegiatan4.jpg" alt="Kegiatan 4" class="w-full h-24 object-cover rounded-lg"></div>
+                    <div class="swiper-slide">
+                        <img src="/images/ziarah.jpg" alt="Kegiatan 1" class="w-full max-h-48 object-cover rounded-lg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/kegiatan2.jpg" alt="Kegiatan 2" class="w-full max-h-48 object-cover rounded-lg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/kegiatan3.jpg" alt="Kegiatan 3" class="w-full max-h-48 object-cover rounded-lg">
+                    </div>
                 </div>
             </div>
-            {{-- <div class="swiper-container kegiatan-swiper">
+
+            <!-- Swiper 2 -->
+            <div class="swiper-container kegiatan-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="/images/kegiatan3.jpg" alt="Kegiatan 3" class="w-full h-24 object-cover rounded-lg"></div>
-                    <div class="swiper-slide"><img src="/images/kegiatan4.jpg" alt="Kegiatan 4" class="w-full h-24 object-cover rounded-lg"></div>
+                    <div class="swiper-slide">
+                        <img src="/images/kegiatan4.jpg" alt="Kegiatan 4" class="w-full max-h-48 object-cover rounded-lg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/kegiatan5.jpg" alt="Kegiatan 5" class="w-full max-h-48 object-cover rounded-lg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/images/kegiatan6.jpg" alt="Kegiatan 6" class="w-full max-h-48 object-cover rounded-lg">
+                    </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </section>
 

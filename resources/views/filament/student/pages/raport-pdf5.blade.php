@@ -30,17 +30,17 @@
                 <td>: {{ $student->smt5->classrooms->name ?? '-' }}</td>
             </tr>
             <tr>
-                <td>Keahlian</td>
+                <td>Jurusan</td>
                 <td>: {{ $student->keahlian ?? '-' }}</td>
             </tr>
             <tr>
                 <td>Semester</td>
                 <td>: Ganjil / 5</td>
             </tr>
-            {{-- <tr>
+            <tr>
                 <td>Tahun Pelajaran</td>
-                <td>: 2022 / 2023</td>
-            </tr> --}}
+                <td>: {{ $student->smt5->priode->name ?? '-' }}</td>
+            </tr>
         </table>
 
     <table border="1" cellpadding="5" cellspacing="0" >
@@ -388,6 +388,66 @@
                 <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($student->esmt5->kebekerjaan) ? $student->getPredikatP($student->esmt5->kebekerjaan) : '-' }}</td>
             </tr>
 
+             {{-- data eksul tambahan --}}
+
+             <tr>
+                <td rowspan="9" class="border border-gray-300 px-4 py-2 text-center">Eskul Tambahan</td>
+                <td class="border border-gray-300 px-4 py-2">1. video Editing</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $student->esmt5->video ?? '-' }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($student->esmt5->video) ? $student->getPredikatP($student->esmt5->video) : '-' }}</td>
+                <td rowspan="9" class="border border-gray-300 px-4 py-2">
+                    Ananda menunjukkan {{ $student->getPredikatP($student->esmt5->video ?? 0) }} sesuai harapan pada kegiatan Eskul.
+                </td>
+            </tr>
+
+            <tr>                        
+                <td class="border border-gray-300 px-4 py-2">2. potografer</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $student->esmt5->foto ?? '-' }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($student->esmt5->foto) ? $student->getPredikatP($student->esmt5->foto) : '-' }}</td>                       
+            </tr>
+
+            <tr>                        
+                <td class="border border-gray-300 px-4 py-2">3. Desain</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $student->esmt5->desain ?? '-' }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($student->esmt5->desain) ? $student->getPredikatP($student->esmt5->desain) : '-' }}</td>                       
+            </tr>
+
+            <tr>                        
+                <td class="border border-gray-300 px-4 py-2">4. Kaligrafi</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $student->esmt5->kaligerafi ?? '-' }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($student->esmt5->kaligerafi) ? $student->getPredikatP($student->esmt5->kaligerafi) : '-' }}</td>                       
+            </tr>
+
+            <tr>                        
+                <td class="border border-gray-300 px-4 py-2">5. English Club</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $student->esmt5->engclub ?? '-' }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($student->esmt5->engclub) ? $student->getPredikatP($student->esmt5->engclub) : '-' }}</td>                       
+            </tr>
+
+            <tr>                        
+                <td class="border border-gray-300 px-4 py-2">6. Hadroh</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $student->esmt5->hadroh ?? '-' }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($student->esmt5->hadroh) ? $student->getPredikatP($student->esmt5->hadroh) : '-' }}</td>                       
+            </tr>
+
+            <tr>                        
+                <td class="border border-gray-300 px-4 py-2">7. Vollyball</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $student->esmt5->voli ?? '-' }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($student->esmt5->voli) ? $student->getPredikatP($student->esmt5->voli) : '-' }}</td>                       
+            </tr>
+
+            <tr>                        
+                <td class="border border-gray-300 px-4 py-2">8. Futsal</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $student->esmt5->futsal ?? '-' }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($student->esmt5->futsal) ? $student->getPredikatP($student->esmt5->futsal) : '-' }}</td>                       
+            </tr>
+
+            <tr>                        
+                <td class="border border-gray-300 px-4 py-2">9. Silat</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ $student->esmt5->silat ?? '-' }}</td>
+                <td class="border border-gray-300 px-4 py-2 text-center">{{ isset($student->esmt5->silat) ? $student->getPredikatP($student->esmt5->silat) : '-' }}</td>                       
+            </tr>
+
           {{-- Data Presensi   --}}
           <tr>
             <td rowspan="3" class="border border-gray-300 px-4 py-2 text-center">Presensi</td>
@@ -415,14 +475,6 @@
 
         </tbody>
     </table>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <h4 class="font-bold">E. Penilaian Proyek Budaya Kerja (10 Disiplin Azzainiyyah)</h4>
 
     <table border="1" cellpadding="5" cellspacing="0" >

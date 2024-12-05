@@ -83,6 +83,42 @@ class Esmt4Resource extends Resource
                             ->label('Keberkerjaan')
                             ->numeric()
                             ->rules('max:100'),
+                        TextInput::make('foto')
+                            ->numeric()
+                            ->rules('max:100')
+                            ->label('Foto'),
+                        TextInput::make('video')
+                            ->numeric()
+                            ->rules('max:100')
+                            ->label('Video'),
+                        TextInput::make('desain')
+                            ->numeric()
+                            ->rules('max:100')
+                            ->label('Desain'),
+                        TextInput::make('kaligerafi')
+                            ->numeric()
+                            ->rules('max:100')
+                            ->label('Kaligerafi'),
+                        TextInput::make('engclub')
+                            ->numeric()
+                            ->rules('max:100')
+                            ->label('English Club'),
+                        TextInput::make('hadroh')
+                            ->numeric()
+                            ->rules('max:100')
+                            ->label('Hadroh'),
+                        TextInput::make('voli')
+                            ->numeric()
+                            ->rules('max:100')
+                            ->label('Voli'),
+                        TextInput::make('futsal')
+                            ->numeric()
+                            ->rules('max:100')
+                            ->label('Futsal'),
+                        TextInput::make('silat')
+                            ->numeric()
+                            ->rules('max:100')
+                            ->label('Silat'),
                         TextInput::make('sakit')
                             ->label('Sakit')
                             ->numeric()
@@ -126,6 +162,24 @@ class Esmt4Resource extends Resource
                     ->label('Berekayasa & Berteknologi'),
                 TextColumn::make('kebekerjaan')
                     ->label('Keberkerjaan'),
+                TextColumn::make('foto')
+                    ->label('Photografer'),
+                TextColumn::make('video')
+                    ->label('Video editing'),
+                TextColumn::make('desain')
+                    ->label('Desain'),
+                TextColumn::make('kaligrafi')
+                    ->label('Kaligerafi'),
+                TextColumn::make('engclub')
+                    ->label('English Club'),
+                TextColumn::make('hadroh')
+                    ->label('Hadroh'),
+                TextColumn::make('voli')
+                    ->label('vollyball'),
+                TextColumn::make('futsal')
+                    ->label('futsal'),
+                TextColumn::make('silat')
+                    ->label('silat'),
                 TextColumn::make('sakit')
                     ->label('Sakit'),
                 TextColumn::make('izin')
