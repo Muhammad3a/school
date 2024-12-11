@@ -14,6 +14,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Pages\Actions\EditAction;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Filters\SelectFilter;
@@ -31,9 +32,19 @@ class Usmt2Resource extends Resource
 {
     protected static ?string $model = Usmt2::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getNavigationItems(): array
+    {
+        if (!auth()->check() || !auth()->user()->hasRole('wali kelas')) {
+            return [];
+        }
 
-    protected static ?string $navigationLabel = 'Nilai Umum Semester 2';
+        return [
+            NavigationItem::make()
+                ->label('Nilai Umum Semester 2')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
+    }
 
 
     public static function form(Form $form): Form

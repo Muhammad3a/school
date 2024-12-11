@@ -21,6 +21,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Textarea;
 use Filament\Infolists\Components\Grid;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
@@ -45,17 +46,14 @@ class StudentResource extends Resource
 {
     protected static ?string $model = Student::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
 
-    protected static ?string $navigationLabel = 'Student';
-
-    protected static ?int $navigationSort = 22;
+    protected static ?string $navigationLabel = 'Murid';
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()->hasRole('admin');
+        return auth()->user()->hasRole('admin', 'wali kelas');
     }
-
 
     public static function form(Forms\Form $form): Forms\Form
     {
@@ -172,6 +170,14 @@ class StudentResource extends Resource
 
                 TextInput::make('contactw')
                     ->label('No. Tlp/HP Wali'),
+
+                Select::make('status')
+                    ->options([
+                        'aktif'  => 'Aktif',
+                        'off'    => 'Off',
+                        'pindah' => 'Pindah',
+                        'arsip'  => 'Arsip',
+                    ]),
 
                 FileUpload::make('profile')
                     ->image()
@@ -295,7 +301,6 @@ class StudentResource extends Resource
                     ->label('No. Tlp/Hp Wali'),
 
                 TextColumn::make('status')
-                    ->toggleable(isToggledHiddenByDefault: true)
                     ->formatStateUsing(fn(string $state): string => ucwords("{$state}")),
 
                 ImageColumn::make('profile')
@@ -307,10 +312,10 @@ class StudentResource extends Resource
                 SelectFilter::make('status')
                     ->multiple()
                     ->options([
-                        'accept' => 'Accept',
+                        'aktif' => 'Aktif',
                         'off' => 'Off',
-                        'move' => 'Move',
-                        'grade' => 'Grade'
+                        'pindah' => 'Pindah',
+                        'arsip' => 'Arsip'
 
                     ])
             ])
@@ -321,18 +326,49 @@ class StudentResource extends Resource
             ->bulkActions([
 
                 Tables\Actions\BulkActionGroup::make([
-                    BulkAction::make('Change Status')
+                    BulkAction::make('Arsipkan')
                         ->icon('heroicon-m-check')
                         ->requiresConfirmation()
-                        ->form([
-                            Select::make('Status')
-                                ->label('Status')
-                                ->options(['accept' => 'Accept', 'off' => 'Off', 'move' => 'Move', 'grade' => 'Grade'])
-                                ->required()
-                        ])
-                        ->action(function (Collection $records, array $data) {
-                            $records->each(function ($records) use ($data) {
-                                Student::where('id', $records->id)->update(['status' => $data['Status']]);
+                        ->action(function (Collection $records) {
+                            $records->each(function ($student) {
+                                if ($student->status === 'arsip') {
+                                    // Pindahkan data ke tabel arsip
+                                    \App\Models\ArchivedStudent::create([
+                                        'nis' => $student->nis,
+                                        'email' => $student->email,
+                                        'nisn' => $student->nisn,
+                                        'name' => $student->name,
+                                        'gender' => $student->gender,
+                                        'tempatl' => $student->tempatl,
+                                        'birthday' => $student->birthday,
+                                        'agama' => $student->agama,
+                                        'kwnegara' => $student->kwnegara,
+                                        'statusdk' => $student->statusdk,
+                                        'anakke' => $student->anakke,
+                                        'alamat' => $student->alamat,
+                                        'contact' => $student->contact,
+                                        'asekolah' => $student->asekolah,
+                                        'classroom_id' => $student->classroom_id,
+                                        'departement_id' => $student->departement_id,
+                                        'nayah' => $student->nayah,
+                                        'nibu' => $student->nibu,
+                                        'pkrjnayah' => $student->pkrjnayah,
+                                        'pkrjnibu' => $student->pkrjnibu,
+                                        'alamatot' => $student->alamatot,
+                                        'contactot' => $student->contactot,
+                                        'nwali' => $student->nwali,
+                                        'pkrjnwali' => $student->pkrjnwali,
+                                        'alamatwali' => $student->alamatwali,
+                                        'contactw' => $student->contactw,
+                                        'status' => $student->status,
+                                        'profile' => $student->profile,
+
+
+                                    ]);
+
+                                    // Hapus data dari tabel student
+                                    $student->delete();
+                                }
                             });
                         }),
 
@@ -400,11 +436,10 @@ class StudentResource extends Resource
                                                 Components\TextEntry::make('status')
                                                     ->badge()
                                                     ->color(fn(string $state): string => match ($state) {
-                                                        'accept' => 'success',
+                                                        'aktif' => 'success',
                                                         'off' => 'danger',
-                                                        'grade' => 'success',
-                                                        'move' => 'warning',
-                                                        'wait' => 'gray'
+                                                        'pindah' => 'warning',
+                                                        'arsip' => 'gray'
                                                     }),
                                                 Components\ViewEntry::make('QRCode')
                                                     ->view('filament.resources.students.qrcode'),

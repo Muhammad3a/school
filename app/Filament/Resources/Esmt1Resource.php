@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Filters\SelectFilter;
@@ -25,10 +26,19 @@ class Esmt1Resource extends Resource
 {
     protected static ?string $model = Esmt1::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getNavigationItems(): array
+    {
+        if (!auth()->check() || !auth()->user()->hasRole('wali kelas')) {
+            return [];
+        }
 
-    protected static ?string $navigationLabel = 'Nilai Eskul Semester 1';
-
+        return [
+            NavigationItem::make()
+                ->label('Nilai Eskul Semester 1')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
+    }
 
     public static function form(Form $form): Form
     {

@@ -2,32 +2,38 @@
 
 namespace App\Filament\Resources;
 
+use stdClass;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Priode;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PriodeResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PriodeResource\RelationManagers;
-use Filament\Tables\Contracts\HasTable;
-use stdClass;
 
 class PriodeResource extends Resource
 {
     protected static ?string $model = Priode::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = 'Periode';
-
-    public static function shouldRegisterNavigation(): bool
+    public static function getNavigationItems(): array
     {
-        return auth()->user()->hasRole('admin');
+        if (!auth()->check() || !auth()->user()->hasRole('admin')) {
+            return [];
+        }
+
+        return [
+            NavigationItem::make()
+                ->label('Priode')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
     }
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Nov 2024 pada 13.01
+-- Waktu pembuatan: 11 Des 2024 pada 04.26
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -24,163 +24,66 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `alfas`
+-- Struktur dari tabel `archived_students`
 --
 
-CREATE TABLE `alfas` (
+CREATE TABLE `archived_students` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `nis` varchar(255) DEFAULT NULL,
+  `nisn` varchar(255) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `gender` enum('Male','Female') NOT NULL DEFAULT 'Male',
+  `birthday` date DEFAULT NULL,
+  `tempatl` varchar(255) DEFAULT NULL,
+  `agama` enum('Islam','Katolik','Protestan','Hindu','Buddha','Khonghucu') NOT NULL DEFAULT 'Islam',
+  `kwnegara` enum('Warga Negara Indonesia','Kewarganegaraan Asing') NOT NULL DEFAULT 'Warga Negara Indonesia',
+  `statusdk` varchar(255) DEFAULT NULL,
+  `anakke` enum('1','2','3','4','5','6','7','8','9','10') DEFAULT '1',
+  `alamat` text DEFAULT NULL,
+  `profile` varchar(255) DEFAULT NULL,
+  `graduation_date` date DEFAULT NULL,
+  `status` enum('aktif','off','pindah','arsip') NOT NULL DEFAULT 'aktif',
+  `email` varchar(255) DEFAULT NULL,
+  `contact` varchar(255) DEFAULT NULL,
+  `asekolah` varchar(255) DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `departement_id` bigint(20) UNSIGNED DEFAULT 1,
+  `nayah` varchar(255) DEFAULT NULL,
+  `nibu` varchar(255) DEFAULT NULL,
+  `pkrjnayah` varchar(255) DEFAULT NULL,
+  `pkrjnibu` varchar(255) DEFAULT NULL,
+  `alamatot` text DEFAULT NULL,
+  `contactot` varchar(255) DEFAULT NULL,
+  `nwali` varchar(255) DEFAULT NULL,
+  `pkrjnwali` varchar(255) DEFAULT NULL,
+  `alamatwali` text DEFAULT NULL,
+  `contactw` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `alfas`
+-- Dumping data untuk tabel `archived_students`
 --
 
-INSERT INTO `alfas` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(2, 27, 100, 100, 100, 100, 100, 100, '2024-11-09 22:09:12', '2024-11-09 22:17:21');
+INSERT INTO `archived_students` (`id`, `created_at`, `updated_at`, `nis`, `nisn`, `name`, `gender`, `birthday`, `tempatl`, `agama`, `kwnegara`, `statusdk`, `anakke`, `alamat`, `profile`, `graduation_date`, `status`, `email`, `contact`, `asekolah`, `classroom_id`, `departement_id`, `nayah`, `nibu`, `pkrjnayah`, `pkrjnibu`, `alamatot`, `contactot`, `nwali`, `pkrjnwali`, `alamatwali`, `contactw`) VALUES
+(3, '2024-12-06 00:21:43', '2024-12-06 00:23:07', '10.2324.03.033', NULL, 'jhonathan iman', 'Male', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, 'arsip', '10.2324.03.033@gmail.com', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bandks`
+-- Struktur dari tabel `arsips`
 --
 
-CREATE TABLE `bandks` (
+CREATE TABLE `arsips` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `nis` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'arsip',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `bandks`
---
-
-INSERT INTO `bandks` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 17:55:49', '2024-10-25 17:55:49');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `barabs`
---
-
-CREATE TABLE `barabs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `barabs`
---
-
-INSERT INTO `barabs` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 15:10:51', '2024-10-25 15:10:51');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `bds`
---
-
-CREATE TABLE `bds` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `berekayasas`
---
-
-CREATE TABLE `berekayasas` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `bindos`
---
-
-CREATE TABLE `bindos` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `bings`
---
-
-CREATE TABLE `bings` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `bings`
---
-
-INSERT INTO `bings` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 28, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 15:29:21', '2024-10-25 15:29:21');
 
 -- --------------------------------------------------------
 
@@ -193,51 +96,6 @@ CREATE TABLE `bios` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `bkerjas`
---
-
-CREATE TABLE `bkerjas` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `bsundas`
---
-
-CREATE TABLE `bsundas` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `bsundas`
---
-
-INSERT INTO `bsundas` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 15:03:17', '2024-10-25 15:03:17');
 
 -- --------------------------------------------------------
 
@@ -256,11 +114,11 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('356a192b7913b04c54574d18c28d46e6395428ab', 'i:1;', 1731302457),
-('356a192b7913b04c54574d18c28d46e6395428ab:timer', 'i:1731302457;', 1731302457),
-('a17961fa74e9275d529f489537f179c05d50c2f3', 'i:1;', 1731326115),
-('a17961fa74e9275d529f489537f179c05d50c2f3:timer', 'i:1731326115;', 1731326115),
-('spatie.permission.cache', 'a:3:{s:5:\"alias\";a:4:{s:1:\"a\";s:2:\"id\";s:1:\"b\";s:4:\"name\";s:1:\"c\";s:10:\"guard_name\";s:1:\"r\";s:5:\"roles\";}s:11:\"permissions\";a:7:{i:0;a:4:{s:1:\"a\";i:3;s:1:\"b\";s:11:\"Kelola Guru\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:3;}}i:1;a:4:{s:1:\"a\";i:4;s:1:\"b\";s:14:\"Kelola Student\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:3;}}i:2;a:4:{s:1:\"a\";i:5;s:1:\"b\";s:12:\"Kelola Kelas\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:3;a:4:{s:1:\"a\";i:6;s:1:\"b\";s:25:\"Kelola Murid dengan Kelas\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:3;}}i:4;a:4:{s:1:\"a\";i:7;s:1:\"b\";s:6:\"Priode\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:5;a:4:{s:1:\"a\";i:8;s:1:\"b\";s:9:\"Semsester\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:6;a:4:{s:1:\"a\";i:9;s:1:\"b\";s:14:\"Jenis Kehiatan\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}}s:5:\"roles\";a:2:{i:0;a:3:{s:1:\"a\";i:1;s:1:\"b\";s:5:\"admin\";s:1:\"c\";s:3:\"web\";}i:1;a:3:{s:1:\"a\";i:3;s:1:\"b\";s:10:\"wali kelas\";s:1:\"c\";s:3:\"web\";}}}', 1731385996);
+('356a192b7913b04c54574d18c28d46e6395428ab', 'i:1;', 1733736378),
+('356a192b7913b04c54574d18c28d46e6395428ab:timer', 'i:1733736378;', 1733736378),
+('a17961fa74e9275d529f489537f179c05d50c2f3', 'i:1;', 1733813743),
+('a17961fa74e9275d529f489537f179c05d50c2f3:timer', 'i:1733813743;', 1733813743),
+('spatie.permission.cache', 'a:3:{s:5:\"alias\";a:4:{s:1:\"a\";s:2:\"id\";s:1:\"b\";s:4:\"name\";s:1:\"c\";s:10:\"guard_name\";s:1:\"r\";s:5:\"roles\";}s:11:\"permissions\";a:8:{i:0;a:4:{s:1:\"a\";i:3;s:1:\"b\";s:11:\"Kelola Guru\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:1;a:4:{s:1:\"a\";i:4;s:1:\"b\";s:14:\"Kelola Student\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:2;a:4:{s:1:\"a\";i:5;s:1:\"b\";s:12:\"Kelola Kelas\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:3;a:4:{s:1:\"a\";i:6;s:1:\"b\";s:25:\"Kelola Murid dengan Kelas\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:2:{i:0;i:1;i:1;i:3;}}i:4;a:4:{s:1:\"a\";i:7;s:1:\"b\";s:6:\"Priode\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:5;a:4:{s:1:\"a\";i:8;s:1:\"b\";s:9:\"Semsester\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:6;a:4:{s:1:\"a\";i:9;s:1:\"b\";s:14:\"Jenis Kegiatan\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:7;a:4:{s:1:\"a\";i:10;s:1:\"b\";s:22:\"Nilai Mulok semester 1\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:3;}}}s:5:\"roles\";a:2:{i:0;a:3:{s:1:\"a\";i:1;s:1:\"b\";s:5:\"admin\";s:1:\"c\";s:3:\"web\";}i:1;a:3:{s:1:\"a\";i:3;s:1:\"b\";s:10:\"wali kelas\";s:1:\"c\";s:3:\"web\";}}}', 1733908968);
 
 -- --------------------------------------------------------
 
@@ -273,26 +131,6 @@ CREATE TABLE `cache_locks` (
   `owner` varchar(255) NOT NULL,
   `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `catatan_akademiks`
---
-
-CREATE TABLE `catatan_akademiks` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `catatan` text DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `catatan_akademiks`
---
-
-INSERT INTO `catatan_akademiks` (`id`, `catatan`, `created_at`, `updated_at`) VALUES
-(1, 'Tingkatan prestasi, kedisiplinan, dan ketekunan dalam belajar. Semester depan harus lebih baik dari semester sekarang !', '2024-10-22 21:03:33', '2024-10-22 21:03:33');
 
 -- --------------------------------------------------------
 
@@ -328,7 +166,6 @@ INSERT INTO `category_nilais` (`id`, `name`, `slug`, `created_at`, `updated_at`)
 CREATE TABLE `classrooms` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -337,10 +174,11 @@ CREATE TABLE `classrooms` (
 -- Dumping data untuk tabel `classrooms`
 --
 
-INSERT INTO `classrooms` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
-(13, 'X', 'x', '2024-10-20 21:29:38', '2024-10-20 21:30:00'),
-(14, 'XI', 'xi', '2024-10-20 21:30:12', '2024-10-20 21:30:12'),
-(15, 'XII', 'xii', '2024-10-20 21:30:18', '2024-10-20 21:30:18');
+INSERT INTO `classrooms` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(13, 'X', '2024-10-20 21:29:38', '2024-10-20 21:30:00'),
+(14, 'XI', '2024-10-20 21:30:12', '2024-10-20 21:30:12'),
+(15, 'XII', '2024-10-20 21:30:18', '2024-10-20 21:30:18'),
+(16, 'X - 1', '2024-11-16 23:26:58', '2024-11-16 23:26:58');
 
 -- --------------------------------------------------------
 
@@ -359,47 +197,101 @@ CREATE TABLE `classroom_subject` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cp_semesters`
+-- Struktur dari tabel `contacts`
 --
 
-CREATE TABLE `cp_semesters` (
+CREATE TABLE `contacts` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `subject_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `pelajarankejuruan_id` bigint(20) DEFAULT NULL,
-  `sm1` text DEFAULT NULL,
-  `sm2` text DEFAULT NULL,
-  `sm3` text DEFAULT NULL,
-  `sm4` text DEFAULT NULL,
-  `sm5` text DEFAULT NULL,
-  `sm6` text DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `cp_semesters`
+-- Dumping data untuk tabel `contacts`
 --
 
-INSERT INTO `cp_semesters` (`id`, `subject_id`, `pelajarankejuruan_id`, `sm1`, `sm2`, `sm3`, `sm4`, `sm5`, `sm6`, `created_at`, `updated_at`) VALUES
-(2, 50, NULL, 'Membaca, Menyajikan, dan menganalisa ayat Al-Qur\'an dan Hadits tentang perintah untuk berkompetisi dalam  kebaikan dan etos kerja serta larangan pergaulan bebas dan zina\n', NULL, NULL, NULL, NULL, NULL, '2024-10-23 05:55:15', '2024-10-23 05:55:15'),
-(3, 56, 4, 'Peserta didik mampu menguasai materi besaran dan satuan\n', NULL, NULL, NULL, NULL, NULL, '2024-10-23 07:44:37', '2024-10-23 07:47:09'),
-(4, NULL, 5, 'Peserta didik mampu menguasai materi perubahan materi dan pemisahan campuran\n', NULL, NULL, NULL, NULL, NULL, '2024-10-23 07:45:44', '2024-10-23 07:45:44');
+INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'c', 'c@gmail.com', 'aaa', '2024-12-09 21:58:08', '2024-12-09 21:58:08'),
+(2, 'M Abdul Aziz Albar', 'ihsan@gmail.com', 'ko ngelag', '2024-12-10 00:02:04', '2024-12-10 00:02:04');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dbelajars`
+-- Struktur dari tabel `cps1s`
 --
 
-CREATE TABLE `dbelajars` (
+CREATE TABLE `cps1s` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `pai` text DEFAULT NULL,
+  `pp` text DEFAULT NULL,
+  `indo` text DEFAULT NULL,
+  `pjok` text DEFAULT NULL,
+  `sejarah` text DEFAULT NULL,
+  `sb` text DEFAULT NULL,
+  `sunda` text DEFAULT NULL,
+  `arab` text DEFAULT NULL,
+  `mtk` text DEFAULT NULL,
+  `inggris` text DEFAULT NULL,
+  `informatika` text DEFAULT NULL,
+  `fisika` text DEFAULT NULL,
+  `kimia` text DEFAULT NULL,
+  `bisnis` text DEFAULT NULL,
+  `profesi` text DEFAULT NULL,
+  `pemtur` text DEFAULT NULL,
+  `pbo` text DEFAULT NULL,
+  `gim` text DEFAULT NULL,
+  `bd` text DEFAULT NULL,
+  `pbt` text DEFAULT NULL,
+  `pw` text DEFAULT NULL,
+  `ppb` text DEFAULT NULL,
+  `pkk` text DEFAULT NULL,
+  `kb` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `cps1s`
+--
+
+INSERT INTO `cps1s` (`id`, `pai`, `pp`, `indo`, `pjok`, `sejarah`, `sb`, `sunda`, `arab`, `mtk`, `inggris`, `informatika`, `fisika`, `kimia`, `bisnis`, `profesi`, `pemtur`, `pbo`, `gim`, `bd`, `pbt`, `pw`, `ppb`, `pkk`, `kb`, `created_at`, `updated_at`) VALUES
+(1, 'Membaca, Menyajikan, dan menganalisa ayat Al-Qur\'an dan Hadits tentang perintah untuk berkompetisi dalam  kebaikan dan etos kerja serta larangan pergaulan bebas dan zina\n', 'menyajikan dan menganalisis materi Nilai-nilai Pancasila dalam Praktik Penyelenggaraan Pemerintah Negara Indonesia dan Ketentuan UUD NRI Tahun 1945 dalam Kehidupan Berbangsadan Bernegara dengan sangat baik\n', 'menulis dan menciptakan teks laporan hasil observasi, teks eksposisi, dan teks anekdot.\n', 'mengetahui dan melakukan gerak dasar bola besar dan mempraktekkan teknik dasar bola besar, bola kecil dan atletik\n', 'memahami konsep dasar ilmu sejarah sebagai bahan analisis untuk mengkaji peristiwa sejarah, dapat memahami konsep dasar ilmu sejarah sebagai bahan evaluasi untuk mengkaji peristiwa sejarah dan dapat menganalisis serta mengevaluasi peristiwa sejarah dalam ruang lingkup lokal, nasional, dan global\n', 'Memahami & menjelaskan tentang materi karya seni rupa 2D dan 3D.  Serta mampu mempraktekkan membuat karya seni rupa\n', 'memiliki kemampuan berbahasa Sunda untuk berkomunikasi dan bernalar sesuai dengan tujuan dan konteks sosial-budaya.\n', 'menyimak dan membaca kosakata, kalimat-kalimat dan teks-teks bahasa Arab dengan, lancar, cermat, dan tepat sesuai dengan harakat dan, tata bahasa (qawaid) yang benar terkait teks perkenalan, diri (ta’aruf), keluarga (usrah)\n', 'menggeneralisasi sifat-sifat operasi bilangan berpangkat (eksponen) dan logaritma\n', 'Text lisan Dan tulis tentang menanyakan Dan memaparkan jati diri Dan hubungan keluarga\n', 'mencari informasi di internet, Menggunakan aplikasi pengolah kata untuk membuat surat lamaran dan surat resmi perusahaan, daftar isi, proposal dan makalah, Membuat sebuah sheet yang mengandung operator aritmatika, rumus dasar pada Microsoft Excel\n', 'Peserta didik mampu menguasai materi besaran dan satuan\n', 'Peserta didik mampu menguasai materi perubahan materi dan pemisahan campuran\n', 'menerapkan K3LH dan budaya kerja industri, antara lain: praktik- praktik kerja yang aman, bahaya-bahaya di tempat kerja, prosedur- prosedur dalam keadaan darurat, dan penerapan budaya kerja industri (Ringkas, Rapi, Resik, Rawat, Rajin), termasuk pencegahan kecelakaan kerja dan prosedur kerja.\n', 'membuat produk kerajinan nusantara berdasarkan desain. Pembuatan desain melalui analisis kebutuhan, kelayakan pasar, eksplorasi bentuk, bahan, alat dan teknik, serta mempresentasikan secara lisan, visual, dan grafis.\n', 'melakukan pemrograman terstruktur, antara lain penerapan struktur data yang terdiri dari data statis (array baik dimensi, panjang, tipe data, pengurutan) dan data dinamis (list, stack), penggunaan tipe data, struktur kontrol perulangan dan percabangan pada proyek pengembangan perangkat lunak sederhana dan gim.\n', 'memahami dan mengerjakan proyek bahasa pemograman java dengan baik dan benar \n', 'menggunakan perangkat dan aplikasi di bidang Perangkat Lunak dan Gim, seperti basis data, tools pengembangan perangkat lunak, ragam sistem operasi, penerapan pengelolaan aset dan user interface (grafis, typography, warna, audio, video, interaksi pengguna) dan menerapkan prinsip dasar algoritma pemrograman (varian dan invarian, alur logika pemrograman, flowchart, dan teknik dasar algoritma umum)\n', NULL, NULL, NULL, NULL, NULL, NULL, '2024-11-18 07:56:23', '2024-11-18 07:56:23');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `cps2s`
+--
+
+CREATE TABLE `cps2s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `pai` text DEFAULT NULL,
+  `pp` text DEFAULT NULL,
+  `indo` text DEFAULT NULL,
+  `pjok` text DEFAULT NULL,
+  `sejarah` text DEFAULT NULL,
+  `sb` text DEFAULT NULL,
+  `sunda` text DEFAULT NULL,
+  `arab` text DEFAULT NULL,
+  `mtk` text DEFAULT NULL,
+  `inggris` text DEFAULT NULL,
+  `informatika` text DEFAULT NULL,
+  `fisika` text DEFAULT NULL,
+  `kimia` text DEFAULT NULL,
+  `bisnis` text DEFAULT NULL,
+  `profesi` text DEFAULT NULL,
+  `pemtur` text DEFAULT NULL,
+  `pbo` text DEFAULT NULL,
+  `gim` text DEFAULT NULL,
+  `bd` text DEFAULT NULL,
+  `pbt` text DEFAULT NULL,
+  `pw` text DEFAULT NULL,
+  `ppb` text DEFAULT NULL,
+  `pkk` text DEFAULT NULL,
+  `kb` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -407,18 +299,35 @@ CREATE TABLE `dbelajars` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dberbahasas`
+-- Struktur dari tabel `cps3s`
 --
 
-CREATE TABLE `dberbahasas` (
+CREATE TABLE `cps3s` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `pai` text DEFAULT NULL,
+  `pp` text DEFAULT NULL,
+  `indo` text DEFAULT NULL,
+  `pjok` text DEFAULT NULL,
+  `sejarah` text DEFAULT NULL,
+  `sb` text DEFAULT NULL,
+  `sunda` text DEFAULT NULL,
+  `arab` text DEFAULT NULL,
+  `mtk` text DEFAULT NULL,
+  `inggris` text DEFAULT NULL,
+  `informatika` text DEFAULT NULL,
+  `fisika` text DEFAULT NULL,
+  `kimia` text DEFAULT NULL,
+  `bisnis` text DEFAULT NULL,
+  `profesi` text DEFAULT NULL,
+  `pemtur` text DEFAULT NULL,
+  `pbo` text DEFAULT NULL,
+  `gim` text DEFAULT NULL,
+  `bd` text DEFAULT NULL,
+  `pbt` text DEFAULT NULL,
+  `pw` text DEFAULT NULL,
+  `ppb` text DEFAULT NULL,
+  `pkk` text DEFAULT NULL,
+  `kb` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -426,18 +335,35 @@ CREATE TABLE `dberbahasas` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dberbusanas`
+-- Struktur dari tabel `cps4s`
 --
 
-CREATE TABLE `dberbusanas` (
+CREATE TABLE `cps4s` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `pai` text DEFAULT NULL,
+  `pp` text DEFAULT NULL,
+  `indo` text DEFAULT NULL,
+  `pjok` text DEFAULT NULL,
+  `sejarah` text DEFAULT NULL,
+  `sb` text DEFAULT NULL,
+  `sunda` text DEFAULT NULL,
+  `arab` text DEFAULT NULL,
+  `mtk` text DEFAULT NULL,
+  `inggris` text DEFAULT NULL,
+  `informatika` text DEFAULT NULL,
+  `fisika` text DEFAULT NULL,
+  `kimia` text DEFAULT NULL,
+  `bisnis` text DEFAULT NULL,
+  `profesi` text DEFAULT NULL,
+  `pemtur` text DEFAULT NULL,
+  `pbo` text DEFAULT NULL,
+  `gim` text DEFAULT NULL,
+  `bd` text DEFAULT NULL,
+  `pbt` text DEFAULT NULL,
+  `pw` text DEFAULT NULL,
+  `ppb` text DEFAULT NULL,
+  `pkk` text DEFAULT NULL,
+  `kb` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -445,18 +371,35 @@ CREATE TABLE `dberbusanas` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dbergauls`
+-- Struktur dari tabel `cps5s`
 --
 
-CREATE TABLE `dbergauls` (
+CREATE TABLE `cps5s` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `pai` text DEFAULT NULL,
+  `pp` text DEFAULT NULL,
+  `indo` text DEFAULT NULL,
+  `pjok` text DEFAULT NULL,
+  `sejarah` text DEFAULT NULL,
+  `sb` text DEFAULT NULL,
+  `sunda` text DEFAULT NULL,
+  `arab` text DEFAULT NULL,
+  `mtk` text DEFAULT NULL,
+  `inggris` text DEFAULT NULL,
+  `informatika` text DEFAULT NULL,
+  `fisika` text DEFAULT NULL,
+  `kimia` text DEFAULT NULL,
+  `bisnis` text DEFAULT NULL,
+  `profesi` text DEFAULT NULL,
+  `pemtur` text DEFAULT NULL,
+  `pbo` text DEFAULT NULL,
+  `gim` text DEFAULT NULL,
+  `bd` text DEFAULT NULL,
+  `pbt` text DEFAULT NULL,
+  `pw` text DEFAULT NULL,
+  `ppb` text DEFAULT NULL,
+  `pkk` text DEFAULT NULL,
+  `kb` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -464,18 +407,35 @@ CREATE TABLE `dbergauls` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dbertindaks`
+-- Struktur dari tabel `cps6s`
 --
 
-CREATE TABLE `dbertindaks` (
+CREATE TABLE `cps6s` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `pai` text DEFAULT NULL,
+  `pp` text DEFAULT NULL,
+  `indo` text DEFAULT NULL,
+  `pjok` text DEFAULT NULL,
+  `sejarah` text DEFAULT NULL,
+  `sb` text DEFAULT NULL,
+  `sunda` text DEFAULT NULL,
+  `arab` text DEFAULT NULL,
+  `mtk` text DEFAULT NULL,
+  `inggris` text DEFAULT NULL,
+  `informatika` text DEFAULT NULL,
+  `fisika` text DEFAULT NULL,
+  `kimia` text DEFAULT NULL,
+  `bisnis` text DEFAULT NULL,
+  `profesi` text DEFAULT NULL,
+  `pemtur` text DEFAULT NULL,
+  `pbo` text DEFAULT NULL,
+  `gim` text DEFAULT NULL,
+  `bd` text DEFAULT NULL,
+  `pbt` text DEFAULT NULL,
+  `pw` text DEFAULT NULL,
+  `ppb` text DEFAULT NULL,
+  `pkk` text DEFAULT NULL,
+  `kb` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -507,18 +467,56 @@ INSERT INTO `departements` (`id`, `name_department`, `slug`, `description`, `cre
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dibadahs`
+-- Struktur dari tabel `dsmt1s`
 --
 
-CREATE TABLE `dibadahs` (
+CREATE TABLE `dsmt1s` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `dwaktu` double DEFAULT NULL,
+  `dibadah` double DEFAULT NULL,
+  `dbelajar` double UNSIGNED DEFAULT NULL,
+  `dbergaul` double UNSIGNED DEFAULT NULL,
+  `dberbusana` double UNSIGNED DEFAULT NULL,
+  `dmenggunakanfasilitas` double UNSIGNED DEFAULT NULL,
+  `dk3` double UNSIGNED DEFAULT NULL,
+  `dberbahasa` double UNSIGNED DEFAULT NULL,
+  `dbertindak` double UNSIGNED DEFAULT NULL,
+  `dkeamanan` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `dsmt1s`
+--
+
+INSERT INTO `dsmt1s` (`id`, `student_id`, `classroom_id`, `priode_id`, `dwaktu`, `dibadah`, `dbelajar`, `dbergaul`, `dberbusana`, `dmenggunakanfasilitas`, `dk3`, `dberbahasa`, `dbertindak`, `dkeamanan`, `created_at`, `updated_at`) VALUES
+(2, 27, 13, NULL, 88, 88, 88, 88, 88, 88, 88, 88, 88, 88, '2024-11-18 08:26:14', '2024-11-18 08:26:14');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `dsmt2s`
+--
+
+CREATE TABLE `dsmt2s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `dwaktu` double DEFAULT NULL,
+  `dibadah` double DEFAULT NULL,
+  `dbelajar` double UNSIGNED DEFAULT NULL,
+  `dbergaul` double UNSIGNED DEFAULT NULL,
+  `dberbusana` double UNSIGNED DEFAULT NULL,
+  `dmenggunakanfasilitas` double UNSIGNED DEFAULT NULL,
+  `dk3` double UNSIGNED DEFAULT NULL,
+  `dberbahasa` double UNSIGNED DEFAULT NULL,
+  `dbertindak` double UNSIGNED DEFAULT NULL,
+  `dkeamanan` double UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -526,18 +524,24 @@ CREATE TABLE `dibadahs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dk3s`
+-- Struktur dari tabel `dsmt3s`
 --
 
-CREATE TABLE `dk3s` (
+CREATE TABLE `dsmt3s` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `dwaktu` double DEFAULT NULL,
+  `dibadah` double DEFAULT NULL,
+  `dbelajar` double UNSIGNED DEFAULT NULL,
+  `dbergaul` double UNSIGNED DEFAULT NULL,
+  `dberbusana` double UNSIGNED DEFAULT NULL,
+  `dmenggunakanfasilitas` double UNSIGNED DEFAULT NULL,
+  `dk3` double UNSIGNED DEFAULT NULL,
+  `dberbahasa` double UNSIGNED DEFAULT NULL,
+  `dbertindak` double UNSIGNED DEFAULT NULL,
+  `dkeamanan` double UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -545,18 +549,24 @@ CREATE TABLE `dk3s` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dkeamanans`
+-- Struktur dari tabel `dsmt4s`
 --
 
-CREATE TABLE `dkeamanans` (
+CREATE TABLE `dsmt4s` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `dwaktu` double DEFAULT NULL,
+  `dibadah` double DEFAULT NULL,
+  `dbelajar` double UNSIGNED DEFAULT NULL,
+  `dbergaul` double UNSIGNED DEFAULT NULL,
+  `dberbusana` double UNSIGNED DEFAULT NULL,
+  `dmenggunakanfasilitas` double UNSIGNED DEFAULT NULL,
+  `dk3` double UNSIGNED DEFAULT NULL,
+  `dberbahasa` double UNSIGNED DEFAULT NULL,
+  `dbertindak` double UNSIGNED DEFAULT NULL,
+  `dkeamanan` double UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -564,18 +574,24 @@ CREATE TABLE `dkeamanans` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dmenggunakanfasilitas`
+-- Struktur dari tabel `dsmt5s`
 --
 
-CREATE TABLE `dmenggunakanfasilitas` (
+CREATE TABLE `dsmt5s` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `dwaktu` double DEFAULT NULL,
+  `dibadah` double DEFAULT NULL,
+  `dbelajar` double UNSIGNED DEFAULT NULL,
+  `dbergaul` double UNSIGNED DEFAULT NULL,
+  `dberbusana` double UNSIGNED DEFAULT NULL,
+  `dmenggunakanfasilitas` double UNSIGNED DEFAULT NULL,
+  `dk3` double UNSIGNED DEFAULT NULL,
+  `dberbahasa` double UNSIGNED DEFAULT NULL,
+  `dbertindak` double UNSIGNED DEFAULT NULL,
+  `dkeamanan` double UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -583,21 +599,292 @@ CREATE TABLE `dmenggunakanfasilitas` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dwaktus`
+-- Struktur dari tabel `dsmt6s`
 --
 
-CREATE TABLE `dwaktus` (
+CREATE TABLE `dsmt6s` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `dwaktu` double DEFAULT NULL,
+  `dibadah` double DEFAULT NULL,
+  `dbelajar` double UNSIGNED DEFAULT NULL,
+  `dbergaul` double UNSIGNED DEFAULT NULL,
+  `dberbusana` double UNSIGNED DEFAULT NULL,
+  `dmenggunakanfasilitas` double UNSIGNED DEFAULT NULL,
+  `dk3` double UNSIGNED DEFAULT NULL,
+  `dberbahasa` double UNSIGNED DEFAULT NULL,
+  `dbertindak` double UNSIGNED DEFAULT NULL,
+  `dkeamanan` double UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `esmt1s`
+--
+
+CREATE TABLE `esmt1s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pramuka` double DEFAULT NULL,
+  `kesenian` double DEFAULT NULL,
+  `pramadan` double UNSIGNED DEFAULT NULL,
+  `okesehatan` double UNSIGNED DEFAULT NULL,
+  `kmulia` double UNSIGNED DEFAULT NULL,
+  `bkerja` double UNSIGNED DEFAULT NULL,
+  `kewirausahaan` double UNSIGNED DEFAULT NULL,
+  `berekayasa` double UNSIGNED DEFAULT NULL,
+  `kebekerjaan` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `silat` double DEFAULT NULL,
+  `futsal` double DEFAULT NULL,
+  `voli` double DEFAULT NULL,
+  `hadroh` double DEFAULT NULL,
+  `engclub` double DEFAULT NULL,
+  `kaligerafi` double DEFAULT NULL,
+  `desain` double DEFAULT NULL,
+  `video` double DEFAULT NULL,
+  `foto` double DEFAULT NULL,
+  `sakit` double DEFAULT NULL,
+  `izin` double DEFAULT NULL,
+  `alfa` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `esmt1s`
+--
+
+INSERT INTO `esmt1s` (`id`, `student_id`, `classroom_id`, `priode_id`, `pramuka`, `kesenian`, `pramadan`, `okesehatan`, `kmulia`, `bkerja`, `kewirausahaan`, `berekayasa`, `kebekerjaan`, `gim`, `silat`, `futsal`, `voli`, `hadroh`, `engclub`, `kaligerafi`, `desain`, `video`, `foto`, `sakit`, `izin`, `alfa`, `created_at`, `updated_at`) VALUES
+(1, 27, 13, NULL, 44, 60, 12, 22, 11, 99, 77, 78, 77, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 22, 11, 12, '2024-11-18 08:25:29', '2024-11-19 06:37:13'),
+(2, 27, 13, 1, 44, 60, 12, 22, 11, 99, 77, 78, 77, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 11, 11, 11, 22, NULL, NULL, '2024-12-05 01:21:51', '2024-12-05 01:23:51');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `esmt2s`
+--
+
+CREATE TABLE `esmt2s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pramuka` double DEFAULT NULL,
+  `kesenian` double DEFAULT NULL,
+  `pramadan` double UNSIGNED DEFAULT NULL,
+  `okesehatan` double UNSIGNED DEFAULT NULL,
+  `kmulia` double UNSIGNED DEFAULT NULL,
+  `bkerja` double UNSIGNED DEFAULT NULL,
+  `kewirausahaan` double UNSIGNED DEFAULT NULL,
+  `berekayasa` double UNSIGNED DEFAULT NULL,
+  `kebekerjaan` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `silat` double DEFAULT NULL,
+  `futsal` double DEFAULT NULL,
+  `voli` double DEFAULT NULL,
+  `hadroh` double DEFAULT NULL,
+  `engclub` double DEFAULT NULL,
+  `kaligerafi` double DEFAULT NULL,
+  `desain` double DEFAULT NULL,
+  `video` double DEFAULT NULL,
+  `foto` double DEFAULT NULL,
+  `sakit` double DEFAULT NULL,
+  `izin` double DEFAULT NULL,
+  `alfa` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `esmt2s`
+--
+
+INSERT INTO `esmt2s` (`id`, `student_id`, `classroom_id`, `priode_id`, `pramuka`, `kesenian`, `pramadan`, `okesehatan`, `kmulia`, `bkerja`, `kewirausahaan`, `berekayasa`, `kebekerjaan`, `gim`, `silat`, `futsal`, `voli`, `hadroh`, `engclub`, `kaligerafi`, `desain`, `video`, `foto`, `sakit`, `izin`, `alfa`, `created_at`, `updated_at`) VALUES
+(1, 27, 13, 3, 44, 60, 12, 22, 11, 99, 77, 78, 77, NULL, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, '2024-12-05 01:28:24', '2024-12-05 01:28:24');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `esmt3s`
+--
+
+CREATE TABLE `esmt3s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pramuka` double DEFAULT NULL,
+  `kesenian` double DEFAULT NULL,
+  `pramadan` double UNSIGNED DEFAULT NULL,
+  `okesehatan` double UNSIGNED DEFAULT NULL,
+  `kmulia` double UNSIGNED DEFAULT NULL,
+  `bkerja` double UNSIGNED DEFAULT NULL,
+  `kewirausahaan` double UNSIGNED DEFAULT NULL,
+  `berekayasa` double UNSIGNED DEFAULT NULL,
+  `kebekerjaan` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `silat` double DEFAULT NULL,
+  `futsal` double DEFAULT NULL,
+  `voli` double DEFAULT NULL,
+  `hadroh` double DEFAULT NULL,
+  `engclub` double DEFAULT NULL,
+  `kaligerafi` double DEFAULT NULL,
+  `desain` double DEFAULT NULL,
+  `video` double DEFAULT NULL,
+  `foto` double DEFAULT NULL,
+  `sakit` double DEFAULT NULL,
+  `izin` double DEFAULT NULL,
+  `alfa` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `esmt3s`
+--
+
+INSERT INTO `esmt3s` (`id`, `student_id`, `classroom_id`, `priode_id`, `pramuka`, `kesenian`, `pramadan`, `okesehatan`, `kmulia`, `bkerja`, `kewirausahaan`, `berekayasa`, `kebekerjaan`, `gim`, `silat`, `futsal`, `voli`, `hadroh`, `engclub`, `kaligerafi`, `desain`, `video`, `foto`, `sakit`, `izin`, `alfa`, `created_at`, `updated_at`) VALUES
+(1, 30, 14, 1, 44, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-12-05 02:25:27', '2024-12-05 02:25:27');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `esmt4s`
+--
+
+CREATE TABLE `esmt4s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pramuka` double DEFAULT NULL,
+  `kesenian` double DEFAULT NULL,
+  `pramadan` double UNSIGNED DEFAULT NULL,
+  `okesehatan` double UNSIGNED DEFAULT NULL,
+  `kmulia` double UNSIGNED DEFAULT NULL,
+  `bkerja` double UNSIGNED DEFAULT NULL,
+  `kewirausahaan` double UNSIGNED DEFAULT NULL,
+  `berekayasa` double UNSIGNED DEFAULT NULL,
+  `kebekerjaan` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `silat` double DEFAULT NULL,
+  `futsal` double DEFAULT NULL,
+  `voli` double DEFAULT NULL,
+  `hadroh` double DEFAULT NULL,
+  `engclub` double DEFAULT NULL,
+  `kaligerafi` double DEFAULT NULL,
+  `desain` double DEFAULT NULL,
+  `video` double DEFAULT NULL,
+  `foto` double DEFAULT NULL,
+  `sakit` double DEFAULT NULL,
+  `izin` double DEFAULT NULL,
+  `alfa` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `esmt4s`
+--
+
+INSERT INTO `esmt4s` (`id`, `student_id`, `classroom_id`, `priode_id`, `pramuka`, `kesenian`, `pramadan`, `okesehatan`, `kmulia`, `bkerja`, `kewirausahaan`, `berekayasa`, `kebekerjaan`, `gim`, `silat`, `futsal`, `voli`, `hadroh`, `engclub`, `kaligerafi`, `desain`, `video`, `foto`, `sakit`, `izin`, `alfa`, `created_at`, `updated_at`) VALUES
+(1, 29, 15, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-12-05 02:31:07', '2024-12-05 02:31:07');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `esmt5s`
+--
+
+CREATE TABLE `esmt5s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pramuka` double DEFAULT NULL,
+  `kesenian` double DEFAULT NULL,
+  `pramadan` double UNSIGNED DEFAULT NULL,
+  `okesehatan` double UNSIGNED DEFAULT NULL,
+  `kmulia` double UNSIGNED DEFAULT NULL,
+  `bkerja` double UNSIGNED DEFAULT NULL,
+  `kewirausahaan` double UNSIGNED DEFAULT NULL,
+  `berekayasa` double UNSIGNED DEFAULT NULL,
+  `kebekerjaan` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `silat` double DEFAULT NULL,
+  `futsal` double DEFAULT NULL,
+  `voli` double DEFAULT NULL,
+  `hadroh` double DEFAULT NULL,
+  `engclub` double DEFAULT NULL,
+  `kaligerafi` double DEFAULT NULL,
+  `desain` double DEFAULT NULL,
+  `video` double DEFAULT NULL,
+  `foto` double DEFAULT NULL,
+  `sakit` double DEFAULT NULL,
+  `izin` double DEFAULT NULL,
+  `alfa` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `esmt5s`
+--
+
+INSERT INTO `esmt5s` (`id`, `student_id`, `classroom_id`, `priode_id`, `pramuka`, `kesenian`, `pramadan`, `okesehatan`, `kmulia`, `bkerja`, `kewirausahaan`, `berekayasa`, `kebekerjaan`, `gim`, `silat`, `futsal`, `voli`, `hadroh`, `engclub`, `kaligerafi`, `desain`, `video`, `foto`, `sakit`, `izin`, `alfa`, `created_at`, `updated_at`) VALUES
+(1, 29, 15, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-12-05 02:28:28', '2024-12-05 02:28:28');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `esmt6s`
+--
+
+CREATE TABLE `esmt6s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pramuka` double DEFAULT NULL,
+  `kesenian` double DEFAULT NULL,
+  `pramadan` double UNSIGNED DEFAULT NULL,
+  `okesehatan` double UNSIGNED DEFAULT NULL,
+  `kmulia` double UNSIGNED DEFAULT NULL,
+  `bkerja` double UNSIGNED DEFAULT NULL,
+  `kewirausahaan` double UNSIGNED DEFAULT NULL,
+  `berekayasa` double UNSIGNED DEFAULT NULL,
+  `kebekerjaan` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `silat` double DEFAULT NULL,
+  `futsal` double DEFAULT NULL,
+  `voli` double DEFAULT NULL,
+  `hadroh` double DEFAULT NULL,
+  `engclub` double DEFAULT NULL,
+  `kaligerafi` double DEFAULT NULL,
+  `desain` double DEFAULT NULL,
+  `video` double DEFAULT NULL,
+  `foto` double DEFAULT NULL,
+  `sakit` double DEFAULT NULL,
+  `izin` double DEFAULT NULL,
+  `alfa` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `esmt6s`
+--
+
+INSERT INTO `esmt6s` (`id`, `student_id`, `classroom_id`, `priode_id`, `pramuka`, `kesenian`, `pramadan`, `okesehatan`, `kmulia`, `bkerja`, `kewirausahaan`, `berekayasa`, `kebekerjaan`, `gim`, `silat`, `futsal`, `voli`, `hadroh`, `engclub`, `kaligerafi`, `desain`, `video`, `foto`, `sakit`, `izin`, `alfa`, `created_at`, `updated_at`) VALUES
+(1, 28, 15, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-12-05 02:29:35', '2024-12-05 02:29:35');
 
 -- --------------------------------------------------------
 
@@ -614,32 +901,6 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `fandks`
---
-
-CREATE TABLE `fandks` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `fandks`
---
-
-INSERT INTO `fandks` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 18:02:19', '2024-10-25 18:02:19');
 
 -- --------------------------------------------------------
 
@@ -675,58 +936,6 @@ CREATE TABLE `home_rooms` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `informatikas`
---
-
-CREATE TABLE `informatikas` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `informatikas`
---
-
-INSERT INTO `informatikas` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 15:33:21', '2024-10-25 15:33:21');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `izins`
---
-
-CREATE TABLE `izins` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `izins`
---
-
-INSERT INTO `izins` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 90, 100, 100, 100, 100, 100, '2024-11-10 00:17:58', '2024-11-10 00:17:58');
 
 -- --------------------------------------------------------
 
@@ -788,97 +997,29 @@ CREATE TABLE `job_batches` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kbs`
+-- Struktur dari tabel `karakters1s`
 --
 
-CREATE TABLE `kbs` (
+CREATE TABLE `karakters1s` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `beriman` double UNSIGNED DEFAULT NULL,
+  `bg` double UNSIGNED DEFAULT NULL,
+  `gr` double UNSIGNED DEFAULT NULL,
+  `mandiri` double UNSIGNED DEFAULT NULL,
+  `bk` double UNSIGNED DEFAULT NULL,
+  `kreatif` double UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Struktur dari tabel `keberkerjaans`
+-- Dumping data untuk tabel `karakters1s`
 --
 
-CREATE TABLE `keberkerjaans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kesenians`
---
-
-CREATE TABLE `kesenians` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kewirausahas`
---
-
-CREATE TABLE `kewirausahas` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kimias`
---
-
-CREATE TABLE `kimias` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `karakters1s` (`id`, `student_id`, `classroom_id`, `beriman`, `bg`, `gr`, `mandiri`, `bk`, `kreatif`, `created_at`, `updated_at`) VALUES
+(1, 27, 13, 90, 60, 70, 80, 50, 40, '2024-11-19 12:02:46', '2024-11-19 12:02:46');
 
 -- --------------------------------------------------------
 
@@ -905,23 +1046,138 @@ CREATE TABLE `kindustris` (
 
 INSERT INTO `kindustris` (`id`, `student_id`, `mitra`, `nilai`, `lokasi`, `jengke_id`, `lama`, `waktu`, `created_at`, `updated_at`) VALUES
 (1, 0, 'azzainiyyah', 100, 'Jl. Pondok Halimun Nagrog Sinar Barokah Kp.nagrog Rt 03 Rw 05', 2, '4 bulan', '19 September - 19 Desember', '2024-10-31 02:29:08', '2024-10-31 02:29:08'),
-(2, 29, 'azzainiyyah', 100, 'j', 1, '4 bulan', '19 September - 19 Desember', '2024-11-10 22:02:39', '2024-11-10 22:02:39');
+(2, 29, 'azzainiyyah', 100, 'j', 1, '4 bulan', '19 September - 19 Desember', '2024-11-10 22:02:39', '2024-11-10 22:02:39'),
+(3, 27, 'azzainiyyah', 100, 'Kec. Nyalindung, Kabupaten Sukabumi, Jawa Barat\n', 1, '4 bulan', '19 September - 19 Desember', '2024-11-18 08:04:59', '2024-11-18 08:04:59');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `k_amulias`
+-- Struktur dari tabel `ksmt1s`
 --
 
-CREATE TABLE `k_amulias` (
+CREATE TABLE `ksmt1s` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bd` double UNSIGNED DEFAULT NULL,
+  `persisda` double UNSIGNED DEFAULT NULL,
+  `pw` double UNSIGNED DEFAULT NULL,
+  `ppb` double UNSIGNED DEFAULT NULL,
+  `pkk` double UNSIGNED DEFAULT NULL,
+  `kb` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `ksmt1s`
+--
+
+INSERT INTO `ksmt1s` (`id`, `student_id`, `classroom_id`, `priode_id`, `bd`, `persisda`, `pw`, `ppb`, `pkk`, `kb`, `created_at`, `updated_at`) VALUES
+(1, 27, 13, NULL, 1, 1, 1, 1, 1, 1, '2024-11-17 21:43:24', '2024-11-17 21:43:24');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ksmt2s`
+--
+
+CREATE TABLE `ksmt2s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bd` double UNSIGNED DEFAULT NULL,
+  `persisda` double UNSIGNED DEFAULT NULL,
+  `pw` double UNSIGNED DEFAULT NULL,
+  `ppb` double UNSIGNED DEFAULT NULL,
+  `pkk` double UNSIGNED DEFAULT NULL,
+  `kb` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ksmt3s`
+--
+
+CREATE TABLE `ksmt3s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bd` double UNSIGNED DEFAULT NULL,
+  `persisda` double UNSIGNED DEFAULT NULL,
+  `pw` double UNSIGNED DEFAULT NULL,
+  `ppb` double UNSIGNED DEFAULT NULL,
+  `pkk` double UNSIGNED DEFAULT NULL,
+  `kb` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ksmt4s`
+--
+
+CREATE TABLE `ksmt4s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bd` double UNSIGNED DEFAULT NULL,
+  `persisda` double UNSIGNED DEFAULT NULL,
+  `pw` double UNSIGNED DEFAULT NULL,
+  `ppb` double UNSIGNED DEFAULT NULL,
+  `pkk` double UNSIGNED DEFAULT NULL,
+  `kb` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ksmt5s`
+--
+
+CREATE TABLE `ksmt5s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bd` double UNSIGNED DEFAULT NULL,
+  `persisda` double UNSIGNED DEFAULT NULL,
+  `pw` double UNSIGNED DEFAULT NULL,
+  `ppb` double UNSIGNED DEFAULT NULL,
+  `pkk` double UNSIGNED DEFAULT NULL,
+  `kb` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ksmt6s`
+--
+
+CREATE TABLE `ksmt6s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bd` double UNSIGNED DEFAULT NULL,
+  `persisda` double UNSIGNED DEFAULT NULL,
+  `pw` double UNSIGNED DEFAULT NULL,
+  `ppb` double UNSIGNED DEFAULT NULL,
+  `pkk` double UNSIGNED DEFAULT NULL,
+  `kb` double UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1038,7 +1294,115 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (112, '2024_11_03_131900_create_pmelaksanakansaums_table', 62),
 (113, '2024_11_03_132204_create_pmencintaitanahairs_table', 62),
 (115, '2024_11_06_003641_add_column_to_student_table', 63),
-(116, '2024_11_10_033927_create_bios_table', 64);
+(116, '2024_11_10_033927_create_bios_table', 64),
+(117, '2024_11_17_054702_create_smt1s_table', 65),
+(118, '2024_11_17_091420_create_smt2s_table', 66),
+(119, '2024_11_17_092535_create_smt3s_table', 66),
+(120, '2024_11_17_093825_create_smt4s_table', 66),
+(121, '2024_11_17_094255_create_smt5s_table', 66),
+(122, '2024_11_17_094613_create_smt6s_table', 66),
+(123, '2024_11_17_101559_create_usmt1s_table', 66),
+(124, '2024_11_17_104151_create_ksmt1s_table', 66),
+(125, '2024_11_17_120842_create_usmt2s_table', 66),
+(126, '2024_11_17_122220_create_usmt3s_table', 66),
+(127, '2024_11_17_122535_create_usmt4s_table', 66),
+(128, '2024_11_17_122915_create_usmt5s_table', 66),
+(129, '2024_11_17_123220_create_usmt6s_table', 66),
+(130, '2024_11_17_125527_create_ksmt6s_table', 66),
+(131, '2024_11_17_130025_create_ksmt2s_table', 66),
+(132, '2024_11_17_130508_create_ksmt3s_table', 66),
+(133, '2024_11_17_130746_create_ksmt4s_table', 66),
+(134, '2024_11_17_131053_create_ksmt5s_table', 66),
+(135, '2024_11_17_132507_create_esmt2s_table', 66),
+(136, '2024_11_17_133114_create_esmt1s_table', 66),
+(137, '2024_11_17_143339_create_esmt3s_table', 66),
+(138, '2024_11_17_143725_create_esmt4s_table', 66),
+(139, '2024_11_17_144015_create_esmt5s_table', 66),
+(140, '2024_11_17_144306_create_esmt6s_table', 66),
+(141, '2024_11_17_145517_create_dsmt1s_table', 66),
+(142, '2024_11_17_153704_create_dsmt2s_table', 66),
+(143, '2024_11_17_153940_create_dsmt3s_table', 66),
+(144, '2024_11_17_154252_create_dsmt4s_table', 66),
+(145, '2024_11_17_154529_create_dsmt5s_table', 66),
+(146, '2024_11_17_154846_create_dsmt6s_table', 66),
+(147, '2024_11_17_155158_create_psmt1s_table', 66),
+(148, '2024_11_17_160546_create_psmt2s_table', 66),
+(149, '2024_11_17_160900_create_psmt3s_table', 66),
+(150, '2024_11_17_161304_create_psmt4s_table', 66),
+(151, '2024_11_17_161548_create_psmt5s_table', 66),
+(152, '2024_11_17_161848_create_psmt6s_table', 66),
+(154, '2024_11_18_064157_create_cps1s_table', 67),
+(155, '2024_11_18_150935_add_column_mitra_to_pkl_table', 68),
+(156, '2024_11_18_231054_create_cps2s_table', 69),
+(157, '2024_11_18_232941_create_cps3s_table', 69),
+(158, '2024_11_18_233544_create_cps4s_table', 69),
+(159, '2024_11_18_233957_create_cps5s_table', 69),
+(160, '2024_11_18_234918_create_cps6s_table', 69),
+(161, '2024_11_19_000315_ksmt2', 69),
+(162, '2024_11_19_000550_create_ksmt2_table', 70),
+(163, '2024_11_19_000905_create_ksmt3_table', 71),
+(164, '2024_11_19_002037_create_ksmt4_table', 72),
+(165, '2024_11_19_003048_create_ksmt5_table', 72),
+(166, '2024_11_19_003256_create_ksmt6_table', 72),
+(167, '2024_11_19_034828_add_column_sia_to_esmt1_table', 72),
+(168, '2024_11_19_043701_add_column_sia_to_esmt2_table', 72),
+(169, '2024_11_19_044208_add_column_sia_to_esmt3_table', 72),
+(170, '2024_11_19_044441_add_column_sia_to_esmt4_table', 72),
+(171, '2024_11_19_044510_add_column_sia_to_esmt5_table', 72),
+(172, '2024_11_19_044537_add_column_sia_to_esmt6_table', 72),
+(173, '2024_11_19_155329_create_karakters1s_table', 73),
+(174, '2024_11_22_090350_add_column_to_student_table', 74),
+(175, '2024_12_03_231118_add_column_priode_to_smt1s_table', 75),
+(176, '2024_12_03_231118_add_column_priode_to_smt2s_table', 76),
+(177, '2024_12_03_231118_add_column_priode_to_smt3s_table', 77),
+(178, '2024_12_03_231118_add_column_priode_to_smt4s_table', 77),
+(179, '2024_12_03_231118_add_column_priode_to_smt5s_table', 77),
+(180, '2024_12_03_231118_add_column_priode_to_smt6s_table', 77),
+(181, '2024_12_03_231118_add_column_priode_to_usmt1s_table', 77),
+(182, '2024_12_03_231118_add_column_priode_to_dsmt1s_table', 78),
+(183, '2024_12_03_231118_add_column_priode_to_dsmt2s_table', 78),
+(184, '2024_12_03_231118_add_column_priode_to_dsmt3s_table', 78),
+(185, '2024_12_03_231118_add_column_priode_to_dsmt4s_table', 78),
+(186, '2024_12_03_231118_add_column_priode_to_dsmt5s_table', 78),
+(187, '2024_12_03_231118_add_column_priode_to_dsmt6s_table', 78),
+(188, '2024_12_03_231118_add_column_priode_to_esmt1s_table', 79),
+(189, '2024_12_03_231118_add_column_priode_to_esmt2s_table', 79),
+(190, '2024_12_03_231118_add_column_priode_to_esmt3s_table', 79),
+(191, '2024_12_03_231118_add_column_priode_to_esmt4s_table', 79),
+(192, '2024_12_03_231118_add_column_priode_to_esmt5s_table', 79),
+(193, '2024_12_03_231118_add_column_priode_to_esmt6s_table', 79),
+(194, '2024_12_03_231118_add_column_priode_to_ksmt1s_table', 79),
+(195, '2024_12_03_231118_add_column_priode_to_ksmt2s_table', 79),
+(196, '2024_12_03_231118_add_column_priode_to_ksmt3s_table', 79),
+(197, '2024_12_03_231118_add_column_priode_to_ksmt4s_table', 79),
+(198, '2024_12_03_231118_add_column_priode_to_ksmt5s_table', 79),
+(199, '2024_12_03_231118_add_column_priode_to_ksmt6s_table', 79),
+(200, '2024_12_03_231118_add_column_priode_to_psmt1s_table', 79),
+(201, '2024_12_03_231118_add_column_priode_to_psmt2s_table', 79),
+(202, '2024_12_03_231118_add_column_priode_to_psmt3s_table', 79),
+(203, '2024_12_03_231118_add_column_priode_to_psmt4s_table', 79),
+(204, '2024_12_03_231118_add_column_priode_to_psmt5s_table', 79),
+(205, '2024_12_03_231118_add_column_priode_to_psmt6s_table', 79),
+(206, '2024_12_03_231118_add_column_priode_to_usmt2s_table', 79),
+(207, '2024_12_03_231118_add_column_priode_to_usmt3s_table', 79),
+(208, '2024_12_03_231118_add_column_priode_to_usmt4s_table', 79),
+(209, '2024_12_03_231118_add_column_priode_to_usmt5s_table', 79),
+(210, '2024_12_03_231118_add_column_priode_to_usmt6s_table', 79),
+(212, '2024_12_04_135008_add_column_email_to_teachers_table', 80),
+(213, '2024_12_04_135008_add_column_to_teachers_table', 81),
+(214, '2024_12_05_074236_add_column_to_esmt1s_table', 82),
+(215, '2024_12_05_074236_add_column_to_esmt2s_table', 83),
+(216, '2024_12_05_074236_add_column_to_esmt3s_table', 83),
+(217, '2024_12_05_074236_add_column_to_esmt4s_table', 83),
+(218, '2024_12_05_074236_add_column_to_esmt5s_table', 83),
+(219, '2024_12_05_074236_add_column_to_esmt6s_table', 83),
+(220, '2024_12_05_135312_create_arsips_table', 84),
+(221, '2024_12_05_140509_create_archived_students_table', 85),
+(222, '2024_12_06_062730_add_column_to_student_table', 86),
+(223, '2024_12_06_063853_add_column_to_students_table', 87),
+(224, '2024_12_06_065206_add_column_status_to_students_table', 88),
+(225, '2024_12_06_070603_add_column_to_archived_students_table', 89),
+(226, '2024_12_10_044439_create_contacts_table', 90);
 
 -- --------------------------------------------------------
 
@@ -1070,29 +1434,15 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
-(3, 'App\\Models\\User', 1),
+(1, 'App\\Models\\User', 15),
 (3, 'App\\Models\\User', 5),
+(3, 'App\\Models\\User', 29),
+(3, 'App\\Models\\User', 30),
 (4, 'App\\Models\\User', 2),
-(4, 'App\\Models\\User', 14);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `mtks`
---
-
-CREATE TABLE `mtks` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(4, 'App\\Models\\User', 21),
+(4, 'App\\Models\\User', 22),
+(4, 'App\\Models\\User', 24),
+(4, 'App\\Models\\User', 25);
 
 -- --------------------------------------------------------
 
@@ -1109,6 +1459,7 @@ CREATE TABLE `nilais` (
   `subject_id` bigint(20) UNSIGNED NOT NULL,
   `category_nilai_id` bigint(20) UNSIGNED NOT NULL,
   `nilai` double UNSIGNED NOT NULL,
+  `alfa_id` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1117,57 +1468,13 @@ CREATE TABLE `nilais` (
 -- Dumping data untuk tabel `nilais`
 --
 
-INSERT INTO `nilais` (`id`, `class_id`, `student_id`, `priode_id`, `teacher_id`, `subject_id`, `category_nilai_id`, `nilai`, `created_at`, `updated_at`) VALUES
-(11, 13, 27, 3, 1, 1, 4, 100, NULL, NULL),
-(12, 13, 27, 1, 1, 50, 6, 90, NULL, NULL),
-(13, 13, 27, 1, 1, 51, 6, 90, NULL, NULL),
-(14, 13, 43, 1, 1, 56, 6, 90, NULL, NULL),
-(15, 15, 35, 2, 1, 52, 8, 100, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `okesehatans`
---
-
-CREATE TABLE `okesehatans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pais`
---
-
-CREATE TABLE `pais` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `pais`
---
-
-INSERT INTO `pais` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 100, 100, 100, 100, 100, 100, '2024-10-25 15:18:27', '2024-11-09 20:02:28');
+INSERT INTO `nilais` (`id`, `class_id`, `student_id`, `priode_id`, `teacher_id`, `subject_id`, `category_nilai_id`, `nilai`, `alfa_id`, `created_at`, `updated_at`) VALUES
+(11, 13, 27, 3, 1, 50, 4, 100, NULL, NULL, NULL),
+(12, 13, 27, 1, 1, 50, 6, 90, NULL, NULL, NULL),
+(13, 13, 27, 1, 1, 51, 6, 90, NULL, NULL, NULL),
+(14, 13, 43, 1, 1, 56, 6, 90, NULL, NULL, NULL),
+(15, 15, 35, 2, 1, 52, 8, 100, NULL, NULL, NULL),
+(16, 13, 50, 1, 1, 51, 10, 12, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1180,146 +1487,6 @@ CREATE TABLE `password_reset_tokens` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pberbaktis`
---
-
-CREATE TABLE `pberbaktis` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `pberbaktis`
---
-
-INSERT INTO `pberbaktis` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 789, NULL, NULL, NULL, NULL, NULL, '2024-11-10 22:16:32', '2024-11-10 22:16:32');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pbos`
---
-
-CREATE TABLE `pbos` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pbtgms`
---
-
-CREATE TABLE `pbtgms` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pbusanamuslims`
---
-
-CREATE TABLE `pbusanamuslims` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pelajaran_kejuruans`
---
-
-CREATE TABLE `pelajaran_kejuruans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `kode` varchar(255) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `bidang` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `pelajaran_kejuruans`
---
-
-INSERT INTO `pelajaran_kejuruans` (`id`, `kode`, `name`, `bidang`, `created_at`, `updated_at`) VALUES
-(1, 'Mtk', 'Matematika', NULL, '2024-10-22 20:47:12', '2024-10-22 20:47:12'),
-(2, 'Bing', 'Bahasa Inggris', NULL, '2024-10-22 20:47:25', '2024-10-22 20:47:25'),
-(3, 'Tik', 'Informatika', NULL, '2024-10-22 20:48:04', '2024-10-22 20:48:04'),
-(4, 'IPA', 'Projek IPA', 'FIsika', '2024-10-22 20:48:52', '2024-10-22 20:48:52'),
-(5, 'IPA', 'Projek IPA', 'Kimia', '2024-10-22 20:49:03', '2024-10-22 20:49:03'),
-(6, NULL, 'Dasar Program Keahlian', 'Proses Bisnis dan K3LH				', '2024-10-22 20:49:55', '2024-10-22 20:52:08'),
-(7, NULL, 'Dasar Program Keahlian', 'Profesi dan Kewirausahaan				', '2024-10-22 20:50:23', '2024-10-22 20:50:23'),
-(8, NULL, 'Dasar Program Keahlian', 'Pemrograman Terstruktur				', '2024-10-22 20:50:42', '2024-10-22 20:50:42'),
-(9, NULL, 'Dasar Program Keahlian', 'Pemrograman Berorientasi Objek', '2024-10-22 20:51:23', '2024-10-22 20:51:23'),
-(10, NULL, 'Dasar Program Keahlian', 'Orientasi Dasar Pengembangan Perangkat Lunak dan Gim				', '2024-10-22 20:51:45', '2024-10-22 20:51:45');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pemturs`
---
-
-CREATE TABLE `pemturs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `pemturs`
---
-
-INSERT INTO `pemturs` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 18:16:54', '2024-10-25 18:16:54');
 
 -- --------------------------------------------------------
 
@@ -1346,71 +1513,8 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (6, 'Kelola Murid dengan Kelas', 'web', '2024-11-08 15:54:37', '2024-11-08 15:54:37'),
 (7, 'Priode', 'web', '2024-11-08 16:42:55', '2024-11-08 16:42:55'),
 (8, 'Semsester', 'web', '2024-11-08 16:43:23', '2024-11-08 16:43:23'),
-(9, 'Jenis Kehiatan', 'web', '2024-11-08 16:43:45', '2024-11-08 16:43:45');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pinfaqsejakdinis`
---
-
-CREATE TABLE `pinfaqsejakdinis` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pjoks`
---
-
-CREATE TABLE `pjoks` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `pjoks`
---
-
-INSERT INTO `pjoks` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 28, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 02:59:58', '2024-10-25 02:59:58');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pkks`
---
-
-CREATE TABLE `pkks` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(9, 'Jenis Kegiatan', 'web', '2024-11-08 16:43:45', '2024-12-08 00:24:43'),
+(10, 'Nilai Mulok semester 1', 'web', '2024-12-08 01:14:59', '2024-12-08 01:14:59');
 
 -- --------------------------------------------------------
 
@@ -1421,6 +1525,7 @@ CREATE TABLE `pkks` (
 CREATE TABLE `pkls` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
+  `mitra` varchar(255) NOT NULL,
   `nilai` double UNSIGNED DEFAULT NULL,
   `lokasi` text NOT NULL,
   `jengke_id` bigint(20) UNSIGNED NOT NULL,
@@ -1430,226 +1535,12 @@ CREATE TABLE `pkls` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Struktur dari tabel `pmelaksanakansaums`
+-- Dumping data untuk tabel `pkls`
 --
 
-CREATE TABLE `pmelaksanakansaums` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pmembacaalqurans`
---
-
-CREATE TABLE `pmembacaalqurans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pmemeliharaadabs`
---
-
-CREATE TABLE `pmemeliharaadabs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pmemeliharas`
---
-
-CREATE TABLE `pmemeliharas` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pmencintaitanahairs`
---
-
-CREATE TABLE `pmencintaitanahairs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pmendirikansholats`
---
-
-CREATE TABLE `pmendirikansholats` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `ppbs`
---
-
-CREATE TABLE `ppbs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `ppls`
---
-
-CREATE TABLE `ppls` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pps`
---
-
-CREATE TABLE `pps` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `pps`
---
-
-INSERT INTO `pps` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 02:35:22', '2024-10-25 02:35:22'),
-(2, 28, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-25 02:36:06', '2024-10-25 02:36:06'),
-(3, 29, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-25 02:36:11', '2024-10-25 02:36:11'),
-(4, 30, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-25 02:36:15', '2024-10-25 02:36:15'),
-(5, 35, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 02:37:00', '2024-10-25 02:37:00'),
-(6, 33, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-25 02:38:35', '2024-10-25 02:38:35');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pramadhans`
---
-
-CREATE TABLE `pramadhans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pramukas`
---
-
-CREATE TABLE `pramukas` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `pkls` (`id`, `student_id`, `mitra`, `nilai`, `lokasi`, `jengke_id`, `lama`, `waktu`, `created_at`, `updated_at`) VALUES
+(1, 27, 'azzainiyyah', 100, 'sukabumi', 2, '4 bulan', '19 September - 19 Desember', '2024-11-18 08:23:01', '2024-11-18 08:23:01');
 
 -- --------------------------------------------------------
 
@@ -1670,24 +1561,62 @@ CREATE TABLE `priodes` (
 
 INSERT INTO `priodes` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, '2023/2024', '2024-10-13 04:32:11', '2024-10-13 04:32:11'),
-(2, '2021/2022', '2024-10-13 04:33:37', '2024-10-13 04:33:37'),
-(3, '2024/2025', '2024-10-14 21:13:16', '2024-10-14 21:13:16');
+(3, '2024/2025', '2024-10-14 21:13:16', '2024-10-14 21:13:16'),
+(5, '2025/2026', '2024-12-09 02:26:44', '2024-12-09 02:26:44');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ptalimdanceramahs`
+-- Struktur dari tabel `psmt1s`
 --
 
-CREATE TABLE `ptalimdanceramahs` (
+CREATE TABLE `psmt1s` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bpot` double DEFAULT NULL,
+  `bmuslim` double DEFAULT NULL,
+  `mabsaai` double UNSIGNED DEFAULT NULL,
+  `mma` double UNSIGNED DEFAULT NULL,
+  `mkdl` double UNSIGNED DEFAULT NULL,
+  `msfss` double UNSIGNED DEFAULT NULL,
+  `mtck` double UNSIGNED DEFAULT NULL,
+  `tmisd` double UNSIGNED DEFAULT NULL,
+  `mswss` double UNSIGNED DEFAULT NULL,
+  `cta` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `psmt1s`
+--
+
+INSERT INTO `psmt1s` (`id`, `student_id`, `classroom_id`, `priode_id`, `bpot`, `bmuslim`, `mabsaai`, `mma`, `mkdl`, `msfss`, `mtck`, `tmisd`, `mswss`, `cta`, `created_at`, `updated_at`) VALUES
+(1, 27, 13, NULL, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, '2024-11-18 08:26:52', '2024-11-18 08:26:52');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `psmt2s`
+--
+
+CREATE TABLE `psmt2s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bpot` double DEFAULT NULL,
+  `bmuslim` double DEFAULT NULL,
+  `mabsaai` double UNSIGNED DEFAULT NULL,
+  `mma` double UNSIGNED DEFAULT NULL,
+  `mkdl` double UNSIGNED DEFAULT NULL,
+  `msfss` double UNSIGNED DEFAULT NULL,
+  `mtck` double UNSIGNED DEFAULT NULL,
+  `tmisd` double UNSIGNED DEFAULT NULL,
+  `mswss` double UNSIGNED DEFAULT NULL,
+  `cta` double UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1695,18 +1624,99 @@ CREATE TABLE `ptalimdanceramahs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pwebs`
+-- Struktur dari tabel `psmt3s`
 --
 
-CREATE TABLE `pwebs` (
+CREATE TABLE `psmt3s` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bpot` double DEFAULT NULL,
+  `bmuslim` double DEFAULT NULL,
+  `mabsaai` double UNSIGNED DEFAULT NULL,
+  `mma` double UNSIGNED DEFAULT NULL,
+  `mkdl` double UNSIGNED DEFAULT NULL,
+  `msfss` double UNSIGNED DEFAULT NULL,
+  `mtck` double UNSIGNED DEFAULT NULL,
+  `tmisd` double UNSIGNED DEFAULT NULL,
+  `mswss` double UNSIGNED DEFAULT NULL,
+  `cta` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `psmt4s`
+--
+
+CREATE TABLE `psmt4s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bpot` double DEFAULT NULL,
+  `bmuslim` double DEFAULT NULL,
+  `mabsaai` double UNSIGNED DEFAULT NULL,
+  `mma` double UNSIGNED DEFAULT NULL,
+  `mkdl` double UNSIGNED DEFAULT NULL,
+  `msfss` double UNSIGNED DEFAULT NULL,
+  `mtck` double UNSIGNED DEFAULT NULL,
+  `tmisd` double UNSIGNED DEFAULT NULL,
+  `mswss` double UNSIGNED DEFAULT NULL,
+  `cta` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `psmt5s`
+--
+
+CREATE TABLE `psmt5s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bpot` double DEFAULT NULL,
+  `bmuslim` double DEFAULT NULL,
+  `mabsaai` double UNSIGNED DEFAULT NULL,
+  `mma` double UNSIGNED DEFAULT NULL,
+  `mkdl` double UNSIGNED DEFAULT NULL,
+  `msfss` double UNSIGNED DEFAULT NULL,
+  `mtck` double UNSIGNED DEFAULT NULL,
+  `tmisd` double UNSIGNED DEFAULT NULL,
+  `mswss` double UNSIGNED DEFAULT NULL,
+  `cta` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `psmt6s`
+--
+
+CREATE TABLE `psmt6s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `bpot` double DEFAULT NULL,
+  `bmuslim` double DEFAULT NULL,
+  `mabsaai` double UNSIGNED DEFAULT NULL,
+  `mma` double UNSIGNED DEFAULT NULL,
+  `mkdl` double UNSIGNED DEFAULT NULL,
+  `msfss` double UNSIGNED DEFAULT NULL,
+  `mtck` double UNSIGNED DEFAULT NULL,
+  `tmisd` double UNSIGNED DEFAULT NULL,
+  `mswss` double UNSIGNED DEFAULT NULL,
+  `cta` double UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1751,86 +1761,14 @@ CREATE TABLE `role_has_permissions` (
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (3, 1),
-(3, 3),
 (4, 1),
-(4, 3),
 (5, 1),
 (6, 1),
 (6, 3),
 (7, 1),
 (8, 1),
-(9, 1);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `sakits`
---
-
-CREATE TABLE `sakits` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `sbs`
---
-
-CREATE TABLE `sbs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `sbs`
---
-
-INSERT INTO `sbs` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, NULL, NULL, 90, NULL, NULL, NULL, '2024-10-25 14:53:22', '2024-10-25 14:53:22');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `sejarahs`
---
-
-CREATE TABLE `sejarahs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `1` double UNSIGNED DEFAULT NULL,
-  `2` double UNSIGNED DEFAULT NULL,
-  `3` double UNSIGNED DEFAULT NULL,
-  `4` double UNSIGNED DEFAULT NULL,
-  `5` double UNSIGNED DEFAULT NULL,
-  `6` double UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `sejarahs`
---
-
-INSERT INTO `sejarahs` (`id`, `student_id`, `1`, `2`, `3`, `4`, `5`, `6`, `created_at`, `updated_at`) VALUES
-(1, 27, 90, NULL, NULL, NULL, NULL, NULL, '2024-10-25 14:48:43', '2024-10-25 14:48:43');
+(9, 1),
+(10, 3);
 
 -- --------------------------------------------------------
 
@@ -1874,10 +1812,171 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('7xT8hjjuJ2FbJOG5bBY18vYzL7jokIwhiqRw4nwq', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiSkV0djBhVUJ5T1VKc2piR2o1emJsNlJ4bXVmVk9UQVJ4U0hObklCVCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9hZG1pbi9zdHVkZW50cyI7fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTIkUmVsai9ycDBUUEQ1M2IxVEFQNlVlZXpRTjRWT3NSdmw2TXRRbnBjeVJuTFhnSnUuT1RoVFciO3M6NjoidGFibGVzIjthOjE6e3M6MjE6Ikxpc3RTdHVkZW50c19wZXJfcGFnZSI7czoyOiI1MCI7fX0=', 1731303386),
-('Jzo6YHQbMcKuRPhv01dobp45rQ9xmRIR3qjZfbet', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiVXdvbVQ4RXRJOVNFQUxGeVV6WGxXQVFqSTRFMnZyNHFWT1J1MUpwZiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM2OiJodHRwOi8vbG9jYWxob3N0OjgwMDAvc3R1ZGVudC9uaWxhaXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTIkemxON0NtRC9XQzdCWWZRR3pvbmJJLldEaUszUEU5eEo4RzgzWFVFWVZ4ZUlzcVB4Q2ZvSnUiO30=', 1731249380),
-('ljDAIw1YIPVyspqqn7aD1uzcg3HGWT9wn5EErSAQ', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiSkxFWEJ6b1hDaG8zNjNoVUM3Wm5QUjdTOVZ4SUJaR1RvNkljR2ttMSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9hZG1pbi9yb2xlcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTIkUmVsai9ycDBUUEQ1M2IxVEFQNlVlZXpRTjRWT3NSdmw2TXRRbnBjeVJuTFhnSnUuT1RoVFciO30=', 1731326332),
-('O8KdMZDIIa4epbWVGvrx6555o4b2Y4VLkhvZNJNL', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoieTZta2p6YlJLbTVRT2lqcEFGVTdoOXh5SWY3RDdJZmNTcDFmTWtLWSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1731299701);
+('0t2ZLaDuu1RWSgaQ9fRK0Ukea1gCknyETyV1LFkx', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTU93QkkwajAyQ0ZWOWxScnV5Sjc0Ykt6aWg3MDFOa25WQTMwQXp5TyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9jb250YWN0Ijt9fQ==', 1733823913),
+('aL7L6LKdSuCuHdgzAmttn8qcv0DLR09q4uMbqa4k', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiemNyMTdZNGttUjQ5UE9MNEtYMkNKMXh5S0VOWTl6clp4eEsycmpZcyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9jb250YWN0cyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTIkSHd6WmYwamV0dUdycEFwdDI4N0xET2lOdVhPQ042eUpHaUZDaFQ0andvcHVkVE1uS2lnNzYiO30=', 1733823899);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `smt1s`
+--
+
+CREATE TABLE `smt1s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pai` double UNSIGNED DEFAULT NULL,
+  `pp` double UNSIGNED DEFAULT NULL,
+  `indo` double UNSIGNED DEFAULT NULL,
+  `pjok` double UNSIGNED DEFAULT NULL,
+  `sejarah` double UNSIGNED DEFAULT NULL,
+  `sb` double UNSIGNED DEFAULT NULL,
+  `sunda` double UNSIGNED DEFAULT NULL,
+  `arab` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `smt1s`
+--
+
+INSERT INTO `smt1s` (`id`, `student_id`, `classroom_id`, `priode_id`, `pai`, `pp`, `indo`, `pjok`, `sejarah`, `sb`, `sunda`, `arab`, `created_at`, `updated_at`) VALUES
+(4, 27, 13, 3, 0, 90, 90, 90, 90, 90, 90, 90, '2024-11-17 08:59:54', '2024-12-09 02:31:25'),
+(9, 58, 13, NULL, 100, 0, 0, 0, 0, 0, 0, 0, '2024-11-27 21:54:25', '2024-11-27 21:54:25'),
+(10, 29, 14, 1, 90, 80, 0, 1, 0, 0, 0, 0, '2024-12-03 16:21:21', '2024-12-03 16:21:21');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `smt2s`
+--
+
+CREATE TABLE `smt2s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pai` double UNSIGNED DEFAULT NULL,
+  `pp` double UNSIGNED DEFAULT NULL,
+  `indo` double UNSIGNED DEFAULT NULL,
+  `pjok` double UNSIGNED DEFAULT NULL,
+  `sejarah` double UNSIGNED DEFAULT NULL,
+  `sb` double UNSIGNED DEFAULT NULL,
+  `sunda` double UNSIGNED DEFAULT NULL,
+  `arab` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `smt2s`
+--
+
+INSERT INTO `smt2s` (`id`, `student_id`, `classroom_id`, `priode_id`, `pai`, `pp`, `indo`, `pjok`, `sejarah`, `sb`, `sunda`, `arab`, `created_at`, `updated_at`) VALUES
+(1, 27, 13, NULL, 90, 80, 70, 60, 50, 40, 30, 20, '2024-11-21 21:18:28', '2024-11-21 21:18:28'),
+(2, 28, 13, NULL, 90, 80, 70, 60, 50, 40, 30, 20, '2024-11-26 20:27:30', '2024-11-26 20:27:30'),
+(3, 29, 15, NULL, 1111, 1111, 11, 111, 1111, 1111, 1111, 1111, '2024-11-27 03:08:39', '2024-11-27 03:08:39');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `smt3s`
+--
+
+CREATE TABLE `smt3s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pai` double UNSIGNED DEFAULT NULL,
+  `pp` double UNSIGNED DEFAULT NULL,
+  `indo` double UNSIGNED DEFAULT NULL,
+  `pjok` double UNSIGNED DEFAULT NULL,
+  `sejarah` double UNSIGNED DEFAULT NULL,
+  `sb` double UNSIGNED DEFAULT NULL,
+  `sunda` double UNSIGNED DEFAULT NULL,
+  `arab` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `smt4s`
+--
+
+CREATE TABLE `smt4s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pai` double UNSIGNED DEFAULT NULL,
+  `pp` double UNSIGNED DEFAULT NULL,
+  `indo` double UNSIGNED DEFAULT NULL,
+  `pjok` double UNSIGNED DEFAULT NULL,
+  `sejarah` double UNSIGNED DEFAULT NULL,
+  `sb` double UNSIGNED DEFAULT NULL,
+  `sunda` double UNSIGNED DEFAULT NULL,
+  `arab` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `smt5s`
+--
+
+CREATE TABLE `smt5s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pai` double UNSIGNED DEFAULT NULL,
+  `pp` double UNSIGNED DEFAULT NULL,
+  `indo` double UNSIGNED DEFAULT NULL,
+  `pjok` double UNSIGNED DEFAULT NULL,
+  `sejarah` double UNSIGNED DEFAULT NULL,
+  `sb` double UNSIGNED DEFAULT NULL,
+  `sunda` double UNSIGNED DEFAULT NULL,
+  `arab` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `smt6s`
+--
+
+CREATE TABLE `smt6s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `pai` double UNSIGNED DEFAULT NULL,
+  `pp` double UNSIGNED DEFAULT NULL,
+  `indo` double UNSIGNED DEFAULT NULL,
+  `pjok` double UNSIGNED DEFAULT NULL,
+  `sejarah` double UNSIGNED DEFAULT NULL,
+  `sb` double UNSIGNED DEFAULT NULL,
+  `sunda` double UNSIGNED DEFAULT NULL,
+  `arab` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `smt6s`
+--
+
+INSERT INTO `smt6s` (`id`, `student_id`, `classroom_id`, `priode_id`, `pai`, `pp`, `indo`, `pjok`, `sejarah`, `sb`, `sunda`, `arab`, `created_at`, `updated_at`) VALUES
+(1, 27, 13, 1, 90, 90, 0, 0, 0, 0, 0, 0, '2024-12-04 04:42:46', '2024-12-04 04:42:46');
 
 -- --------------------------------------------------------
 
@@ -1888,6 +1987,7 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 CREATE TABLE `students` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nis` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `nisn` varchar(255) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `gender` enum('Laki - Laki','Perempuan') NOT NULL DEFAULT 'Perempuan',
@@ -1913,7 +2013,8 @@ CREATE TABLE `students` (
   `alamatwali` text DEFAULT NULL,
   `contactw` varchar(255) DEFAULT NULL,
   `profile` varchar(255) DEFAULT NULL,
-  `status` enum('accept','off','move','grade') NOT NULL,
+  `status` enum('aktif','off','pindah','arsip') NOT NULL DEFAULT 'aktif',
+  `graduation_date` date DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1923,30 +2024,34 @@ CREATE TABLE `students` (
 -- Dumping data untuk tabel `students`
 --
 
-INSERT INTO `students` (`id`, `nis`, `nisn`, `name`, `gender`, `birthday`, `tempatl`, `agama`, `kwnegara`, `statusdk`, `anakke`, `alamat`, `contact`, `asekolah`, `classroom_id`, `departement_id`, `nayah`, `nibu`, `pkrjnayah`, `pkrjnibu`, `alamatot`, `contactot`, `nwali`, `pkrjnwali`, `alamatwali`, `contactw`, `profile`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
-(27, '1', NULL, 'Adly Arasya Ramadhan Putra', 'Laki - Laki', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'profile/01JBZCVFH5027CCR7PY9Q8H745.jpg', 'accept', 2, '2024-10-20 21:22:16', '2024-11-06 00:12:21'),
-(28, '2', NULL, 'Ahmad Ridwan Firdaus', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(29, '3', NULL, 'Ahmad Syaiful Makruf', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(30, '4', NULL, 'Azka Rafthaya Syahdan', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(31, '5', NULL, 'Daffa Nugraha Yudika', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(32, '6', NULL, 'Dhea Azahra Patrysia', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(33, '7', NULL, 'Fadliansyah Rachmat', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(34, '8', NULL, 'Fauziah Nur Afzan', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(35, '9', NULL, 'Ineng Najila', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(36, '10', NULL, 'Kaisan Amar Assidiq', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(37, '11', NULL, 'Mochamad Fadly Ibnu Maula', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(38, '12', NULL, 'Muhamad Abdul Ropik', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(39, '13', NULL, 'Muhammad Dikril Hakim', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(40, '14', NULL, 'Muhammad Ikbar Fildzah', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(41, '15', NULL, 'Muhammad Noval', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(42, '16', NULL, 'Nazwa Alfia Rexa', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(43, '17', NULL, 'Siti Salwa Safitri', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(44, '18', NULL, 'Tasya Ratu Zansabila', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
-(47, '10.2324.03.028', '84449862', 'ADLY ARASYA RAMADHAN PUTRA', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-11-06 00:04:42', '2024-11-06 00:04:42'),
-(48, '10.2324.03.028', '84449862', 'ADLY ARASYA RAMADHAN PUTRA', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-11-06 00:04:51', '2024-11-06 00:04:51'),
-(49, '10.2324.03.028', '84449862', 'ADLY ARASYA RAMADHAN PUTRA', 'Laki - Laki', '2003-08-09', 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 13, 4, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-11-06 00:10:11', '2024-11-06 00:11:19'),
-(50, '10.2324.03.028', '84449862', 'albar', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-11-10 22:20:11', '2024-11-10 22:20:11'),
-(51, '10.2324.03.028', '84449862', 'yusup', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'accept', NULL, '2024-11-10 22:20:11', '2024-11-10 22:20:11');
+INSERT INTO `students` (`id`, `nis`, `email`, `nisn`, `name`, `gender`, `birthday`, `tempatl`, `agama`, `kwnegara`, `statusdk`, `anakke`, `alamat`, `contact`, `asekolah`, `classroom_id`, `departement_id`, `nayah`, `nibu`, `pkrjnayah`, `pkrjnibu`, `alamatot`, `contactot`, `nwali`, `pkrjnwali`, `alamatwali`, `contactw`, `profile`, `status`, `graduation_date`, `user_id`, `created_at`, `updated_at`) VALUES
+(27, '1', NULL, NULL, 'Adly Arasya Ramadhan Putra', 'Laki - Laki', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'profile/01JBZCVFH5027CCR7PY9Q8H745.jpg', 'aktif', NULL, 2, '2024-10-20 21:22:16', '2024-11-06 00:12:21'),
+(28, '2', NULL, NULL, 'Ahmad Ridwan Firdaus', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(29, '3', NULL, NULL, 'Ahmad Syaiful Makruf', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(30, '4', NULL, NULL, 'Azka Rafthaya Syahdan', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(31, '5', NULL, NULL, 'Daffa Nugraha Yudika', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(32, '6', NULL, NULL, 'Dhea Azahra Patrysia', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(33, '7', NULL, NULL, 'Fadliansyah Rachmat', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(34, '8', NULL, NULL, 'Fauziah Nur Afzan', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(35, '9', NULL, NULL, 'Ineng Najila', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(36, '10', NULL, NULL, 'Kaisan Amar Assidiq', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(37, '11', NULL, NULL, 'Mochamad Fadly Ibnu Maula', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(38, '12', NULL, NULL, 'Muhamad Abdul Ropik', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(39, '13', NULL, NULL, 'Muhammad Dikril Hakim', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(40, '14', NULL, NULL, 'Muhammad Ikbar Fildzah', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(41, '15', NULL, NULL, 'Muhammad Noval', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(42, '16', NULL, NULL, 'Nazwa Alfia Rexa', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(43, '17', NULL, NULL, 'Siti Salwa Safitri', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(44, '18', NULL, NULL, 'Tasya Ratu Zansabila', '', NULL, NULL, 'Islam', 'Warga Negara Indonesia', NULL, '1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-10-20 21:22:16', '2024-10-20 21:22:16'),
+(47, '10.2324.03.028', NULL, '84449862', 'ADLY ARASYA RAMADHAN PUTRA', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-11-06 00:04:42', '2024-11-06 00:04:42'),
+(48, '10.2324.03.028', NULL, '84449862', 'ADLY ARASYA RAMADHAN PUTRA', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-11-06 00:04:51', '2024-11-06 00:04:51'),
+(49, '10.2324.03.028', NULL, '84449862', 'ADLY ARASYA RAMADHAN PUTRA', 'Laki - Laki', '2003-08-09', 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 13, 4, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-11-06 00:10:11', '2024-11-06 00:11:19'),
+(50, '10.2324.03.028', NULL, '84449862', 'albar', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-11-10 22:20:11', '2024-11-10 22:20:11'),
+(51, '10.2324.03.028', NULL, '84449862', 'yusup', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-11-10 22:20:11', '2024-11-10 22:20:11'),
+(52, '12345678', NULL, '12345678', 'Abdul Aziz', 'Laki - Laki', '2024-11-13', 'sukabumi', 'Islam', 'Warga Negara Indonesia', NULL, '1', 'Kp.gunungbuleud\nKp.gunungbuleud,desa cimerang,kec.purabaya', '1234567890', 'aa', 13, 4, 'aa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, NULL, '2024-11-12 23:53:14', '2024-11-12 23:53:14'),
+(58, '10.2324.03.030', NULL, '84449863', 'alex', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, 21, '2024-11-27 05:05:53', '2024-11-27 05:05:53'),
+(59, '10.2324.03.031', NULL, '84449864', 'jhonathan', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, 22, '2024-11-27 05:05:54', '2024-11-27 05:05:54'),
+(64, '10.2324.03.032', NULL, '84449863', 'alexdeo', 'Laki - Laki', NULL, 'jakarta', 'Islam', 'Warga Negara Indonesia', NULL, '2', NULL, NULL, NULL, 10, NULL, 'Iman', 'MU MINAH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'aktif', NULL, 24, '2024-11-27 22:03:02', '2024-11-27 22:03:02');
 
 -- --------------------------------------------------------
 
@@ -2014,7 +2119,9 @@ CREATE TABLE `teachers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nip` varchar(255) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `status` enum('Ya','tidak') NOT NULL DEFAULT 'tidak',
+  `user_id` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -2025,32 +2132,34 @@ CREATE TABLE `teachers` (
 -- Dumping data untuk tabel `teachers`
 --
 
-INSERT INTO `teachers` (`id`, `nip`, `name`, `status`, `address`, `created_at`, `updated_at`, `profile`) VALUES
-(3, '12345678', 'Ai Mursyidah Zein, SE', 'Ya', NULL, '2024-10-20 20:02:34', '2024-10-21 00:25:23', 'teacher/01JAPZERBFNCBB4JF9NH3Q98F1.jpg'),
-(4, NULL, 'Asep H. Anwar, S.Pd.I', 'tidak', NULL, '2024-10-20 20:03:14', '2024-10-20 20:03:14', NULL),
-(5, NULL, 'Ai Rahmatillah.,S.Pd', 'tidak', NULL, '2024-10-20 20:03:28', '2024-10-20 20:03:28', NULL),
-(6, NULL, 'Yani Fitriyani S.Pd', 'tidak', NULL, '2024-10-20 20:03:47', '2024-10-20 20:03:47', NULL),
-(7, NULL, 'Dafit Abdurozak S.Pd', 'tidak', NULL, '2024-10-20 20:03:56', '2024-10-20 20:03:56', NULL),
-(8, NULL, 'Kilah S.Pd', 'tidak', NULL, '2024-10-20 20:04:25', '2024-10-20 20:04:25', NULL),
-(9, NULL, 'M.Iqbal Farhan Zhovran.,S.S', 'tidak', NULL, '2024-10-20 20:04:46', '2024-10-20 20:04:46', NULL),
-(10, NULL, 'Jamaludin R Surya.,S.Pd.I., S.Kom', 'tidak', NULL, '2024-10-20 20:04:54', '2024-10-20 20:04:54', NULL),
-(11, NULL, 'Suherman.,S.Pd.I', 'tidak', NULL, '2024-10-20 20:05:03', '2024-10-20 20:05:03', NULL),
-(12, NULL, 'Kusdian.,S.Ud', 'tidak', NULL, '2024-10-20 20:05:16', '2024-10-20 20:05:16', NULL),
-(13, NULL, 'Weli Kusnadi M.Kom.,MTA', 'tidak', NULL, '2024-10-20 20:05:25', '2024-10-20 20:05:25', NULL),
-(14, NULL, 'Neni Nuraeni S.Pd', 'tidak', NULL, '2024-10-20 20:05:37', '2024-10-20 20:05:37', NULL),
-(15, NULL, 'Muhamad Nasir.,S.E', 'tidak', NULL, '2024-10-20 20:05:47', '2024-10-20 20:05:47', NULL),
-(16, NULL, ' Ikramulkarim.,A.Md.,S.T', 'tidak', NULL, '2024-10-20 20:05:57', '2024-10-20 20:05:57', NULL),
-(17, NULL, 'Ahmad Rifai Raden', 'tidak', NULL, '2024-10-20 20:06:13', '2024-10-20 20:06:13', NULL),
-(18, NULL, 'Zulfatu nai\'mah, S.Kom', 'tidak', NULL, '2024-10-20 20:06:25', '2024-10-20 20:06:25', NULL),
-(19, NULL, 'M.Rizal Firmansyah, S.Kom', 'tidak', NULL, '2024-10-20 20:06:40', '2024-10-20 20:06:40', NULL),
-(20, NULL, 'Siti Rasyidah nurainiyah, S.Pd', 'tidak', NULL, '2024-10-20 20:06:48', '2024-10-20 20:06:48', NULL),
-(21, NULL, 'muhamad Khoerulloh, S.Kom', 'tidak', NULL, '2024-10-20 20:06:58', '2024-10-20 20:06:58', NULL),
-(22, NULL, 'Muhidin.,Amd.T.,S.Pd', 'tidak', NULL, '2024-10-20 20:07:11', '2024-10-20 20:07:11', NULL),
-(23, NULL, 'Andi Rimi.S.Pd', 'tidak', NULL, '2024-10-20 20:07:23', '2024-10-20 20:07:23', NULL),
-(24, NULL, 'Ani Hanifah Mardiyah.,S.E', 'tidak', NULL, '2024-10-20 20:07:37', '2024-10-20 20:07:37', NULL),
-(25, NULL, 'Zain Lizsa.,S.E,M.M', 'tidak', NULL, '2024-10-20 20:07:46', '2024-10-20 20:07:46', NULL),
-(26, NULL, 'Dian Nurazizah Hasibuan.,S.Pd', 'tidak', NULL, '2024-10-20 20:07:58', '2024-10-20 20:07:58', NULL),
-(27, NULL, 'Ahmad Sholeh, S.Pd', 'tidak', NULL, '2024-10-20 20:08:13', '2024-10-20 20:08:13', NULL);
+INSERT INTO `teachers` (`id`, `nip`, `name`, `email`, `status`, `user_id`, `address`, `created_at`, `updated_at`, `profile`) VALUES
+(3, '12345678', 'Ai Mursyidah Zein, SE', NULL, 'Ya', NULL, NULL, '2024-10-20 20:02:34', '2024-10-21 00:25:23', 'teacher/01JAPZERBFNCBB4JF9NH3Q98F1.jpg'),
+(4, NULL, 'Asep H. Anwar, S.Pd.I', NULL, 'tidak', NULL, NULL, '2024-10-20 20:03:14', '2024-10-20 20:03:14', NULL),
+(5, NULL, 'Ai Rahmatillah.,S.Pd', NULL, 'tidak', NULL, NULL, '2024-10-20 20:03:28', '2024-10-20 20:03:28', NULL),
+(6, NULL, 'Yani Fitriyani S.Pd', NULL, 'tidak', NULL, NULL, '2024-10-20 20:03:47', '2024-10-20 20:03:47', NULL),
+(7, NULL, 'Dafit Abdurozak S.Pd', NULL, 'tidak', NULL, NULL, '2024-10-20 20:03:56', '2024-10-20 20:03:56', NULL),
+(8, NULL, 'Kilah S.Pd', NULL, 'tidak', NULL, NULL, '2024-10-20 20:04:25', '2024-10-20 20:04:25', NULL),
+(9, NULL, 'M.Iqbal Farhan Zhovran.,S.S', NULL, 'tidak', NULL, NULL, '2024-10-20 20:04:46', '2024-10-20 20:04:46', NULL),
+(10, NULL, 'Jamaludin R Surya.,S.Pd.I., S.Kom', NULL, 'tidak', NULL, NULL, '2024-10-20 20:04:54', '2024-10-20 20:04:54', NULL),
+(11, NULL, 'Suherman.,S.Pd.I', NULL, 'tidak', NULL, NULL, '2024-10-20 20:05:03', '2024-10-20 20:05:03', NULL),
+(12, NULL, 'Kusdian.,S.Ud', NULL, 'tidak', NULL, NULL, '2024-10-20 20:05:16', '2024-10-20 20:05:16', NULL),
+(13, NULL, 'Weli Kusnadi M.Kom.,MTA', NULL, 'tidak', NULL, NULL, '2024-10-20 20:05:25', '2024-10-20 20:05:25', NULL),
+(14, NULL, 'Neni Nuraeni S.Pd', NULL, 'tidak', NULL, NULL, '2024-10-20 20:05:37', '2024-10-20 20:05:37', NULL),
+(15, NULL, 'Muhamad Nasir.,S.E', NULL, 'tidak', NULL, NULL, '2024-10-20 20:05:47', '2024-10-20 20:05:47', NULL),
+(16, NULL, ' Ikramulkarim.,A.Md.,S.T', NULL, 'tidak', NULL, NULL, '2024-10-20 20:05:57', '2024-10-20 20:05:57', NULL),
+(17, NULL, 'Ahmad Rifai Raden', NULL, 'tidak', NULL, NULL, '2024-10-20 20:06:13', '2024-10-20 20:06:13', NULL),
+(18, NULL, 'Zulfatu nai\'mah, S.Kom', NULL, 'tidak', NULL, NULL, '2024-10-20 20:06:25', '2024-10-20 20:06:25', NULL),
+(19, NULL, 'M.Rizal Firmansyah, S.Kom', NULL, 'tidak', NULL, NULL, '2024-10-20 20:06:40', '2024-10-20 20:06:40', NULL),
+(20, NULL, 'Siti Rasyidah nurainiyah, S.Pd', NULL, 'tidak', NULL, NULL, '2024-10-20 20:06:48', '2024-10-20 20:06:48', NULL),
+(21, NULL, 'muhamad Khoerulloh, S.Kom', NULL, 'tidak', NULL, NULL, '2024-10-20 20:06:58', '2024-10-20 20:06:58', NULL),
+(22, NULL, 'Muhidin.,Amd.T.,S.Pd', NULL, 'tidak', NULL, NULL, '2024-10-20 20:07:11', '2024-10-20 20:07:11', NULL),
+(23, NULL, 'Andi Rimi.S.Pd', NULL, 'tidak', NULL, NULL, '2024-10-20 20:07:23', '2024-10-20 20:07:23', NULL),
+(24, NULL, 'Ani Hanifah Mardiyah.,S.E', NULL, 'tidak', NULL, NULL, '2024-10-20 20:07:37', '2024-10-20 20:07:37', NULL),
+(25, NULL, 'Zain Lizsa.,S.E,M.M', NULL, 'tidak', NULL, NULL, '2024-10-20 20:07:46', '2024-10-20 20:07:46', NULL),
+(26, NULL, 'Dian Nurazizah Hasibuan.,S.Pd', NULL, 'tidak', NULL, NULL, '2024-10-20 20:07:58', '2024-10-20 20:07:58', NULL),
+(27, NULL, 'Ahmad Sholeh, S.Pd', NULL, 'tidak', NULL, NULL, '2024-10-20 20:08:13', '2024-10-20 20:08:13', NULL),
+(35, '1234567890', 'albar', 'albar1@gmail.com', 'Ya', '29', NULL, '2024-12-04 07:06:16', '2024-12-04 07:06:16', NULL),
+(36, '12345678999', 'dian', NULL, 'Ya', '30', NULL, '2024-12-09 02:24:07', '2024-12-09 02:24:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -2073,7 +2182,8 @@ CREATE TABLE `uji_koms` (
 --
 
 INSERT INTO `uji_koms` (`id`, `student_id`, `nilai`, `jengke_id`, `waktu`, `created_at`, `updated_at`) VALUES
-(1, 29, 100, 3, '19 September - 19 Desember', '2024-11-10 22:07:38', '2024-11-10 22:07:38');
+(1, 29, 100, 3, '19 September - 19 Desember', '2024-11-10 22:07:38', '2024-11-10 22:07:38'),
+(2, 27, 100, 3, '19 September - 19 Desember', '2024-11-18 08:07:55', '2024-11-18 08:07:55');
 
 -- --------------------------------------------------------
 
@@ -2097,73 +2207,194 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$12$Relj/rp0TPD53b1TAP6UeezQN4VOsRvl6MtQnpcyRnLXgJu.OThTW', NULL, '2024-10-13 01:59:34', '2024-10-18 19:12:02'),
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$12$HwzZf0jetuGrpApt287LDOiNuXOCN6yJGiFChT4jwopudTMnKig76', NULL, '2024-10-13 01:59:34', '2024-12-08 01:11:23'),
 (2, 'user', 'user@gmail.com', NULL, '$2y$12$zlN7CmD/WC7BYfQGzonbI.WDiK3PE9xJ8G83XUEYVxeIsqPxCfoJu', NULL, '2024-10-18 18:25:12', '2024-10-18 18:25:12'),
 (5, 'wali kelas', 'walikelas@gmail.com', NULL, '$2y$12$7wR4mC84CMWEnnH70XI2yuY5CsdzciMWlUQE4.sBND8zFcfeFzJ0y', NULL, '2024-10-19 23:09:36', '2024-10-19 23:09:36'),
-(14, 'albar', 'albar@gmail.com', NULL, '$2y$12$8dMLW3N/Cc8W7aldOZTg.O4szrZBpU348GPp9rIUmALloHMnK6xmm', NULL, '2024-11-08 17:57:24', '2024-11-08 17:57:24');
+(15, 'a', 'a@gmail.com', NULL, '$2y$12$g1REq6oSqvO0E1IrFekOXOBVAg6K2UrVowJXBY2.IOrH92N.2VFYq', NULL, NULL, '2024-11-17 01:39:45'),
+(21, 'alex', '10.2324.03.030@gmail.com', NULL, '$2y$12$jMfrYp4bO7wG0kPf5GOM2uZ16Y2OR3dKD5lupBoR75LEsqsPHF0Oy', NULL, '2024-11-27 05:05:54', '2024-11-27 05:05:54'),
+(22, 'jhonathan', '10.2324.03.031@gmail.com', NULL, '$2y$12$lE38xQCuIBpW/C/hCREogen9NQRj8sSmneTGUkVJPjg6od66AzHcS', NULL, '2024-11-27 05:05:55', '2024-11-27 05:05:55'),
+(24, 'alexdeo', '10.2324.03.032@gmail.com', NULL, '$2y$12$mCXpTjUfcvwswQEbvtnUvO2MICZ/Tm9QNAwpMd5tnPcW9oZA5hzYG', NULL, '2024-11-27 22:03:03', '2024-11-27 22:03:03'),
+(25, 'jhonathan iman', '10.2324.03.033@gmail.com', NULL, '$2y$12$7dRNZZnPrn7xy6V0WNbQIuSDN75C/8YdPhJbgF1vnJxe.0n4mQfCq', NULL, '2024-11-27 22:03:04', '2024-11-27 22:03:04'),
+(29, 'albar', '1234567890@gmail.com', NULL, '$2y$12$XDIm0lAGDA7uKBvEWUPcmedrq6ycAfZ5.C0TBBSnzqXRsytYMzwvm', NULL, '2024-12-04 07:06:17', '2024-12-04 07:06:17'),
+(30, 'dian', '12345678999@gmail.com', NULL, '$2y$12$Ic0O/s7xXLduItjAOo5QEO.oUN/cTZHGCMwvPXU65cpK0bZQF9C6G', NULL, '2024-12-09 02:24:07', '2024-12-09 02:24:07');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `usmt1s`
+--
+
+CREATE TABLE `usmt1s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `mtk` double UNSIGNED DEFAULT NULL,
+  `inggris` double UNSIGNED DEFAULT NULL,
+  `informatika` double UNSIGNED DEFAULT NULL,
+  `fisika` double UNSIGNED DEFAULT NULL,
+  `kimia` double UNSIGNED DEFAULT NULL,
+  `bisnis` double UNSIGNED DEFAULT NULL,
+  `profesi` double UNSIGNED DEFAULT NULL,
+  `pemtur` double UNSIGNED DEFAULT NULL,
+  `pbo` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `usmt1s`
+--
+
+INSERT INTO `usmt1s` (`id`, `student_id`, `classroom_id`, `priode_id`, `mtk`, `inggris`, `informatika`, `fisika`, `kimia`, `bisnis`, `profesi`, `pemtur`, `pbo`, `gim`, `created_at`, `updated_at`) VALUES
+(1, 27, 16, NULL, 50, 55, 55, 55, 55, 55, 55, 55, 55, 55, '2024-11-18 08:02:07', '2024-11-18 08:02:07');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `usmt2s`
+--
+
+CREATE TABLE `usmt2s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `mtk` double UNSIGNED DEFAULT NULL,
+  `inggris` double UNSIGNED DEFAULT NULL,
+  `informatika` double UNSIGNED DEFAULT NULL,
+  `fisika` double UNSIGNED DEFAULT NULL,
+  `kimia` double UNSIGNED DEFAULT NULL,
+  `bisnis` double UNSIGNED DEFAULT NULL,
+  `profesi` double UNSIGNED DEFAULT NULL,
+  `pemtur` double UNSIGNED DEFAULT NULL,
+  `pbo` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `usmt3s`
+--
+
+CREATE TABLE `usmt3s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `mtk` double UNSIGNED DEFAULT NULL,
+  `inggris` double UNSIGNED DEFAULT NULL,
+  `informatika` double UNSIGNED DEFAULT NULL,
+  `fisika` double UNSIGNED DEFAULT NULL,
+  `kimia` double UNSIGNED DEFAULT NULL,
+  `bisnis` double UNSIGNED DEFAULT NULL,
+  `profesi` double UNSIGNED DEFAULT NULL,
+  `pemtur` double UNSIGNED DEFAULT NULL,
+  `pbo` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `usmt4s`
+--
+
+CREATE TABLE `usmt4s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `mtk` double UNSIGNED DEFAULT NULL,
+  `inggris` double UNSIGNED DEFAULT NULL,
+  `informatika` double UNSIGNED DEFAULT NULL,
+  `fisika` double UNSIGNED DEFAULT NULL,
+  `kimia` double UNSIGNED DEFAULT NULL,
+  `bisnis` double UNSIGNED DEFAULT NULL,
+  `profesi` double UNSIGNED DEFAULT NULL,
+  `pemtur` double UNSIGNED DEFAULT NULL,
+  `pbo` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `usmt5s`
+--
+
+CREATE TABLE `usmt5s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `mtk` double UNSIGNED DEFAULT NULL,
+  `inggris` double UNSIGNED DEFAULT NULL,
+  `informatika` double UNSIGNED DEFAULT NULL,
+  `fisika` double UNSIGNED DEFAULT NULL,
+  `kimia` double UNSIGNED DEFAULT NULL,
+  `bisnis` double UNSIGNED DEFAULT NULL,
+  `profesi` double UNSIGNED DEFAULT NULL,
+  `pemtur` double UNSIGNED DEFAULT NULL,
+  `pbo` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `usmt6s`
+--
+
+CREATE TABLE `usmt6s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` bigint(20) UNSIGNED NOT NULL,
+  `classroom_id` bigint(20) UNSIGNED NOT NULL,
+  `priode_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `mtk` double UNSIGNED DEFAULT NULL,
+  `inggris` double UNSIGNED DEFAULT NULL,
+  `informatika` double UNSIGNED DEFAULT NULL,
+  `fisika` double UNSIGNED DEFAULT NULL,
+  `kimia` double UNSIGNED DEFAULT NULL,
+  `bisnis` double UNSIGNED DEFAULT NULL,
+  `profesi` double UNSIGNED DEFAULT NULL,
+  `pemtur` double UNSIGNED DEFAULT NULL,
+  `pbo` double UNSIGNED DEFAULT NULL,
+  `gim` double UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `alfas`
+-- Indeks untuk tabel `archived_students`
 --
-ALTER TABLE `alfas`
+ALTER TABLE `archived_students`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `bandks`
+-- Indeks untuk tabel `arsips`
 --
-ALTER TABLE `bandks`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `barabs`
---
-ALTER TABLE `barabs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `bds`
---
-ALTER TABLE `bds`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `berekayasas`
---
-ALTER TABLE `berekayasas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `bindos`
---
-ALTER TABLE `bindos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `bings`
---
-ALTER TABLE `bings`
+ALTER TABLE `arsips`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `bios`
 --
 ALTER TABLE `bios`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `bkerjas`
---
-ALTER TABLE `bkerjas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `bsundas`
---
-ALTER TABLE `bsundas`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2177,12 +2408,6 @@ ALTER TABLE `cache`
 --
 ALTER TABLE `cache_locks`
   ADD PRIMARY KEY (`key`);
-
---
--- Indeks untuk tabel `catatan_akademiks`
---
-ALTER TABLE `catatan_akademiks`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `category_nilais`
@@ -2204,39 +2429,45 @@ ALTER TABLE `classroom_subject`
   ADD KEY `classroom_subject_subject_id_foreign` (`subject_id`);
 
 --
--- Indeks untuk tabel `cp_semesters`
+-- Indeks untuk tabel `contacts`
 --
-ALTER TABLE `cp_semesters`
+ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dbelajars`
+-- Indeks untuk tabel `cps1s`
 --
-ALTER TABLE `dbelajars`
+ALTER TABLE `cps1s`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dberbahasas`
+-- Indeks untuk tabel `cps2s`
 --
-ALTER TABLE `dberbahasas`
+ALTER TABLE `cps2s`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dberbusanas`
+-- Indeks untuk tabel `cps3s`
 --
-ALTER TABLE `dberbusanas`
+ALTER TABLE `cps3s`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dbergauls`
+-- Indeks untuk tabel `cps4s`
 --
-ALTER TABLE `dbergauls`
+ALTER TABLE `cps4s`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dbertindaks`
+-- Indeks untuk tabel `cps5s`
 --
-ALTER TABLE `dbertindaks`
+ALTER TABLE `cps5s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `cps6s`
+--
+ALTER TABLE `cps6s`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2246,33 +2477,75 @@ ALTER TABLE `departements`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dibadahs`
+-- Indeks untuk tabel `dsmt1s`
 --
-ALTER TABLE `dibadahs`
+ALTER TABLE `dsmt1s`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dk3s`
+-- Indeks untuk tabel `dsmt2s`
 --
-ALTER TABLE `dk3s`
+ALTER TABLE `dsmt2s`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dkeamanans`
+-- Indeks untuk tabel `dsmt3s`
 --
-ALTER TABLE `dkeamanans`
+ALTER TABLE `dsmt3s`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dmenggunakanfasilitas`
+-- Indeks untuk tabel `dsmt4s`
 --
-ALTER TABLE `dmenggunakanfasilitas`
+ALTER TABLE `dsmt4s`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `dwaktus`
+-- Indeks untuk tabel `dsmt5s`
 --
-ALTER TABLE `dwaktus`
+ALTER TABLE `dsmt5s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `dsmt6s`
+--
+ALTER TABLE `dsmt6s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `esmt1s`
+--
+ALTER TABLE `esmt1s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `esmt2s`
+--
+ALTER TABLE `esmt2s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `esmt3s`
+--
+ALTER TABLE `esmt3s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `esmt4s`
+--
+ALTER TABLE `esmt4s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `esmt5s`
+--
+ALTER TABLE `esmt5s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `esmt6s`
+--
+ALTER TABLE `esmt6s`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2281,12 +2554,6 @@ ALTER TABLE `dwaktus`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Indeks untuk tabel `fandks`
---
-ALTER TABLE `fandks`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `fisikas`
@@ -2302,18 +2569,6 @@ ALTER TABLE `home_rooms`
   ADD KEY `home_rooms_teachers_id_foreign` (`teachers_id`),
   ADD KEY `home_rooms_classrooms_id_foreign` (`classrooms_id`),
   ADD KEY `home_rooms_priode_id_foreign` (`priode_id`);
-
---
--- Indeks untuk tabel `informatikas`
---
-ALTER TABLE `informatikas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `izins`
---
-ALTER TABLE `izins`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `jengkes`
@@ -2335,33 +2590,9 @@ ALTER TABLE `job_batches`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kbs`
+-- Indeks untuk tabel `karakters1s`
 --
-ALTER TABLE `kbs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `keberkerjaans`
---
-ALTER TABLE `keberkerjaans`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `kesenians`
---
-ALTER TABLE `kesenians`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `kewirausahas`
---
-ALTER TABLE `kewirausahas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `kimias`
---
-ALTER TABLE `kimias`
+ALTER TABLE `karakters1s`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2371,9 +2602,39 @@ ALTER TABLE `kindustris`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `k_amulias`
+-- Indeks untuk tabel `ksmt1s`
 --
-ALTER TABLE `k_amulias`
+ALTER TABLE `ksmt1s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `ksmt2s`
+--
+ALTER TABLE `ksmt2s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `ksmt3s`
+--
+ALTER TABLE `ksmt3s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `ksmt4s`
+--
+ALTER TABLE `ksmt4s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `ksmt5s`
+--
+ALTER TABLE `ksmt5s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `ksmt6s`
+--
+ALTER TABLE `ksmt6s`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2397,27 +2658,9 @@ ALTER TABLE `model_has_roles`
   ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
--- Indeks untuk tabel `mtks`
---
-ALTER TABLE `mtks`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indeks untuk tabel `nilais`
 --
 ALTER TABLE `nilais`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `okesehatans`
---
-ALTER TABLE `okesehatans`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pais`
---
-ALTER TABLE `pais`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2427,42 +2670,6 @@ ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indeks untuk tabel `pberbaktis`
---
-ALTER TABLE `pberbaktis`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pbos`
---
-ALTER TABLE `pbos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pbtgms`
---
-ALTER TABLE `pbtgms`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pbusanamuslims`
---
-ALTER TABLE `pbusanamuslims`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pelajaran_kejuruans`
---
-ALTER TABLE `pelajaran_kejuruans`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pemturs`
---
-ALTER TABLE `pemturs`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indeks untuk tabel `permissions`
 --
 ALTER TABLE `permissions`
@@ -2470,93 +2677,9 @@ ALTER TABLE `permissions`
   ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
--- Indeks untuk tabel `pinfaqsejakdinis`
---
-ALTER TABLE `pinfaqsejakdinis`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pjoks`
---
-ALTER TABLE `pjoks`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pkks`
---
-ALTER TABLE `pkks`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indeks untuk tabel `pkls`
 --
 ALTER TABLE `pkls`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pmelaksanakansaums`
---
-ALTER TABLE `pmelaksanakansaums`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pmembacaalqurans`
---
-ALTER TABLE `pmembacaalqurans`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pmemeliharaadabs`
---
-ALTER TABLE `pmemeliharaadabs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pmemeliharas`
---
-ALTER TABLE `pmemeliharas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pmencintaitanahairs`
---
-ALTER TABLE `pmencintaitanahairs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pmendirikansholats`
---
-ALTER TABLE `pmendirikansholats`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `ppbs`
---
-ALTER TABLE `ppbs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `ppls`
---
-ALTER TABLE `ppls`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pps`
---
-ALTER TABLE `pps`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pramadhans`
---
-ALTER TABLE `pramadhans`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `pramukas`
---
-ALTER TABLE `pramukas`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2567,15 +2690,39 @@ ALTER TABLE `priodes`
   ADD UNIQUE KEY `priodes_name_unique` (`name`);
 
 --
--- Indeks untuk tabel `ptalimdanceramahs`
+-- Indeks untuk tabel `psmt1s`
 --
-ALTER TABLE `ptalimdanceramahs`
+ALTER TABLE `psmt1s`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pwebs`
+-- Indeks untuk tabel `psmt2s`
 --
-ALTER TABLE `pwebs`
+ALTER TABLE `psmt2s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `psmt3s`
+--
+ALTER TABLE `psmt3s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `psmt4s`
+--
+ALTER TABLE `psmt4s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `psmt5s`
+--
+ALTER TABLE `psmt5s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `psmt6s`
+--
+ALTER TABLE `psmt6s`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2593,24 +2740,6 @@ ALTER TABLE `role_has_permissions`
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
--- Indeks untuk tabel `sakits`
---
-ALTER TABLE `sakits`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `sbs`
---
-ALTER TABLE `sbs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `sejarahs`
---
-ALTER TABLE `sejarahs`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indeks untuk tabel `semesters`
 --
 ALTER TABLE `semesters`
@@ -2623,6 +2752,42 @@ ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `sessions_user_id_index` (`user_id`),
   ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indeks untuk tabel `smt1s`
+--
+ALTER TABLE `smt1s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `smt2s`
+--
+ALTER TABLE `smt2s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `smt3s`
+--
+ALTER TABLE `smt3s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `smt4s`
+--
+ALTER TABLE `smt4s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `smt5s`
+--
+ALTER TABLE `smt5s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `smt6s`
+--
+ALTER TABLE `smt6s`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `students`
@@ -2668,74 +2833,62 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indeks untuk tabel `usmt1s`
+--
+ALTER TABLE `usmt1s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `usmt2s`
+--
+ALTER TABLE `usmt2s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `usmt3s`
+--
+ALTER TABLE `usmt3s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `usmt4s`
+--
+ALTER TABLE `usmt4s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `usmt5s`
+--
+ALTER TABLE `usmt5s`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `usmt6s`
+--
+ALTER TABLE `usmt6s`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT untuk tabel `alfas`
+-- AUTO_INCREMENT untuk tabel `archived_students`
 --
-ALTER TABLE `alfas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `archived_students`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `bandks`
+-- AUTO_INCREMENT untuk tabel `arsips`
 --
-ALTER TABLE `bandks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `barabs`
---
-ALTER TABLE `barabs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `bds`
---
-ALTER TABLE `bds`
+ALTER TABLE `arsips`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `berekayasas`
---
-ALTER TABLE `berekayasas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `bindos`
---
-ALTER TABLE `bindos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `bings`
---
-ALTER TABLE `bings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `bios`
 --
 ALTER TABLE `bios`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `bkerjas`
---
-ALTER TABLE `bkerjas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `bsundas`
---
-ALTER TABLE `bsundas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `catatan_akademiks`
---
-ALTER TABLE `catatan_akademiks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `category_nilais`
@@ -2747,42 +2900,48 @@ ALTER TABLE `category_nilais`
 -- AUTO_INCREMENT untuk tabel `classrooms`
 --
 ALTER TABLE `classrooms`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `cp_semesters`
+-- AUTO_INCREMENT untuk tabel `contacts`
 --
-ALTER TABLE `cp_semesters`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `contacts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `dbelajars`
+-- AUTO_INCREMENT untuk tabel `cps1s`
 --
-ALTER TABLE `dbelajars`
+ALTER TABLE `cps1s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `cps2s`
+--
+ALTER TABLE `cps2s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `dberbahasas`
+-- AUTO_INCREMENT untuk tabel `cps3s`
 --
-ALTER TABLE `dberbahasas`
+ALTER TABLE `cps3s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `dberbusanas`
+-- AUTO_INCREMENT untuk tabel `cps4s`
 --
-ALTER TABLE `dberbusanas`
+ALTER TABLE `cps4s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `dbergauls`
+-- AUTO_INCREMENT untuk tabel `cps5s`
 --
-ALTER TABLE `dbergauls`
+ALTER TABLE `cps5s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `dbertindaks`
+-- AUTO_INCREMENT untuk tabel `cps6s`
 --
-ALTER TABLE `dbertindaks`
+ALTER TABLE `cps6s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -2792,46 +2951,82 @@ ALTER TABLE `departements`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `dibadahs`
+-- AUTO_INCREMENT untuk tabel `dsmt1s`
 --
-ALTER TABLE `dibadahs`
+ALTER TABLE `dsmt1s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `dsmt2s`
+--
+ALTER TABLE `dsmt2s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `dk3s`
+-- AUTO_INCREMENT untuk tabel `dsmt3s`
 --
-ALTER TABLE `dk3s`
+ALTER TABLE `dsmt3s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `dkeamanans`
+-- AUTO_INCREMENT untuk tabel `dsmt4s`
 --
-ALTER TABLE `dkeamanans`
+ALTER TABLE `dsmt4s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `dmenggunakanfasilitas`
+-- AUTO_INCREMENT untuk tabel `dsmt5s`
 --
-ALTER TABLE `dmenggunakanfasilitas`
+ALTER TABLE `dsmt5s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `dwaktus`
+-- AUTO_INCREMENT untuk tabel `dsmt6s`
 --
-ALTER TABLE `dwaktus`
+ALTER TABLE `dsmt6s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `esmt1s`
+--
+ALTER TABLE `esmt1s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `esmt2s`
+--
+ALTER TABLE `esmt2s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `esmt3s`
+--
+ALTER TABLE `esmt3s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `esmt4s`
+--
+ALTER TABLE `esmt4s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `esmt5s`
+--
+ALTER TABLE `esmt5s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `esmt6s`
+--
+ALTER TABLE `esmt6s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `fandks`
---
-ALTER TABLE `fandks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `fisikas`
@@ -2846,18 +3041,6 @@ ALTER TABLE `home_rooms`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `informatikas`
---
-ALTER TABLE `informatikas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `izins`
---
-ALTER TABLE `izins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT untuk tabel `jengkes`
 --
 ALTER TABLE `jengkes`
@@ -2870,225 +3053,117 @@ ALTER TABLE `jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `kbs`
+-- AUTO_INCREMENT untuk tabel `karakters1s`
 --
-ALTER TABLE `kbs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `keberkerjaans`
---
-ALTER TABLE `keberkerjaans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `kesenians`
---
-ALTER TABLE `kesenians`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `kewirausahas`
---
-ALTER TABLE `kewirausahas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `kimias`
---
-ALTER TABLE `kimias`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `karakters1s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `kindustris`
 --
 ALTER TABLE `kindustris`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `k_amulias`
+-- AUTO_INCREMENT untuk tabel `ksmt1s`
 --
-ALTER TABLE `k_amulias`
+ALTER TABLE `ksmt1s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `ksmt2s`
+--
+ALTER TABLE `ksmt2s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `ksmt3s`
+--
+ALTER TABLE `ksmt3s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `ksmt4s`
+--
+ALTER TABLE `ksmt4s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `ksmt5s`
+--
+ALTER TABLE `ksmt5s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `ksmt6s`
+--
+ALTER TABLE `ksmt6s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
-
---
--- AUTO_INCREMENT untuk tabel `mtks`
---
-ALTER TABLE `mtks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
 
 --
 -- AUTO_INCREMENT untuk tabel `nilais`
 --
 ALTER TABLE `nilais`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT untuk tabel `okesehatans`
---
-ALTER TABLE `okesehatans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pais`
---
-ALTER TABLE `pais`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `pberbaktis`
---
-ALTER TABLE `pberbaktis`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `pbos`
---
-ALTER TABLE `pbos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pbtgms`
---
-ALTER TABLE `pbtgms`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pbusanamuslims`
---
-ALTER TABLE `pbusanamuslims`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pelajaran_kejuruans`
---
-ALTER TABLE `pelajaran_kejuruans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT untuk tabel `pemturs`
---
-ALTER TABLE `pemturs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT untuk tabel `pinfaqsejakdinis`
---
-ALTER TABLE `pinfaqsejakdinis`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pjoks`
---
-ALTER TABLE `pjoks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `pkks`
---
-ALTER TABLE `pkks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `pkls`
 --
 ALTER TABLE `pkls`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pmelaksanakansaums`
---
-ALTER TABLE `pmelaksanakansaums`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pmembacaalqurans`
---
-ALTER TABLE `pmembacaalqurans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pmemeliharaadabs`
---
-ALTER TABLE `pmemeliharaadabs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pmemeliharas`
---
-ALTER TABLE `pmemeliharas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pmencintaitanahairs`
---
-ALTER TABLE `pmencintaitanahairs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pmendirikansholats`
---
-ALTER TABLE `pmendirikansholats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `ppbs`
---
-ALTER TABLE `ppbs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `ppls`
---
-ALTER TABLE `ppls`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pps`
---
-ALTER TABLE `pps`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT untuk tabel `pramadhans`
---
-ALTER TABLE `pramadhans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `pramukas`
---
-ALTER TABLE `pramukas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `priodes`
 --
 ALTER TABLE `priodes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `ptalimdanceramahs`
+-- AUTO_INCREMENT untuk tabel `psmt1s`
 --
-ALTER TABLE `ptalimdanceramahs`
+ALTER TABLE `psmt1s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `psmt2s`
+--
+ALTER TABLE `psmt2s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `pwebs`
+-- AUTO_INCREMENT untuk tabel `psmt3s`
 --
-ALTER TABLE `pwebs`
+ALTER TABLE `psmt3s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `psmt4s`
+--
+ALTER TABLE `psmt4s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `psmt5s`
+--
+ALTER TABLE `psmt5s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `psmt6s`
+--
+ALTER TABLE `psmt6s`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -3098,34 +3173,52 @@ ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `sakits`
---
-ALTER TABLE `sakits`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `sbs`
---
-ALTER TABLE `sbs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `sejarahs`
---
-ALTER TABLE `sejarahs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT untuk tabel `semesters`
 --
 ALTER TABLE `semesters`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT untuk tabel `smt1s`
+--
+ALTER TABLE `smt1s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `smt2s`
+--
+ALTER TABLE `smt2s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `smt3s`
+--
+ALTER TABLE `smt3s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `smt4s`
+--
+ALTER TABLE `smt4s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `smt5s`
+--
+ALTER TABLE `smt5s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `smt6s`
+--
+ALTER TABLE `smt6s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT untuk tabel `student_has_classes`
@@ -3143,19 +3236,55 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT untuk tabel `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `uji_koms`
 --
 ALTER TABLE `uji_koms`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT untuk tabel `usmt1s`
+--
+ALTER TABLE `usmt1s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `usmt2s`
+--
+ALTER TABLE `usmt2s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `usmt3s`
+--
+ALTER TABLE `usmt3s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `usmt4s`
+--
+ALTER TABLE `usmt4s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `usmt5s`
+--
+ALTER TABLE `usmt5s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `usmt6s`
+--
+ALTER TABLE `usmt6s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

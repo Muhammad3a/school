@@ -12,6 +12,7 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,13 +24,18 @@ class UjiKomResource extends Resource
 {
     protected static ?string $model = UjiKom::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = 'Ujian Kompetensi Keahlian';
-
-    public static function shouldRegisterNavigation(): bool
+    public static function getNavigationItems(): array
     {
-        return auth()->user()->hasRole('wali kelas');
+        if (!auth()->check() || !auth()->user()->hasRole('wali kelas')) {
+            return [];
+        }
+
+        return [
+            NavigationItem::make()
+                ->label('Ujian Kompetensi Keahlian')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
     }
 
     public static function form(Form $form): Form
@@ -92,5 +98,10 @@ class UjiKomResource extends Resource
             'create' => Pages\CreateUjiKom::route('/create'),
             'edit' => Pages\EditUjiKom::route('/{record}/edit'),
         ];
+    }
+
+    public  static function getLabel(): ?string
+    {
+        return "Uji Kompetensi";
     }
 }

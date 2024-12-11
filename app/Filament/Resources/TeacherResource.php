@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\User;
 use stdClass;
 use Filament\Forms;
+use App\Models\User;
 use Filament\Tables;
 use App\Models\Teacher;
 use Filament\Forms\Form;
@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
@@ -29,24 +30,18 @@ class TeacherResource extends Resource
 {
     protected static ?string $model = Teacher::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = 'Guru';
-
-    // protected static ?string $navigationGroup = 'Akademik';
-
-    // protected static bool $shouldRegisterNavigation = false;
-
-    protected static ?int $navigationSort = 21;
-
-    // public static function shouldRegisterNavigation(): bool
-    // {
-    //     return auth()->user()->hasRole('admin');
-    // }
-
-    public static function shouldRegisterNavigation(): bool
+    public static function getNavigationItems(): array
     {
-        return auth()->user()->hasRole('admin');
+        if (!auth()->check() || !auth()->user()->hasRole('admin')) {
+            return [];
+        }
+
+        return [
+            NavigationItem::make()
+                ->label('Guru')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
     }
 
     public static function form(Form $form): Form

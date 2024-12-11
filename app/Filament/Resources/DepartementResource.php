@@ -2,41 +2,41 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms\Set;
-use Illuminate\Support\Str;
+use stdClass;
 use Filament\Forms;
 use Filament\Tables;
+use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\Departement;
+use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Textarea;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\DepartementResource\Pages;
 use App\Filament\Resources\DepartementResource\RelationManagers;
-use Filament\Tables\Contracts\HasTable;
-use stdClass;
 
 class DepartementResource extends Resource
 {
     protected static ?string $model = Departement::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = 'Jurusan';
-
-    protected static ?string $navigationGroup = 'Source';
-
-    // protected static bool $shouldRegisterNavigation = false;
-
-    protected static ?int $navigationSort = 33;
-
-    public static function shouldRegisterNavigation(): bool
+    public static function getNavigationItems(): array
     {
-        return auth()->user()->hasRole('admin');
+        if (!auth()->check() || !auth()->user()->hasRole('admin')) {
+            return [];
+        }
+
+        return [
+            NavigationItem::make()
+                ->label('Jurusan')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
     }
 
 

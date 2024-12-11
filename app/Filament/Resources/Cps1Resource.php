@@ -192,6 +192,6 @@ class Cps1Resource extends Resource
 
     public  static function getLabel(): ?string
     {
-        return "Capaian Semseter 1";
+        return "Capaian Semester 1";
     }
 }

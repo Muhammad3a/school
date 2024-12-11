@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Filament\Panel;
+use Illuminate\Support\Facades\Log;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -31,6 +32,7 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessFilament(): bool
     {
+        Log::info('User roles in canAccessFilament:', $this->getRoleNames()->toArray());
         return $this->hasRole(['admin', 'guru', 'wali kelas', 'student']);
     }
 
@@ -39,7 +41,7 @@ class User extends Authenticatable implements FilamentUser
         $roles = $this->getRoleNames();
 
         return match ($panel->getId()) {
-            'admin' => $roles->intersect(['admin', 'wali kelas', 'guru'])->isNotEmpty(),
+            'admin' => $roles->intersect(['admin', 'wali kelas'])->isNotEmpty(),
             'student' => $roles->contains('student'),
             default => false,
         };

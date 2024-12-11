@@ -6,6 +6,7 @@ use Closure;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Subject;
+use App\Models\Teacher;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
@@ -15,29 +16,30 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\SubjectResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\SubjectResource\RelationManagers;
-use App\Models\Teacher;
 
 class SubjectResource extends Resource
 {
     protected static ?string $model = Subject::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = "Pelajaran Umum";
-
-    // protected static ?string $navigationGroup = 'Akademik';
-
-    // protected static ?int $navigationSort = 24;
-
-    public static function shouldRegisterNavigation(): bool
+    public static function getNavigationItems(): array
     {
-        return auth()->user()->hasRole('admin');
+        if (!auth()->check() || !auth()->user()->hasRole('admin')) {
+            return [];
+        }
+
+        return [
+            NavigationItem::make()
+                ->label('Pelajaran')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
     }
 
     public static function form(Form $form): Form

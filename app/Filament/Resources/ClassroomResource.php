@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Actions\EditAction;
 use Filament\Resources\Resource;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
@@ -31,21 +32,19 @@ class ClassroomResource extends Resource
 {
     protected static ?string $model = Classroom::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = 'Kelas';
-
-    protected static ?string $navigationGroup = 'Source';
-
-    // protected static bool $shouldRegisterNavigation = false;
-
-    protected static ?int $navigationSort = 32;
-
-    public static function shouldRegisterNavigation(): bool
+    public static function getNavigationItems(): array
     {
-        return auth()->check() && auth()->user()->hasAnyRole(['admin', 'guru']);
-    }
+        if (!auth()->check() || !auth()->user()->hasRole('admin', 'wali kelas')) {
+            return [];
+        }
 
+        return [
+            NavigationItem::make()
+                ->label('Kelas')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
+    }
 
     public static function form(Form $form): Form
     {

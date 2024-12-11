@@ -2,40 +2,42 @@
 
 namespace App\Filament\Resources;
 
-use Illuminate\Support\Str;
+use stdClass;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use App\Models\CategoryNilai;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CategoryNilaiResource\Pages;
 use App\Filament\Resources\CategoryNilaiResource\RelationManagers;
-use Filament\Tables\Contracts\HasTable;
-use stdClass;
 
 
 class CategoryNilaiResource extends Resource
 {
     protected static ?string $model = CategoryNilai::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = 'Predikat';
-
-    // protected static ?string $navigationGroup = 'Source';
-
-    protected static ?int $navigationSort = 31;
-
-    public static function shouldRegisterNavigation(): bool
+    public static function getNavigationItems(): array
     {
-        return auth()->check() && auth()->user()->hasAnyRole(['admin', 'guru']);
+        if (!auth()->check() || !auth()->user()->hasRole('admin')) {
+            return [];
+        }
+
+        return [
+            NavigationItem::make()
+                ->label('Predikat')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
     }
 
     public static function form(Form $form): Form

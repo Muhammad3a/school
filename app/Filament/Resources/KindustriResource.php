@@ -15,6 +15,7 @@ use Filament\Forms\Components\Select;
 use function Laravel\Prompts\textarea;
 
 use Filament\Forms\Components\Textarea;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,13 +27,18 @@ class KindustriResource extends Resource
 {
     protected static ?string $model = Kindustri::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = 'Kunjungan Industri';
-
-    public static function shouldRegisterNavigation(): bool
+    public static function getNavigationItems(): array
     {
-        return auth()->user()->hasRole('wali kelas');
+        if (!auth()->check() || !auth()->user()->hasRole('wali kelas')) {
+            return [];
+        }
+
+        return [
+            NavigationItem::make()
+                ->label('Kunjungan Industri')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
     }
 
     public static function form(Form $form): Form

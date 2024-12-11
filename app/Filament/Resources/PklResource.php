@@ -12,6 +12,7 @@ use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,15 +24,19 @@ class PklResource extends Resource
 {
     protected static ?string $model = Pkl::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = 'Praktik Kerja Lapangan';
-
-    public static function shouldRegisterNavigation(): bool
+    public static function getNavigationItems(): array
     {
-        return auth()->user()->hasRole('wali kelas');
-    }
+        if (!auth()->check() || !auth()->user()->hasRole('wali kelas')) {
+            return [];
+        }
 
+        return [
+            NavigationItem::make()
+                ->label('Praktik Kerja Lapangan')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -98,5 +103,10 @@ class PklResource extends Resource
             'create' => Pages\CreatePkl::route('/create'),
             'edit' => Pages\EditPkl::route('/{record}/edit'),
         ];
+    }
+
+    public  static function getLabel(): ?string
+    {
+        return "Praktik Kerja Lapangan";
     }
 }

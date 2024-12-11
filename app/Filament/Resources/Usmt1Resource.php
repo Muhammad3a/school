@@ -12,7 +12,9 @@ use App\Models\Classroom;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Illuminate\Support\Facades\Log;
 use Filament\Forms\Components\Select;
+use Filament\Navigation\NavigationItem;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
@@ -24,9 +26,19 @@ class Usmt1Resource extends Resource
 {
     protected static ?string $model = Usmt1::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getNavigationItems(): array
+    {
+        if (!auth()->check() || !auth()->user()->hasRole('wali kelas')) {
+            return [];
+        }
 
-    protected static ?string $navigationLabel = 'Nilai Umum Semester 1';
+        return [
+            NavigationItem::make()
+                ->label('Nilai Umum Semester 1')
+                ->icon('heroicon-o-rectangle-stack')
+                ->url(static::getUrl()),
+        ];
+    }
 
 
     public static function form(Form $form): Form
