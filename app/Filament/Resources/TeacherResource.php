@@ -39,7 +39,7 @@ class TeacherResource extends Resource
         return [
             NavigationItem::make()
                 ->label('Guru')
-                ->icon('heroicon-o-rectangle-stack')
+                ->icon('heroicon-o-user-group')
                 ->url(static::getUrl()),
         ];
     }
@@ -51,7 +51,8 @@ class TeacherResource extends Resource
                 Card::make()
                     ->schema([
                         TextInput::make('nip')
-                            ->label('NIP'),
+                            ->label('NIP')
+                            ->required(),
                         TextInput::make('name')
                             ->required(),
 
@@ -70,7 +71,8 @@ class TeacherResource extends Resource
                             ->options([
                                 "Ya" => "Ya",
                                 "Tidak" => "Tidak"
-                            ]),
+                            ])
+                            ->required(),
                         FileUpload::make('profile')
                             ->directory('teacher'),
                         // Textarea::make('address'),

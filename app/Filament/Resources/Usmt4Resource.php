@@ -49,13 +49,18 @@ class Usmt4Resource extends Resource
                     ->schema([
                         Select::make('student_id')
                             ->options(Student::all()->pluck('name', 'id'))
+                            ->searchable()
+                            ->required()
                             ->label('Murid'),
                         Select::make('classroom_id')
                             ->options(Classroom::all()->pluck('name', 'id'))
+                            ->searchable()
+                            ->required()
                             ->label('Kelas'),
                         Select::make('priode_id')
-                            ->label('Periode')
                             ->searchable()
+                            ->required()
+                            ->label('Periode')
                             ->options(Priode::all()->pluck('name', 'id')),
                         TextInput::make('mtk')
                             ->label('Matematika')

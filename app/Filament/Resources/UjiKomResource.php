@@ -43,16 +43,22 @@ class UjiKomResource extends Resource
         return $form
             ->schema([
                 Select::make('student_id')
+                    ->searchable()
+                    ->required()
                     ->label('murid')
                     ->options(Student::all()->pluck('name', 'id')),
                 TextInput::make('nilai')
                     ->label('Nilai')
+                    ->required()
                     ->numeric()
                     ->rules('max:100'),
                 Select::make('jengke_id')
+                    ->searchable()
+                    ->required()
                     ->options(jengke::all()->pluck('name', 'id'))
                     ->label('Jenis Kegiatan'),
-                TextInput::make('waktu'),
+                TextInput::make('waktu')
+                    ->required(),
             ]);
     }
 

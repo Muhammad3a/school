@@ -48,13 +48,18 @@ class Esmt1Resource extends Resource
                     ->schema([
                         Select::make('student_id')
                             ->options(Student::all()->pluck('name', 'id'))
+                            ->searchable()
+                            ->required()
                             ->label('Murid'),
                         Select::make('classroom_id')
                             ->options(Classroom::all()->pluck('name', 'id'))
+                            ->searchable()
+                            ->required()
                             ->label('Kelas'),
                         Select::make('priode_id')
                             ->label('Periode')
                             ->searchable()
+                            ->required()
                             ->options(Priode::all()->pluck('name', 'id')),
                         TextInput::make('pramuka')
                             ->label('Pramuka')
@@ -237,11 +242,6 @@ class Esmt1Resource extends Resource
 
     public  static function getLabel(): ?string
     {
-        $locale = app()->getLocale();
-
-        if ($locale == 'id') {
-            return "Nilai Ledger D Eskul,p5k,Presensi Semester 1";
-        } else
-            return "Teacher";
+        return "Nilai Ledger D Eskul,p5k,Presensi Semester 1";
     }
 }

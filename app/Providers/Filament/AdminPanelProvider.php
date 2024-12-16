@@ -281,16 +281,17 @@ class AdminPanelProvider extends PanelProvider
                         ->items([
                             ...ClassroomResource::getNavigationItems(),
                             ...PriodeResource::getNavigationItems(),
-                            ...SemesterResource::getNavigationItems(),
+                            // ...SemesterResource::getNavigationItems(),
                             ...JengkeResource::getNavigationItems(),
-
-                        ]),
-                    NavigationGroup::make('Data Pelajaran')
-                        ->items([
-                            ...SubjectResource::getNavigationItems(),
                             ...DepartementResource::getNavigationItems(),
 
+
                         ]),
+                    // NavigationGroup::make('Data Pelajaran')
+                    //     ->items([
+                    // ...SubjectResource::getNavigationItems(),
+
+                    // ]),
 
                     NavigationGroup::make('Ledger Mapel Umum & Mulok')
                         ->items([

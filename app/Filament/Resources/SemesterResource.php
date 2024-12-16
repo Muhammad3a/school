@@ -44,7 +44,8 @@ class SemesterResource extends Resource
                     ->options([
                         "Aktif" => "Aktif",
                         "Tidak Aktif" => "Tidak Aktif"
-                    ]),
+                    ])
+                    ->required(),
             ]);
     }
 

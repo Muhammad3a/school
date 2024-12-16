@@ -60,7 +60,8 @@ class StudentResource extends Resource
         return $form
             ->schema([
                 TextInput::make('nis')
-                    ->label('NIS'),
+                    ->label('NIS')
+                    ->required(),
 
                 TextInput::make('email')
                     ->label('Email')
@@ -73,16 +74,19 @@ class StudentResource extends Resource
                     }),
 
                 TextInput::make('nisn')
-                    ->label('NISN'),
+                    ->label('NISN')
+                    ->required(),
 
                 TextInput::make('name')
-                    ->label('Nama Siswa'),
+                    ->label('Nama Siswa')
+                    ->required(),
 
                 Select::make('gender')
                     ->options([
                         "Laki - Laki" => "Laki - Laki",
                         "Perempuan" => "Perempuan"
-                    ]),
+                    ])
+                    ->required(),
 
                 TextInput::make('tempatl')
                     ->label('Tempat lahir'),
@@ -98,14 +102,16 @@ class StudentResource extends Resource
                         'Hindu' => 'Hindu',
                         'Buddha' => "Buddha",
                         'Khonghucu' => "Khonghucu"
-                    ]),
+                    ])
+                    ->required(),
 
                 Select::make('kwnegara')
                     ->label('Kewarganegaraan')
                     ->options([
                         'Warga Negara Indonesia' => "Warga Negara Indonesia",
                         'Kewarganegaraan Asing' => "Kewarganegaraan Asing"
-                    ]),
+                    ])
+                    ->required(),
 
                 TextInput::make('statusdk')
                     ->label('Status Dalam Keluarga'),
@@ -177,7 +183,8 @@ class StudentResource extends Resource
                         'off'    => 'Off',
                         'pindah' => 'Pindah',
                         'arsip'  => 'Arsip',
-                    ]),
+                    ])
+                    ->required(),
 
                 FileUpload::make('profile')
                     ->image()

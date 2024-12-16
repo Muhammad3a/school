@@ -39,7 +39,8 @@ class JengkeResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
-                    ->label('Jenis Kegiatan'),
+                    ->label('Jenis Kegiatan')
+                    ->required(),
             ]);
     }
 

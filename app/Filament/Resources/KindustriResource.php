@@ -47,19 +47,28 @@ class KindustriResource extends Resource
             ->schema([
                 Select::make('student_id')
                     ->label('murid')
+                    ->searchable()
+                    ->required()
                     ->options(Student::all()->pluck('name', 'id')),
                 TextInput::make('mitra')
+                    ->required()
                     ->label('Mitra Dudika'),
                 TextInput::make('nilai')
                     ->label('Nilai')
+                    ->required()
                     ->numeric()
                     ->rules('max:100'),
-                Textarea::make('lokasi'),
+                Textarea::make('lokasi')
+                    ->required(),
                 Select::make('jengke_id')
+                    ->searchable()
+                    ->required()
                     ->options(jengke::all()->pluck('name', 'id'))
                     ->label('Jenis Kegiatan'),
-                TextInput::make('lama'),
-                TextInput::make('waktu'),
+                TextInput::make('lama')
+                    ->required(),
+                TextInput::make('waktu')
+                    ->required(),
             ]);
     }
 
