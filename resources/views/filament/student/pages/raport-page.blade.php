@@ -1,33 +1,46 @@
 <x-filament::page>
 
-    @if ($this->student)
-        <h1 class="text-xl font-bold mb-2">Raport Siswa</h1>
-        <table class="mb-4">
-            <tr>
-                <td>Nama</td>
-                <td>: {{ $this->student->name }}</td>
-            </tr>
-            <tr>
-                <td>NIS/NISN</td>
-                <td>: {{ $this->student->nis ?? '-' }} / {{ $this->student->nisn ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Kelas</td>
-                <td>: {{ $this->student->smt1->classrooms->name ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Jurusan</td>
-                <td>: {{ $this->student->keahlian ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Semester</td>
-                <td>: Ganjil / 1</td>
-            </tr>
-            <tr>
-                <td>Tahun Pelajaran</td>
-                <td>: {{ $this->student->smt1->priode->name ?? '-' }}</td>
-            </tr>
-        </table>
+<div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid black; padding-bottom: 10px;">
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <!-- Logo -->
+        <div style="flex: 0 0 auto; margin-right: 20px;">
+            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/Logo_Azzainiyyah.png'))) }}" 
+                 style="width: 100px; height: auto;">
+        </div>
+        <!-- Teks -->
+        <div style="flex: 1; text-align: center;">
+            <h1 style="margin: 0; font-weight: bold;">YAYASAN AZZAINIYYAH AL-MUBAROKAH</h1>
+            <h3 style="margin: 0; font-weight: bold;">SMK AZZAINIYYAH</h3>
+            <p style="margin: 5px 0; font-size: 12px;">
+                Jl. Pondok Halimun Nagrog Sinar Barokah Selabintana Sukabumi<br>
+                Telp. (0266) 225267 | e-mail: <a href="mailto:smk.azzainiyyah@gmail.com" style="color: blue; text-decoration: none;">smk.azzainiyyah@gmail.com</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+    @if ($this->student)        
+    <table class="mb-4">
+        <tr>
+            <td>Nama</td>
+            <td>: {{ $this->student->name }}</td>
+            <td>Jurusan</td>
+            <td>: {{ $this->student->keahlian ?? '-' }}</td>
+        </tr>
+        <tr>
+            <td>NIS</td>
+            <td>: {{ $this->student->nis ?? '-' }}</td>
+            <td>Semester</td>
+            <td>: Ganjil / 1</td>
+        </tr>
+        <tr>
+            <td>Kelas</td>
+            <td>: {{ $this->student->smt1->classrooms->name ?? '-' }}</td>
+            <td>Tahun Pelajaran</td>
+            <td>: {{ $this->student->smt1->priode->name ?? '-' }}</td>
+        </tr>
+    </table>
+    
 
 
         <h6 class="font-bold">A. Nilai Intra Kurikuler</h6>

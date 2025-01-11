@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Raport Semester 1</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
-        .header {
-            text-align: center;
-            font-weight: bold;
-            font-size: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1 class="text-xl font-bold mb-2">Raport Siswa</h1>
-        <table class="mb-4">
+    <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid black; padding-bottom: 10px;">
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <!-- Logo -->
+            <div style="flex: 0 0 auto; margin-right: 20px;">
+                <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/Logo_Azzainiyyah.png'))) }}" 
+                     style="width: 100px; height: auto;">
+            </div>
+            <!-- Teks -->
+            <div style="flex: 1; text-align: center;">
+                <h2 style="margin: 0; font-weight: bold;">YAYASAN AZZAINIYYAH AL-MUBAROKAH</h2>
+                <h3 style="margin: 0; font-weight: bold;">SMK AZZAINIYYAH</h3>
+                <p style="margin: 5px 0; font-size: 12px;">
+                    Jl. Pondok Halimun Nagrog Sinar Barokah Selabintana Sukabumi<br>
+                    Telp. (0266) 225267 | e-mail: <a href="mailto:smk.azzainiyyah@gmail.com" style="color: blue; text-decoration: none;">smk.azzainiyyah@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+<body>    
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <table style="border-collapse: collapse; margin-top: 5px; margin-bottom: 5px; width: 70%; text-align: left;">
             <tr>
-                <td>Nama</td>
-                <td>: {{ $student->name }}</td>
+                <td style="padding: 5px; width: 30%;"><strong>Nama</strong></td>
+                <td style="padding: 5px; width: 57%;">: {{ $student->name }}</td>
+                <td style="padding: 5px; width: 10%;"><strong>Jurusan</strong></td>
+                <td style="padding: 5px; width: 10%;">: {{ $student->keahlian ?? '-' }}</td>
             </tr>
             <tr>
-                <td>NIS/NISN</td>
-                <td>: {{ $student->nis ?? '-' }} / {{ $student->nisn ?? '-' }}</td>
+                <td style="padding: 5px; width: 30%;"><strong>NIS/NISN</strong></td>
+                <td style="padding: 5px; width: 0%;">: {{ $student->nis ?? '-' }} / {{ $student->nisn ?? '-' }}</td>
+                <td style="padding: 5px; width: 0%;"><strong>Semester</strong></td>
+                <td style="padding: 5px; width: 35%;">: Ganjil / 1</td>
             </tr>
             <tr>
-                <td>Kelas</td>
-                <td>: {{ $student->smt1->classrooms->name ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Jurusan</td>
-                <td>: {{ $student->keahlian ?? '-' }}</td>
-            </tr>
-            <tr>
-                <td>Semester</td>
-                <td>: Ganjil / 1</td>
-            </tr>
-            <tr>
-                <td>Tahun Pelajaran</td>
-                <td>: {{ $student->smt1->priode->name ?? '-' }}</td>
+                <td style="padding: 5px; width: 0%;"><strong>Kelas</strong></td>
+                <td style="padding: 5px; width: 0%;">: {{ $student->smt1->classrooms->name ?? '-' }}</td>
+                <td style="padding: 5px; width: 10%;"><strong>Tahun Pelajaran</strong></td>
+                <td style="padding: 5px; width: 20%;">: {{ $student->smt1->priode->name ?? '-' }}</td>
             </tr>
         </table>
+    </div>
 
     <table border="1" cellpadding="5" cellspacing="0" >
         <thead>

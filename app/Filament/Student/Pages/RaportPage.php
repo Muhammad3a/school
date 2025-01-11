@@ -55,4 +55,14 @@ class RaportPage extends Page
             'Raport Semester 1.pdf'
         );
     }
+
+    public  static function getLabel(): ?string
+    {
+        $locale = app()->getLocale();
+
+        if ($locale == 'id') {
+            return ".";
+        } else
+            return "";
+    }
 }
