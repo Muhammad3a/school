@@ -262,7 +262,7 @@ class StudentResource extends Resource
                     ->label('Asal Sekolah'),
 
                 TextColumn::make('classrooms.name')
-                    ->toggleable(isToggledHiddenByDefault: true)
+                    // ->toggleable(isToggledHiddenByDefault: true)
                     ->label('Kelas'),
 
                 TextColumn::make('departements.name_department')

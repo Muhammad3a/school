@@ -96,11 +96,15 @@ class TeacherResource extends Resource
                     }
                 ),
                 TextColumn::make('nip')
-                    ->label('NIP'),
-                TextColumn::make('name'),
-                TextColumn::make('email'),
+                    ->label('NIP')
+                    ->searchable(),
+                TextColumn::make('name')
+                    ->searchable(),
+                TextColumn::make('email')
+                    ->searchable(),
                 TextColumn::make('status')
-                    ->label('Wali Kelas'),
+                    ->label('Wali Kelas')
+                    ->searchable(),
                 ImageColumn::make('profile')
                     ->label('Foto')
                 // TextColumn::make('address'),
