@@ -25,7 +25,7 @@
                 <td style="padding: 5px; width: 30%;"><strong>Nama</strong></td>
                 <td style="padding: 5px; width: 57%;">: {{ $student->name }}</td>
                 <td style="padding: 5px; width: 10%;"><strong>Jurusan</strong></td>
-                <td style="padding: 5px; width: 10%;">: {{ $student->keahlian ?? '-' }}</td>
+                <td style="padding: 5px; width: 10%;">: {{ $student->departements->name_department ?? '-' }}</td>
             </tr>
             <tr>
                 <td style="padding: 5px; width: 30%;"><strong>NIS/NISN</strong></td>
@@ -35,9 +35,9 @@
             </tr>
             <tr>
                 <td style="padding: 5px; width: 0%;"><strong>Kelas</strong></td>
-                <td style="padding: 5px; width: 0%;">: {{ $student->smt1->classrooms->name ?? '-' }}</td>
+                <td style="padding: 5px; width: 0%;">: {{ $student->smt2->classrooms->name ?? '-' }}</td>
                 <td style="padding: 5px; width: 10%;"><strong>Tahun Pelajaran</strong></td>
-                <td style="padding: 5px; width: 20%;">: {{ $student->smt1->priode->name ?? '-' }}</td>
+                <td style="padding: 5px; width: 20%;">: {{ $student->smt2->priode->name ?? '-' }}</td>
             </tr>
         </table>
     </div>   

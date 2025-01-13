@@ -26,7 +26,7 @@
                 <td style="padding: 5px; width: 30%;"><strong>Nama</strong></td>
                 <td style="padding: 5px; width: 57%;">: {{ $student->name }}</td>
                 <td style="padding: 5px; width: 10%;"><strong>Jurusan</strong></td>
-                <td style="padding: 5px; width: 10%;">: {{ $student->keahlian ?? '-' }}</td>
+                <td style="padding: 5px; width: 40%;">: {{ $student->departements->name_department ?? '-' }}</td>
             </tr>
             <tr>
                 <td style="padding: 5px; width: 30%;"><strong>NIS/NISN</strong></td>

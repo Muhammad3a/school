@@ -53,6 +53,11 @@ class StudentResource extends Resource
     {
         return auth()->user()->hasRole('admin', 'wali kelas');
     }
+    public static function query(): Builder
+    {
+        return parent::query()->with(['classrooms', 'departements']);
+    }
+
 
     public static function form(Forms\Form $form): Forms\Form
     {
@@ -256,11 +261,11 @@ class StudentResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->label('Asal Sekolah'),
 
-                TextColumn::make('classroom_id.name')
+                TextColumn::make('classrooms.name')
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->label('Kelas'),
 
-                TextColumn::make('departement_id.name_department')
+                TextColumn::make('departements.name_department')
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->label('Jurusan'),
 

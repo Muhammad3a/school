@@ -24,8 +24,8 @@
         <tr>
             <td>Nama</td>
             <td>: {{ $this->student->name }}</td>
-            <td>Jurusan</td>
-            <td>: {{ $this->student->keahlian ?? '-' }}</td>
+            <td>Jurusan</td>            
+            <td>: {{ $this->student->departements->name_department ?? '-' }}</td>
         </tr>
         <tr>
             <td>NIS</td>

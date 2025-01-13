@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Student extends Model
 {
@@ -17,13 +18,14 @@ class Student extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-    function classrooms(): BelongsTo
+    public function classrooms(): BelongsTo
     {
         return $this->belongsTo(ClassRoom::class, 'classrooms_id', 'id');
     }
-    function Departements(): BelongsTo
+
+    public function departements(): BelongsTo
     {
-        return $this->belongsTo((Departement::class));
+        return $this->belongsTo(Departement::class, 'departement_id', 'id');
     }
 
     public function smt1()
