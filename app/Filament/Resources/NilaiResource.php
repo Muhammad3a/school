@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Closure;
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\kelas;
 use App\Models\Nilai;
 use App\Models\Priode;
 use App\Models\Student;
@@ -18,8 +19,8 @@ use Filament\Resources\Resource;
 use function Pest\Laravel\options;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
-use Filament\Tables\Columns\TextColumn;
 
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
@@ -47,7 +48,7 @@ class NilaiResource extends Resource
                 Card::make()
                     ->schema([
                         Select::make('classrooms')
-                            ->options(Classroom::all()->pluck('name', 'id'))
+                            ->options(kelas::all()->pluck('name_kelas', 'id')->filter())
                             ->label('Kelas'),
                         Select::make('priode')
                             ->label('Periode')

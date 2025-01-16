@@ -95,6 +95,7 @@ use App\Filament\Resources\Esmt5Resource;
 use App\Filament\Resources\Esmt6Resource;
 
 use App\Filament\Resources\FandkResource;
+use App\Filament\Resources\KelasResource;
 use App\Filament\Resources\KimiaResource;
 use App\Filament\Resources\Ksmt1Resource;
 use App\Filament\Resources\Ksmt2Resource;
@@ -105,8 +106,8 @@ use App\Filament\Resources\Ksmt6Resource;
 use App\Filament\Resources\NilaiResource;
 use App\Filament\Resources\PbtgmResource;
 use App\Filament\Resources\Psmt1Resource;
-use App\Filament\Resources\Psmt2Resource;
 
+use App\Filament\Resources\Psmt2Resource;
 use App\Filament\Resources\Psmt3Resource;
 use App\Filament\Resources\Psmt4Resource;
 use App\Filament\Resources\Psmt5Resource;
@@ -118,28 +119,27 @@ use App\Filament\Resources\Usmt3Resource;
 use App\Filament\Resources\Usmt4Resource;
 use App\Filament\Resources\Usmt5Resource;
 use App\Filament\Resources\Usmt6Resource;
-use App\Filament\Resources\BkerjaResource;
 // <<<<<<< HEAD
 // use App\Filament\Resources\DibadahResource;
 // =======
 
-use App\Filament\Resources\BsundaResource;
+use App\Filament\Resources\BkerjaResource;
 
 // >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
+use App\Filament\Resources\BsundaResource;
 use App\Filament\Resources\DwaktuResource;
-use App\Filament\Resources\FisikaResource;
 
+use App\Filament\Resources\FisikaResource;
 use App\Filament\Resources\JengkeResource;
 use App\Filament\Resources\PemturResource;
 use App\Filament\Resources\PriodeResource;
-use App\Filament\Resources\UjiKomResource;
 // <<<<<<< HEAD
 // use App\Filament\Resources\DbelajarResource;
 // use App\Filament\Resources\DbergaulResource;
 // =======
 
+use App\Filament\Resources\UjiKomResource;
 use Filament\Http\Middleware\Authenticate;
-use Filament\Navigation\NavigationBuilder;
 // use App\Filament\Resources\SemesterResource;
 // use App\Filament\Resources\ClassroomResource;
 // use App\Filament\Resources\DkeamananResource;
@@ -154,6 +154,7 @@ use Filament\Navigation\NavigationBuilder;
 // use App\Filament\Resources\PmemeliharaResource;
 
 // >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
+use Filament\Navigation\NavigationBuilder;
 use App\Filament\Resources\ContactResource;
 use App\Filament\Resources\DibadahResource;
 use App\Filament\Resources\GalleryResource;
@@ -170,12 +171,12 @@ use App\Filament\Resources\SemesterResource;
 use App\Filament\Resources\ClassroomResource;
 use App\Filament\Resources\DkeamananResource;
 use App\Filament\Resources\KindustriResource;
-use App\Filament\Resources\PberbaktiResource;
 // <<<<<<< HEAD
-use App\Filament\Resources\PramadhanResource;
+use App\Filament\Resources\PberbaktiResource;
 // =======
 
 // >>>>>>> 499be73fec3b3025ae93dfd1c227f31b9f086b32
+use App\Filament\Resources\PramadhanResource;
 use App\Filament\Resources\BerekayasaResource;
 use App\Filament\Resources\CpSemesterResource;
 use App\Filament\Resources\DberbahasaResource;
@@ -282,8 +283,8 @@ class AdminPanelProvider extends PanelProvider
                     NavigationGroup::make('Data Umum')
                         ->items([
                             ...ClassroomResource::getNavigationItems(),
+                            ...KelasResource::getNavigationItems(),
                             ...PriodeResource::getNavigationItems(),
-                            // ...SemesterResource::getNavigationItems(),
                             ...JengkeResource::getNavigationItems(),
                             ...DepartementResource::getNavigationItems(),
 

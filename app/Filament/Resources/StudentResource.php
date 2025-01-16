@@ -40,6 +40,7 @@ use Filament\Resources\Pages\ListRecords\Tab;
 use App\Filament\Resources\StudentResource\Pages;
 use App\Filament\Resources\StudentResource\RelationManagers;
 use App\Filament\Resources\StudentResource\Widgets\StatsOverview;
+use App\Models\kelas;
 
 class StudentResource extends Resource
 {
@@ -49,15 +50,16 @@ class StudentResource extends Resource
 
     protected static ?string $navigationLabel = 'Murid';
 
+
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->hasRole('admin', 'wali kelas');
     }
     public static function query(): Builder
     {
-        return parent::query()->with(['classrooms', 'departements']);
+        return parent::query()->with(['classroom', 'departements']);
     }
-
 
     public static function form(Forms\Form $form): Forms\Form
     {
@@ -144,7 +146,7 @@ class StudentResource extends Resource
                     ->label('Asal Sekolah'),
 
                 Select::make('classroom_id')
-                    ->options(Classroom::all()->pluck('name', 'id')->filter())
+                    ->options(kelas::all()->pluck('name_kelas', 'id')->filter())
                     ->label('Kelas'),
 
                 Select::make('departement_id')
@@ -196,6 +198,7 @@ class StudentResource extends Resource
                     ->label('Foto Murid'),
             ]);
     }
+
 
     public static function table(Table $table): Table
     {
@@ -261,12 +264,12 @@ class StudentResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->label('Asal Sekolah'),
 
-                TextColumn::make('classrooms.name')
-                    // ->toggleable(isToggledHiddenByDefault: true)
-                    ->label('Kelas'),
+                TextColumn::make('kelas.name_kelas')
+                    ->label('Kelas')
+                    ->searchable(),
 
                 TextColumn::make('departements.name_department')
-                    ->toggleable(isToggledHiddenByDefault: true)
+                    // ->toggleable(isToggledHiddenByDefault: true)
                     ->label('Jurusan'),
 
                 TextColumn::make('nayah')

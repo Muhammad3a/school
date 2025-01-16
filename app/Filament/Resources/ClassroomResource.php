@@ -52,10 +52,6 @@ class ClassroomResource extends Resource
             ->schema([
                 TextInput::make('name')
                     ->live()
-                //     ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
-                // TextInput::make('slug')
-                //     ->unique(Classroom::class, 'slug', ignoreRecord: true)
-
             ]);
     }
 

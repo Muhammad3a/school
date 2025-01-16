@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Esmt3;
+use App\Models\kelas;
 use App\Models\Priode;
 use App\Models\Student;
 use Filament\Forms\Form;
@@ -52,7 +53,7 @@ class Esmt3Resource extends Resource
                             ->required()
                             ->label('Murid'),
                         Select::make('classroom_id')
-                            ->options(Classroom::all()->pluck('name', 'id'))
+                            ->options(kelas::all()->pluck('name_kelas', 'id')->filter())
                             ->searchable()
                             ->required()
                             ->label('Kelas'),
@@ -154,8 +155,9 @@ class Esmt3Resource extends Resource
         return $table
             ->columns([
                 TextColumn::make('student.name')
-                    ->label('Murid'),
-                TextColumn::make('classroom.name')
+                    ->label('Murid')
+                    ->searchable(),
+                TextColumn::make('kelas.name_kelas')
                     ->label('Kelas'),
                 TextColumn::make('priode.name')->label('Periode'),
                 TextColumn::make('pramuka')

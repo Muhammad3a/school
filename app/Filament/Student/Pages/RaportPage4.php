@@ -32,6 +32,8 @@ class RaportPage4 extends Page
                 'UjiKom.jengke',
                 'dsmt4',
                 'psmt4',
+                'departements',
+                'kelas'
             ]) // Muat data smt1
             ->first();
 

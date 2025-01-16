@@ -35,7 +35,7 @@
         </tr>
         <tr>
             <td>Kelas</td>
-            <td>: {{ $this->student->smt1->classrooms->name ?? '-' }}</td>
+            <td>: {{ $this->student->smt1->kelas->name_kelas ?? '-' }} (Sepuluh)</td>
             <td>Tahun Pelajaran</td>
             <td>: {{ $this->student->smt1->priode->name ?? '-' }}</td>
         </tr>

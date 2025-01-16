@@ -35,7 +35,7 @@
             </tr>
             <tr>
                 <td style="padding: 5px; width: 0%;"><strong>Kelas</strong></td>
-                <td style="padding: 5px; width: 0%;">: {{ $student->smt3->classrooms->name ?? '-' }}</td>
+                <td style="padding: 5px; width: 0%;">: {{ $student->smt3->kelas->name_kelas ?? '-' }} (Sebelas)</td>
                 <td style="padding: 5px; width: 10%;"><strong>Tahun Pelajaran</strong></td>
                 <td style="padding: 5px; width: 20%;">: {{ $student->smt3->priode->name ?? '-' }}</td>
             </tr>

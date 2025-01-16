@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use App\Models\Smt1;
 use Filament\Tables;
+use App\Models\kelas;
 use App\Models\Priode;
 use App\Models\Student;
 use Filament\Forms\Form;
@@ -25,7 +26,7 @@ class Smt1Resource extends Resource
 
     public static function getNavigationItems(): array
     {
-        if (!auth()->check() || !auth()->user()->hasRole('wali kelas')) {
+        if (!auth()->check() || !auth()->user()->hasRole('admin')) {
             return [];
         }
 
@@ -49,7 +50,7 @@ class Smt1Resource extends Resource
                         ->searchable(),
                     Select::make('classroom_id')
                         ->label('Kelas')
-                        ->options(fn() => Classroom::pluck('name', 'id'))
+                        ->options(kelas::all()->pluck('name_kelas', 'id')->filter())
                         ->required()
                         ->searchable(),
                     Select::make('priode_id')
@@ -84,8 +85,9 @@ class Smt1Resource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('student.name')->label('Murid'),
-                TextColumn::make('classroom.name')->label('Kelas'),
+                TextColumn::make('student.name')->label('Murid')->searchable(),
+                TextColumn::make('kelas.name_kelas')
+                    ->label('Kelas'),
                 TextColumn::make('priode.name')->label('Periode'),
                 TextColumn::make('pai')->label('Pendidikan Agama Islam'),
                 TextColumn::make('pp')->label('Pendidikan Pancasila'),

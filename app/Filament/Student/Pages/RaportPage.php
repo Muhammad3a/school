@@ -28,7 +28,8 @@ class RaportPage extends Page
                 'UjiKom.jengke',
                 'dsmt1',
                 'psmt1',
-                'departements'
+                'departements',
+                'kelas'
             ])
             ->first();
 

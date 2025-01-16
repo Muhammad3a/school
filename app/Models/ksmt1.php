@@ -21,4 +21,8 @@ class ksmt1 extends Model
     {
         return $this->belongsTo(Priode::class, 'priode_id', 'id');
     }
+    public function kelas(): BelongsTo
+    {
+        return $this->belongsTo(Kelas::class, 'classroom_id', 'id');
+    }
 }

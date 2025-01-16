@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\kelas;
 use App\Models\Usmt3;
 use App\Models\Priode;
 use App\Models\Student;
@@ -55,7 +56,7 @@ class Usmt3Resource extends Resource
                         Select::make('classroom_id')
                             ->searchable()
                             ->required()
-                            ->options(Classroom::all()->pluck('name', 'id'))
+                            ->options(kelas::all()->pluck('name_kelas', 'id')->filter())
                             ->label('Kelas'),
                         Select::make('priode_id')
                             ->searchable()
@@ -112,8 +113,9 @@ class Usmt3Resource extends Resource
         return $table
             ->columns([
                 TextColumn::make('student.name')
-                    ->label('Murid'),
-                TextColumn::make('classroom.name')
+                    ->label('Murid')
+                    ->searchable(),
+                TextColumn::make('kelas.name_kelas')
                     ->label('Kelas'),
                 TextColumn::make('priode.name')->label('Periode'),
                 TextColumn::make('mtk')
