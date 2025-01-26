@@ -3,16 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class kelas extends Model
+class Kelas extends Model
 {
-    use HasFactory;
     protected $guarded = [];
 
-    public function student(): BelongsTo
+    // Relasi ke model Student
+    public function students(): HasMany
     {
-        return $this->belongsTo(Student::class);
+        return $this->hasMany(Student::class, 'kelas_id');
+    }
+
+    // Relasi ke model TandaTangan
+    public function tandaTangans(): HasMany
+    {
+        return $this->hasMany(TandaTangan::class, 'kelas_id');
     }
 }

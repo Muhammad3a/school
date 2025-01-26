@@ -3,7 +3,9 @@
 namespace App\Filament\Student\Pages;
 
 use App\Models\cps3;
+use App\Models\smt3;
 use App\Models\Student;
+use App\Models\TandaTangan;
 use Filament\Pages\Page;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -17,6 +19,9 @@ class RaportPage3 extends Page
 
     public $student; // Properti student didefinisikan
     public $cpSemesters;
+    public $tandaTangan;
+    public $smt3;
+
 
     public function mount()
     {
@@ -41,6 +46,25 @@ class RaportPage3 extends Page
         if (!$this->student) {
             abort(404, 'Data student tidak ditemukan untuk user yang sedang login.');
         }
+
+        // Ambil data tanda tangan
+        $this->tandaTangan = $this->getTandaTangan();
+    }
+
+    public function getTandaTangan(): array
+    {
+        // Ambil data kelas dari smt3 berdasarkan student
+        $kelas = smt3::where('student_id', $this->student->id)
+            ->with('kelas') // Pastikan relasi kelas di-load
+            ->latest('priode_id') // Mengambil data periode terbaru (semester terakhir)
+            ->first()?->kelas;
+
+        return [
+            'wali_kelas' => $kelas
+                ? TandaTangan::where('role', 'wali_kelas')->where('kelas_id', $kelas->id)->first()
+                : null, // Jika tidak ditemukan, null
+            'kepala_sekolah' => TandaTangan::where('role', 'kepala_sekolah')->first(),
+        ];
     }
 
     public function cetakPDF()
@@ -49,6 +73,7 @@ class RaportPage3 extends Page
         $data = [
             'student' => $this->student,
             'cpSemesters' => $this->cpSemesters,
+            'tandaTangan' => $this->tandaTangan,
         ];
 
         // Render PDF

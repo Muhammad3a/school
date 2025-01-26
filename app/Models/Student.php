@@ -18,6 +18,10 @@ class Student extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    public function tandaTanganOrangTua()
+    {
+        return $this->hasOne(TandaTangan::class, 'siswa_id');
+    }
     public function kelas(): BelongsTo
     {
         return $this->belongsTo(Kelas::class, 'classroom_id', 'id');

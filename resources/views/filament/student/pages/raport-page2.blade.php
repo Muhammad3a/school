@@ -859,6 +859,101 @@
         <td class="border border-gray-300 px-4 py-2 text-center">Ananda menunjukkan perkembangan karakter yang baik pada pembelajaran semester ini. Selain itu, ananda menunjukkan prestasi yang menonjol pada karakter religius dan kedisiplinan.</td>
     </tr>
 
+    <table>
+        <tr>
+            <td class="px-1 py-1" style="width: 20%;">Diberikan di</td>
+            <td class="px-4 py-2" style="width: 2%;">:</td>
+            <td class="px-4 py-2" style="width: 78%;">Sukabumi</td>
+        </tr>
+        <tr>
+            <td class="px-1 py-1">Pada tanggal</td>
+            <td class="px-4 py-2">:</td>
+            <td class="px-4 py-2" id="current-date">__________________</td>
+        </tr>
+        <tr style="height: 10px;"></tr>
+    
+        <!-- Wali Kelas -->
+        <tr>
+            <td class="text-center px-4 py-2"></td>
+            <td class="text-center px-4 py-2"></td>
+            <td class="text-center px-4 py-2"></td>
+            <td class="text-center px-9 py-9">Wali Kelas</td>
+        </tr>
+    
+        <tr style="height: 50px;"></tr>
+    
+        <tr>
+            <td class="text-center px-4 py-2"></td>
+            <td class="text-center px-4 py-2"></td>
+            <td class="text-center px-4 py-2"></td>
+            <td class="px-4 py-2">
+                @if($tandaTangan['wali_kelas'])
+                    {{-- <img src="{{ asset($tandaTangan['wali_kelas']->path) }}" alt="Tanda Tangan Wali Kelas" style="height: 50px;"> --}}
+                    <img src="{{ asset('storage/' . $tandaTangan['wali_kelas']->path) }}" alt="Tanda Tangan Wali Kelas" style="height: 150px;">
+                    <br>
+                    <p>{{ $tandaTangan['wali_kelas']->teacher->name ?? 'Nama Wali Kelas' }}</p>
+                @else
+                    <p>__________________</p>
+                @endif
+            </td>
+        </tr>
+    
+        <tr>
+            <td class="text-center px-4 py-2"></td>
+            <td class="text-center px-4 py-2"></td>
+            <td class="text-center px-4 py-2">Mengetahui</td>
+            <td class="text-center px-4 py-2"></td>
+        </tr>
+    
+        <tr style="height: 30px;"></tr>
+
+        <tr>
+            <td class="text-center px-4 py-2">Orangtua/Wali</td>
+            <td></td>            
+            <td></td>
+            <td class="text-center px-4 py-2">Kepala Sekolah</td>            
+        </tr>
+
+        {{-- tanda tangan kepala sekolah --}}
+    
+        {{-- <tr>
+            <td class="px-4 py-2"></td>
+            <td></td>
+            <td></td>
+            <td class="text-center px-25 py-20">
+                @if($tandaTangan['kepala_sekolah'])
+                    <img src="{{ asset($tandaTangan['kepala_sekolah']->path) }}" alt="Tanda Tangan Kepala Sekolah" style="height: 50px;">
+                    <br>
+                    <p>{{ $tandaTangan['kepala_sekolah']->teacher->name ?? 'Nama Kepala Sekolah' }}</p>
+                @else
+                    <p>__________________</p>
+                @endif
+            </td>
+        </tr> --}}
+        <tr style="height: 5px;"></tr>        
+        <tr>
+            <td class="px-4 py-2"></td>            
+            <td></td>
+            <td></td>            
+            <td class="text-center px-25 py-20">
+                <img src="/images/ttdkps.png" alt="Tanda Tangan" style="height: 150%;" />                
+                Ai Imas Mursyidah Zein, M.E
+            </td>    
+        </tr>
+    </table>
+
+    <script>
+        // Script untuk menampilkan tanggal hari ini
+        const currentDateElement = document.getElementById('current-date');
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('id-ID', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        });
+        currentDateElement.textContent = formattedDate;
+    </script>
+
 <x-filament::button wire:click="cetakPDF">Cetak PDF</x-filament::button>
     
 </x-filament::page>

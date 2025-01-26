@@ -16,6 +16,10 @@ class Teacher extends Model
     {
         return $this->hasMany(HomeRoom::class, 'teachers_id', 'id');
     }
+    function tandatangan()
+    {
+        return $this->hasMany(TandaTangan::class, 'id');
+    }
 
     protected static function boot()
     {

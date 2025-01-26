@@ -26,7 +26,7 @@ class Smt1Resource extends Resource
 
     public static function getNavigationItems(): array
     {
-        if (!auth()->check() || !auth()->user()->hasRole('admin')) {
+        if (!auth()->check() || !auth()->user()->hasRole('wali kelas')) {
             return [];
         }
 

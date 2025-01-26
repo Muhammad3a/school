@@ -77,7 +77,8 @@ class StudentResource extends Resource
                             $user = User::find($record->user_id);
                             $component->state($user?->email);
                         }
-                    }),
+                    })
+                    ->hidden(),
 
                 TextInput::make('nisn')
                     ->label('NISN')

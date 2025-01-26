@@ -782,5 +782,83 @@
     </tr>
     </table>
 
+    <table style="width: 100%; margin-top: 20px;">
+        <tr>
+            <td style="width: 20%; padding: 5px;">Diberikan di</td>
+            <td style="width: 2%; padding: 5px;">:</td>
+            <td style="width: 78%; padding: 5px;">Sukabumi</td>
+        </tr>
+        <tr>
+            <td style="padding: 5px;">Pada tanggal</td>
+            <td style="padding: 5px;">:</td>
+            <td style="padding: 5px;" id="current-date">__________________</td>
+        </tr>
+        <tr style="height: 10px;"></tr>
+    
+        <!-- Wali Kelas -->
+        <tr>
+            <td colspan="3"></td>                                                                                                                  
+            <td style="text-align: center;">Wali Kelas</td>
+        </tr>
+    
+        <tr style="height: 50px;"></tr>
+    
+        <tr>
+            <td colspan="2"></td>
+            <td></td>
+            <td style="text-align: center;">
+                @if($tandaTangan['wali_kelas'])
+                <img src="data:image/png;base64,{{ base64_encode(file_get_contents(storage_path('app/public/' . $tandaTangan['wali_kelas']->path))) }}" 
+                     alt="Tanda Tangan Wali Kelas" 
+                     style="height: 70px; display: block; margin: 0 auto;">
+                <p>{{ $tandaTangan['wali_kelas']->teacher->name ?? 'Nama Wali Kelas' }}</p>
+            @else
+                <p>__________________</p>
+            @endif
+            
+            </td>
+        </tr>
+    
+        <tr>
+            <td colspan="2"></td>
+            <td style="text-align: center;">Mengetahui</td>            
+        </tr>
+    
+        <tr style="height: 50px;"></tr>
+    
+        <tr>
+            <td style="text-align: center;">Orangtua/Wali</td>
+            <td></td>
+            <td></td>
+            <td style="text-align: center;">Kepala Sekolah</td>
+        </tr>
+    
+        <tr style="height: 50px;"></tr>
+    
+        <tr>
+            <td colspan="2"></td>
+            <td></td>
+            <td style="text-align: center;">
+                <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/ttdkps.png'))) }}" 
+                alt="Tanda Tangan Kepala Sekolah" 
+                style="height: 150px; display: block; margin: 0 auto;">
+
+                <p>Ai Imas Mursyidah Zein, M.E</p>
+            </td>
+        </tr>
+    </table>
+    
+    <script>
+        // Script untuk menampilkan tanggal hari ini
+        const currentDateElement = document.getElementById('current-date');
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('id-ID', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        });
+        currentDateElement.textContent = formattedDate;
+    </script>
+
 </body>
 </html>
